@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com:Rails-Dream-Team/Cats.git"
+    "url": "git+ssh://git@github.com:Rails-Dream-Team/TIY-Final-Project.git"
   },
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Rails-Dream-Team/Cats/issues"
+    "url": "https://github.com/Rails-Dream-Team/TIY-Final-Project/issues"
   },
-  "homepage": "https://github.com/Rails-Dream-Team/Cats#readme",
+  "homepage": "https://github.com/Rails-Dream-Team/TIY-Final-Project#readme",
   "dependencies": {
     "director": "^1.2.8",
     "browserify": "^11.0.1",
