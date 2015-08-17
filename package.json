@@ -1,0 +1,38 @@
+{
+  "name": "cats",
+  "version": "0.1.0",
+  "description": "== README",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com:Rails-Dream-Team/Cats.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rails-Dream-Team/Cats/issues"
+  },
+  "homepage": "https://github.com/Rails-Dream-Team/Cats#readme",
+  "dependencies": {
+    "director": "^1.2.8",
+    "browserify": "^11.0.1",
+    "browserify-incremental": "^3.0.1",
+    "reactify": "^1.1.1",
+    "react": "^0.13.3",
+    "react-google-maps": "^2.0.2",
+    "superagent": "^1.2.0"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "reactify"
+      ]
+    ]
+  }
+}
