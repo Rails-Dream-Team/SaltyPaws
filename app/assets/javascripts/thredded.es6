@@ -1,5 +1,4 @@
-//= require jquery
-//= require jquery_ujs
+
 //= require_tree ./thredded/vendor
 //= require_tree ./thredded
 
