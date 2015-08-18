@@ -41,9 +41,20 @@ class ColoniesController < ApplicationController
     respond_to do |format|
       if @colony.update_attributes(colony_params)
         format.html { redirect_to colonies_path(@colony) }
+        format.json { render json: @colony, status: 202 }
       else
         format.html { render :edit }
+        format.json { render json: @colony.errors, status: 422 }
       end
+    end
+  end
+
+  def destroy
+    @colony = get_colony
+    @colony.destroy
+    respond_to do |format|
+      format.html { redirect_to colonies_path  }
+      format.json { render json: {}, status: 200 }
     end
   end
 

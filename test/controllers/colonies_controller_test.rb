@@ -82,5 +82,13 @@ class ColoniesControllerTest < ActionController::TestCase
 
   test "update colony json" do
     patch :update, format: :json, id: @colony, colony: { name: 'NewName' }
+    assert_response :success
+  end
+
+  test "destroy colony html" do
+    assert_difference('Colony.count', -1) do
+      delete :destroy, id: @colony
+    end
+    assert_redirected_to colonies_path
   end
 end
