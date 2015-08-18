@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :colonies
+  mount Thredded::Engine => '/forum'
+
 end
