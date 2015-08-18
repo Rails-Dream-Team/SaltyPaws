@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+- 2.2.2
+deploy:
+  provider: heroku
+  api_key:
+    secure: iIj6cu5TlJq2rR58KFTe9/59YLWTYVqFTHXffN3mfSVAggxs5MnOPm/eofj15pAJxB2chAbnfueWD/evIGlgyaJDa5x4dU2vBIS8DPmv+GFTmQB0PysWYTi7dztfU64S77ODiQiwpdtEqFuHzrxrBt3e2efpuTHpsQvgLL8lYYnHIk6Kt6vF7fHraiFvmKa5CJY245QJoEk2+UfLA7C+k3LX9k0K+kyc6M07XjcuBgYbYbZNjnVKVE9aU7u2Lku99Oetp5yBCz3uJt6NkLwfc+8+hg5rVDEH5wVUFtse/whS3DmSVXxQv9/+QUWri5Pxg92iB/4RlyQLfdVQUm1gXULDODHVs0A/8stXMBket1XXaqnKZh86QLk2Ln5MmU2RD6FxR/MH7ZROARKFg+kD4IG0rDxcULEar6pgVGK44GYeEFa0TjWFEB1sn5IsAzvQgAyXZWUUvuZ6aVK/fzbrzA6ukWz1NKXd4oTnQMQsLo8hKuP5SOJhr/Z3/etvvCjHfC43SwHF/OOo5Bk8s5tEibtI2/abHfs81LdAChxhknmXuYAasE23vcp0WUc03eBQBodUf5ea35wkmaaeOkMZqaiadhOT//Am/qGoA7btDv2YntfxY1Nx4QulD+cFYUKotlyDS/JElc1oSI14LCjwrdEzJ48gUNc4pxi6v4E38QY=
+  app: saltypaws
+  on:
+    repo: Rails-Dream-Team/TIY-Final-Project
