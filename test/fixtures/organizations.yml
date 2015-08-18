@@ -1,0 +1,7 @@
+one:
+  name: "Test Org"
+  street_address: "123 Test Address"
+  city: "Test City"
+  state: "Test State"
+  zip_code: "123456"
+  description: "this is an awesome organization."
