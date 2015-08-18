@@ -2,8 +2,8 @@
 
 ---
 
-This email was sent to you because <%= @topic.user %>
-included you in the private topic "<%= @topic.title %>". 
+This email was sent to you because <%= @topic.user.display_name %>
+included you in the private topic "<%= @topic.title %>".
 Go here to view the conversation:
   <%= messageboard_topic_posts_url(@topic.messageboard, @topic) %>
 

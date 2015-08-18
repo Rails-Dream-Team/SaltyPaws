@@ -4,7 +4,7 @@
   <%= content_tag_for :article, post do %>
     <header>
       <%= image_tag post.avatar_url, class: 'post--avatar' unless post.user_anonymous? %>
-      <h2 class="post--user"><%= post.user_link %></h2>
+      <h2 class="post--user"><%= link_to post.user.display_name, post.user_link %></h2>
       <p class="post--created-at"><%= post.created_at_timeago %></p>
 
     </header>

@@ -13,12 +13,12 @@
 
   <cite class="topics--updated-by">
     <%== topic.updated_at_timeago %>
-    <%== topic.last_user_link %>
+    <%= link_to topic.last_user.display_name, topic.last_user_link %>
   </cite>
 
   <cite class="topics--started-by">
     <%== topic.created_at_timeago %>
-    <%== topic.user_link %>
+    <%= link_to topic.user.display_name, topic.user_link %>
   </cite>
 
   <% if topic.categories.any? %>

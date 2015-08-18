@@ -7,16 +7,15 @@
 
   <cite class="topics--updated-by">
     <%== private_topic.updated_at_timeago %>
-    <%== private_topic.last_user_link %>
+    <%= link_to private_topic.last_user.display_name, private_topic.last_user_link %>
   </cite>
 
   <cite class="topics--started-by">
     <%== private_topic.created_at_timeago %>
-    <%== private_topic.user_link %>
+    <%= link_to private_topic.user.display_name private_topic.user_link %>
   </cite>
 
   <ul class="topics--categories">
     <%= render private_topic.categories %>
   </ul>
 <% end %>
-
