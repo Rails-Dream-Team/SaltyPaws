@@ -15,3 +15,5 @@
 node_modules/
 .env
 .DS_Store
+.foreman
+dump.rdb

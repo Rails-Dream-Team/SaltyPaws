@@ -10,4 +10,13 @@ class User < ActiveRecord::Base
   validates :first_name, :last_name, :display_name, :email, presence: true
   validates :age, numericality: true, allow_nil: true
 
+  class User < ActiveRecord::Base
+    def to_s
+      first_name
+    end
+
+    def to_param
+      self.id
+    end
+  end
 end
