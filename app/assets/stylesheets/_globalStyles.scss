@@ -1,0 +1,29 @@
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+html,
+body {
+  font-family: $content-font;
+  font-size: 14px;
+  line-height: 20px;
+  height: 100%;
+  margin: 0;
+}
+p {
+  color: $gray-colors;
+  @include content-font;
+}
+h1,
+h3 {
+  font-family: $header-font;
+  text-transform: uppercase;
+}
+.clearfix {
+  clear: both;
+  padding: 15px 0;
+}

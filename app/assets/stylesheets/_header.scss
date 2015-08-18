@@ -1,0 +1,31 @@
+.header__container {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: url('cat-header.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  .header__title {
+    text-align: center;
+    display: block;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    h1 {
+      font-size: 5em;
+      color: #fff;
+      font-family: $header-font;
+      text-transform: uppercase;
+    }
+    h3 {
+      font-size: 2em;
+      color: #fff;
+      font-family: $header-font;
+      text-transform: uppercase;
+    }
+  }
+}
