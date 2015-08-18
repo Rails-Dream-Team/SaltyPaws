@@ -1,0 +1,14 @@
+.footer__container { 
+  background-color: #5492F0;
+  height: 15%;
+  ul {
+    list-style-type: none;
+    width: 50%;
+    padding-top: 50px;
+    margin: 0 auto;
+    li {
+      display: inline-block;
+      width: 10%;
+    }
+  }
+}
