@@ -7,7 +7,7 @@
     <% if signed_in? %>
       <li class="main--nav--user">
         <%= link_to Thredded.user_path(current_user) do %>
-        <span><%= current_user %></span>
+        <span><%= current_user.display_name %></span>
         <% end %>
       </li>
 

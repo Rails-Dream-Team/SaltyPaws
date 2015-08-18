@@ -16,10 +16,10 @@
     <h1 class="topic-header--title"><%= topic.title %></h1>
 
     <cite class="topic-header--started-by">
-      Started 
+      Started
       <%== topic.decorate.created_at_timeago %>
       by
-      <%== topic.decorate.user_link %>
+      <%= link_to topic.user.display_name, topic.decorate.user_link %>
     </cite>
   </header>
 
