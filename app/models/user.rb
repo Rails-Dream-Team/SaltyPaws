@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :rememberable, :trackable, :timeoutable, :validatable
 
   validates :first_name, :last_name, :email, presence: true
+  validates :age, numericality: true, allow_nil: true
 end
