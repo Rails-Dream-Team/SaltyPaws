@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  id: 1
   name: Foobar
   street_address: 123 Test Address
   city: Test city
