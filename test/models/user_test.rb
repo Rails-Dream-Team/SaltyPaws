@@ -24,6 +24,11 @@ class UserTest < ActiveSupport::TestCase
     refute @user.valid?
   end
 
+  test 'user is invalid without display name' do
+    @user.display_name = nil
+    refute @user.valid?
+  end
+
   test 'user age may be nil' do
     @user.age = nil
     assert @user.valid?

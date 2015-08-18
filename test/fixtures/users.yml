@@ -3,3 +3,4 @@ one:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   first_name: John
   last_name: Doe
+  display_name: kittehs4lyfe

@@ -1,6 +1,11 @@
 source 'https://rubygems.org'
 
 ruby '2.2.2'
+
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'sprockets-es6'
 gem 'rails', '4.2.3'
 
 gem 'activeadmin', github: 'activeadmin'
@@ -17,6 +22,7 @@ gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
 gem 'sinatra', require: nil
+gem 'thredded', github: 'jayroh/thredded'
 gem 'uglifier', '>= 1.3.0'
 gem 'will_paginate', '~> 3.0.6'
 
