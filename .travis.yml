@@ -8,3 +8,5 @@ deploy:
   app: saltypaws
   on:
     repo: Rails-Dream-Team/TIY-Final-Project
+before_script:
+  - psql -c 'create database cats_test;' -U postgres
