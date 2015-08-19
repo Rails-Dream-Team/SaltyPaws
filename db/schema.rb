@@ -11,10 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150819003323) do
+ActiveRecord::Schema.define(version: 20150819014658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cats", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "sex"
+    t.integer  "age"
+    t.date     "date_trapped"
+    t.boolean  "altered"
+    t.boolean  "eartipped"
+    t.string   "rabies_tag"
+    t.string   "distemper"
+    t.string   "microchip"
+    t.string   "photo"
+    t.integer  "colony_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "cats", ["colony_id"], name: "index_cats_on_colony_id", unique: true, using: :btree
 
   create_table "colonies", force: :cascade do |t|
     t.string   "name",           null: false
