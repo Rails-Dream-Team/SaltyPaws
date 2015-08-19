@@ -1,18 +1,22 @@
-<h1>Colonies</h1>
-<%= link_to 'Add a Colony', new_colony_path %>
 <div class="colony">
 
-<ul>
-  <% @colonies.each do |a| %>
-    <li>
-      <div>
-        <%= link_to a.name, colony_path(a) %>
-      </div>
-      <div>
-        <%= a.photo %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+    <div class="colony_header">
+      <h1>Colonies</h1>
+      <%= link_to 'Add a Colony', new_colony_path %>
+    </div>
 
+    <div class="colonies_list">
+
+      <% @colonies.each do |a| %>
+        <div class="colony_wrapper">
+          <div class="colony_photo">
+            <%= a.photo %>
+          </div>
+          <div class="colony_name">
+            <%= link_to a.name, colony_path(a) %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
 </div>

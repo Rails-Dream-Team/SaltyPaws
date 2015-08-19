@@ -1,7 +1,5 @@
-<h1><%= @colony.name %></h1>
-
-<p>
-  <div>Name: <%= @colony.name %></div>
+<div class="colony_show">
+  <h1><%= @colony.name %></h1>
   <div><%= @colony.photo %></div>
   <div>Street: <%= @colony.street_address %></div>
   <div>City: <%= @colony.city %></div>
@@ -14,4 +12,4 @@
     <%= link_to '[edit]', edit_colony_path(@colony) %>
     <%= link_to '[remove]', @colony, method: :delete, data: {confirm: 'Are you sure?'} %>
   </div>
-</p>
+</div>
