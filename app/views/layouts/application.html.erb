@@ -3,7 +3,7 @@
 <head>
   <title>Cats</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= stylesheet_link_tag 'application', 'http://fonts.googleapis.com/css?family=Montserrat' %>
+  <%= javascript_include_tag 'application', 'http://fonts.googleapis.com/css?family=Montserrat' %>
 
   <%= csrf_meta_tags %>
 </head>
@@ -12,7 +12,7 @@
   <p class="alert"><%= alert %></p> -->
 
   <%= render 'layouts/header' %>
-  
+
   <%= yield %>
 
   <%= render 'layouts/footer' %>

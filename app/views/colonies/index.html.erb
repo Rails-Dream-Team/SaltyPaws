@@ -1,1 +1,18 @@
-<h1>SHOW ME YOUR KITTIES! Jamie made me do it</h1>
+<h1>Colonies</h1>
+<%= link_to 'Add a Colony', new_colony_path %>
+<div class="colony">
+
+<ul>
+  <% @colonies.each do |a| %>
+    <li>
+      <div>
+        <%= link_to a.name, colony_path(a) %>
+      </div>
+      <div>
+        <%= a.photo %>
+      </div>
+    </li>
+  <% end %>
+</ul>
+
+</div>
