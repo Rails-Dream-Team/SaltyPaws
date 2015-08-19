@@ -1,0 +1,27 @@
+.vol__formContainer {
+  text-align: center;
+  ul {
+    list-style-type: none;
+    li {
+      width: 200px;
+      margin: 5px auto;
+      text-align: left;
+      display: block;
+    }
+  }
+}
+.form__right,
+.form__left {
+  display: inline-block;
+  vertical-align: top;
+  height: 125px;
+  width: 200px;
+  margin: 15px auto;
+  li {
+    padding: 10px;
+    display: block;
+  }
+}
+.form__section1 {
+  text-align: center;
+}
