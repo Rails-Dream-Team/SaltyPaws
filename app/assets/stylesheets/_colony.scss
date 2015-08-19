@@ -1,17 +1,39 @@
 .colony {
+  margin: 5%;
 }
-.colonyForm {
-  width: 50%;
-  margin: 2% 2%;
-  padding: 3%;
-  background: rgba(0, 0, 0, .1);
-
+.colony_header {
+  > h1 {
+    margin: 1% 0;
+  }
+  font-size: 20px;
 }
-.colonyForm__label > label {
-  display: block;
-  font-size: 18px;
+.colonies_list {
+  margin-top: 5%;
 }
-
-.colonyForm__submit {
-
+.colony_wrapper {
+  display: inline-block;
+  margin: 0 10px;
+  vertical-align: top;
+}
+.colony_name{
+  font-size: 15px;
+  width: 100px;
+  text-align: center;
+  > a {
+    text-decoration: none;
+  }
+}
+.colony_photo {
+  width: 100px;
+  height: 100px;
+  border: 1px black solid;
+}
+.colony_new {
+  margin: 5%;
+}
+.colony_show {
+  margin: 5%;
+}
+.colony_edit {
+  margin: 5%;
 }
