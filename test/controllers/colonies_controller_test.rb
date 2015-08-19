@@ -31,7 +31,7 @@ class ColoniesControllerTest < ActionController::TestCase
     assert_difference('Colony.count', 1) do
       post :create, colony: { name: "Test1", street_address: "123 Address", city: "testcity", state: "teststate" }
     end
-    assert_redirected_to colonies_path(assigns(:colony))
+    assert_redirected_to colony_path(assigns(:colony))
   end
 
   test 'renders new with INvalid attributes html' do
@@ -80,7 +80,7 @@ class ColoniesControllerTest < ActionController::TestCase
     @colony.reload
     refute @colony.name == old_name
     assert_equal new_name, @colony.name
-    assert_redirected_to colonies_path(@colony)
+    assert_redirected_to colony_path(@colony)
   end
 
   test "update colony json" do
