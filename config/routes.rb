@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   resources :colonies
   resources :organizations
-  
+  resources :cats
+
   mount Thredded::Engine => '/forum'
 
 end
