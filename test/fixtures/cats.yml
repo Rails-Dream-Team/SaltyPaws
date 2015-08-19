@@ -1,0 +1,9 @@
+one:
+  name: "buttons"
+  description: "black and white, dlh"
+  sex: "female"
+  age: 1
+  date_trapped: 2015-07-01
+  altered: true
+  eartipped: true
+  microchip: "12319402j120"
