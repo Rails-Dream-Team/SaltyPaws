@@ -1,3 +1,5 @@
+require 'test_helper'
+
 class ColoniesControllerTest < ActionController::TestCase
   def setup
     @colony = colonies(:one)
