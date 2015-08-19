@@ -15,7 +15,7 @@ class ColoniesController < ApplicationController
     @colony = Colony.new(colony_params)
     respond_to do |format|
       if @colony.save
-        format.html { redirect_to colonies_path(@colony) }
+        format.html { redirect_to colony_path(@colony) }
         format.json { render json: {}, status: 201 }
       else
         format.html { render :new }

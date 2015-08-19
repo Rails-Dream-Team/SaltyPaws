@@ -1,6 +1,7 @@
 require 'test_helper'
 
 class ColoniesControllerTest < ActionController::TestCase
+
   def setup
     @colony = colonies(:one)
   end
@@ -93,4 +94,12 @@ class ColoniesControllerTest < ActionController::TestCase
     end
     assert_redirected_to colonies_path
   end
+
+  test "destroy colony with json" do
+    assert_difference('Colony.count', -1) do
+      delete :destroy, format: :json, id: @colony
+    end
+    assert_response :success
+  end
+
 end
