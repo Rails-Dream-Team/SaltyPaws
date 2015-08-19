@@ -6,36 +6,10 @@
   <% @colonies.each do |a| %>
     <li>
       <div>
-        <%= a.name %>
+        <%= link_to a.name, colony_path(a) %>
       </div>
       <div>
         <%= a.photo %>
-      </div>
-      <div>
-        <%= a.street_address %>
-      </div>
-      <div>
-        <%= a.city %>
-      </div>
-      <div>
-        <%= a.state %>
-      </div>
-      <div>
-        <%= a.zip_code %>
-      </div>
-      <div>
-        <%= a.enviroment %>
-      </div>
-      <div>
-        <%= a.pop %>
-      </div>
-      <div>
-        <%= a.vet %>
-      </div>
-      <div>
-        <%= link_to '[view]', a %>
-        <%= link_to '[edit]', edit_colony_path(a) %>
-        <%= link_to '[remove]', a, method: :delete, data: {confirm: 'Are you sure?'} %>
       </div>
     </li>
   <% end %>

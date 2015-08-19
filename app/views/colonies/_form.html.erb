@@ -1,0 +1,38 @@
+<%= form_for @colony do |f| %>
+  <div>
+    <h1>Create a Colony</h1>
+  </div>
+
+  <% if @colony.errors.full_messages.present? %>
+    <ul>
+      <% @colony.errors.full_messages.each do |message| %>
+        <li>
+          <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+  <div class="colonyForm__label">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+      <%= f.label :photo %>
+      <%= f.text_field :photo %>
+      <%= f.label :street_address %>
+      <%= f.text_field :street_address %>
+      <%= f.label :city %>
+      <%= f.text_field :city %>
+      <%= f.label :state %>
+      <%= f.text_field :state %>
+      <%= f.label :zip_code %>
+      <%= f.text_field :zip_code %>
+      <%= f.label :enviroment %>
+      <%= f.text_field :enviroment %>
+      <%= f.label :pop %>
+      <%= f.text_field :pop %>
+      <%= f.label :vet %>
+      <%= f.text_field :vet %>
+
+      <div class="colonyForm__submit"><%= f.submit 'Submit' %></div>
+  </div>
+
+<% end %>

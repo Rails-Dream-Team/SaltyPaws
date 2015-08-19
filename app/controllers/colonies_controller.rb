@@ -40,7 +40,7 @@ class ColoniesController < ApplicationController
     @colony = get_colony
     respond_to do |format|
       if @colony.update_attributes(colony_params)
-        format.html { redirect_to colonies_path(@colony) }
+        format.html { redirect_to colony_path(@colony) }
         format.json { render json: @colony, status: 202 }
       else
         format.html { render :edit }
