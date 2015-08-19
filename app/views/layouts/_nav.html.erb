@@ -5,6 +5,7 @@
       <%= current_user.display_name %>
       <%= link_to 'Sign Out', destroy_user_session_path %>
       <%= link_to 'View Colonies', colonies_path %>
+      <%= link_to 'View Forum', thredded_path %>
     <% else %>
       <%= link_to 'Sign In', new_user_session_path %>
 
