@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :colony_users
   has_many :colonies, through: :colony_users
+  has_many :organization_users
+  has_many :organizations, through: :organization_users
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, and :omniauthable
