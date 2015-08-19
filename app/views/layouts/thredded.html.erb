@@ -12,10 +12,11 @@
     <nav class="fixed-nav-bar">
       <div>
         <%= link_to 'Home', main_app.root_path %>
-        <% if current_user %>
+        <% if signed_in? %>
           <%= current_user.display_name %>
           <%= link_to 'Sign Out', main_app.destroy_user_session_path %>
           <%= link_to 'View Colonies', main_app.colonies_path %>
+          <%= link_to 'View Forum', root_path %>
         <% else %>
           <%= link_to 'Sign In', main_app.new_user_session_path %>
         <% end %>
