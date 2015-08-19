@@ -1,0 +1,16 @@
+<nav class="fixed-nav-bar">
+  <div>
+    <%= link_to 'Home', root_path %>
+    <% if current_user %>
+      <%= current_user.display_name %>
+      <%= link_to 'Sign Out', destroy_user_session_path %>
+      <%= link_to 'View Colonies', colonies_path %>
+    <% else %>
+      <%= link_to 'Sign In', new_user_session_path %>
+
+    <% end %>
+  </div>
+  <div>
+  </div>
+
+</nav>
