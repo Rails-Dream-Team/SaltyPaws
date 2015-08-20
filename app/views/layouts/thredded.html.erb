@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Thredded | <%= yield :thredded_page_title %></title>
+    <title>SaltyPaws | <%= yield :thredded_page_title %></title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <%= stylesheet_link_tag 'thredded' %>
-    <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'thredded', 'application' %>
+    <%= javascript_include_tag 'thredded' %>
     <%= csrf_meta_tag %>
   </head>
 
@@ -35,13 +35,13 @@
       <%= render 'thredded/shared/error_messages' %>
 
       <%= yield %>
+      <%= yield :thredded_javascript %>
 
       <%= render 'thredded/shared/currently_online' %>
 
     </div>
     <%= render 'layouts/footer' %>
     <%= javascript_include_tag 'thredded' %>
-    <%= yield :thredded_javascript %>
 
     <script>
       var thredded = (typeof thredded === 'undefined') ? new Thredded : thredded;
