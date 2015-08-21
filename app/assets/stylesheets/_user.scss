@@ -1,0 +1,23 @@
+.user_wrapper {
+  font-size: 0;
+  margin: 5%;
+}
+.user_picture  {
+  display: inline-block;
+  font-size: 12px;
+  > img {
+    border-radius: 50%;
+  }
+}
+.user_info {
+  font-size: 18px;
+}
+.user_infoLocation {
+}
+.user_infoAbout {
+}
+.user_infoVolunteer {
+}
+.edit_user {
+  margin: 5%;
+}
