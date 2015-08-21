@@ -3,9 +3,8 @@
 <head>
   <title>Cats</title>
   <%= stylesheet_link_tag 'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyBEXcbmd62BQbiO7OgzCFC0qwRuSWaIeMc" %>
   <%= stylesheet_link_tag 'application', 'https://fonts.googleapis.com/css?family=Montserrat' %>
-
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,5 +17,7 @@
   <%= yield %>
 
   <%= render 'layouts/footer' %>
+
+  <%= javascript_include_tag 'application' %>
 </body>
 </html>
