@@ -5,13 +5,17 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc{ I18n.t("active_admin.dashboard") } do
     columns do
       column do
-        panel "Recently Updated Colonies" do
+        panel "Colonies" do
+          h3 "Recently Updated Colonies"
           ul do
-            recent = Colony.order(:created_at)
-            recent.first(5) do |colony|
-              li link_to(colony.name, colony_path(colony))
+            recent = Colony.order(:updated_at)
+            recent.last(5).map do |colony|
+              li do
+                link_to(colony.name + colony.updated_at.strftime('  (updated %m/%d/%Y)'), colony_path(colony))
+              end
             end
           end
+          h3 "View All Colonies"
         end
       end
 
@@ -19,7 +23,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Newest Users" do
           ul do
             User.last(5).map do |user|
-              li link_to(user.display_name, user_path(user))
+              li link_to(user.display_name + user.created_at.strftime('  (joined %m/%d/%Y)'), user_path(user))
             end
           end
         end
