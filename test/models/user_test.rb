@@ -44,5 +44,14 @@ class UserTest < ActiveSupport::TestCase
     assert @user.valid?
   end
 
+  test 'assert responds to colonies' do
+    assert_respond_to @user, :colonies
+    assert_instance_of Colony, @user.colonies.new
+  end
+
+  test 'assert responds to users' do
+    assert_respond_to @user, :organizations
+    assert_instance_of Organization, @user.organizations.new
+  end
 
 end
