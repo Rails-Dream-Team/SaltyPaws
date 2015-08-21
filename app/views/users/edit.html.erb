@@ -28,6 +28,8 @@
       </div>
       <div class="form">
         <h3>About:</h3>
+        <div>Phone: </div> <%= f.text_field :phone %>
+        <div>Age: </div> <%= f.text_field :age %>
         <div>About me: </div> <%= f.text_area :about_me, cols: 100, rows: 10 %>
         <div>Pets: </div> <%= f.text_area :pets, cols: 50, rows: 5 %>
         <div>Volunteer Work: </div> <%= f.text_area :volunteer_work, cols: 50, rows: 5  %>
