@@ -1,0 +1,40 @@
+
+<div class="edit_user">
+  <%= form_for @user do |f| %>
+
+
+    <% if @user.errors.full_messages.present? %>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div>
+      <h1> Edit User </h1>
+      <div class="form">
+        <h3>Name:</h3>
+        First: <%= f.text_field :first_name %>
+        Last: <%= f.text_field :last_name %>
+      </div>
+      <div class="form">
+        <h3>Location:</h3>
+        <div>City: </div> <%= f.text_field :city %>
+        <div>State: </div> <%= f.text_field :state %>
+        <div>Zip: </div> <%= f.text_field :zip %>
+      </div>
+      <div class="form">
+        <h3>About:</h3>
+        <div>About me: </div> <%= f.text_area :about_me, cols: 100, rows: 10 %>
+        <div>Pets: </div> <%= f.text_area :pets, cols: 50, rows: 5 %>
+        <div>Volunteer Work: </div> <%= f.text_area :volunteer_work, cols: 50, rows: 5  %>
+      </div>
+
+      <div><%= f.submit 'Submit' %></div>
+    </div>
+
+  <% end %>
+</div>

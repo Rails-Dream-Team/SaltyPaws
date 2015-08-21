@@ -1,17 +1,14 @@
-<nav class="fixed-nav-bar">
-  <div>
-    <%= link_to 'Home', root_path %>
+<nav class="nav">
+  <ul class="nav_ul">
+    <li><%= link_to 'Home', root_path %></li>
     <% if current_user %>
-      <%= current_user.display_name %>
-      <%= link_to 'Sign Out', destroy_user_session_path %>
-      <%= link_to 'View Colonies', colonies_path %>
-      <%= link_to 'View Forum', thredded_path %>
+      <li><%= link_to 'View Colonies', colonies_path %></li>
+      <li><%= link_to 'View Forum', thredded_path %></li>
+      <li><%= link_to 'View Profile', current_user %></li>
+      <li><%= current_user.display_name %></li>
+      <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
     <% else %>
-      <%= link_to 'Sign In', new_user_session_path %>
-
+      <li><%= link_to 'Sign In', new_user_session_path %></li>
     <% end %>
-  </div>
-  <div>
-  </div>
-
+  </ul>
 </nav>
