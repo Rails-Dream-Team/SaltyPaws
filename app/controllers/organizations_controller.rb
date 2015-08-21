@@ -3,7 +3,7 @@ class OrganizationsController < ApplicationController
   def index
     @organizations = Organization.all
     respond_to do |format|
-      format.html
+      format.html { render :index }
       format.json { render json: @organizations }
     end
   end
@@ -16,7 +16,7 @@ class OrganizationsController < ApplicationController
     @organization = Organization.new(organization_params)
     respond_to do |format|
       if @organization.save
-        format.html { redirect_to organizations_path(@organization) }
+        format.html { redirect_to organization_path(@organization) }
         format.json { render json: {}, status: 201 }
       else
         format.html { render :new }
@@ -41,7 +41,7 @@ class OrganizationsController < ApplicationController
     @organization = get_organization
     respond_to do |format|
       if @organization.update_attributes(organization_params)
-        format.html { redirect_to organizations_path(@organization) }
+        format.html { redirect_to organization_path(@organization) }
         format.json { render json: @organization, status: 202 }
       else
         format.html { render :edit }

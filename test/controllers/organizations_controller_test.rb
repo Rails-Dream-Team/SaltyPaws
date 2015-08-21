@@ -30,7 +30,7 @@ class OrganizationsControllerTest < ActionController::TestCase
     assert_difference('Organization.count', 1) do
       post :create, organization: { name: "Test"}
     end
-    assert_redirected_to organizations_path(assigns(:organization))
+    assert_redirected_to organization_path(assigns(:organization))
   end
 
   test "POST create renders new with INvalid attr html" do
@@ -74,7 +74,7 @@ class OrganizationsControllerTest < ActionController::TestCase
     patch :update, id: @organization, organization: { name: new_name }
     @organization.reload
     refute @organization.name == old_name
-    assert_redirected_to organizations_path(@organization)
+    assert_redirected_to organization_path(@organization)
   end
 
   test "PATCH update with json" do

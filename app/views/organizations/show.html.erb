@@ -1,1 +1,24 @@
-<h1>Kitty Committee Show</h1>
+<div class="org__header">
+  <%= link_to 'View All Organizations', organizations_path %>
+  <%= link_to 'Add Your Organization', new_organization_path %>
+</div>
+<div class="org">
+  <div class="org__header">
+    <h1>Kitty Committee | <%= @organization.name %></h1>
+  </div>
+  <div class="org__details">
+    <ul class="org__name">
+      <li><%= @organization.name %></li>
+      <li><%= @organization.city %>, <%= @organization.state %></li>
+      <li><%= @organization.description %></li>
+      <li><%= @organization.created_at.strftime('Member Organization since %d/%m/%Y') %></li>
+    </ul>
+  </div>
+  <div class="org__members">
+    <ul class="org__memberList">
+      <% @organization.users.each do |user| %>
+        <li><%= user.display_name %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

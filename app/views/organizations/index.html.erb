@@ -1,1 +1,17 @@
-<h1>Kitty Committee Index</h1>
+<div class="org">
+    <div class="org__header">
+      <h1>Kitty Committee Index</h1>
+      <%= link_to 'Add Your Organization', new_organization_path %>
+    </div>
+    <div class="org__list">
+      <% @organizations.each do |org| %>
+        <div class="org__wrapper">
+          <ul class="org__name">
+            <li><%= link_to org.name, organization_path(org) %></li>
+            <li><%= org.city %>, <%= org.state %></li>
+            <li><%= org.description %></li>
+          </ul>
+          </div>
+      <% end %>
+    </div>
+</div>

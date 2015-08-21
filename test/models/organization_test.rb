@@ -9,8 +9,13 @@ class OrganizationTest < ActiveSupport::TestCase
     assert @organization.valid?
   end
 
-  test 'organization INvalid without a name' do
+  test 'is invalid without a name' do
     @organization.name = ''
     refute @organization.valid?
+  end
+
+  test 'assert responds to users' do
+    assert_respond_to @organization, :users
+    assert_instance_of User, @organization.users.new
   end
 end
