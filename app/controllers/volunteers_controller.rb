@@ -7,7 +7,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.valid?
-      FormMailer.new_vol_form(@volunteer).deliver
+      FormMailer.new_vol_form(@volunteer).deliver_now
       redirect_to volunteer_path, notice: "Your form was submitted."
     else
       flash[:alert] = "An error occurred while submitting your form."
@@ -18,7 +18,6 @@ class VolunteersController < ApplicationController
   private
 
   def volunteer_params
-    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone,
-    :age, :vol_areas, :skills, :availability)
+    params.require(:volunteer).permit(:first_name, :last_name, :email, :phone, :age, :vol_areas, :skills, :availability)
   end
 end
