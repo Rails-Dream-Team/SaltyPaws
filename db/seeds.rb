@@ -1,12 +1,16 @@
 5.times do
-  @user = User.create!(
-                       email: Faker::Internet.email,
-                       password: 'password1',
-                       password_confirmation: 'password1',
-                       first_name: Faker::Name.first_name,
-                       last_name: Faker::Name.last_name,
-                       display_name: Faker::Internet.user_name
-                       )
+  @organization = Organization.create!(name: Faker::Team.name)
+  5.times do
+    @user = User.create!(
+                        email: Faker::Internet.email,
+                        password: 'password1',
+                        password_confirmation: 'password1',
+                        first_name: Faker::Name.first_name,
+                        last_name: Faker::Name.last_name,
+                        display_name: Faker::Internet.user_name
+                        )
+    @organization.users.append(@user)
+  end
 end
 
 5.times do
