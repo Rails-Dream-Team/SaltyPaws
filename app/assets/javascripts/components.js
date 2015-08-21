@@ -5,7 +5,20 @@ var Users         = require('./react_components/Users.react.js');
 var GoogleMapOverlayViewSimple        = require('./react_components/map_components/Map.react.js');
 
 var components = function() {
-  React.render(<GoogleMapOverlayViewSimple />, document.querySelector('[data-js="map"]'));
+  var colony = document.querySelector('[data-js="colony"]');
+  var map = document.querySelector('[data-js="map"]');
+  var organization = document.querySelector('[data-js="organization"]');
+  var user = document.querySelector('[data-js="user"]');
+
+  if (colony) {
+    React.render(<Colonies />, colony);
+  } else if (map) {
+    React.render(<GoogleMapOverlayViewSimple />, map);
+  } else if (organization) {
+    React.render(<Organizations />, organization);
+  } else if (user) {
+    React.render(<Users />, user);
+  }
 };
 
 
