@@ -1,0 +1,76 @@
+<%= form_for @volunteer, url: volunteer_path do |new_vol_form| %>
+  <fieldset>
+    <h2>Volunteer Questionnaire</h2>
+    <span>Thank you for your interest in volunteering with us.  Please complete the form below and someone will contact you ASAP.</span>
+
+    <div class="field">
+      <%= new_vol_form.label :first_name %>
+      <%= new_vol_form.text_field :first_name, placeholder: "First Name" %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.label :last_name %>
+      <%= new_vol_form.text_field :last_name, placeholder: "Last Name" %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.label :email %>
+      <%= new_vol_form.email_field :email, placeholder: "Email" %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.label :phone %>
+      <%= new_vol_form.telephone_field :phone, placeholder: "Phone Number" %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.label :age %>
+      <%= new_vol_form.number_field :age, placeholder: "Age" %>
+    </div>
+  <h3>Please select all areas you are interested in:</h3>
+    <div class="field">
+      <%= new_vol_form.check_box :vol_areas, value: "Adoption Events" %>
+      <%= new_vol_form.label :adoption_events %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :vol_areas, value: "Transportation" %>
+      <%= new_vol_form.label :transportation %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :vol_areas, value: "Assist with Trapping" %>
+      <%= new_vol_form.label :assist_with_trapping %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :vol_areas, value: "Colony Caregiver" %>
+      <%= new_vol_form.label :colony_caregiver %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :vol_areas, value: "Substitute Colony Caregiver" %>
+      <%= new_vol_form.label :substitute_colony_caregiver %>
+    </div>
+    <h3>Feel free to share any relevant experience and/or skills:</h3>
+    <div class="field">
+      <%= new_vol_form.text_area :skills, placeholder: "Relevent Skills or Experience" %>
+    </div>
+  <h3>When are you able to volunteer?</h3>
+    <div class="field">
+      <%= new_vol_form.check_box :availability, value: "Weekends" %>
+      <%= new_vol_form.label :weekends %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :availability, value: "Weekdays" %>
+      <%= new_vol_form.label :weekdays %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :availability, value: "Evenings" %>
+      <%= new_vol_form.label :evenings %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :availability, value: "Daytime" %>
+      <%= new_vol_form.label :daytime %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.check_box :availability, value: "Flexible" %>
+      <%= new_vol_form.label :flexible %>
+    </div>
+    <div class="field">
+      <%= new_vol_form.submit "Send" %>
+    </div>
+  </fieldset>
+<% end %>
