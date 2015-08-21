@@ -20,12 +20,13 @@
   },
   "homepage": "https://github.com/Rails-Dream-Team/TIY-Final-Project#readme",
   "dependencies": {
-    "director": "^1.2.8",
     "browserify": "^11.0.1",
     "browserify-incremental": "^3.0.1",
-    "reactify": "^1.1.1",
+    "director": "^1.2.8",
     "react": "^0.13.3",
     "react-google-maps": "^2.0.2",
+    "react-googlemaps": "^0.4.0",
+    "reactify": "^1.1.1",
     "superagent": "^1.2.0"
   },
   "browserify": {
