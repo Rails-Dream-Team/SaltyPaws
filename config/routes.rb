@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  require 'sidekiq/web'
   devise_for :users
   root 'home#index'
 
@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
 
   mount Thredded::Engine => '/forum'
-
+  mount Sidekiq::Web => '/sidekiq'
 end
