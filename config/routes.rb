@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   get 'volunteers', to: 'volunteers#new', as: 'volunteer'
   post 'volunteers', to: 'volunteers#create'
 
+  get 'reports', to: 'reports#new', as: 'report'
+  post 'reports', to: 'reports#create'
+
   mount Sidekiq::Web => '/sidekiq'
 end
