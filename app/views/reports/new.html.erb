@@ -40,23 +40,20 @@
 
     <h3>Colony Information</h3>
     <div class="field">
-    <%= report_colony_form.label :location %>
+    <%= report_colony_form.label :location, "Where is the colony located?" %>
     <%= report_colony_form.text_area :location, size: "30x5", placeholder: "Location (Street address, cross streets, park name, etc.)" %>
     </div>
     <div class="field">
-      <p>Estimated number of cats in the colony?</p>
-      <%= report_colony_form.label :pop %>
-      <%= report_colony_form.number_field :pop, min: "0", max: "999", placeholder: "?" %>
+      <%= report_colony_form.label :pop, "Estimated number of cats in the colony?" %>
+      <%= report_colony_form.number_field :pop, min: "0", max: "999", placeholder: "0" %>
     </div>
     <div class="field">
-      <p>Estimated number that are spayed/neutered?</p>
-      <%= report_colony_form.label :fixed %>
-      <%= report_colony_form.number_field :fixed, min: "0", max: "999", placeholder: "?" %>
+      <%= report_colony_form.label :fixed, "Estimated number that are spayed/neutered?" %>
+      <%= report_colony_form.number_field :fixed, min: "0", max: "999", placeholder: "0" %>
     </div>
     <div class="field">
-      <p>Estimated number younger than 2 months?</p>
-      <%= report_colony_form.label :young %>
-      <%= report_colony_form.number_field :young, min: "0", max: "999", placeholder: "?" %>
+      <%= report_colony_form.label :young, "Estimated number younger than 2 months?" %>
+      <%= report_colony_form.number_field :young, min: "0", max: "999", placeholder: "0" %>
     </div>
     <div class="field">
       <p>Are you the current caretaker? If not, are you interested in caring for this colony?</p>
