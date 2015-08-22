@@ -1,0 +1,74 @@
+<div>
+  <%= form_for @report, url: report_path do |report_colony_form| %>
+
+    <h2>Report a Colony</h2>
+    <span>If you are currently caring for a feral colony and are interested in registering the colony with us or you have found a colony that is in need of a caretaker, please take a moment to fill out the information below.</span>
+
+    <h3>Contact Information</h3>
+    <div class="field">
+      <%= report_colony_form.label :first_name %>
+      <%= report_colony_form.text_field :first_name, placeholder: "First Name" %>
+    </div>
+    <div class="field">
+      <%= report_colony_form.label :last_name %>
+      <%= report_colony_form.text_field :last_name, placeholder: "Last Name" %>
+    </div>
+    <div class="field">
+      <%= report_colony_form.label :email %>
+      <%= report_colony_form.email_field :email, placeholder: "Email" %>
+    </div>
+    <div class="field">
+      <%= report_colony_form.label :phone %>
+      <%= report_colony_form.telephone_field :phone, placeholder: "Phone Number" %>
+    </div>
+    <div class="field">
+    <%= report_colony_form.label :street_address %>
+    <%= report_colony_form.text_field :street_address, placeholder: "Street Address" %>
+    </div>
+    <div class="field">
+    <%= report_colony_form.label :city %>
+    <%= report_colony_form.text_field :city, placeholder: "City" %>
+    </div>
+    <div class="field">
+    <%= report_colony_form.label :state %>
+    <%= report_colony_form.text_field :state, placeholder: "State" %>
+    </div>
+    <div class="field">
+    <%= report_colony_form.label :zip_code %>
+    <%= report_colony_form.text_field :zip_code, placeholder: "Zipcode" %>
+    </div>
+
+    <h3>Colony Information</h3>
+    <div class="field">
+    <%= report_colony_form.label :location %>
+    <%= report_colony_form.text_area :location, size: "30x5", placeholder: "Location (Street address, cross streets, park name, etc.)" %>
+    </div>
+    <div class="field">
+      <p>Estimated number of cats in the colony?</p>
+      <%= report_colony_form.label :pop %>
+      <%= report_colony_form.number_field :pop, min: "0", max: "999", placeholder: "?" %>
+    </div>
+    <div class="field">
+      <p>Estimated number that are spayed/neutered?</p>
+      <%= report_colony_form.label :fixed %>
+      <%= report_colony_form.number_field :fixed, min: "0", max: "999", placeholder: "?" %>
+    </div>
+    <div class="field">
+      <p>Estimated number younger than 2 months?</p>
+      <%= report_colony_form.label :young %>
+      <%= report_colony_form.number_field :young, min: "0", max: "999", placeholder: "?" %>
+    </div>
+    <div class="field">
+      <p>Are you the current caretaker? If not, are you interested in caring for this colony?</p>
+      <%= report_colony_form.radio_button :current_caretaker, "Current caretaker" %>
+      <%= report_colony_form.label :current_caretaker_yes, "Yes, I'm the current caretaker. " %>
+      <%= report_colony_form.radio_button :current_caretaker, "No, but I'm interested" %>
+      <%= report_colony_form.label :current_caretaker_interested, "No, but I'm interested. " %>
+      <%= report_colony_form.radio_button :current_caretaker, "Not interested" %>
+      <%= report_colony_form.label :current_caretaker_no, "I am not interested in providing care at this time. " %>
+
+    <div class="field">
+      <%= report_colony_form.submit "Send" %>
+    </div>
+  <% end %>
+</div>
