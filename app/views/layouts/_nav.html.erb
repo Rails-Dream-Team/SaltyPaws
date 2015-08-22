@@ -1,14 +1,15 @@
 <nav class="nav">
   <ul class="nav_ul">
-    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'HOME', root_path %></li>
     <% if current_user %>
-      <li><%= link_to 'View Colonies', colonies_path %></li>
-      <li><%= link_to 'View Forum', thredded_path %></li>
-      <li><%= link_to 'View Profile', current_user %></li>
-      <li><%= current_user.display_name %></li>
-      <li><%= link_to 'Sign Out', destroy_user_session_path %></li>
+      <li><%= link_to 'COLONIES', colonies_path %></li>
+      <li><%= link_to 'ORGANIZATIONS', organizations_path %></li>
+      <li><%= link_to 'VOLUNTEER' %></li>
+      <li><%= link_to 'PROFILE', current_user %></li>
+      <li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
     <% else %>
-      <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <li><%= link_to 'SIGN IN', new_user_session_path %></li>
+      <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
     <% end %>
   </ul>
 </nav>
