@@ -1,6 +1,6 @@
 class FormMailer < ActionMailer::Base
   default from: "Form Submit <noreply@saltypaws.com>"
-  default to: "Admin <admin@saltypaws.com>"
+  default to: "Admin <saltypaws@gmx.us>"
 
   def new_vol_form(volunteer)
     @volunteer = volunteer

@@ -1,8 +1,41 @@
-<%= @volunteer.first_name %><br />
-<%= @volunteer.last_name %><br />
-<%= @volunteer.email %><br />
-<%= @volunteer.phone %><br />
-<%= @volunteer.age %><br />
-<%= @volunteer.vol_areas %><br />
+<h1>Volunteer Questionnaire</h1>
+<h3>Contact Info</h3>
+First Name: <%= @volunteer.first_name %><br />
+Last Name: <%= @volunteer.last_name %><br />
+Email: <%= @volunteer.email %><br />
+Phone: <%= @volunteer.phone %><br />
+Age: <%= @volunteer.age %><br />
+<h3>Volunteer Areas of Interest</h3>
+<% if @volunteer.adoption_events == "1" %>
+Adoption Events
+<% end %><br />
+<% if @volunteer.transportation == "1" %>
+Transportation
+<% end %><br />
+<% if @volunteer.assist_with_trapping == "1" %>
+Assist with Trapping
+<% end %><br />
+<% if @volunteer.colony_caregiver == "1" %>
+Colony Caregiver
+<% end %><br />
+<% if @volunteer.substitute_colony_caregiver == "1" %>
+Substitute Colony Caregiver
+<% end %><br />
+<h3>Relevent Skills/Experience</h3>
 <%= @volunteer.skills %><br />
-<%= @volunteer.availability %><br />
+<h3>Availability</h3>
+<% if @volunteer.weekends == "1" %>
+Weekends
+<% end %><br />
+<% if @volunteer.weekdays == "1" %>
+Weekdays
+<% end %><br />
+<% if @volunteer.evenings == "1" %>
+Evenings
+<% end %><br />
+<% if @volunteer.daytime == "1" %>
+Daytime
+<% end %><br />
+<% if @volunteer.flexible == "1" %>
+Flexible
+<% end %>
