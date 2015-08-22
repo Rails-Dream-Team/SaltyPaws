@@ -49,9 +49,13 @@ class UserTest < ActiveSupport::TestCase
     assert_instance_of Colony, @user.colonies.new
   end
 
-  test 'assert responds to users' do
+  test 'assert responds to organizations' do
     assert_respond_to @user, :organizations
     assert_instance_of Organization, @user.organizations.new
+  end
+
+  test 'assert responds to pets' do
+    assert_respond_to @user, :pets
   end
 
 end

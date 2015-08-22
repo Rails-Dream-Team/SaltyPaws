@@ -14,6 +14,5 @@ Rails.application.routes.draw do
   get 'volunteers', to: 'volunteers#new', as: 'volunteer'
   post 'volunteers', to: 'volunteers#create'
 
-  mount Thredded::Engine => '/forum'
   mount Sidekiq::Web => '/sidekiq'
 end
