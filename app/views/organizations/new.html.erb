@@ -1,7 +1,12 @@
-<div class="org__new">
-  <h1>Add Your Organization</h1>
-  <p>
-    Help us help the kitties! By adding your organization, you can start helping local cats and the volunteers committed to their care.
-  </p>
-  <%= render 'form' %>
+<div class="org">
+  <div class="org__header">
+    <h1>Add Your Organization</h1>
+    <%= link_to 'Back to All Organizations', organizations_path %>
+  </div>
+  <div class="org__new">
+    <p>
+      Help us help the kitties! By adding your organization, you can start helping local cats and the volunteers committed to their care.
+    </p>
+    <%= render 'form' %>
+  </div>
 </div>

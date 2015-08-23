@@ -4,7 +4,7 @@
     <% if current_user %>
       <li><%= link_to 'COLONIES', colonies_path %></li>
       <li><%= link_to 'ORGANIZATIONS', organizations_path %></li>
-      <li><%= link_to 'VOLUNTEER' %></li>
+      <li><%= link_to 'VOLUNTEER', volunteer_path %></li>
       <li><%= link_to 'PROFILE', current_user %></li>
       <li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
     <% else %>
