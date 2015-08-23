@@ -1,4 +1,12 @@
-$content-font: Helvetica Neue, Helvetica, Arial, sans-serif;
-$gray-colors: #5F646B;
-$background-theme: #83AF9B;
+// text styles
+$content-font: Quicksand, Helvetica Neue, Helvetica, Arial, sans-serif;
 $header-font: 'Montserrat', sans-serif;
+
+// colors
+$gray-colors: #4D4D4D;
+$background-theme: #83AF9B;
+
+// breaks for responsive behavior
+$break-s: 600px;
+$break-m: 900px;
+$break-l: 1300px;

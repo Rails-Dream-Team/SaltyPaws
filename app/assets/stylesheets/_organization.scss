@@ -7,15 +7,16 @@
 // div on org index for header content
 .org__header {
   > h1 {
-    padding: 3px;
+    padding: 5px 0 15px;
     @include title(2rem, $gray-colors);
     @include center;
   }
   > a {
     @include title(1rem, $gray-colors);
-    @include center;
+    display: inline-block;
     text-decoration: none;
     border-bottom: 1px solid;
+    margin: 3px 10px;
   }
 }
 // div on org index for list of all orgs
@@ -49,4 +50,3 @@
 .org__listDescription {
   display: inline-block;
 }
-//
