@@ -77,3 +77,18 @@
   font-size: 0.8rem;
   padding: 15px auto;
 }
+#error_explanation {
+  margin: 0;
+  padding: 0;
+  > h2 {
+    @include content-font;
+    color: $warn-red;
+    text-transform: lowercase;
+    margin: 0;
+    padding: 5px 0;
+  }
+  > ul {
+    margin: 0;
+    padding: 0;
+  }
+}
