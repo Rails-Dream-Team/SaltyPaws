@@ -2,3 +2,13 @@
   font-family: $content-font;
   font-size: 15px;
 }
+@mixin title($size: 1rem, $color: inherit, $weight: inherit) {
+  font-family: $header-font;
+  font-size:  $size;
+  color: $color;
+  font-weight: $weight;
+}
+@mixin center($textAlign: center) {
+  margin: 0 auto;
+  text-align: $textAlign;
+}
