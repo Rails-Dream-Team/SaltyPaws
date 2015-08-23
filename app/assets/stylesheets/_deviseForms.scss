@@ -25,6 +25,9 @@
 .login__emailField {
   @include size(95%, 45px);
   padding: 20px 0;
+  > input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px rgba(234, 234, 234, 1) inset;
+  }
 }
 .login__pwField input,
 .login__emailField input {
