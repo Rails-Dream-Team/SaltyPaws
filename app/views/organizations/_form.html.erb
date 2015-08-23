@@ -1,7 +1,7 @@
 <%= form_for @organization do |f| %>
-
-
   <% if @organization.errors.full_messages.present? %>
+  <div class="org__formErrors">
+    <h2>Uh oh! Your submission had the following errors:</h2>
     <ul>
       <% @organization.errors.full_messages.each do |message| %>
         <li>
@@ -9,6 +9,7 @@
         </li>
       <% end %>
     </ul>
+  </div>
   <% end %>
   <div class="orgForm__label">
       <div class="form">
