@@ -1,0 +1,40 @@
+// div on org index for all content related to organizations
+.org {
+
+}
+// div on org index for header content
+.org__header {
+
+}
+// div on org index for list of all orgs
+.org__list {
+
+}
+// ul on org index for list of all orgs
+.org__listUL {
+  display: block;
+  text-align: left;
+}
+// li on org index for each org
+.org__listLI {
+  display: block;
+  width: 85%;
+  padding: 5px;
+}
+// divs on org index for each detail within single org li
+.org__listName {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+.org__listLocation {
+  display: inline-block;
+  font-style: italic;
+  font-weight: 100;
+  opacity: 0.85;
+  padding: 0 5px;
+}
+.org__listDescription {
+  display: inline-block;
+}
+//
