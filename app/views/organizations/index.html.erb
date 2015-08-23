@@ -4,14 +4,20 @@
       <%= link_to 'Add Your Organization', new_organization_path %>
     </div>
     <div class="org__list">
-      <% @organizations.each do |org| %>
-        <div class="org__wrapper">
-          <ul class="org__name">
-            <li><%= link_to org.name, organization_path(org) %></li>
-            <li><%= org.city %>, <%= org.state %></li>
-            <li><%= org.description %></li>
-          </ul>
-          </div>
-      <% end %>
+      <ul class="org__listUL">
+        <% @organizations.each do |org| %>
+          <li class="org__listLI">
+            <div class="org__listName">
+              <%= link_to org.name, organization_path(org) %>
+            </div>
+            <div class="org__listLocation">
+              <%= org.location %>
+            </div>
+            <div class="org__listDescription">
+              <%= org.description %>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     </div>
 </div>
