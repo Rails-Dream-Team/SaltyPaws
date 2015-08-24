@@ -1,15 +1,17 @@
-<div class="user_wrapper">
-  <div class="user_picture">
-    <h1><%= @user.first_name %> <%= @user.last_name %></h1>
-    <img src="http://38.media.tumblr.com/avatar_c44e2933aa8f_128.png" />
-  </div>
-  <div class="user_info">
-      <div><h4>Location:</h4> <%= @user.city %> <%= @user.state %></div>
-      <div><h4>Phone:</h4><%= @user.phone %></div>
-      <div><h4>Age:</h4><%= @user.age %></div>
-      <div><h4>Pets:</h4><%= @user.pets %></div>
-      <div><h4>About:</h4><%= @user.about_me %></div>
-      <div><h4>Volunteer Work:</h4><%= @user.volunteer_work %></div>
-      <div><h4><%= link_to "Edit User", edit_user_path %></h4></div>
+<div data-js="user">
+  <div class="user_wrapper">
+    <div class="user_picture">
+      <h1><%= @user.first_name %> <%= @user.last_name %></h1>
+      <img src="http://38.media.tumblr.com/avatar_c44e2933aa8f_128.png" />
+    </div>
+    <div class="user_info">
+        <div><h4>Location:</h4> <%= @user.city %> <%= @user.state %></div>
+        <div><h4>Phone:</h4><%= @user.phone %></div>
+        <div><h4>Age:</h4><%= @user.age %></div>
+        <div><h4>Pets:</h4><%= @user.pets %></div>
+        <div><h4>About:</h4><%= @user.about_me %></div>
+        <div><h4>Volunteer Work:</h4><%= @user.volunteer_work %></div>
+        <div><h4><%= link_to "Edit User", edit_user_path %></h4></div>
+    </div>
   </div>
 </div>
