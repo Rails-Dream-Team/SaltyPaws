@@ -8,11 +8,16 @@ class TopicsController < ApplicationController
   end
 
   def create
-    @topic = Topic.new(topic_params)
-    if @topic.save
-      redirect_to @topic
+    if current_user
+      @topic = Topic.new(topic_params)
+      @topic.user_id = current_user.id
+      if @topic.save
+        redirect_to @topic
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_user_session_path
     end
   end
 
@@ -36,11 +41,11 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title)
+    params.require(:topic).permit(:title, :board_id)
   end
 
   def get_topic
     Topic.find(params[:id])
   end
-  
+
 end
