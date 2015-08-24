@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :organizations
   resources :cats
   resources :users, only: [:show, :edit, :update]
-
+  resources :boards
+  resources :topics do
+    resources :posts
+  end
+  
   get 'volunteers', to: 'volunteers#new', as: 'volunteer'
   post 'volunteers', to: 'volunteers#create'
 
