@@ -5,21 +5,6 @@ class UsersControllerTest < ActionController::TestCase
     @user = users(:one)
   end
 
-  test "GET show with html" do
-    get :show, id: @user
-    assert_equal @user, assigns(:user)
-    assert_response :success
-  end
-
-  test "GET show with json" do
-    get :show, id: @user, format: :json
-    response_item = JSON.parse(response.body)
-    ['id', 'display_name'].each do |attr|
-      assert_equal @user.send(attr), response_item[attr]
-    end
-    assert_response :success
-  end
-
   test "GET edit with html" do
     get :edit, id: @user
     assert_equal @user, assigns(:user)
