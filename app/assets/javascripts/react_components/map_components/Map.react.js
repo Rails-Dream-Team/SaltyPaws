@@ -14,7 +14,7 @@ var LatLng = GoogleMapsAPI.LatLng;
 var GoogleMapOverlayViewSimple = React.createClass({
   getInitialState: function() {
     return {
-      center: new LatLng(-41.28646, 174.77623),
+      center: new LatLng(32.7828923, -79.9390598),
       count: 0
     };
   },
@@ -22,7 +22,7 @@ var GoogleMapOverlayViewSimple = React.createClass({
   render: function() {
     return (
       <Map
-        initialZoom={15}
+        initialZoom={13}
         initialCenter={this.state.center}
         width={700}
         height={700}>
@@ -48,4 +48,4 @@ var GoogleMapOverlayViewSimple = React.createClass({
   }
 });
 
-module.exports = GoogleMapOverlayViewSimple;
+module.exports = GoogleMap;
