@@ -1,3 +1,20 @@
-Look Ma, I'm a topic!
-
-SHOW
+<div class="topic">
+  <div class="topic__header">
+    <h1><%= @topic.title %></h1>
+    <%= link_to 'Back to the Chatterbox', boards_path %>
+    <%= link_to 'Reply to this topic', new_topic_post_path(@topic) %>
+  </div>
+  <div class="topic__postList">
+    <% @topic.posts.each do |post| %>
+      <div class="topic__postUser">
+        <%= link_to post.user.display_name, user_path(post.user) %>
+      </div>
+      <div class="topic__postContent">
+        <%= post.content %>
+      </div>
+      <div class="topic__postTime">
+        <%= post.created_at.strftime('Posted at %m/%d/%Y %H:%M') %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+
+<!-- FORM TO CREATE NEW TOPIC & FIRST POST -->
+
+
+<%= form_for @topic do |f| %>
+  <% if @topic.errors.full_messages.present? %>
+    <div class="topic__formErrors">
+      <h2>Uh oh! Your submission had the following errors:</h2>
+      <ul>
+        <% @topic.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="topic__form">
+    <div class="topic__formTitle">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="topic__formBoard">
+      <%= f.label :board_id, "Select a Board" %>
+      <%= f.select :board_id do %>
+        <% boards_array = Board.all.map { |board| [board.title, board.id] } %>
+        <%= options_for_select(boards_array) %>
+      <% end %>
+    </div>
+    <div class="post__form">
+      <%= f.fields_for :posts do |p| %>
+        <div class="post__formContent">
+          <%= p.label :content %>
+          <%= p.text_area :content %>
+        </div>
+      <% end %>
+    </div>
+    <div class="topic__formSubmit">
+      <%= f.submit 'Submit' %>
+    </div>
+  </div>
+<% end %>

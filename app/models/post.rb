@@ -1,6 +1,15 @@
 class Post < ActiveRecord::Base
-  belongs_to :topic
+  belongs_to :topic, inverse_of: :posts
   belongs_to :user
 
-  validates :content, :topic_id, :user_id, presence: true
+  validates :content, :user_id, presence: true
+  validates :topic_id, presence: true, on: :update
+
+  before_validation :set_user_id, if: -> { user_id.nil? }
+
+  private
+
+  def set_user_id
+    self.user_id = topic.user_id
+  end
 end

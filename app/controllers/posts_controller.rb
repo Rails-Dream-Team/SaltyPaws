@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   end
 
   def new
+    @topic = get_topic
     @post = Post.new
   end
 

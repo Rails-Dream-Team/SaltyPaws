@@ -5,14 +5,14 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
+    @topic.posts.build
   end
 
   def create
     if current_user
-      @topic = Topic.new(topic_params)
-      @topic.user_id = current_user.id
+      @topic = current_user.topics.new(topic_params)
       if @topic.save
-        redirect_to @topic
+        redirect_to new_topic_post_path(@topic)
       else
         render :new
       end
@@ -31,7 +31,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = get_topic
-    if @topic.uppdate_attributes(topic_params)
+    if @topic.update_attributes(topic_params)
       redirect_to @topic
     else
       render :edit
@@ -41,7 +41,7 @@ class TopicsController < ApplicationController
   private
 
   def topic_params
-    params.require(:topic).permit(:title, :board_id)
+    params.require(:topic).permit(:title, :board_id, posts_attributes: [:id, :topic_id, :user_id, :content])
   end
 
   def get_topic

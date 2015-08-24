@@ -47,7 +47,7 @@ class TopicsControllerTest < ActionController::TestCase
       assert_difference('Topic.count', 1) do
         post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @board }
       end
-      assert_redirected_to topic_path(assigns(:topic))
+      assert_redirected_to new_topic_post_path(assigns(:topic))
     end
 
     test 'renders new with invalid attribute submission (no title)' do
