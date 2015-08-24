@@ -14,6 +14,7 @@
     <% end %>
     <h2>Report a Colony</h2>
     <span>If you are currently caring for a feral colony and are interested in registering the colony with us or you have found a colony that is in need of a caretaker, please take a moment to fill out the information below.</span>
+<<<<<<< HEAD
     <div>
     <h3>Contact Information</h3>
     <div class="reportForm__label">
@@ -46,14 +47,53 @@
     </div>
     <div  class="reportForm__label">
     <%= report_colony_form.label :zip_code, "Zipcode: " %>
+=======
+    <div class="reportForm__label">
+    <h3>Contact Information</h3>
+    <div class="form">
+      <%= report_colony_form.label :first_name %>
+      <%= report_colony_form.text_field :first_name, placeholder: "First Name" %>
+    </div>
+    <div class="form">
+      <%= report_colony_form.label :last_name %>
+      <%= report_colony_form.text_field :last_name, placeholder: "Last Name" %>
+    </div>
+    <div class="form">
+      <%= report_colony_form.label :email %>
+      <%= report_colony_form.email_field :email, placeholder: "Email" %>
+    </div>
+    <div class="form">
+      <%= report_colony_form.label :phone %>
+      <%= report_colony_form.telephone_field :phone, placeholder: "Phone Number" %>
+    </div>
+    <div class="form">
+    <%= report_colony_form.label :street_address %>
+    <%= report_colony_form.text_field :street_address, placeholder: "Street Address" %>
+    </div>
+    <div class="form">
+    <%= report_colony_form.label :city %>
+    <%= report_colony_form.text_field :city, placeholder: "City" %>
+    </div>
+    <div class="form">
+    <%= report_colony_form.label :state %>
+    <%= report_colony_form.text_field :state, placeholder: "State" %>
+    </div>
+    <div class="form">
+    <%= report_colony_form.label :zip_code %>
+>>>>>>> 627d3372749de1e066757a2ec6eeacd437096a07
     <%= report_colony_form.text_field :zip_code, placeholder: "Zipcode" %>
     </div>
 
     <h3>Colony Information</h3>
+<<<<<<< HEAD
     <div  class="reportForm__label">
+=======
+    <div class="form">
+>>>>>>> 627d3372749de1e066757a2ec6eeacd437096a07
     <%= report_colony_form.label :location, "Where is the colony located?" %>
     <%= report_colony_form.text_area :location, placeholder: "Location (Street address, cross streets, park name, etc.)" %>
     </div>
+<<<<<<< HEAD
     <div class="reportForm__number">
       <%= report_colony_form.label :pop, "Estimated number of cats in the colony?" %>
       <%= report_colony_form.number_field :pop, min: "0", max: "999", placeholder: "0" %>
@@ -68,15 +108,37 @@
     </div>
     <div class="reportForm__radio">
       <h3>Are you the current caretaker? If not, are you interested in caring for this colony?</h3>
+=======
+    <div class="form">
+      <%= report_colony_form.label :pop, "Estimated number of cats in the colony?" %>
+      <%= report_colony_form.number_field :pop, min: "0", max: "999", placeholder: "0" %>
+    </div>
+    <div class="form">
+      <%= report_colony_form.label :fixed, "Estimated number that are spayed/neutered?" %>
+      <%= report_colony_form.number_field :fixed, min: "0", max: "999", placeholder: "0" %>
+    </div>
+    <div class="form">
+      <%= report_colony_form.label :young, "Estimated number younger than 2 months?" %>
+      <%= report_colony_form.number_field :young, min: "0", max: "999", placeholder: "0" %>
+    </div>
+    <div class="form">
+      <p>Are you the current caretaker? If not, are you interested in caring for this colony?</p>
+>>>>>>> 627d3372749de1e066757a2ec6eeacd437096a07
       <%= report_colony_form.radio_button :current_caretaker, "Current caretaker" %>
       <%= report_colony_form.label :current_caretaker_yes, "Yes, I'm the current caretaker. " %>
       <%= report_colony_form.radio_button :current_caretaker, "No, but I'm interested" %>
       <%= report_colony_form.label :current_caretaker_interested, "No, but I'm interested. " %>
       <%= report_colony_form.radio_button :current_caretaker, "Not interested" %>
       <%= report_colony_form.label :current_caretaker_no, "I am not interested in providing care at this time. " %>
+<<<<<<< HEAD
     </div>
     <div class="reportForm__submit">
       <%= report_colony_form.submit "Send" %>
+=======
+
+    <div class="form">
+      <div class="reportForm__submit"><%= report_colony_form.submit "Send" %></div>
+>>>>>>> 627d3372749de1e066757a2ec6eeacd437096a07
     </div>
   <% end %>
 </div>
