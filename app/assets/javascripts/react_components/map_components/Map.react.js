@@ -1,15 +1,13 @@
 "use strict";
 
-// This example creates an overlay view on the map.
-// This view can render any React DOM element and can have
-// its own state.
-
-var React = require('react');
-var ReactGoogleMaps = require('react-googlemaps');
-var GoogleMapsAPI = window.google.maps;
-var Map = ReactGoogleMaps.Map;
-var OverlayView = ReactGoogleMaps.OverlayView;
-var LatLng = GoogleMapsAPI.LatLng;
+var React                = require('react');
+var ReactGoogleMaps      = require('react-googlemaps');
+var ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
+var GoogleMapsAPI        = window.google.maps;
+var Map                  = ReactGoogleMaps.Map;
+var OverlayView          = ReactGoogleMaps.OverlayView;
+var LatLng               = GoogleMapsAPI.LatLng;
+var StickyDiv            = require('react-stickydiv');
 
 var GoogleMap = React.createClass({
   getInitialState: function() {
@@ -21,31 +19,34 @@ var GoogleMap = React.createClass({
 
   render: function() {
     return (
-      <Map
-        initialZoom={13}
-        initialCenter={this.state.center}
-        width={700}
-        height={700}>
+      <StickyDiv offsetTop={40}>
+        <Map
+          initialZoom={13}
+          initialCenter={this.state.center}
+          width={500}
+          height={500}>
 
-        <OverlayView
-          mapPane="floatPane"
-          style={{padding: 15, backgroundColor: '#fff', border: '1px solid #000'}}
-          position={this.state.center}>
-          <h1>Simple overlay!</h1>
-          <button
-            onClick={this.handleButtonClick}>
-            I have been clicked {this.state.count} time{this.state.count === 1 ? '' : 's'}
-          </button>
-        </OverlayView>
-      </Map>
+          <OverlayView
+            mapPane="floatPane"
+            style={{padding: 15, backgroundColor: '#fff', border: '1px solid #000'}}
+            position={this.state.center}>
+            <h1>Simple overlay!</h1>
+            <button
+              onClick={this._handleButtonClick}>
+              I have been clicked {this.state.count} time{this.state.count === 1 ? '' : 's'}
+            </button>
+          </OverlayView>
+        </Map>
+      </StickyDiv>
       );
   },
 
-  handleButtonClick: function() {
+  _handleButtonClick: function() {
     this.setState({
       count: this.state.count + 1
     });
   }
+
 });
 
 module.exports = GoogleMap;
