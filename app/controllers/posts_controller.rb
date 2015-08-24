@@ -8,26 +8,32 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
-      redirect_to @post
+    if current_user
+      @topic = get_topic
+      @post = @topic.posts.new(post_params)
+      @post.user_id = current_user.id
+      if @post.save
+        redirect_to @topic
+      else
+        render :new
+      end
     else
-      render :new
+      redirect_to new_user_session_path
     end
   end
 
   def show
-    @post = get_post
+    @post = get_topic_post
   end
 
   def edit
-    @post = get_post
+    @post = get_topic_post
   end
 
   def update
-    @post = get_post
-    if @post.uppdate_attributes(post_params)
-      redirect_to @post
+    @post = get_topic_post
+    if @post.update_attributes(post_params)
+      redirect_to @topic
     else
       render :edit
     end
@@ -39,8 +45,12 @@ class PostsController < ApplicationController
     params.require(:post).permit(:content)
   end
 
-  def get_post
-    Post.find(params[:id])
+  def get_topic
+    Topic.find(params[:topic_id])
   end
 
+  def get_topic_post
+    topic = Topic.find(params[:topic_id])
+    topic.posts.find(params[:id])
+  end
 end

@@ -4,7 +4,9 @@ class PostsControllerTest < ActionController::TestCase
   def setup
     @topic = topics(:one)
     @post = posts(:one)
-    @attributes = Post.attribute_names
+    @user = users(:one)
+    sign_in @user
+    # @attributes = Post.attribute_names
   end
 
   test "GET index html render" do
@@ -39,4 +41,30 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
     assert_template(:show)
   end
+
+  class PostsCreate < PostsControllerTest
+    test 'creates with valid attributes and redirects' do
+      assert_difference('Post.count', 1) do
+        post :create, topic_id: @topic,
+                      post: { content: 'oh hai, look at my cool test post' }
+      end
+      assert_redirected_to topic_path(assigns(:topic))
+    end
+
+    test 'renders new with invalid attribute submission (no content)' do
+      assert_no_difference('Post.count') do
+        post :create, topic_id: @topic, post: { content: '' }
+      end
+      assert_template :new
+    end
+
+    test 'redirects to login with invalid attribute submission (no user)' do
+      sign_out @user
+      assert_no_difference('Post.count') do
+        post :create, topic_id: @topic, post: { content: 'oh hai, look at my cool test post', user_id: nil }
+      end
+      assert_redirected_to new_user_session_path
+    end
+  end
+
 end
