@@ -1,5 +1,11 @@
 .vol__formContainer {
-  text-align: center;
+  text-align: left;
+  background: $background-theme;
+  padding-left: 3%;
+  h2 {
+    margin-top: 0;
+    padding-top: 15px;
+  }
   ul {
     list-style-type: none;
     li {
@@ -24,4 +30,7 @@
 }
 .form__section1 {
   text-align: center;
+}
+.vol__submit input{
+  @include buttons;
 }

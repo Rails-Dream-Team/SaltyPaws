@@ -1,4 +1,4 @@
-<div>
+<div class="vol__formContainer">
   <%= form_for @volunteer, url: volunteer_path do |new_vol_form| %>
 
     <h2>Volunteer Questionnaire</h2>
@@ -70,7 +70,7 @@
       <%= new_vol_form.check_box :flexible, value: "Flexible" %>
       <%= new_vol_form.label :flexible %>
     </div>
-    <div class="field">
+    <div class="field vol__submit">
       <%= new_vol_form.submit "Send" %>
     </div>
   <% end %>

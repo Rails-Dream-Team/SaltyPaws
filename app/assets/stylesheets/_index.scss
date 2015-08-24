@@ -10,7 +10,7 @@
   padding-top: 30px;
   border-bottom: 1px solid $gray-colors;
   .index__button {
-    margin: 5px auto;
+    @include buttons;
   }
   h1 {
     text-align: center;
