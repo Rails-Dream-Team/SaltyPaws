@@ -63,18 +63,7 @@
   font-size: 1rem;
 }
 .login__submit input {
-  outline: none;
-  border: none;
-  background-color: $gray-colors;
-  opacity: 0.7;
-  border-radius: 20px;
-  padding: 0 10px;
-  margin-top: 10px;
-  @include title(1.3rem);
-  &:hover {
-    font-weight: 700;
-    cursor: pointer;
-  }
+  @include buttons;
 }
 .login__sharedLinks {
   font-size: 0.8rem;
