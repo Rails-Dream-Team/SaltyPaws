@@ -1,3 +1,23 @@
 Look Ma, I'm a board!
 
 INDEX
+
+<div class="board">
+    <div class="board__header">
+      <h1>Kitty Chatterbox</h1>
+      <%= link_to 'New Board', new_board_path %>
+    </div>
+    <div class="board__list">
+        <% @boards.each do |board| %>
+          <div class="board__title">
+            <%= link_to board.title, board_path(board) %>
+          </div>
+          <div>
+            description?
+          </div>
+          <div class="board__listTopics">
+            list topics?
+          </div>
+        <% end %>
+    </div>
+</div>
