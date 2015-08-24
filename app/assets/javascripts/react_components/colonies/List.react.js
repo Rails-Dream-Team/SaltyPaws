@@ -7,7 +7,7 @@ var List = React.createClass({
       <div>
         <div class="colony_header">
           <h1>Colonies</h1>
-          <a href="/colonies/new">Add A New Colony</a>
+          <a href="/reports/new">Report a New Colony</a>
         </div>
         <div className="colonies_list">
         {this._buildItems()}
