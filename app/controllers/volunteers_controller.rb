@@ -8,7 +8,7 @@ class VolunteersController < ApplicationController
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.valid?
       FormMailer.new_vol_form(@volunteer).deliver_now
-      redirect_to volunteer_path, notice: "Your form was submitted."
+      redirect_to root_path, notice: "Your form was submitted."
     else
       flash[:alert] = "An error occurred while submitting your form."
       render :new
