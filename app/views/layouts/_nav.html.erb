@@ -6,6 +6,7 @@
       <li><%= link_to 'ORGANIZATIONS', organizations_path %></li>
       <li><%= link_to 'VOLUNTEER', volunteer_path %></li>
       <li><%= link_to 'PROFILE', current_user %></li>
+      <li><%= link_to 'MESSAGE BOARD', boards_path %></li>
       <li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
     <% else %>
       <li><%= link_to 'SIGN IN', new_user_session_path %></li>
