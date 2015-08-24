@@ -11,7 +11,7 @@ var Map = ReactGoogleMaps.Map;
 var OverlayView = ReactGoogleMaps.OverlayView;
 var LatLng = GoogleMapsAPI.LatLng;
 
-var GoogleMapOverlayViewSimple = React.createClass({
+var GoogleMap = React.createClass({
   getInitialState: function() {
     return {
       center: new LatLng(32.7828923, -79.9390598),
