@@ -13,7 +13,7 @@ var components = function() {
   if (colony) {
     React.render(<Colonies />, colony);
   } else if (map) {
-    React.render(<GoogleMapOverlayViewSimple />, map);
+    React.render(<GoogleMap />, map);
   } else if (organization) {
     React.render(<Organizations />, organization);
   } else if (user) {
