@@ -1,6 +1,28 @@
+.userShow {
+  background-color: $background-theme;
+  margin: 0;
+  padding: 5%;
+}
 .user_wrapper {
+  width: 60%;
   font-size: 0;
-  margin: 5%;
+  background-color: rgba(234, 234, 234, 0.7);
+  border-radius: 10px;
+  padding: 20px 40px;
+  margin: 0 auto;
+  input, textarea {
+    border: none;
+    border-bottom: 1px solid;
+    background-color: inherit;
+    width: auto;
+    cursor: text;
+    outline: none;
+    font-family: $content-font;
+    font-size: 1.3rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: bottom;
+  }
 }
 .user_picture  {
   display: inline-block;
@@ -10,20 +32,29 @@
   }
 }
 .user_info {
-  font-size: 18px;
+  font-size: 17px;
+
 }
-.user_infoLocation {
+.user_infoRow{
+  margin: 20px 0;
 }
-.user_infoAbout {
+.user_infoLabel {
+  font-weight: bold;
+  font-size: 23px;
+  margin-bottom: 10px;
 }
-.user_infoVolunteer {
-}
-.edit_user {
-  margin: 5%;
-}
-.log_in {
-  margin: 5%;
-}
-.sign_up {
-  margin: 5%;
+.user_infoSubmit button {
+  width: 100px;
+  outline: none;
+  border: none;
+  background-color: $gray-colors;
+  opacity: 0.7;
+  border-radius: 20px;
+  padding: 0 10px;
+  margin-top: 10px;
+  @include title(1.3rem);
+  &:hover {
+    font-weight: 700;
+    cursor: pointer;
+  }
 }

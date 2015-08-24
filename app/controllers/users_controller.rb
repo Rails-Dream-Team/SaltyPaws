@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    @user = get_user
+    @user = current_user
     respond_to do |format|
       format.html
       format.json { render json: @user }
@@ -34,4 +34,5 @@ class UsersController < ApplicationController
   def get_user
     User.find(params[:id])
   end
+
 end
