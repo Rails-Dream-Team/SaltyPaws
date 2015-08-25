@@ -29,6 +29,13 @@ h3 {
   font-family: $header-font;
   text-transform: uppercase;
 }
+a {
+  text-decoration: none;
+  color:inherit;
+  &:hover {
+    color: $link-hover;
+  }
+}
 .clearfix {
   clear: both;
   padding: 15px 0;

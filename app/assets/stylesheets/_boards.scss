@@ -1,51 +1,38 @@
-// classes used in the boards show view
+// classes used in all board views
 .board {
   background-color: rgba(128, 128, 128, 0.5);
   padding: 10px 10px 80px;
 }
 .board__header {
-
+  width: 90%;
+  margin: 0 auto;
+  vertical-align: baseline;
   > h1 {
-    @include title(1.5rem);
+    display: inline-block;
+    @include title(1.7rem);
+    width: 65%;
   }
+}
+.board__headerLinks {
+  display: inline-block;
+  text-align: right;
+  width: 34%;
   > a {
     margin: 5px;
   }
 }
-.board__topicsList {
-
-}
-.board__topic {
-  // &:nth-child(even) {
-  //   background-color: $grey-light;
-  // }
-}
-.board__topicTitle {
-  > a {}
-}
-.board__topicCreated {
-  > a {}
-}
-.board__topicUpdated {
-  color: $grey-light;
-  font-style: italic;
-  > a {
-    color: inherit;
-    font-style: italic;
-    text-decoration: none;
-    &:hover {
-      border-bottom: 1px solid;
-    }
-  }
+.board__dividerLine {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  margin: 10px -5px 0 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
 }
 
-// classes used in the boards new/edit views (includes 'board' and 'board__header' from above)
-.board__new {
-  > a {}
-}
+
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
-.board__list {
+.board__index {
   margin-left: auto;
   margin-right: auto;
   // @include center(left);
@@ -58,7 +45,7 @@
     bottom: 100px;
   }
 }
-.board__listTile {
+.board__indexTile {
   display: inline-block;
   border-top: 3px solid $background-theme;
   @include size(31%, 250px);
@@ -72,12 +59,86 @@
           box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
   }
 }
-.board__title {
+.board__indexTitle {
   font-size: 1.5rem;
   padding-bottom: 15px;
   > a {
     text-decoration: none
   }
+}
+.board__indexTopicsRecent {
+  padding-left: 10px;
+}
+.board__indexTopic {
+  min-height: 50px;
+}
+.board__indexTopicTitle {
+  max-height: 3rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  > a {}
+}
+.board__indexTopicUpdated {
+  color: $grey-light;
+  font-size: 0.8rem;
+  font-style: italic;
+  > a {
+    color: inherit;
+    font-style: italic;
+    text-decoration: none;
+    &:hover {
+      border-bottom: 1px solid;
+    }
+  }
+}
+
+
+// classes used in the boards show view
+.board__topics {
+  width: 95%;
+  @include center(left);
+  margin-top: 10px;
+}
+.board__topic {
+  height: 50px;
+  padding: 5px 0;
+}
+.board__topicTitle {
+  width: 45%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  > a {}
+}
+.board__topicCreated,
+.board__topicUpdated {
+  vertical-align: top;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+.board__topicCreated a,
+.board__topicUpdated a {
+  color: inherit;
+  font-style: italic;
+  text-decoration: none;
+  &:hover {
+    border-bottom: 1px solid;
+    color: $link-hover
+  }
+}
+.board__topicCreated {
+  width: 20%;
+}
+.board__topicUpdated {
+  width: 30%;
+}
+
+
+// classes used in the boards new/edit views (includes 'board' and 'board__header' from above)
+.board__new {
+  > a {}
 }
 
 // classes used in the boards form partial (includes 'board', 'board__header', and 'board__topicsList' from above)
