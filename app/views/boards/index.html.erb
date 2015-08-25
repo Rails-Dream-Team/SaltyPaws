@@ -1,20 +1,32 @@
 <div class="board">
   <div class="board__header">
     <h1>Kitty Chatterbox</h1>
-    <%= link_to 'New Board', new_board_path %>
-    <%= link_to 'New Topic', new_topic_path %>
+    <div class="board__headerLinks">
+      <%= link_to 'New Board', new_board_path %> | <%= link_to 'New Topic', new_topic_path %>
+    </div>
   </div>
-  <div class="board__list">
-      <% @boards.each do |board| %>
-        <div class="board__title">
+  <div class="board__dividerLine"></div>
+  <div class="board__index">
+    <% @boards.order(:id).each do |board| %>
+      <div class="board__indexTile">
+        <div class="board__indexTitle">
           <%= link_to board.title, board_path(board) %>
         </div>
-        <div>
-          description?
+        Recent Topics
+        <div class="board__indexTopicsRecent">
+          <% board.topics.order(:updated_at).last(3).each do |topic| %>
+            <div class="board__indexTopic">
+              <div class="board__indexTopicTitle">
+                <%= link_to topic.title, topic_path(topic) %>
+              </div>
+              <div class="board__indexTopicUpdated">
+                Last Post by <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
+                on <%= topic.updated_at.strftime('%m/%d/%Y') %>
+              </div>
+            </div>
+          <% end %>
         </div>
-        <div class="board__listTopics">
-          list topics?
-        </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 </div>

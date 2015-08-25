@@ -8,6 +8,7 @@ html {
 }
 html,
 body {
+  background-color: $background-theme;
   font-family: $content-font;
   font-size: 14px;
   line-height: 20px;
@@ -28,6 +29,13 @@ h2,
 h3 {
   font-family: $header-font;
   text-transform: uppercase;
+}
+a {
+  text-decoration: none;
+  color:inherit;
+  &:hover {
+    color: $link-hover;
+  }
 }
 .clearfix {
   clear: both;

@@ -1,2 +1,28 @@
-<div data-js="colony"></div>
-<div class="map__div" data-js="map"></div>
+<div data-js="colony">
+<div class="colony">
+
+    <div class="colony_header">
+      <h1>Colonies</h1>
+      <%= link_to 'Add a Colony', new_colony_path %>
+    </div>
+
+    <div class="colonies_list">
+
+      <% @colonies.each do |a| %>
+      <li class="org__listLI">
+        <div class="org__listName">
+          <%= link_to a.name, colony_path(a) %>
+        </div>
+        <div class="org__listLocation">
+          <%= a.city %> <%= a.state %>
+        </div>
+        <div class="org__listDescription">
+          Population: <%= a.pop %>
+        </div>
+      </li>
+      <% end %>
+    </div>
+    <div class="map__div" data-js="map"></div>
+</div>
+</div>
+

@@ -1,25 +1,27 @@
 <div class="org">
   <div class="org__header">
-    <h1>Kitty Committee | <%= @organization.name %></h1>
+    <h1><%= @organization.name %></h1>
     <%= link_to 'View All Organizations', organizations_path %>
     <%= link_to 'Add Your Organization', new_organization_path %>
   </div>
-  <div class="org__details">
-    <h3 class="org__subheader">All you need to know about <%= @organization.name %></h3>
-    <ul class="org__listUL">
-      <li class="org__listLI"><%= @organization.location %></li>
-      <li class="org__listLI"><%= @organization.created_at.strftime('Member Organization since %m/%d/%Y') %></li>
-      <li class="org__listLI"><%= @organization.description %></li>
-    </ul>
-  </div>
-  <div class="org__members">
-    <h3 class="org__subheader">Members, Volunteers, and General Fans of <%= @organization.name %></h3>
-    <ul class="org__listUL">
-      <% @organization.users.each do |user| %>
-        <li class="org__listLI">
-          <%= link_to user.display_name, user_path(user[:id]) %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="orgShow__container">
+    <div class="org__details">
+      <h3 class="org__subheader">All you need to know about <%= @organization.name %></h3>
+      <ul class="org__listUL">
+        <li class="org__listLI"><%= @organization.location %></li>
+        <li class="org__listLI"><%= @organization.created_at.strftime('Member Organization since %m/%d/%Y') %></li>
+        <li class="org__listLI"><%= @organization.description %></li>
+      </ul>
+    </div>
+    <div class="org__members">
+      <h3 class="org__subheader">Members, Volunteers, and General Fans of <%= @organization.name %></h3>
+      <ul class="org__listUL">
+        <% @organization.users.each do |user| %>
+          <li class="org__listLI">
+            <%= link_to user.display_name, user_path(user[:id]) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 </div>

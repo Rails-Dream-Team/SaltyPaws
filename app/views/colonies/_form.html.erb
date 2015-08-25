@@ -2,6 +2,8 @@
 
 
   <% if @colony.errors.full_messages.present? %>
+  <div class="colony__formErrors">
+    <h2>Uh oh! Your submission had the following errors:</h2>
     <ul>
       <% @colony.errors.full_messages.each do |message| %>
         <li>
