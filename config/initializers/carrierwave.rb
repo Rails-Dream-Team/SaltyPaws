@@ -7,4 +7,6 @@ CarrierWave.configure do |config|
   }
 
   config.fog_directory  = 'salty-avatar'
+
+  config.cache_dir = "#{Rails.root}/tmp/uploads"
 end
