@@ -17,11 +17,6 @@
     display: inline;
   }
   > li a {
-    text-decoration: none;
-    color:inherit;
     font-size: 20px;
-    &:hover {
-      color: #5492F0;
-    }
   }
 }

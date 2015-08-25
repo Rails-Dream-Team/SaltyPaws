@@ -24,6 +24,7 @@
   outline: none;
   border: none;
   background-color: $gray-colors;
+  color: $grey-light;
   opacity: 0.7;
   border-radius: 20px;
   padding: 0 10px;
@@ -33,4 +34,7 @@
     font-weight: 700;
     cursor: pointer;
   }
+}
+@mixin overlay($opacity) {
+  background-color: rgba(255, 255, 255, $opacity);
 }
