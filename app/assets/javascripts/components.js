@@ -1,5 +1,5 @@
 var React         = require('react');
-var Colonies      = require('./react_components/Colonies.react.js');
+var Colonies      = require('./react_components/colony_components/Colonies.react.js');
 var ColonyForm    = require('./react_components/colony_components/ColonyForm.react.js');
 var Organizations = require('./react_components/Organizations.react.js');
 var Users         = require('./react_components/Users.react.js');
@@ -13,10 +13,9 @@ var components = function() {
   var colonyForm = document.querySelector('[data-js="colonyForm"]');
 
 
-  // if (colony) {
-  //   React.render(<Colonies />, colony);
-  // } else 
-  if (map) {
+  if (colony) {
+    React.render(<Colonies />, colony);
+  } else if (map) {
     React.render(<GoogleMap />, map);
   } else if (organization) {
     React.render(<Organizations />, organization);

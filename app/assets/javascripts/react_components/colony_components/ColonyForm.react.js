@@ -2,12 +2,6 @@ var React = require('react');
 var request = require('superagent');
 
 var ColonyForm = React.createClass({
-  getInitialState: function() {
-    return {
-
-    }
-  },
-
   render: function() {
     return (
       <div className="vol__formContainer">
@@ -70,8 +64,8 @@ var ColonyForm = React.createClass({
         pop: this.refs.pop.getDOMNode().value.trim(),
         vet: this.refs.vet.getDOMNode().value.trim()
       }
-      this.props.createColony(data);
     };
+    this.props.createColony(data);
   }
 
 });
