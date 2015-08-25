@@ -42,10 +42,10 @@ var Users = React.createClass ({
                 <input type="text" placeholder="pets" name="user[pets]" id="pets" defaultValue={ this.state.user.pets } />
               </div>
               <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span>
-                <input type="text" placeholder="volunteer work" name="volunteer_work" id="volunteer_work" defaultValue={ this.state.user.volunteer_work } />
+                <input type="text" placeholder="volunteer work" name="user[volunteer_work]" id="volunteer_work" defaultValue={ this.state.user.volunteer_work } />
               </div>
               <div className="user_infoRow"><span className="user_infoLabel">About me: </span></div>
-              <textarea type="text" cols="60" rows="5" placeholder="Type here" name="about_me" id="about_me" defaultValue={ this.state.user.about_me} />
+              <textarea type="text" cols="60" rows="5" placeholder="Type here" name="user[about_me]" id="about_me" defaultValue={ this.state.user.about_me} />
             </div>
             <div className="user_infoSubmit"><button>Save</button></div>
           </form>
