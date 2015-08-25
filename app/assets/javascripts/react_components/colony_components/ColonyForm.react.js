@@ -1,5 +1,5 @@
 var React = require('react');
-var request = require('superagent');
+var request = require('superagent'); 
 
 var ColonyForm = React.createClass({
   render: function() {
@@ -43,14 +43,14 @@ var ColonyForm = React.createClass({
             <input ref="vet" id="vet" placeholder="Veterinarian"/>
           </div>
           <div className="volForm__submit">
-            <input type="submit" value="Submit"/>
+            <input onClick={this._handleSubmit} type="submit" value="Submit"/>
           </div>
         </form>
       </div>
     );
   },
 
-  _handleSubmit: function() {
+  _handleSubmit: function(e) {
     e.preventDefault();
     var data = {
       colony: {
