@@ -1,3 +1,12 @@
-Look Ma, I'm a post!
-
-NEW
+<div class="post">
+  <div class="post__header">
+    <h1>Reply to <%= Topic.find(params[:topic_id]).title %> </h1>
+    Go To:
+    <%= link_to 'The Chatterbox', boards_path %>
+     | <%= link_to @topic.board.title, topic_path(@topic) %>
+     | <%= link_to @topic.title, topic_path(@topic) %>
+  </div>
+  <div class="post__new">
+    <%= render 'form' %>
+  </div>
+</div>

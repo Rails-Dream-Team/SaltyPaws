@@ -1,3 +1,21 @@
-Look Ma, I'm a topic!
-
-INDEX
+<div class="topic">
+  <div class="topic__header">
+    <h1>Kitty Chatterbox | All Topics</h1>
+    <%= link_to 'New Topic', new_topic_path %>
+  </div>
+  <div class="topic__list">
+      <% @topics.each do |topic| %>
+        <div class="topic__title">
+          <%= link_to topic.title, topic_path(topic) %>
+        </div>
+        <div class="topic__created">
+          Created by <%= link_to topic.user.display_name, user_path(topic.user) %>
+          at <%= topic.created_at.strftime('%m/%d/%Y %H:%M') %>
+        </div>
+        <div class="topic__updated">
+          Last Post by <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
+          at <%= topic.updated_at.strftime('%m/%d/%Y %H:%M') %>
+        </div>
+      <% end %>
+  </div>
+</div>
