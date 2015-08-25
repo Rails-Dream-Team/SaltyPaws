@@ -1,3 +1,5 @@
+require 'carrierwave/orm/activerecord'
+
 class User < ActiveRecord::Base
   has_many :colony_users
   has_many :colonies, through: :colony_users
@@ -13,6 +15,8 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :display_name, :email, presence: true
   validates :age, numericality: true, allow_nil: true
+
+  mount_uploader :avatar, AvatarUploader
 
   class User < ActiveRecord::Base
     def to_s
