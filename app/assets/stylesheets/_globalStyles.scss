@@ -12,6 +12,12 @@ body {
   font-size: 14px;
   line-height: 20px;
   margin: 0;
+  height: 100%;
+}
+
+.main__wrapper {
+  min-height: 100%;
+  position: relative;
 }
 p {
   color: $gray-colors;
