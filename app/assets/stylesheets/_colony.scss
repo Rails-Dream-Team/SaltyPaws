@@ -1,5 +1,6 @@
 .colony {
-  margin: 5%;
+  padding: 15px 10px 80px 10px;
+  background-color: $background-theme;
 }
 .colony_header {
   > h1 {
@@ -29,11 +30,14 @@
   border: 1px black solid;
 }
 .colony_new {
-  margin: 5%;
+  padding: 15px 10px 80px 10px;
+  background-color: $background-theme;
 }
 .colony_show {
-  margin: 5%;
+  padding: 15px 10px 80px 10px;
+  background-color: $background-theme;
 }
 .colony_edit {
-  margin: 5%;
+  padding: 15px 10px 80px 10px;
+  background-color: $background-theme;
 }
