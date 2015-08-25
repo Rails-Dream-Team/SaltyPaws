@@ -1,8 +1,10 @@
 <div class="post">
   <div class="post__header">
     <h1>Reply to <%= Topic.find(params[:topic_id]).title %> </h1>
-    <%= link_to 'Back to the Chatterbox', boards_path %>
-    <%= link_to Topic.find(params[:topic_id]).title, topic_path(Topic.find(params[:topic_id])) %>
+    Go To:
+    <%= link_to 'The Chatterbox', boards_path %>
+     | <%= link_to @topic.board.title, topic_path(@topic) %>
+     | <%= link_to @topic.title, topic_path(@topic) %>
   </div>
   <div class="post__new">
     <%= render 'form' %>

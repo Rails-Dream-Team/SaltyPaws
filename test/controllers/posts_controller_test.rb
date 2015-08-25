@@ -15,15 +15,6 @@ class PostsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "GET index json render" do
-  #   get :index, topic_id: @topic, format: :json
-  #   response_item = JSON.parse(response.body)[0]
-  #   @attributes.each do |attr|
-  #     assert_equal @post.send(attr), response_item[attr]
-  #   end
-  #   assert_response :success
-  # end
-
   test "GET #new" do
     get :new, topic_id: @topic
     assert_instance_of Post, assigns(:post)

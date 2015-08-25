@@ -12,15 +12,6 @@ class BoardsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "GET index json render" do
-  #   get :index, format: :json
-  #   response_item = JSON.parse(response.body)[0]
-  #   @attributes.each do |attr|
-  #     assert_equal @board.send(attr), response_item[attr]
-  #   end
-  #   assert_response :success
-  # end
-
   test "GET #new" do
     get :new
     assert_instance_of Board, assigns(:board)

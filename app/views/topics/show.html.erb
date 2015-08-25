@@ -1,7 +1,7 @@
 <div class="topic">
   <div class="topic__header">
     <h1><%= @topic.title %></h1>
-    <%= link_to 'Back to the Chatterbox', boards_path %>
+    Go To: <%= link_to 'The Chatterbox', boards_path %> | <%= link_to @topic.board.title, board_path(@topic.board) %><br />
     <%= link_to 'Reply to this topic', new_topic_post_path(@topic) %>
   </div>
   <div class="topic__postList">

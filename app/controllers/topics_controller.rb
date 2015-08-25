@@ -12,7 +12,7 @@ class TopicsController < ApplicationController
     if current_user
       @topic = current_user.topics.new(topic_params)
       if @topic.save
-        redirect_to new_topic_post_path(@topic)
+        redirect_to topic_path(@topic)
       else
         render :new
       end

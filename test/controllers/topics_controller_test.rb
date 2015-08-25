@@ -15,15 +15,6 @@ class TopicsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  # test "GET index json render" do
-  #   get :index, format: :json
-  #   response_item = JSON.parse(response.body)[0]
-  #   @attributes.each do |attr|
-  #     assert_equal @topic.send(attr), response_item[attr]
-  #   end
-  #   assert_response :success
-  # end
-
   test "GET #new" do
     get :new
     assert_instance_of Topic, assigns(:topic)
@@ -47,7 +38,7 @@ class TopicsControllerTest < ActionController::TestCase
       assert_difference('Topic.count', 1) do
         post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @board }
       end
-      assert_redirected_to new_topic_post_path(assigns(:topic))
+      assert_redirected_to topic_path(assigns(:topic))
     end
 
     test 'renders new with invalid attribute submission (no title)' do
