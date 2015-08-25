@@ -25,17 +25,17 @@ var Users = React.createClass ({
           </div>
           <div className="user_info">
               <div className="user_infoRow"><span className="user_infoLabel">Location: </span>
-                <input ref="city" type="text" defaultValue={ this.state.user.city } />
-                <input ref="state" type="text" defaultValue={ this.state.user.state } />
+                <input ref="city" type="text" placeholder="city" defaultValue={ this.state.user.city } />
+                <input ref="state" type="text" placeholder="state" defaultValue={ this.state.user.state } />
               </div>
               <div className="user_infoRow"><span className="user_infoLabel">Age: </span>
-                <input ref="age" type="text" defaultValue={ this.state.user.age } />
+                <input ref="age" type="text" placeholder="age" defaultValue={ this.state.user.age } />
               </div>
               <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>
-                <input ref="pets" type="text" defaultValue={ this.state.user.pets } />
+                <input ref="pets" type="text" placeholder="pets" defaultValue={ this.state.user.pets } />
               </div>
               <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span>
-                <input ref="volunteer_work" type="text" defaultValue={ this.state.user.volunteer_work } />
+                <input ref="volunteer_work" type="text" placeholder="volunteer work" defaultValue={ this.state.user.volunteer_work } />
               </div>
               <div className="user_infoRow"><span className="user_infoLabel">About me: </span></div>
               <textarea ref="about_me" type="text" cols="60" rows="5" placeholder="Type here" defaultValue={ this.state.user.about_me} />
