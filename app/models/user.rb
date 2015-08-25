@@ -17,14 +17,10 @@ class User < ActiveRecord::Base
   validates :age, numericality: true, allow_nil: true
 
   mount_uploader :avatar, AvatarUploader
-
-  class User < ActiveRecord::Base
-    def to_s
-      first_name
-    end
-
-    def to_param
-      self.id
-    end
+  def avatar=(obj)
+    super(obj)
+    # Put your callbacks here, e.g.
+    self.moderated = false
   end
+  
 end
