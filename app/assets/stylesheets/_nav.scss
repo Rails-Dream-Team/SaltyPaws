@@ -1,5 +1,5 @@
 .nav {
-  position: fixed;
+  position: relative;
   top: 0;
   right: 0;
   z-index: 9999;
@@ -17,6 +17,14 @@
     display: inline;
   }
   > li a {
-    font-size: 20px;
+    text-decoration: none;
+    color:inherit;
+    font-size: 1.2rem;
+    @media all and ( max-width: $break-ml ) {
+      font-size: 1em;
+    }
+    &:hover {
+      color: #5492F0;
+    }
   }
 }

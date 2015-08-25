@@ -24,11 +24,13 @@
     vertical-align: bottom;
   }
 }
+.user_name {
+  font-size: 12px
+}
 .user_picture  {
-  display: inline-block;
-  font-size: 12px;
   > img {
-    border-radius: 50%;
+    height: 100px;
+    width: 100px;
   }
 }
 .user_info {
