@@ -1,17 +1,24 @@
 // classes used in the boards show view
 .board {
-
+  background-color: rgba(128, 128, 128, 0.5);
+  padding: 10px 10px 80px;
 }
 .board__header {
 
-  > h1 {}
-  > a {}
+  > h1 {
+    @include title(1.5rem);
+  }
+  > a {
+    margin: 5px;
+  }
 }
 .board__topicsList {
 
 }
 .board__topic {
-
+  // &:nth-child(even) {
+  //   background-color: $grey-light;
+  // }
 }
 .board__topicTitle {
   > a {}
@@ -20,7 +27,16 @@
   > a {}
 }
 .board__topicUpdated {
-  > a {}
+  color: $grey-light;
+  font-style: italic;
+  > a {
+    color: inherit;
+    font-style: italic;
+    text-decoration: none;
+    &:hover {
+      border-bottom: 1px solid;
+    }
+  }
 }
 
 // classes used in the boards new/edit views (includes 'board' and 'board__header' from above)
@@ -30,10 +46,38 @@
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__list {
-  > a {}
+  margin-left: auto;
+  margin-right: auto;
+  // @include center(left);
+  padding: 1%;
+  position: relative;
+  // bottom: 40px;
+  width: 90%;
+  // height: 80px;
+  @media all and (max-width:  $break-s) {
+    bottom: 100px;
+  }
+}
+.board__listTile {
+  display: inline-block;
+  border-top: 3px solid $background-theme;
+  @include size(31%, 250px);
+  padding: 15px;
+  margin: 1%;
+  overflow: hidden;
+  background: rgba(254, 254, 254, 0.5);
+  &:hover {
+    -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
+     -moz-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
+          box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
+  }
 }
 .board__title {
-  > a {}
+  font-size: 1.5rem;
+  padding-bottom: 15px;
+  > a {
+    text-decoration: none
+  }
 }
 
 // classes used in the boards form partial (includes 'board', 'board__header', and 'board__topicsList' from above)
@@ -44,7 +88,7 @@
 
 }
 .board__formTitle {
-  
+
 }
 .board__formSubmit {
 

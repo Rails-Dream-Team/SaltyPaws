@@ -5,13 +5,25 @@
     <%= link_to 'New Topic', new_topic_path %>
   </div>
   <div class="board__list">
-      <% @boards.each do |board| %>
+    <% @boards.each do |board| %>
+      <div class="board__listTile">
         <div class="board__title">
           <%= link_to board.title, board_path(board) %>
         </div>
         <div class="board__topicsList">
-          list topics?
+          <% board.topics.order(:updated_at).last(5).each do |topic| %>
+            <div class="board__topic">
+            <div class="board__topicTitle">
+              <%= link_to topic.title, topic_path(topic) %>
+            </div>
+            <div class="board__topicUpdated">
+              Last Post by <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
+              at <%= topic.updated_at.strftime('%m/%d/%Y %H:%M') %>
+            </div>
+            </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
