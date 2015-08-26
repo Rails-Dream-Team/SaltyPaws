@@ -103,8 +103,10 @@ var Users = React.createClass ({
   },
 
   _fetchUser: function(){
+    var path = window.location.pathname.split('/');
+    var id = path[2];
     request
-      .get('/users.json')
+      .get('/users/' + id)
       .set('Accept', 'application/json')
       .end(this._handleFetch);
     },
