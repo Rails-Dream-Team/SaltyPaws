@@ -58,4 +58,9 @@ class UserTest < ActiveSupport::TestCase
     assert_respond_to @user, :pets
   end
 
+  test 'assert avatar may be nil' do
+    @user.avatar = nil
+    assert @user.valid?
+  end
+
 end
