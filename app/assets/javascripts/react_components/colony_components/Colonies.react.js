@@ -19,7 +19,7 @@ var Colonies = React.createClass({
   render: function() {
     return (
       <div>
-        <ColonyList colonies={this.state.colonies}/>
+        <ColonyList colonies={this.state.colonies} />
         <GoogleMap />
       </div>
     );
