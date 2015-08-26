@@ -6,7 +6,6 @@ class PostsControllerTest < ActionController::TestCase
     @post = posts(:one)
     @user = users(:one)
     sign_in @user
-    # @attributes = Post.attribute_names
   end
 
   test "GET index html render" do

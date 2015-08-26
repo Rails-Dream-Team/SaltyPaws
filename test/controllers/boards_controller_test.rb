@@ -4,6 +4,8 @@ class BoardsControllerTest < ActionController::TestCase
   def setup
     @board = boards(:one)
     @attributes = Board.attribute_names
+    @user = users(:one)
+    sign_in @user
   end
 
   test "GET index html render" do

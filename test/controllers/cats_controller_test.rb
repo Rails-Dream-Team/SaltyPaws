@@ -3,6 +3,8 @@ require 'test_helper'
 class CatsControllerTest < ActionController::TestCase
   def setup
     @cat = cats(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "GET index html render" do

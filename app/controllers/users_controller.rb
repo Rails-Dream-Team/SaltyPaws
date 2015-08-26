@@ -9,11 +9,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = get_user
+    @user = current_user
   end
 
   def update
-    @user = get_user
+    @user = current_user
     respond_to do |format|
       if @user.update_attributes(user_params)
         format.html { redirect_to user_path(@user) }
