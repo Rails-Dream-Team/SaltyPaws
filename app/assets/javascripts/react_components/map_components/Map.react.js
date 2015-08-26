@@ -46,7 +46,6 @@ var GoogleMap = React.createClass({
       count: this.state.count + 1
     });
   }
-
 });
 
 module.exports = GoogleMap;
