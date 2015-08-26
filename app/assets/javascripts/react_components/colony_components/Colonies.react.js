@@ -3,6 +3,7 @@ var request = require('superagent');
 var ColonyForm = require('./ColonyForm.react.js');
 var Colony = require('./Colony.react.js');
 var ColonyList = require('./ColonyList.react.js')
+var GoogleMap = require('../map_components/Map.react.js');
 
 var Colonies = React.createClass({
   getInitialState: function() {
@@ -17,7 +18,10 @@ var Colonies = React.createClass({
 
   render: function() {
     return (
-      <ColonyList colonies={this.state.colonies}/>
+      <div>
+        <ColonyList colonies={this.state.colonies}/>
+        <GoogleMap />
+      </div>
     );
   },
 
