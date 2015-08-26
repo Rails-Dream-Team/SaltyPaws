@@ -19,25 +19,12 @@ var GoogleMap = React.createClass({
 
   render: function() {
     return (
-      <StickyDiv offsetTop={40}>
         <Map
           initialZoom={13}
           initialCenter={this.state.center}
           width={500}
           height={500}>
-
-          <OverlayView
-            mapPane="floatPane"
-            style={{padding: 15, backgroundColor: '#fff', border: '1px solid #000'}}
-            position={this.state.center}>
-            <h1>Simple overlay!</h1>
-            <button
-              onClick={this._handleButtonClick}>
-              I have been clicked {this.state.count} time{this.state.count === 1 ? '' : 's'}
-            </button>
-          </OverlayView>
         </Map>
-      </StickyDiv>
       );
   },
 
@@ -46,7 +33,6 @@ var GoogleMap = React.createClass({
       count: this.state.count + 1
     });
   }
-
 });
 
 module.exports = GoogleMap;
