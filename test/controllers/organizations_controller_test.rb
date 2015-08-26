@@ -3,6 +3,8 @@ require 'test_helper'
 class OrganizationsControllerTest < ActionController::TestCase
   def setup
     @organization = organizations(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "GET index html render" do

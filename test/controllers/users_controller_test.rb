@@ -3,6 +3,7 @@ require 'test_helper'
 class UsersControllerTest < ActionController::TestCase
   def setup
     @user = users(:one)
+    sign_in @user
   end
 
   test "GET edit with html" do

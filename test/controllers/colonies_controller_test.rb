@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class ColoniesControllerTest < ActionController::TestCase
-
   def setup
     @colony = colonies(:one)
+    @user = users(:one)
+    sign_in @user
   end
 
   test "GET index html" do

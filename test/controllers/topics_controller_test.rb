@@ -3,7 +3,6 @@ require 'test_helper'
 class TopicsControllerTest < ActionController::TestCase
   def setup
     @topic = topics(:one)
-    # @attributes = Topic.attribute_names
     @user = users(:one)
     sign_in @user
     @board = boards(:one)
