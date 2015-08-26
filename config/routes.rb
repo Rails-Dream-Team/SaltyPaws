@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :colonies
   resources :organizations
   resources :cats
-  resources :users, only: [:update]
+  resources :users, only: [:edit, :update]
   get '/users/:id' => 'users#show'
   resources :boards
   resources :topics do
