@@ -1,9 +1,11 @@
 <footer class="footer__container">
-  <%= image_tag "tiylogogray.png" %>
+  <div class="tiy">
+    <%= image_tag "tiylogogray.png" %>
     <p>The Iron Yard | Copyright 2015</p>
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-      <li>Item 3</li>
-    </ul>
+  </div>
+  <ul class="footer__ul">
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Message Board', boards_path %></li>
+    <li><%= link_to 'Report a Colony', report_path %></li>
+  </ul>
 </footer>
