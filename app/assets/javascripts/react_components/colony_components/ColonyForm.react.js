@@ -43,12 +43,20 @@ var ColonyForm = React.createClass({
             <input ref="vet" id="vet" placeholder="Veterinarian"/>
           </div>
           <div className="volForm__submit">
-            <input onClick={this._handleSubmit} type="submit" value="Submit"/>
+            <input type="submit" value="Submit"/>
           </div>
         </form>
       </div>
     );
   },
+  _createColony: function(data) {
+    request
+      .post('/colonies')
+      .send(data)
+      .set('Accept', 'application/json')
+      .set('X-CSRF-Token', document.querySelector('meta[name="csrf-token"]').content)
+      .end(this._handleChange)
+  }, 
 
   _handleSubmit: function(e) {
     e.preventDefault();
@@ -65,7 +73,7 @@ var ColonyForm = React.createClass({
         vet: this.refs.vet.getDOMNode().value.trim()
       }
     };
-    this.props.createColony(data);
+    this._createColony(data);
   }
 
 });

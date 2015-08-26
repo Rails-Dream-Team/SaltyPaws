@@ -1,4 +1,5 @@
 var React = require('react');
+var ColonyForm  = require('./ColonyForm.react.js')
 
 var Colony = React.createClass({
   render: function() {
