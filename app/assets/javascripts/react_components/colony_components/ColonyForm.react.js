@@ -11,10 +11,6 @@ var ColonyForm = React.createClass({
             <input ref="name" id="name" placeholder="Name The Colony"/>
           </div>
           <div className="volForm__label">
-            <label htmlFor="photo" className="volForm__label">Photo: </label>
-            <input ref="photo" id="photo" placeholder="Add A Photo"/>
-          </div>
-          <div className="volForm__label">
             <label htmlFor="street_address" className="volForm__label"> Street Address: </label>
             <input ref="streetAddress" id="street_address" placeholder="Street Address"/>
           </div>
@@ -63,7 +59,6 @@ var ColonyForm = React.createClass({
     var data = {
       colony: {
         name: this.refs.name.getDOMNode().value.trim(),
-        photo: this.refs.photo.getDOMNode().value.trim(),
         street_address: this.refs.streetAddress.getDOMNode().value,
         city: this.refs.city.getDOMNode().value.trim(),
         state: this.refs.state.getDOMNode().value.trim(),
