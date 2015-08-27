@@ -1,6 +1,8 @@
 require 'carrierwave/orm/activerecord'
 
 class User < ActiveRecord::Base
+  acts_as_paranoid
+
   has_many :colony_users
   has_many :colonies, through: :colony_users
   has_many :organization_users

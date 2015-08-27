@@ -1,6 +1,16 @@
 class Post < ActiveRecord::Base
+  acts_as_paranoid
+
   belongs_to :topic, inverse_of: :posts
   belongs_to :user
+
+  def user
+    User.unscoped { super }
+  end
+
+  def topic
+    Topic.unscoped { super }
+  end
 
   validates :content, :user_id, presence: true
   validates :topic_id, presence: true, on: :update

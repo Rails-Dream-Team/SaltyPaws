@@ -1,4 +1,6 @@
 class Organization < ActiveRecord::Base
+  acts_as_paranoid
+  
   has_many :organization_users
   has_many :users, through: :organization_users
 

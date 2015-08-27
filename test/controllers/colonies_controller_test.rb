@@ -50,7 +50,8 @@ class ColoniesControllerTest < ActionController::TestCase
   end
 
   test 'renders errors with INvalid attributes' do
-    skip
+    post :create, format: :json, colony: { name: "", street_address: "123 Address", city: "testcity", state: "teststate" }
+    assert_response(422)
   end
 
   test "show colony html" do

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825132822) do
+ActiveRecord::Schema.define(version: 20150827141710) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,7 +53,10 @@ ActiveRecord::Schema.define(version: 20150825132822) do
     t.string   "title",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "boards", ["deleted_at"], name: "index_boards_on_deleted_at", using: :btree
 
   create_table "cats", force: :cascade do |t|
     t.string   "name"
@@ -86,7 +89,10 @@ ActiveRecord::Schema.define(version: 20150825132822) do
     t.string   "vet"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "colonies", ["deleted_at"], name: "index_colonies_on_deleted_at", using: :btree
 
   create_table "colony_users", force: :cascade do |t|
     t.integer  "user_id"
@@ -119,7 +125,10 @@ ActiveRecord::Schema.define(version: 20150825132822) do
     t.string   "zip_code"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "organizations", ["deleted_at"], name: "index_organizations_on_deleted_at", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "content",    null: false
@@ -127,8 +136,10 @@ ActiveRecord::Schema.define(version: 20150825132822) do
     t.integer  "topic_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "posts", ["deleted_at"], name: "index_posts_on_deleted_at", using: :btree
   add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
 
   create_table "topics", force: :cascade do |t|
@@ -137,8 +148,10 @@ ActiveRecord::Schema.define(version: 20150825132822) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "board_id",   null: false
+    t.datetime "deleted_at"
   end
 
+  add_index "topics", ["deleted_at"], name: "index_topics_on_deleted_at", using: :btree
   add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -170,8 +183,10 @@ ActiveRecord::Schema.define(version: 20150825132822) do
     t.string   "pets"
     t.text     "volunteer_work"
     t.string   "avatar"
+    t.datetime "deleted_at"
   end
 
+  add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
   add_index "users", ["display_name"], name: "index_users_on_display_name", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
