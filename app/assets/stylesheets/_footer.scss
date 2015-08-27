@@ -7,14 +7,14 @@
   color: $grey-medium;
 }
 .footer__ul {
-  display: inline-block;
+  @include listInline($d: inline-block);
   width: 75%;
+  text-align: center;
   margin: 0 auto;
   padding-top: 15px;
   vertical-align: top;
   > li {
     display: inline;
-    list-style-type: none;
     @media all and ( max-width: $break-s ) {
       font-size: 0.8em;
     }
