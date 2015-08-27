@@ -42,9 +42,7 @@
   }
 }
 .colony__showContainer {
-  max-width: 1000px;
-  margin: 10px auto;
-  padding: 0 30px;
+  @include maxWidth;
 }
 .colony__edit {
   padding: 15px 10px 80px;

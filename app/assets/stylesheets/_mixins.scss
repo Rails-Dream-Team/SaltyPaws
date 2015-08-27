@@ -70,6 +70,11 @@
 //**********************
 // Containers
 
+@mixin maxWidth($w: 1000px) {
+  max-width: $w;
+  margin: 10px auto;
+  padding: 0 30px;
+}
 @mixin tile($w, $h: auto, $pad: 30px) {
   @include centerText(left);
   @include size($w, $h);
