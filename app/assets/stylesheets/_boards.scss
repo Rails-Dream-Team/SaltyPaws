@@ -21,7 +21,7 @@
   }
 }
 .board__dividerLine {
-  @include gradientLineDark;
+  @include gradientLine;
 }
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)

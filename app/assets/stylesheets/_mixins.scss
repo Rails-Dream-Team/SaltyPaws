@@ -22,15 +22,17 @@
   margin: 0 auto;
   text-align: $textAlign;
 }
-@mixin listInline($w: auto, $d: block) {
-  list-style-type: none;
+@mixin listInline($w: auto, $d: block, $fsize: 1rem) {
+  font-size: 0;
   display: $d;
+  list-style-type: none;
   padding-left: 0;
   li {
+    font-size: $fsize;
     display: inline-block;
-    width: $w;
-    margin: 0 10px;
+    padding: 0 10px;
     vertical-align: top;
+    width: $w;
   }
 }
 
