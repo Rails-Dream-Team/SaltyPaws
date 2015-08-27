@@ -8,22 +8,16 @@
   border-bottom: 1px solid $grey-dark;
 }
 .nav_ul {
+  @include listInline;
   position: absolute;
   right: 0;
   top: 10px;
   margin: 0;
-  > li {
-    display: inline;
-  }
   > li a {
     text-decoration: none;
-    color: inherit;
     font-size: 1.2rem;
     @media all and ( max-width: $break-l ) {
-      font-size: 1em;
-    }
-    &:hover {
-      color: $blue-medium;
+      font-size: 1rem;
     }
   }
 }
