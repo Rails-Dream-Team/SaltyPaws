@@ -5,5 +5,9 @@ class ColonyUser < ActiveRecord::Base
   def user
   User.unscoped { super }
   end
-  
+
+  def colony
+    Colony.unscoped { super }
+  end
+
 end

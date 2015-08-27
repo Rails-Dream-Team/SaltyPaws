@@ -5,5 +5,9 @@ class OrganizationUser < ActiveRecord::Base
   def user
   User.unscoped { super }
   end
-  
+
+  def organization
+  Organization.unscoped { super }
+  end
+
 end
