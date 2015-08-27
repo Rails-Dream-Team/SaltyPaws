@@ -1,5 +1,5 @@
 .container {
-  background-color: $background-theme;
+  @include backgroundColor;
   padding-bottom: 80px;
 }
 .index__blurb {
@@ -8,9 +8,9 @@
   width: 80%;
   margin: auto;
   padding-top: 30px;
-  border-bottom: 1px solid $gray-colors;
+  border-bottom: 1px solid $grey-dark;
   .index__button {
-    @include buttons;
+    @include button;
   }
   h1 {
     text-align: center;
@@ -38,8 +38,7 @@ ul {
   display: block;
   padding: 0 10px;
   img {
-    height: 250px;
-    width: auto;
+    @include size(auto, 250px);
   }
 }
 .side__blurb2 {
@@ -47,7 +46,6 @@ ul {
   display: block;
   padding: 0 10px;
   img {
-    height: 250px;
-    width: auto;
+    @include size(auto, 250px);
   }
 }

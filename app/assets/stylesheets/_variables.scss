@@ -1,16 +1,21 @@
 // text styles
-$content-font: Quicksand, Helvetica Neue, Helvetica, Arial, sans-serif;
+$primary-font: Quicksand, Helvetica Neue, Helvetica, Arial, sans-serif;
 $header-font: 'Montserrat', sans-serif;
 
 // colors
-$gray-colors: #4D4D4D;
-$grey-light: #A3B3BE;
-$background-theme: #83AF9B;
-$warn-red: #8B0000;
-$link-hover: #5492F0;
+$grey-dark: #4D4D4D;
+$grey-medium: #AFAFAF;
+$grey-light: #F4F4F4;
+$red-dark: #8B0000;
+$green-medium: #83AF9B;
+$green-light: #e2ede8;
+$blue-dark: #0A3576;
+$blue-medium: #5492F0;
+$white: #FFF;
+
 
 // breaks for responsive behavior
 $break-s: 600px;
 $break-m: 900px;
-$break-ml: 1000px;
-$break-l: 1300px;
+$break-l: 1000px;
+$break-xl: 1300px;

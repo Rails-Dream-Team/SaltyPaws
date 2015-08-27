@@ -1,24 +1,21 @@
 // container div on all org views for all content related to organizations
 .org {
-  background-color: $background-theme;
-  padding: 10px 10px 80px 10px;
+  padding: 10px 10px 80px;
 }
 // div on org index for header content
 .org__header {
   > h1 {
     padding: 5px 0 15px;
-    @include title(2rem, $gray-colors);
-    @include center;
+    @include title(2rem, $grey-dark);
   }
   > a {
-    @include title(1rem, $gray-colors);
+    @include title(1rem, $grey-dark);
     display: inline-block;
-    text-decoration: none;
     border-bottom: 1px solid;
     margin: 3px 10px;
     font-weight: 400;
     &:hover {
-      color: $link-hover;
+      color: $blue-medium;
     }
   }
 }
@@ -56,9 +53,9 @@
 .org__formErrors {
   margin: 0;
   padding-bottom: 10px;
-  color: $warn-red;
+  color: $red-dark;
   > h2 {
-    @include content-font;
+    @include paragraph;
     text-transform: lowercase;
     margin: 0;
     padding: 5px 0;
@@ -70,7 +67,7 @@
 }
 .new_organization {
   width: 75%;
-  @include center;
+  @include centerText;
   label {
     @include title(1.2rem);
     display: inline-block;
@@ -86,7 +83,7 @@
     width: 65%;
     cursor: text;
     outline: none;
-    font-family: $content-font;
+    font-family: $primary-font;
     font-size: 1.3rem;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -97,7 +94,7 @@
   width: 100px;
   outline: none;
   border: none;
-  background-color: $gray-colors;
+  background-color: $grey-dark;
   opacity: 0.7;
   border-radius: 20px;
   padding: 0 10px;

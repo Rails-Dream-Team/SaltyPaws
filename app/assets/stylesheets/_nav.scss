@@ -2,11 +2,10 @@
   position: relative;
   top: 0;
   right: 0;
-  z-index: 9999;
   width: 100%;
   height: 40px;
-  background-color: #808080;
-  border-bottom: 1px solid black;
+  background-color: $grey-medium;
+  border-bottom: 1px solid $grey-dark;
 }
 .nav_ul {
   position: absolute;
@@ -18,13 +17,13 @@
   }
   > li a {
     text-decoration: none;
-    color:inherit;
+    color: inherit;
     font-size: 1.2rem;
-    @media all and ( max-width: $break-ml ) {
+    @media all and ( max-width: $break-l ) {
       font-size: 1em;
     }
     &:hover {
-      color: #5492F0;
+      color: $blue-medium;
     }
   }
 }
