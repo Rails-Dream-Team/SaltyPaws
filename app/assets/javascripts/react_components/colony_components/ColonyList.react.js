@@ -13,9 +13,8 @@ var ColonyList = React.createClass({
   _listColony: function() {
      return this.props.colonies.map(function(colony) {
       return <Colony data={colony} />
-    }.bind(this));
+    });
   }
-
 });
 
 module.exports = ColonyList;

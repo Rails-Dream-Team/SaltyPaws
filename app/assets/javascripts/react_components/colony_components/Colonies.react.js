@@ -12,17 +12,21 @@ var Colonies = React.createClass({
     }
   },
 
-  componentWillMount: function() {
-    this._retrieveColonies();
+  render: function() {
+    if (this.state.colonies.length > 0) {
+      return (
+        <div>
+          <ColonyList colonies={this.state.colonies} />
+          <GoogleMap colonies={this.state.colonies} />
+        </div>
+      );
+    } else {
+      return null;
+    }
   },
 
-  render: function() {
-    return (
-      <div>
-        <ColonyList colonies={this.state.colonies} />
-        <GoogleMap />
-      </div>
-    );
+  componentDidMount: function() {
+    this._retrieveColonies();
   },
 
   _retrieveColonies: function() {
@@ -62,7 +66,7 @@ var Colonies = React.createClass({
     if (err) {
       window.alert('No Data Retrieved');
       return;
-    }
+    } 
     this.setState({ colonies: res.body });
   },
 
