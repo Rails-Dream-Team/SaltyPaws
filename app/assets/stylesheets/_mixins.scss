@@ -63,17 +63,10 @@
   border-radius: 50%;
   overflow: hidden;
 }
-@mixin gradientLineLight {
-  @include linearGradient(255);
-  @include size(100%, 1px);
-  border: 0;
-  margin: 10px;
-}
-@mixin gradientLineDark {
+@mixin gradientLine {
   @include linearGradient(0);
-  @include size(100%, 1px);
-  border: 0;
-  margin: 10px;
+  @include size(95%, 1px);
+  margin: 10px auto;
 }
 
 //**********************
