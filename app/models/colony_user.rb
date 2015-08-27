@@ -3,7 +3,7 @@ class ColonyUser < ActiveRecord::Base
   belongs_to :colony
 
   def user
-  User.unscoped { super }
+    User.unscoped { super }
   end
 
   def colony

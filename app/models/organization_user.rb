@@ -3,11 +3,11 @@ class OrganizationUser < ActiveRecord::Base
   belongs_to :organization
 
   def user
-  User.unscoped { super }
+    User.unscoped { super }
   end
 
   def organization
-  Organization.unscoped { super }
+    Organization.unscoped { super }
   end
 
 end

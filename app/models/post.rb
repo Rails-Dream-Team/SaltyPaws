@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
 
   def user
-  User.unscoped { super }
+    User.unscoped { super }
   end
 
   def topic
