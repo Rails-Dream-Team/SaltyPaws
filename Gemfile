@@ -10,6 +10,7 @@ gem 'devise'
 gem 'fog-aws'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'paranoia', "~> 2.0"
 gem 'pg'
 gem 'puma'
 gem 'rails_12factor', group: :production
