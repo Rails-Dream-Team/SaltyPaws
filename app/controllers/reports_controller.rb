@@ -7,6 +7,7 @@ class ReportsController < ApplicationController
   def create
     @report = Report.new(report_params)
     if @report.valid?
+      GeneralMailer.colony_reported(@report).deliver_now
       FormMailer.report_colony_form(@report).deliver_now
       redirect_to root_path, notice: "Your form was submitted."
     else

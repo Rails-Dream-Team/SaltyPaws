@@ -7,6 +7,7 @@ class VolunteersController < ApplicationController
   def create
     @volunteer = Volunteer.new(volunteer_params)
     if @volunteer.valid?
+      GeneralMailer.volunteer_submission(@volunteer).deliver_now
       FormMailer.new_vol_form(@volunteer).deliver_now
       redirect_to root_path, notice: "Your form was submitted."
     else
