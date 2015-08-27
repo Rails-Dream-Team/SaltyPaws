@@ -23,7 +23,7 @@
   }
 }
 .index__divider {
-  @include gradientLineDark;
+  @include gradientLine;
 }
 .side__blurb {
   float: right;
