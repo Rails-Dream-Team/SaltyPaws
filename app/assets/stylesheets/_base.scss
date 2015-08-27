@@ -8,8 +8,7 @@ html {
 }
 html,
 body {
-  background-color: $background-theme;
-  font-family: $content-font;
+  font-family: $primary-font;
   font-size: 14px;
   line-height: 20px;
   margin: 0;
@@ -19,22 +18,21 @@ body {
 .main__wrapper {
   min-height: 100%;
   position: relative;
+  @include backgroundColor;
 }
 p {
-  color: $gray-colors;
-  @include content-font;
+  @include paragraph;
 }
 h1,
 h2,
 h3 {
   font-family: $header-font;
-  text-transform: uppercase;
 }
 a {
   text-decoration: none;
-  color:inherit;
+  color: inherit;
   &:hover {
-    color: $link-hover;
+    color: $blue-medium;
   }
 }
 .clearfix {

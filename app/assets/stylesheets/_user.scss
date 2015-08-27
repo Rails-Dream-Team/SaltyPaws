@@ -1,62 +1,38 @@
 .userShow {
-  background-color: $background-theme;
   margin: 0;
   padding: 5%;
 }
 .user_wrapper {
   width: 60%;
   font-size: 0;
-  background-color: rgba(234, 234, 234, 0.7);
   border-radius: 10px;
   padding: 20px 40px;
   margin: 0 auto;
-  input, textarea {
-    border: none;
-    border-bottom: 1px solid;
-    background-color: inherit;
-    width: auto;
-    cursor: text;
-    outline: none;
-    font-family: $content-font;
-    font-size: 1.3rem;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    vertical-align: bottom;
+  input {
+    @include inputLine(1.3rem);
+  }
+  textarea {
+    @include inputTextArea(1.3rem);
   }
 }
 .user_name {
-  font-size: 12px
+  @include font(1rem);
 }
-.user_picture  {
-  > img {
-    height: 100px;
-    width: 100px;
-  }
+.user_picture > img {
+  @include size(100px, auto);
 }
 .user_info {
-  font-size: 17px;
-
+  @include font(1.2rem);
 }
 .user_infoRow{
   margin: 20px 0;
 }
 .user_infoLabel {
-  font-weight: bold;
-  font-size: 23px;
+  @include font(1.6rem);
+  font-weight: 700;
   margin-bottom: 10px;
 }
 .user_infoSubmit button {
+  @include button;
   width: 100px;
-  outline: none;
-  border: none;
-  background-color: $gray-colors;
-  opacity: 0.7;
-  border-radius: 20px;
-  padding: 0 10px;
-  margin-top: 10px;
-  @include title(1.3rem);
-  &:hover {
-    font-weight: 700;
-    cursor: pointer;
-  }
 }

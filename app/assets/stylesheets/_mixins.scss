@@ -1,6 +1,16 @@
-@mixin content-font {
-  font-family: $content-font;
-  font-size: 15px;
+//**********************
+// Text
+
+@mixin font($s, $f: $primary-font) {
+  font-family: $f;
+  font-size: $s;
+}
+
+@mixin paragraph {
+  @include font(15px);
+  color: $grey-dark;
+  line-height: 20px;
+  text-align: left;
 }
 @mixin title($size: 1rem, $color: inherit, $weight: inherit) {
   font-family: $header-font;
@@ -8,10 +18,32 @@
   color: $color;
   font-weight: $weight;
 }
-@mixin center($textAlign: center) {
+@mixin centerText($textAlign: center) {
   margin: 0 auto;
   text-align: $textAlign;
 }
+
+//**********************
+// Backgrounds
+
+@mixin backgroundColor {
+  background-color: $grey-light;
+}
+@mixin backgroundImg ($path, $x: center, $y: center) {
+  background-image: url($path);
+  background-position: $x $y;
+  background-size: cover;
+}
+@mixin overlay-light($opacity) {
+  background-color: rgba(255, 255, 255, $opacity);
+}
+@mixin overlay-dark($opacity) {
+  background-color: rgba(0, 0, 0, $opacity);
+}
+
+//**********************
+// Shapes + sizes
+
 @mixin size($w, $h: $w) {
   width: $w;
   height: $h;
@@ -20,21 +52,120 @@
   border-radius: 50%;
   overflow: hidden;
 }
-@mixin buttons {
-  outline: none;
-  border: none;
-  background-color: $gray-colors;
-  color: $grey-light;
-  opacity: 0.7;
-  border-radius: 20px;
-  padding: 0 10px;
-  margin-top: 10px;
+@mixin gradientLine-light {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  margin: 10px -5px 0 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+}
+@mixin gradientLine-dark {
+  width: 100%;
+  border: 0;
+  height: 1px;
+  margin: 10px -5px 0 0;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0));
+}
+
+//**********************
+// Containers
+
+@mixin maxWidth($w: 1000px) {
+  max-width: $w;
+  margin: 10px auto;
+  padding: 0 30px;
+}
+@mixin tile($w, $h: auto, $pad: 30px) {
+  @include centerText(left);
+  @include size($w, $h);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background-color: rgba(234, 234, 234, 0.7);
+  border-radius: 10px;
+  padding: $pad;
+}
+
+//**********************
+// Form elements
+
+@mixin button {
   @include title(1.3rem);
+  background-color: $blue-medium;
+  border: none;
+  border-radius: 3px;
+  color: $grey-light;
+  margin-top: 10px;
+  outline: none;
+  padding: 10 20px;
   &:hover {
-    font-weight: 700;
     cursor: pointer;
   }
 }
-@mixin overlay($opacity) {
-  background-color: rgba(255, 255, 255, $opacity);
+@mixin checkbox($fsize: 1rem) {
+  @include font($fsize);
+  // this is just a placeholder
+}
+@mixin formErrors() {
+  margin: 0;
+  padding-bottom: 10px;
+  > h2 {
+    @include paragraph;
+    color: $red-dark;
+    margin: 0;
+    padding: 5px 0;
+  }
+  > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    > li {
+      display: block;
+    }
+  }
+}
+@mixin formLinks {
+  font-size: 0.8rem;
+  padding: 15px auto;
+}
+@mixin inputPlain($fsize: 1rem, $w: auto) {
+  @include font($fsize);
+  background-color: inherit;
+  border: none;
+  cursor: text;
+  text-align: left;
+  width: $w;
+}
+@mixin inputLine($fsize: 1rem, $w: auto) {
+  @include inputPlain($fsize, $w);
+  border-bottom: 1px solid;
+  outline: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: bottom;
+}
+@mixin inputTextArea($fsize: 1rem, $w: auto) {
+  @include inputPlain($fsize, $w);
+  outline: 1px solid $grey-medium;
+  overflow: scroll;
+  margin-top: 10px;
+}
+@mixin label($fsize: 1rem, $w: auto) {
+  @include title($fsize);
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: bottom;
+  width: $w;
+}
+@mixin placeholder($c: $grey-medium) {
+  ::-webkit-input-placeholder {
+     color: $c;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+     color: $c;
+  }
+  ::-moz-placeholder {  /* Firefox 19+ */
+     color: $c;
+  }
+  :-ms-input-placeholder {
+     color: $c;
+  }
 }

@@ -1,36 +1,51 @@
-.vol__formContainer {
-  text-align: left;
-  background: $background-theme;
-  padding-left: 3%;
-  h2 {
-    margin-top: 0;
-    padding-top: 15px;
-  }
-  ul {
-    list-style-type: none;
-    li {
-      width: 200px;
-      margin: 5px auto;
-      text-align: left;
-      display: block;
-    }
+//**********************
+// login & signup forms
+
+.login__container {
+  padding: 15px 0 80px 0;
+  @include placeholder($grey-medium);
+}
+.login__form {
+  @include tile(400px);
+}
+.join__form {
+  @include tile(700px);
+}
+.login__title {
+  margin: 5px auto;
+  @include title(1.5rem);
+}
+.login__pwField,
+.login__emailField {
+  @include size(95%, 45px);
+  padding: 20px 0;
+  > input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0px 1000px inherit inset;
   }
 }
-.form__right,
-.form__left {
-  display: inline-block;
-  vertical-align: top;
-  height: 125px;
-  width: 200px;
-  margin: 15px auto;
-  li {
-    padding: 10px;
-    display: block;
-  }
+.login__pwField input,
+.login__emailField input {
+  @include inputLine(1.3rem, 65%);
 }
-.form__section1 {
+.login__pwField label,
+.login__emailField label {
+  @include label(1.2rem, 30%)
+}
+.login__pwField em {
+  font-size: 0.8rem;
   text-align: center;
+  margin-left: 25%;
 }
-.vol__submit input{
-  @include buttons;
+.login__toggle {
+  margin: 10px auto;
+  font-size: 1rem;
+}
+.login__submit input {
+  @include button;
+}
+.login__sharedLinks {
+  @include formLinks;
+}
+#error_explanation {
+  @include formErrors;
 }

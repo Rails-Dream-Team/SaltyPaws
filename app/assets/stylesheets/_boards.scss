@@ -1,6 +1,5 @@
 // classes used in all board views
 .board {
-  background-color: rgba(128, 128, 128, 0.5);
   padding: 10px 10px 80px;
 }
 .board__header {
@@ -8,8 +7,8 @@
   margin: 0 auto;
   vertical-align: baseline;
   > h1 {
-    display: inline-block;
     @include title(1.7rem);
+    display: inline-block;
     width: 65%;
   }
 }
@@ -22,42 +21,33 @@
   }
 }
 .board__dividerLine {
-  width: 100%;
-  border: 0;
-  height: 1px;
-  margin: 10px -5px 0 0;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+  @include gradientLine-dark;
 }
-
-
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__index {
   margin-left: auto;
   margin-right: auto;
-  // @include center(left);
   padding: 1%;
   position: relative;
-  // bottom: 40px;
   width: 90%;
-  // height: 80px;
   @media all and (max-width:  $break-s) {
     bottom: 100px;
   }
 }
 .board__indexTile {
   display: inline-block;
-  border-top: 3px solid $background-theme;
+  border-top: 3px solid $green-medium;
   @include size(31%, 250px);
   padding: 15px;
   margin: 1%;
   overflow: hidden;
-  background: rgba(254, 254, 254, 0.5);
-  &:hover {
-    -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-     -moz-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-          box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  }
+  // background: rgba(254, 254, 254, 0.5);
+  // &:hover {
+  //   -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
+  //    -moz-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
+  //         box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
+  // }
 }
 .board__indexTitle {
   font-size: 1.5rem;
@@ -79,11 +69,10 @@
   > a {}
 }
 .board__indexTopicUpdated {
-  color: $grey-light;
+  color: $grey-medium;
   font-size: 0.8rem;
   font-style: italic;
   > a {
-    color: inherit;
     font-style: italic;
     text-decoration: none;
     &:hover {
@@ -96,7 +85,7 @@
 // classes used in the boards show view
 .board__topics {
   width: 95%;
-  @include center(left);
+  @include centerText(left);
   margin-top: 10px;
 }
 .board__topic {
@@ -108,7 +97,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: inline-block;
-  > a {}
 }
 .board__topicCreated,
 .board__topicUpdated {
@@ -125,7 +113,6 @@
   text-decoration: none;
   &:hover {
     border-bottom: 1px solid;
-    color: $link-hover
   }
 }
 .board__topicCreated {
@@ -138,7 +125,6 @@
 
 // classes used in the boards new/edit views (includes 'board' and 'board__header' from above)
 .board__new {
-  > a {}
 }
 
 // classes used in the boards form partial (includes 'board', 'board__header', and 'board__topicsList' from above)
