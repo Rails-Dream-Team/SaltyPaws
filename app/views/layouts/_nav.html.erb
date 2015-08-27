@@ -1,16 +1,26 @@
 <nav class="nav">
-  <ul class="nav_ul">
+<% if current_user %>
+  <ul class="nav__ulLeft">
     <li><%= link_to 'HOME', root_path %></li>
-    <% if current_user %>
-      <li><%= link_to 'COLONIES', colonies_path %></li>
-      <li><%= link_to 'ORGANIZATIONS', organizations_path %></li>
-      <li><%= link_to 'VOLUNTEER', volunteer_path %></li>
-      <li><%= link_to 'PROFILE', current_user %></li>
-      <li><%= link_to 'MESSAGE BOARD', boards_path %></li>
-      <li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
-    <% else %>
-      <li><%= link_to 'SIGN IN', new_user_session_path %></li>
-      <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
-    <% end %>
+    <li><%= link_to 'COLONIES', colonies_path %></li>
+    <li><%= link_to 'ORGANIZATIONS', organizations_path %></li>
+    <li><%= link_to 'MESSAGE BOARD', boards_path %></li>
+
   </ul>
+  <ul class="nav__ulRight">
+    <div class="nav__profileHover">
+      <li class="nav__profile"><img src="<%= current_user.avatar %>" />
+        <ul>
+          <li><%= link_to 'PROFILE', current_user %></li>
+          <li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
+        </ul>
+      </li>
+    </div>
+  <% else %>
+    <li><%= link_to 'HOME', root_path %></li>
+    <li><%= link_to 'SIGN IN', new_user_session_path %></li>
+    <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
+  </ul>
+<% end %>
+
 </nav>
