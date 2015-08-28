@@ -56,5 +56,6 @@ class PostsController < ApplicationController
   def get_topic_post
     @topic = Topic.find(params[:topic_id])
     @topic.posts.find(params[:id])
+    authorize @post
   end
 end

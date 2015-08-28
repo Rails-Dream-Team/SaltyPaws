@@ -49,6 +49,7 @@ class TopicsController < ApplicationController
 
   def get_topic
     Topic.find(params[:id])
+    authorize @topic
   end
 
 end
