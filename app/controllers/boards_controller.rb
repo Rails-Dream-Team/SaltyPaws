@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
   def index
     @boards = Board.all
+    authorize @boards
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @boards }
@@ -55,5 +56,6 @@ class BoardsController < ApplicationController
 
   def get_board
     Board.find(params[:id])
+    authorize @board
   end
 end

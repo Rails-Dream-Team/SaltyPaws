@@ -1,6 +1,7 @@
 class ColoniesController < ApplicationController
   def index
     @colonies = Colony.all
+    authorize @colony
     respond_to do |format|
       format.html
       format.json { render json: @colonies }
@@ -66,5 +67,6 @@ class ColoniesController < ApplicationController
 
   def get_colony
     Colony.find(params[:id])
+    authorize @colony
   end
 end

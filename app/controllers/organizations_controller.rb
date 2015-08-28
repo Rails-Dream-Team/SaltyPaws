@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
+    authorize @organization
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @organizations }
@@ -67,6 +68,7 @@ class OrganizationsController < ApplicationController
 
   def get_organization
     Organization.find(params[:id])
+    authorize @organization
   end
 
 end
