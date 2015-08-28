@@ -14,6 +14,7 @@ class ColoniesController < ApplicationController
 
   def create
     @colony = Colony.new(colony_params)
+    authorize @colony
     respond_to do |format|
       if @colony.save
         format.html { redirect_to colony_path(@colony) }
@@ -27,6 +28,7 @@ class ColoniesController < ApplicationController
 
   def show
     @colony = get_colony
+    authorize @colony
     respond_to do |format|
       format.html
       format.json { render json: @colony }
@@ -39,6 +41,7 @@ class ColoniesController < ApplicationController
 
   def update
     @colony = get_colony
+    authorize @colony
     respond_to do |format|
       if @colony.update_attributes(colony_params)
         format.html { redirect_to colony_path(@colony) }
@@ -52,6 +55,7 @@ class ColoniesController < ApplicationController
 
   def destroy
     @colony = get_colony
+    authorize @colony
     @colony.destroy
     respond_to do |format|
       format.html { redirect_to colonies_path  }
@@ -67,6 +71,5 @@ class ColoniesController < ApplicationController
 
   def get_colony
     Colony.find(params[:id])
-    authorize @colony
   end
 end

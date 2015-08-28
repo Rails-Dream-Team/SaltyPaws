@@ -14,6 +14,7 @@ class BoardsController < ApplicationController
 
   def create
     @board= Board.new(board_params)
+    authorize @board
     if @board.save
       redirect_to @board
     else
@@ -23,6 +24,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = get_board
+    authorize @board
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @board }
@@ -35,6 +37,7 @@ class BoardsController < ApplicationController
 
   def update
     @board = get_board
+    authorize @board
     if @board.update_attributes(board_params)
       redirect_to @board
     else
@@ -44,6 +47,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board = get_board
+    authorize @board
     @board.destroy
     redirect_to boards_path
   end
@@ -56,6 +60,5 @@ class BoardsController < ApplicationController
 
   def get_board
     Board.find(params[:id])
-    authorize @board
   end
 end
