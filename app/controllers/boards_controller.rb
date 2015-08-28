@@ -6,7 +6,6 @@ class BoardsController < ApplicationController
       format.html { render :index }
       format.json { render json: @boards }
     end
-
   end
 
   def new

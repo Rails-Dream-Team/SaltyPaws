@@ -2,7 +2,7 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
-    authorize @organization
+    authorize @organizations
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @organizations }

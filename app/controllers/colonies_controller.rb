@@ -1,7 +1,7 @@
 class ColoniesController < ApplicationController
   def index
     @colonies = Colony.all
-    authorize @colony
+    authorize @colonies
     respond_to do |format|
       format.html
       format.json { render json: @colonies }
