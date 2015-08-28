@@ -1,13 +1,11 @@
 // classes used in all board views
 .board {
   @include maxWidth;
-  padding-bottom: 80px;
 }
 .board__header {
   position: relative;
-  // margin: 3px;
   > h1 {
-    @include title(1.7rem);
+    @include title(2rem);
     display: inline-block;
     margin-bottom: 0;
   }
@@ -88,6 +86,9 @@
 .board__topic {
   height: 50px;
   padding: 5px 0;
+  &:nth-child(odd) {
+    background-color: $green-light;
+  }
 }
 .board__topicTitle {
   width: 45%;
@@ -134,7 +135,7 @@
 
 // classes used in the boards form partial (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__formErrors {
-  > ul {}
+  @include formErrors;
 }
 .board__form {
 
@@ -144,4 +145,8 @@
 }
 .board__formSubmit {
 
+}
+
+.board__guidelines {
+  background-color: $blue-medium;
 }
