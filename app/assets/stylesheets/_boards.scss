@@ -19,24 +19,33 @@
   > a {
   }
 }
-.board__dividerLine {
-  @include gradientLine;
-}
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__index {
+  font-size: 0;
+  // display: inline-block;
   width: 101%;
   @media all and (max-width:  $break-s) {
     bottom: 100px;
   }
 }
+.board__tileContainer {
+  @include size(33.33333333%, 250px);
+  display: inline-block;
+  &:first-child {
+    margin-left: -15px;
+    margin-right: 15px;
+  }
+  &:last-child {
+    margin-left: 15px;
+    margin-right: -15px;
+  }
+}
 .board__indexTile {
-  @include tile(33%, 250px, 15px);
+  @include tile(100%, 250px, 15px);
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-  display: inline-block;
-  text-align: justify;
-  border-top: 5px solid $green-medium;
+  font-size: 1rem;
   overflow: hidden;
   @media all and (max-width:  $break-m) {
     @include tile(49%, 250px, 15px);
@@ -108,12 +117,12 @@
   padding-left: 15px;
 }
 .board__topicTitle {
-  width: 45%;
+  width: 50%;
   overflow: hidden;
   display: inline-block;
   text-overflow: ellipsis;
   @media all and (max-width:  $break-m) {
-    width: 55%;
+    width: 60%;
   }
 }
 .board__topicCreated,
@@ -133,7 +142,7 @@
   }
 }
 .board__topicCreated {
-  width: 20%;
+  width: 15%;
   @media all and (max-width:  $break-m) {
     display: none;
   }
@@ -141,7 +150,7 @@
 .board__topicUpdated {
   width: 30%;
   @media all and (max-width:  $break-m) {
-    width: 40%;
+    width: 35%;
   }
 }
 
