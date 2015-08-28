@@ -1,6 +1,7 @@
 class TopicsController < ApplicationController
   def index
     @topics = Topic.all
+    authorize @topics
   end
 
   def new
@@ -10,6 +11,7 @@ class TopicsController < ApplicationController
 
   def create
     @topic = current_user.topics.new(topic_params)
+    authorize @topic
     if @topic.save
       redirect_to topic_path(@topic)
     else
@@ -19,6 +21,7 @@ class TopicsController < ApplicationController
 
   def show
     @topic = get_topic
+    authorize @topic
   end
 
   def edit
@@ -27,6 +30,7 @@ class TopicsController < ApplicationController
 
   def update
     @topic = get_topic
+    authorize @topic
     if @topic.update_attributes(topic_params)
       redirect_to @topic
     else
@@ -36,6 +40,7 @@ class TopicsController < ApplicationController
 
   def destroy
     @topic = get_topic
+    authorize @topic
     @topic.destroy
     redirect_to topics_path
   end

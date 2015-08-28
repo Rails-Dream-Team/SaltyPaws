@@ -2,6 +2,7 @@ class OrganizationsController < ApplicationController
 
   def index
     @organizations = Organization.all
+    authorize @organizations
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @organizations }
@@ -14,6 +15,7 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new(organization_params)
+    authorize @organization
     respond_to do |format|
       if @organization.save
         format.html { redirect_to organization_path(@organization) }
@@ -27,6 +29,7 @@ class OrganizationsController < ApplicationController
 
   def show
     @organization = get_organization
+    authorize @organization
     respond_to do |format|
       format.html
       format.json {render json: @organization }
@@ -39,6 +42,7 @@ class OrganizationsController < ApplicationController
 
   def update
     @organization = get_organization
+    authorize @organization
     respond_to do |format|
       if @organization.update_attributes(organization_params)
         format.html { redirect_to organization_path(@organization) }
@@ -52,6 +56,7 @@ class OrganizationsController < ApplicationController
 
   def destroy
     @organization = get_organization
+    authorize @organization
     @organization.destroy
     respond_to do |format|
       format.html { redirect_to organizations_path }

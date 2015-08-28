@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'paranoia', "~> 2.0"
 gem 'pg'
 gem 'puma'
+gem 'pundit'
 gem 'rails_12factor', group: :production
 gem 'sass-rails', '~> 5.0'
 gem 'sidekiq'
