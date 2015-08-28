@@ -8,31 +8,48 @@ class UsersControllerTest < ActionController::TestCase
     @attributes = ['id', 'first_name', 'last_name', 'display_name', 'email']
   end
 
-  test "GET show with html for current user profile" do
-    get :show, id: @user1
-    assert_equal @user1, assigns(:user)
-    assert_response :success
-  end
-
-  test "GET show with json for current user profile" do
-    get :show, id: @user1, format: :json
-    response_item = JSON.parse(response.body)
-    @attributes.each do |a|
-      assert_equal @user1.send(a), response_item[a]
+  class UserShow < UsersControllerTest
+    test "GET show with html for current user profile" do
+      get :show, id: @user1
+      assert_equal @user1, assigns(:user)
+      assert_response :success
     end
-    assert_response :success
-  end
 
-  test "GET show with html for not-current user profile" do
-    get :show, id: @user1
-    assert_equal @user1, assigns(:user)
-    assert_response :success
-  end
+    test "GET show with json for current user profile" do
+      get :show, id: @user1, format: :json
+      response_item = JSON.parse(response.body)
+      @attributes.each do |a|
+        assert_equal @user1.send(a), response_item[a]
+      end
+      assert_response :success
+    end
 
-  test "GET show with json for not-current user profile" do
-    get :show, id: @user1, format: :json
-    assert_equal @user1, assigns(:user)
-    assert_response :success
+    test "GET show with html for not-current user profile" do
+      get :show, id: @user2
+      assert_equal @user2, assigns(:user)
+      assert_response :success
+    end
+
+    test "GET show with json for not-current user profile" do
+      get :show, id: @user2, format: :json
+      response_item = JSON.parse(response.body)
+      @attributes.each do |a|
+        assert_equal @user2.send(a), response_item[a]
+      end
+      assert_response :success
+    end
+
+    test "GET show with html redirects to login if no user logged in" do
+      sign_out @user1
+      get :show, id: @user1
+      assert_redirected_to new_user_session_path, 'html request should redirect'
+    end
+
+    test "GET show with json responds with unauthorized" do
+      sign_out @user1
+      get :show, id: @user1, format: :json
+      assert_response :unauthorized
+    end
   end
 
   test "GET edit with html" do
