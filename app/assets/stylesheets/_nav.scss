@@ -5,6 +5,26 @@
   background-color: $grey-light;
   font-size: 0;
 }
+.nav__signout {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  text-align: left;
+  height: 100%;
+  padding: 1%;
+  > li {
+    display: inline;
+    margin: 0 1%;
+  }
+  > li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2rem;
+    &:hover {
+      color: $blue-medium;
+    }
+  }
+}
 .nav__ulLeft {
   display: inline-block;
   width: 50%;
@@ -14,14 +34,12 @@
   padding: 1%;
   > li {
     display: inline;
+    margin: 0 1%;
   }
   > li a {
     text-decoration: none;
     color: inherit;
     font-size: 1.2rem;
-    @media all and ( max-width: $break-l ) {
-      font-size: 1em;
-    }
     &:hover {
       color: $blue-medium;
     }
@@ -35,6 +53,17 @@
   width: 50%;
   vertical-align: top;
   margin: 0;
+  > li {
+    display: inline;
+  }
+  > li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2rem;
+    &:hover {
+      color: $blue-medium;
+    }
+  }
 }
 .nav__profile {
   > img {
@@ -53,9 +82,12 @@
 .nav__profileHover li:hover > ul {
   margin: 0;
   display: block;
-  position: relative;
-  width: 100%;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 50%;
   font-size: 1rem;
+  list-style: none;
   color: black;
   text-align: center;
   background-color: $grey-light;

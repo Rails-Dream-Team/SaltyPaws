@@ -5,7 +5,6 @@
     <li><%= link_to 'COLONIES', colonies_path %></li>
     <li><%= link_to 'ORGANIZATIONS', organizations_path %></li>
     <li><%= link_to 'MESSAGE BOARD', boards_path %></li>
-
   </ul>
   <ul class="nav__ulRight">
     <div class="nav__profileHover">
@@ -16,7 +15,9 @@
         </ul>
       </li>
     </div>
-  <% else %>
+  </ul>
+<% else %>
+  <ul class="nav__signout">
     <li><%= link_to 'HOME', root_path %></li>
     <li><%= link_to 'SIGN IN', new_user_session_path %></li>
     <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
