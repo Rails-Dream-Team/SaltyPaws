@@ -1,13 +1,10 @@
-.userShow {
-  margin: 0;
-  padding: 5%;
+.user {
+  margin: 2%;
+  padding: 3%;
+  background-color: #FFF;
+  border-radius: 5px;
 }
-.user_wrapper {
-  width: 60%;
-  font-size: 0;
-  border-radius: 10px;
-  padding: 20px 40px;
-  margin: 0 auto;
+.user__wrapper{
   input {
     @include inputLine(1.3rem);
   }
@@ -15,22 +12,84 @@
     @include inputTextArea(1.3rem);
   }
 }
-.user_name {
-  @include font(1rem);
+.user__left {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
+  padding: 2%;
 }
-.user_picture > img {
-  @include size(100px, auto);
+.user__right {
+  display: inline-block;
+  height: 100%;
+  width: 80%;
+  padding: 2%;
 }
-.user_info {
+.user__name {
+  font-size: 2em;
+  padding: 0 2%;
+  > h3 {
+    margin: 0;
+    display: inline-block;
+  }
+}
+.user__picture  {
+  > img {
+    @include size( 100%, auto);
+    overflow: hidden;
+  }
+}
+.user__pictureFile {
+}
+.user__work {
+}
+.user__membersince {
+  padding: 0 2%;
+}
+.user__workHeader {
+  margin-top: 5%;
+  padding: 2%;
+  background: $blue-medium;
+  color: white;
+  border-top: 1px solid #CFCFCF;
+  border-right: 1px solid #CFCFCF;
+  border-left: 1px solid #CFCFCF;
+  > h4 {
+    margin: 0;
+  }
+}
+.user__workContent {
+  padding: 2%;
+  border: 1px solid #CFCFCF;
+  background-color: white;
+}
+.user__info {
   @include font(1.2rem);
+  width: 100%;
+}
+.user__infoHeader {
+  text-align: left;
+  padding: 1%;
+  color: white;
+  background: $blue-medium;
+  border-top: 1px solid #CFCFCF;
+  border-right: 1px solid #CFCFCF;
+  border-left: 1px solid #CFCFCF;
+  > h4 {
+    font-size: .8em;
+    margin: 0;
+  }
+}
+.user__infoContent {
+  padding: 1%;
+  border: 1px solid #dce0e0;
+  background-color: white;
 }
 .user_infoRow{
-  margin: 20px 0;
+  margin-bottom: 10px;
 }
 .user_infoLabel {
-  @include font(1.6rem);
-  font-weight: 700;
-  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
 }
 .user_infoSubmit button {
   @include button;

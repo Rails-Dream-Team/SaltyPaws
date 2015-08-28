@@ -1,23 +1,97 @@
 .nav {
   position: relative;
-  top: 0;
-  right: 0;
   width: 100%;
-  height: 40px;
-  background-color: $grey-medium;
-  border-bottom: 1px solid $grey-dark;
+  height: 50px;
+  background-color: $grey-light;
+  font-size: 0;
 }
-.nav_ul {
-  @include listInline;
-  position: absolute;
-  right: 0;
-  top: 10px;
-  margin: 0;
+.nav__signout {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  text-align: left;
+  height: 100%;
+  padding: 1%;
+  > li {
+    display: inline;
+    margin: 0 1%;
+  }
   > li a {
     text-decoration: none;
+    color: inherit;
     font-size: 1.2rem;
-    @media all and ( max-width: $break-l ) {
-      font-size: 1rem;
+    &:hover {
+      color: $blue-medium;
     }
   }
+}
+.nav__ulLeft {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  text-align: left;
+  height: 100%;
+  padding: 1%;
+  > li {
+    display: inline;
+    margin: 0 1%;
+  }
+  > li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2rem;
+    &:hover {
+      color: $blue-medium;
+    }
+  }
+}
+.nav__ulRight {
+  display: inline-block;
+  position: relative;
+  text-align: right;
+  height: 100%;
+  width: 50%;
+  vertical-align: top;
+  margin: 0;
+  > li {
+    display: inline;
+  }
+  > li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2rem;
+    &:hover {
+      color: $blue-medium;
+    }
+  }
+}
+.nav__profile {
+  > img {
+    height:35px;
+    width:35px;
+    border-radius: 50%;
+    position: relative;
+    right: 0px;
+    top: 5px;
+  }
+}
+.nav__profileHover li ul {
+  margin: 0;
+  display: none;
+}
+.nav__profileHover li:hover > ul {
+  margin: 0;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  width: 50%;
+  font-size: 1rem;
+  list-style: none;
+  color: black;
+  text-align: center;
+  background-color: $grey-light;
+  border: 1px $grey-dark solid;
+  border-top: 0;
+  z-index: 9999;
 }
