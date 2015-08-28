@@ -2,6 +2,7 @@
   margin: 2%;
   padding: 3%;
   background-color: #FFF;
+  border-radius: 5px;
 }
 .user__wrapper{
   input {
@@ -33,7 +34,7 @@
 }
 .user__picture  {
   > img {
-    @include size(100px, auto);
+    @include size( 100%, auto);
     overflow: hidden;
   }
 }
@@ -47,15 +48,19 @@
 .user__workHeader {
   margin-top: 5%;
   padding: 2%;
-  background: #edefed;
-  border: 1px solid #dce0e0;
+  background: $blue-medium;
+  color: white;
+  border-top: 1px solid #CFCFCF;
+  border-right: 1px solid #CFCFCF;
+  border-left: 1px solid #CFCFCF;
   > h4 {
     margin: 0;
   }
 }
 .user__workContent {
   padding: 2%;
-  border: 1px solid #dce0e0;
+  border: 1px solid #CFCFCF;
+  background-color: white;
 }
 .user__info {
   @include font(1.2rem);
@@ -64,9 +69,12 @@
 .user__infoHeader {
   text-align: left;
   padding: 1%;
-  background: #edefed;
-  border: 1px solid #dce0e0;
-  > h3 {
+  color: white;
+  background: $blue-medium;
+  border-top: 1px solid #CFCFCF;
+  border-right: 1px solid #CFCFCF;
+  border-left: 1px solid #CFCFCF;
+  > h4 {
     font-size: .8em;
     margin: 0;
   }
@@ -74,6 +82,7 @@
 .user__infoContent {
   padding: 1%;
   border: 1px solid #dce0e0;
+  background-color: white;
 }
 .user_infoRow{
   margin-bottom: 10px;

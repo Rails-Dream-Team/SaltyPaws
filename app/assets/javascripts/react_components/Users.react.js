@@ -27,34 +27,34 @@ var Users = React.createClass ({
             <div className="user__name">
               <h3> { this.state.user.first_name } { this.state.user.last_name } </h3>
             </div>
-            <div className="user__left">
-              <div className="user__picture">
-                <img src={ url } />
-                <input type="file" id="avatar" name="user[avatar]" />
+            <form onSubmit={ this._handleSave }>
+              <div className="user__left">
+                <div className="user__picture">
+                  <img src={ url } />
+                  <input type="file" id="avatar" name="user[avatar]" />
+                </div>
+                <div className="user__membersince">
+                  <h4>Member since: <Timestamp value={ this.state.user.created_at } format="MM/DD/YYYY" /></h4>
+                </div>
+                <div className="user__work">
+                  <div className="user__workHeader">
+                    <h4>Organizations:</h4>
+                  </div>
+                  <div className="user__workContent">
+                    <p>User organizations they belong to</p>
+                  </div>
+                  <div className="user__workHeader">
+                    <h4>Colonies:</h4>
+                  </div>
+                  <div className="user__workContent">
+                    <p>User colonies they belong to</p>
+                  </div>
+                </div>
               </div>
-              <div className="user__membersince">
-                <h4>Member since: <Timestamp value={ this.state.user.created_at } format="MM/DD/YYYY" /></h4>
-              </div>
-              <div className="user__work">
-                <div className="user__workHeader">
-                  <h4>Organizations:</h4>
-                </div>
-                <div className="user__workContent">
-                  <p>User organizations they belong to</p>
-                </div>
-                <div className="user__workHeader">
-                  <h4>Colonies:</h4>
-                </div>
-                <div className="user__workContent">
-                  <p>User colonies they belong to</p>
-                </div>
-              </div>
-            </div>
-            <div className="user__right">
-              <div className="user__info">
-                <div className="user__infoHeader"><h3>About me</h3></div>
-                <div className="user__infoContent">
-                  <form onSubmit={ this._handleSave }>
+              <div className="user__right">
+                <div className="user__info">
+                  <div className="user__infoHeader"><h4>About me:</h4></div>
+                  <div className="user__infoContent">
                     <div className="user_infoRow"><span className="user_infoLabel">Location: </span>
                       <input type="text" placeholder="city" name="user[city]" id="city" defaultValue={ this.state.user.city } />
                       <input type="text" placeholder="state" name="user[state]" id="state" defaultValue={ this.state.user.state } />
@@ -70,11 +70,11 @@ var Users = React.createClass ({
                     </div>
                     <div className="user_infoRow"><span className="user_infoLabel">About me: </span></div>
                     <textarea type="text" cols="60" rows="5" placeholder="Type here" name="user[about_me]" id="about_me" defaultValue={ this.state.user.about_me} />
-                  <div className="user_infoSubmit"><button>Save</button></div>
-                  </form>
+                    <div className="user_infoSubmit"><button>Save</button></div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
         </div>
       )
@@ -114,7 +114,7 @@ var Users = React.createClass ({
               </div>
               <div className="user__right">
                 <div className="user__info">
-                  <div className="user__infoHeader"><h3>About me</h3></div>
+                  <div className="user__infoHeader"><h4>About me:</h4></div>
                   <div className="user__infoContent">
                     <div className="user_infoRow"><span className="user_infoLabel">Location:  </span>{ this.state.user.city } { this.state.user.state } </div>
                     <div className="user_infoRow"><span className="user_infoLabel">Age:  </span> { this.state.user.age }</div>
