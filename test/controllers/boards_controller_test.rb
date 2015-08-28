@@ -15,6 +15,15 @@ class BoardsControllerTest < ActionController::TestCase
       assert_response :success
     end
 
+    test "get index renders json" do
+      get :index, format: :json
+      response_item = JSON.parse(response.body)[0]
+      ['id', 'title'].each do |a|
+        assert_equal @board.send(a), response_item[a]
+      end
+      assert_response :success
+    end
+
     test "get new renders html" do
       get :new
       assert_instance_of Board, assigns(:board)
@@ -31,6 +40,15 @@ class BoardsControllerTest < ActionController::TestCase
       get :show, id: @board.id
       assert_response :success
       assert_template(:show)
+    end
+
+    test "get show renders json" do
+      get :show, id: @board.id, format: :json
+      response_item = JSON.parse(response.body)
+      ['id', 'title'].each do |a|
+        assert_equal @board.send(a), response_item[a]
+      end
+      assert_response :success
     end
   end
 
