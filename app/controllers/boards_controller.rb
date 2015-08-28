@@ -33,6 +33,12 @@ class BoardsController < ApplicationController
     end
   end
 
+  def destroy
+    @board = get_board
+    @board.destroy
+    redirect_to boards_path
+  end
+
   private
 
   def board_params

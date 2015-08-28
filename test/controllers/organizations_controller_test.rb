@@ -85,17 +85,25 @@ class OrganizationsControllerTest < ActionController::TestCase
   end
 
   test "DELETE destroy with html" do
+    old_unscoped = Organization.unscoped.count
     assert_difference('Organization.count', -1) do
       delete :destroy, id: @organization
     end
+    @organization.reload
     assert_redirected_to organizations_path
+    assert_equal old_unscoped, Organization.unscoped.count
+    refute @organization.deleted_at.nil?
   end
 
   test "DELETE destroy with json" do
+    old_unscoped = Organization.unscoped.count
     assert_difference('Organization.count', -1) do
       delete :destroy, format: :json, id: @organization
     end
+    @organization.reload
     assert_response :success
+    assert_equal old_unscoped, Organization.unscoped.count
+    refute @organization.deleted_at.nil?
   end
 
 end

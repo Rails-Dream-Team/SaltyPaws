@@ -9,17 +9,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    if current_user
-      @topic = get_topic
-      @post = @topic.posts.new(post_params)
-      @post.user_id = current_user.id
-      if @post.save
-        redirect_to @topic
-      else
-        render :new
-      end
+    @topic = get_topic
+    @post = @topic.posts.new(post_params)
+    @post.user_id = current_user.id
+    if @post.save
+      redirect_to @topic
     else
-      redirect_to new_user_session_path
+      render :new
     end
   end
 
@@ -40,6 +36,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = get_topic_post
+    @post.destroy
+    redirect_to @topic
+  end
+
   private
 
   def post_params
@@ -51,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def get_topic_post
-    topic = Topic.find(params[:topic_id])
-    topic.posts.find(params[:id])
+    @topic = Topic.find(params[:topic_id])
+    @topic.posts.find(params[:id])
   end
 end
