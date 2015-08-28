@@ -30,7 +30,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "GET show with json for not-current user profile" do
-    get :show, id: @user1
+    get :show, id: @user1, format: :json
     assert_equal @user1, assigns(:user)
     assert_response :success
   end
