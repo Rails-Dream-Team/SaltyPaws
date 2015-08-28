@@ -95,8 +95,7 @@
   @include centerText(left);
   @include size($w, $h);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  background-color: rgba(234, 234, 234, 0.7);
-  border-radius: 10px;
+  background-color: $grey-light;
   padding: $pad;
 }
 

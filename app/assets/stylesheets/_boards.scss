@@ -1,23 +1,23 @@
 // classes used in all board views
 .board {
-  padding: 10px 10px 80px;
+  @include maxWidth;
+  padding-bottom: 80px;
 }
 .board__header {
-  width: 90%;
-  margin: 0 auto;
-  vertical-align: baseline;
+  position: relative;
+  // margin: 3px;
   > h1 {
     @include title(1.7rem);
     display: inline-block;
-    width: 65%;
+    margin-bottom: 0;
   }
 }
 .board__headerLinks {
   display: inline-block;
-  text-align: right;
-  width: 34%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   > a {
-    margin: 5px;
   }
 }
 .board__dividerLine {
@@ -26,28 +26,25 @@
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__index {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1%;
-  position: relative;
-  width: 90%;
+  width: 101%;
   @media all and (max-width:  $break-s) {
     bottom: 100px;
   }
 }
 .board__indexTile {
+  @include tile(33%, 250px, 15px);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
   display: inline-block;
-  border-top: 3px solid $green-medium;
-  @include size(31%, 250px);
-  padding: 15px;
-  margin: 1%;
+  text-align: justify;
+  border-top: 5px solid $green-medium;
   overflow: hidden;
-  // background: rgba(254, 254, 254, 0.5);
-  // &:hover {
-  //   -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  //    -moz-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  //         box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  // }
+  @media all and (max-width:  $break-m) {
+    @include tile(49%, 250px, 15px);
+  }
+  @media all and (max-width:  $break-s) {
+    @include tile(100%, 250px, 15px);
+  }
 }
 .board__indexTitle {
   font-size: 1.5rem;
@@ -82,7 +79,7 @@
 }
 
 
-// classes used in the boards show view
+// classes used in the show board view
 .board__topics {
   width: 95%;
   @include centerText(left);
@@ -95,8 +92,10 @@
 .board__topicTitle {
   width: 45%;
   overflow: hidden;
-  text-overflow: ellipsis;
   display: inline-block;
+  @media all and (max-width:  $break-m) {
+    width: 55%;
+  }
 }
 .board__topicCreated,
 .board__topicUpdated {
@@ -117,9 +116,15 @@
 }
 .board__topicCreated {
   width: 20%;
+  @media all and (max-width:  $break-m) {
+    display: none;
+  }
 }
 .board__topicUpdated {
   width: 30%;
+  @media all and (max-width:  $break-m) {
+    width: 40%;
+  }
 }
 
 
