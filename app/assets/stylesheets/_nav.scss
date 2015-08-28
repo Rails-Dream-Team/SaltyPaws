@@ -27,7 +27,7 @@
 }
 .nav__ulLeft {
   display: inline-block;
-  width: 50%;
+  width: 80%;
   position: relative;
   text-align: left;
   height: 100%;
@@ -40,6 +40,12 @@
     text-decoration: none;
     color: inherit;
     font-size: 1.2rem;
+    @media all and (max-width: $break-s) {
+      font-size: 1rem;
+    }
+    @media all and (max-width: $break-xs) {
+      font-size: 0.8rem;
+    }
     &:hover {
       color: $blue-medium;
     }
@@ -50,7 +56,7 @@
   position: relative;
   text-align: right;
   height: 100%;
-  width: 50%;
+  width: 20%;
   vertical-align: top;
   margin: 0;
   > li {
@@ -85,16 +91,20 @@
   position: absolute;
   right: 0;
   top: 45px;
-  width: 20%;
   font-size: 1.2rem;
   line-height: 1.6rem;
   text-align: right;
   list-style: none;
   color: $grey-dark;
-  padding: 5px 20px 0 0;
-  // text-align: center;
+  padding: 5px 20px 0 15px;
   background-color: $grey-light;
   border: 1px $grey-light solid;
   border-top: 0;
   z-index: 9999;
+  @media all and (max-width:  $break-s) {
+    font-size: 1rem;
+  }
+  @media all and (max-width: $break-xs) {
+    font-size: 0.8rem;
+  }
 }
