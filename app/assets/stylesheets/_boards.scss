@@ -4,6 +4,7 @@
 }
 .board__header {
   position: relative;
+  margin-bottom: 40px;
   > h1 {
     @include title(2rem);
     display: inline-block;
@@ -83,28 +84,44 @@
   @include centerText(left);
   margin-top: 10px;
 }
-.board__topic {
+.board__topic,
+.board__guidelines {
   height: 50px;
-  padding: 5px 0;
-  &:nth-child(odd) {
+  line-height: 50px;
+  padding-left: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.board__topic {
+  &:nth-child(2n+1) {
     background-color: $green-light;
   }
+}
+.board__guidelines {
+  background-color: $blue-medium;
+  a:hover {
+    color: $white;
+  }
+}
+.board__topicsColHeaders {
+  @include title;
+  padding-left: 15px;
 }
 .board__topicTitle {
   width: 45%;
   overflow: hidden;
   display: inline-block;
+  text-overflow: ellipsis;
   @media all and (max-width:  $break-m) {
     width: 55%;
   }
 }
 .board__topicCreated,
 .board__topicUpdated {
-  vertical-align: top;
+  display: inline-block;
   font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
 }
 .board__topicCreated a,
 .board__topicUpdated a {
@@ -145,8 +162,4 @@
 }
 .board__formSubmit {
 
-}
-
-.board__guidelines {
-  background-color: $blue-medium;
 }
