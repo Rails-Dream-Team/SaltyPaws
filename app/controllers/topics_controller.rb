@@ -9,15 +9,11 @@ class TopicsController < ApplicationController
   end
 
   def create
-    if current_user
-      @topic = current_user.topics.new(topic_params)
-      if @topic.save
-        redirect_to topic_path(@topic)
-      else
-        render :new
-      end
+    @topic = current_user.topics.new(topic_params)
+    if @topic.save
+      redirect_to topic_path(@topic)
     else
-      redirect_to new_user_session_path
+      render :new
     end
   end
 
@@ -36,6 +32,12 @@ class TopicsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @topic = get_topic
+    @topic.destroy
+    redirect_to topics_path
   end
 
   private
