@@ -48,10 +48,12 @@
   background-size: cover;
 }
 @mixin overlay-light($opacity) {
-  background-color: rgba(255, 255, 255, $opacity);
+  background: rgba(255, 255, 255, $opacity);
+  height: 100%;
 }
 @mixin overlay-dark($opacity) {
-  background-color: rgba(0, 0, 0, $opacity);
+  background: rgba(0, 0, 0, $opacity);
+  height: 100%;
 }
 
 //**********************
