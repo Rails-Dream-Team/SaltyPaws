@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Dashboard" do
               end
             end
           end
-          h3 "View All Colonies"
+          h4 link_to("View All Colonies", colonies_path)
         end
       end
 
