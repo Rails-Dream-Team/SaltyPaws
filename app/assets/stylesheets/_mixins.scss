@@ -139,6 +139,13 @@
 @mixin formLinks {
   font-size: 0.8rem;
   padding: 15px auto;
+  display: inline-block;
+  a {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 @mixin inputPlain($fsize: 1rem, $w: auto) {
   @include font($fsize);
