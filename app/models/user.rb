@@ -22,6 +22,10 @@ class User < ActiveRecord::Base
     role == "basic"
   end
 
+  scope :admin, -> { where(role: "admin") }
+  scope :volunteer, -> { where(role: "volunteer") }
+  scope :basic, -> { where(role: "basic") }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable,
