@@ -1,3 +1,6 @@
 one:
   user_id: 1
   colony_id: 1
+  owner: true
+  volunteer: false
+  care_taker: true

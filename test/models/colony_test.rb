@@ -3,6 +3,7 @@ require 'test_helper'
 class ColonyTest < ActiveSupport::TestCase
   def setup
     @colony = colonies(:one)
+    @user = users(:one)
   end
 
   test 'fixtures are valid' do
@@ -39,6 +40,19 @@ class ColonyTest < ActiveSupport::TestCase
     refute @colony.valid?
   end
 
-  
+  test 'has many cats' do
+    assert_respond_to @colony, :cats
+    assert_kind_of Cat, @colony.cats.new
+  end
+
+  test 'has many users' do
+    assert_respond_to @colony, :users
+    assert_kind_of User, @colony.users.new
+  end
+
+  test 'can access an owner' do
+    assert_respond_to @colony, :owner
+    assert_equal @user, @colony.owner
+  end
 
 end
