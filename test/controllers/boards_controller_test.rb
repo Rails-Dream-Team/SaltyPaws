@@ -3,6 +3,7 @@ require 'test_helper'
 class BoardsControllerTest < ActionController::TestCase
   def setup
     @board = boards(:one)
+    @lostfound = boards(:three)
     @user = users(:one)
     sign_in @user
   end
@@ -10,7 +11,7 @@ class BoardsControllerTest < ActionController::TestCase
   class BoardsGetWhenLoggedIn < BoardsControllerTest
     test "get index renders html" do
       get :index
-      assert_equal [@board], assigns(:boards)
+      assert_equal [@board, @lostfound], assigns(:boards)
       assert_response :success
     end
 
