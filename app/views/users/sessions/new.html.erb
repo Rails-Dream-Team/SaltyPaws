@@ -1,7 +1,22 @@
 <div class="login__container">
   <div class="login__form">
-    <h3 class="login__title">Log In</h3>
+    <div class="login__header">
+      <h3 class="login__title">Log In</h3>
+      <div class="login__sharedLinks">
+        <%= render "users/shared/links" %>
+      </div>
+    </div>
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <% if alert %>
+    <div class="login__alerts">
+      <%= alert %>
+    </div>
+    <% end %>
+    <% if notice %>
+    <div class="login__notices">
+      <%= notice %>
+    </div>
+    <% end %>
     <div class="login__emailField">
       <%= f.label :email %>
       <%= f.email_field :email, autofocus: true, placeholder: 'you@domain.com' %>
@@ -24,8 +39,5 @@
     </div>
     <% end %>
 
-    <div class="login__sharedLinks">
-      <%= render "users/shared/links" %>
-    </div>
   </div>
 </div>
