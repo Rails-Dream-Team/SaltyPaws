@@ -1,4 +1,6 @@
 ActiveAdmin.register Board do
+  permit_params Board.column_names
+
   # index do
   #   tabs do
   #     Board.all.each do |board|
