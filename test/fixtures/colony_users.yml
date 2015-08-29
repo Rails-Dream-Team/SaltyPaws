@@ -4,3 +4,10 @@ one:
   owner: true
   volunteer: false
   care_taker: true
+
+two:
+  user_id: 3
+  colony_id: 1
+  owner: false
+  volunteer: true
+  care_taker: false
