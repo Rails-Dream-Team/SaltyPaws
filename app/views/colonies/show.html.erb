@@ -13,8 +13,8 @@
     <div>Population: <%= @colony.pop %></div>
     <div>Veterinarian: <%= @colony.vet %></div>
     <div>
-      <%= link_to '[edit]', edit_colony_path(@colony) %>
-      <%= link_to '[remove]', @colony, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= link_to '[edit]', edit_colony_path(@colony) if policy(@colony).edit? %>
+      <%= link_to '[remove]', @colony, method: :delete, data: {confirm: 'Are you sure?'} if policy(@colony).destroy? %>
     </div>
   </div>
 </div>
