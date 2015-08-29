@@ -64,11 +64,14 @@ class PostsControllerTest < ActionController::TestCase
 
   class PostsCreate < PostsControllerTest
     test 'creates with valid attributes and redirects' do
+      old_replies = @topic.replies
       assert_difference('Post.count', 1) do
         post :create, topic_id: @topic,
                       post: { content: 'oh hai, look at my cool test post' }
       end
+      @topic.reload
       assert_redirected_to topic_path(assigns(:topic))
+      assert_equal(old_replies + 1, @topic.replies)
     end
 
     test 'renders new with invalid attribute submission (no content)' do

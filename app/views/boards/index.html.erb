@@ -14,7 +14,7 @@
           </div>
           Recent Topics
           <div class="board__indexTopicsRecent">
-            <% board.topics.order(:updated_at).last(3).each do |topic| %>
+            <% board.topics.order('updated_at DESC').last(3).each do |topic| %>
               <div class="board__indexTopic">
                 <div class="board__indexTopicTitle">
                   <%= link_to topic.title, topic_path(topic) %>
