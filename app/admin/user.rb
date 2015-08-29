@@ -1,5 +1,24 @@
 ActiveAdmin.register User do
-  # permit_params User.column_names
+  permit_params [
+    :first_name,
+    :last_name,
+    :display_name,
+    :email,
+    :street_address,
+    :city,
+    :state,
+    :zip,
+    :phone,
+    :age,
+    :twitter,
+    :facebook,
+    :instagram,
+    :about_me,
+    :pets,
+    :volunteer_work,
+    :avatar,
+    :admin
+  ]
 
   scope :admin
   scope :volunteer
