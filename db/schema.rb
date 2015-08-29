@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(version: 20150829200607) do
   add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
+
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -149,6 +150,7 @@ ActiveRecord::Schema.define(version: 20150829200607) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+
     t.string   "first_name",                             null: false
     t.string   "last_name",                              null: false
     t.string   "display_name",                           null: false
@@ -168,8 +170,8 @@ ActiveRecord::Schema.define(version: 20150829200607) do
     t.text     "volunteer_work"
     t.string   "avatar"
     t.datetime "deleted_at"
-    t.string   "role"
     t.boolean  "admin",                  default: false
+    t.string   "role",                   default: "basic"
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
