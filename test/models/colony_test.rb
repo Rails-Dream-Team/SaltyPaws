@@ -51,8 +51,17 @@ class ColonyTest < ActiveSupport::TestCase
   end
 
   test 'can access an owner' do
-    assert_respond_to @colony, :owner
-    assert_equal @user, @colony.owner
+    assert_respond_to @colony, :owners
+    assert_equal [@user], @colony.owners
+  end
+
+  test 'can access multiple owners' do
+    assert_respond_to @colony, :owners
+    user2 = users(:two)
+    @colony.colony_users.create!(user: user2, owner: true)
+    [@user, user2].each do |u|
+      assert_includes @colony.owners, u
+    end
   end
 
 end
