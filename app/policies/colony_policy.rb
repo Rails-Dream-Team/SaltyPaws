@@ -15,7 +15,7 @@ class ColonyPolicy < ApplicationPolicy
   def update?
     return true if user.present? && user.admin?
 
-    user.present? && user == colony.user # not able to id user, join issue?
+    # user.present? && user == colony.user # not able to id user, join issue?
   end
 
   def destroy?
@@ -25,7 +25,7 @@ class ColonyPolicy < ApplicationPolicy
   private
 
   def colony
-    record 
+    record
   end
 
 end

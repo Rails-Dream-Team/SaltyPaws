@@ -17,8 +17,7 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def destroy?
-    true
-    # user.present? && user.admin?
+    user.present? && user.admin?
   end
 
 end
