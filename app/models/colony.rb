@@ -13,4 +13,10 @@ class Colony < ActiveRecord::Base
       o.user
     end
   end
+
+  def volunteers
+    self.colony_users.where(volunteer: true).map do |v|
+      v.user
+    end
+  end
 end
