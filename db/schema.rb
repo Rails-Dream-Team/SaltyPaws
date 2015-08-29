@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150828145222) do
+ActiveRecord::Schema.define(version: 20150829125610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,24 +30,6 @@ ActiveRecord::Schema.define(version: 20150828145222) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
-
-  create_table "admin_users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-  end
-
-  add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
-  add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "boards", force: :cascade do |t|
     t.string   "title",      null: false
@@ -149,33 +131,35 @@ ActiveRecord::Schema.define(version: 20150828145222) do
     t.datetime "updated_at", null: false
     t.integer  "board_id",   null: false
     t.datetime "deleted_at"
+    t.integer  "replies"
   end
 
   add_index "topics", ["deleted_at"], name: "index_topics_on_deleted_at", using: :btree
+  add_index "topics", ["replies"], name: "index_topics_on_replies", using: :btree
   add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.string   "first_name",                          null: false
-    t.string   "last_name",                           null: false
-    t.string   "display_name",                        null: false
+    t.string   "first_name",                             null: false
+    t.string   "last_name",                              null: false
+    t.string   "display_name",                           null: false
     t.string   "street_address"
     t.string   "city"
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
     t.integer  "age"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.string   "twitter"
     t.string   "facebook"
     t.string   "instagram"
@@ -185,6 +169,7 @@ ActiveRecord::Schema.define(version: 20150828145222) do
     t.string   "avatar"
     t.datetime "deleted_at"
     t.string   "role"
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["deleted_at"], name: "index_users_on_deleted_at", using: :btree
