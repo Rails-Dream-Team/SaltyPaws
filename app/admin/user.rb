@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     :pets,
     :volunteer_work,
     :avatar,
+    :role,
     :admin
   ]
 
