@@ -10,6 +10,9 @@
     <div class="nav__profileHover">
       <li class="nav__profile"><img src="<%= current_user.avatar %>" />
         <ul>
+          <% if current_user.admin %>
+            <li><%= link_to 'ADMIN DASH', admin_root_path %></li>
+          <% end %>
           <li><%= link_to 'PROFILE', current_user %></li>
           <li><%= link_to 'SIGN OUT', destroy_user_session_path %></li>
         </ul>
