@@ -1,5 +1,15 @@
 ActiveAdmin.register Colony do
-  # permit_params Colony.column_names
+  permit_params [
+    :name,
+    :photo,
+    :street_address,
+    :city,
+    :state,
+    :zip_code,
+    :enviroment,
+    :pop,
+    :vet
+  ]
 
 # See permitted parameters documentation:
 # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

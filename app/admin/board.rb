@@ -1,5 +1,5 @@
 ActiveAdmin.register Board do
-  # permit_params Board.column_names
+  permit_params :title
 
   # index do
   #   tabs do
