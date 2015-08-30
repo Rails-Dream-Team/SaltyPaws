@@ -1,11 +1,5 @@
-var React                = require('react');
-var ReactGoogleMaps      = require('react-googlemaps');
-var ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
-var GoogleMap            = require('../map_components/Map.react.js');
-var ColonyForm           = require('./ColonyForm.react.js');
-var GoogleMapsAPI        = window.google.maps;
-var Map                  = ReactGoogleMaps.Map;
-var geocoder             = new google.maps.Geocoder();
+var React = require('react');
+var ColonyForm  = require('./ColonyForm.react.js');
 
 var Colony = React.createClass({
   render: function() {
