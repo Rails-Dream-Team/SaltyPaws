@@ -38,13 +38,13 @@ var Users = React.createClass ({
                 </div>
                 <div className="user__work">
                   <div className="user__workHeader">
-                    <h4>Organizations:</h4>
+                    <h4>Organizations</h4>
                   </div>
                   <div className="user__workContent">
                     <p>User organizations they belong to</p>
                   </div>
                   <div className="user__workHeader">
-                    <h4>Colonies:</h4>
+                    <h4>Colonies</h4>
                   </div>
                   <div className="user__workContent">
                     <p>User colonies they belong to</p>
@@ -53,7 +53,7 @@ var Users = React.createClass ({
               </div>
               <div className="user__right">
                 <div className="user__info">
-                  <div className="user__infoHeader"><h4>About me:</h4></div>
+                  <div className="user__infoHeader"><h4>About me</h4></div>
                   <div className="user__infoContent">
                     <div className="user_infoRow"><span className="user_infoLabel">Location: </span>
                       <input type="text" placeholder="city" name="user[city]" id="city" defaultValue={ this.state.user.city } />
@@ -99,13 +99,13 @@ var Users = React.createClass ({
                 </div>
                 <div className="user__work">
                   <div className="user__workHeader">
-                    <h4>Organizations:</h4>
+                    <h4>Organizations</h4>
                   </div>
                   <div className="user__workContent">
                     <p>User organizations they belong to</p>
                   </div>
                   <div className="user__workHeader">
-                    <h4>Colonies:</h4>
+                    <h4>Colonies</h4>
                   </div>
                   <div className="user__workContent">
                     <p>User colonies they belong to</p>
@@ -114,7 +114,7 @@ var Users = React.createClass ({
               </div>
               <div className="user__right">
                 <div className="user__info">
-                  <div className="user__infoHeader"><h4>About me:</h4></div>
+                  <div className="user__infoHeader"><h4>About me</h4></div>
                   <div className="user__infoContent">
                     <div className="user_infoRow"><span className="user_infoLabel">Location:  </span>{ this.state.user.city } { this.state.user.state } </div>
                     <div className="user_infoRow"><span className="user_infoLabel">Age:  </span> { this.state.user.age }</div>

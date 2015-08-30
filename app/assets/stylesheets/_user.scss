@@ -26,7 +26,7 @@
 }
 .user__name {
   font-size: 2em;
-  padding: 0 2%;
+  padding: 0 4%;
   > h3 {
     margin: 0;
     display: inline-block;
@@ -44,6 +44,7 @@
 .user__work {
 }
 .user__membersince {
+  text-align: center;
   padding: 0 2%;
 }
 .user__workHeader {
@@ -51,16 +52,15 @@
   padding: 2%;
   background: $blue-medium;
   color: white;
-  border-top: 1px solid #CFCFCF;
-  border-right: 1px solid #CFCFCF;
-  border-left: 1px solid #CFCFCF;
   > h4 {
     margin: 0;
   }
 }
 .user__workContent {
-  padding: 2%;
-  border: 1px solid #CFCFCF;
+  padding: 4%;
+  border-bottom: 1px solid #CFCFCF;
+  border-right: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
   background-color: white;
 }
 .user__info {
@@ -72,17 +72,16 @@
   padding: 1%;
   color: white;
   background: $blue-medium;
-  border-top: 1px solid #CFCFCF;
-  border-right: 1px solid #CFCFCF;
-  border-left: 1px solid #CFCFCF;
   > h4 {
     font-size: .8em;
     margin: 0;
   }
 }
 .user__infoContent {
-  padding: 1%;
-  border: 1px solid #dce0e0;
+  padding: 3%;
+  border-bottom: 1px solid #CFCFCF;
+  border-right: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
   background-color: white;
 }
 .user_infoRow{
