@@ -2,10 +2,10 @@ require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
   def setup
+    @board = boards(:one)
     @topic = topics(:one)
     @user = users(:admin)
     sign_in @user
-    @board = boards(:one)
   end
 
   class TopicsWhenLoggedIn < TopicsControllerTest
@@ -19,26 +19,27 @@ class TopicsControllerTest < ActionController::TestCase
       get :new
       assert_instance_of Topic, assigns(:topic)
       assert_response :success
+      assert_template :new
     end
 
     test "get edit renders html" do
       get :edit, id: @topic.id
       assert_response :success
-      assert_template(:edit)
+      assert_template :edit
     end
 
     test "get show renders html" do
       get :show, id: @topic.id
       assert_response :success
-      assert_template(:show)
+      assert_template :show
     end
   end
 
   class TopicsWhenLoggedOut < TopicsControllerTest
     def setup
+      @board = boards(:one)
       @topic = topics(:one)
       @user = users(:admin)
-      @board = boards(:one)
     end
 
     test "get index redirects" do
@@ -140,7 +141,7 @@ class TopicsControllerTest < ActionController::TestCase
       refute @topic.deleted_at.nil?
     end
 
-    test 'redirects to login when no user logged in' do
+    test 'redirects to login when logged out' do
       sign_out @user
       old_deleted_at = @topic.deleted_at
       assert_no_difference('Topic.count') do
