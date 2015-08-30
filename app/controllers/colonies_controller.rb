@@ -17,7 +17,7 @@ class ColoniesController < ApplicationController
     authorize @colony
     respond_to do |format|
       if @colony.save
-        format.html { redirect_to colony_path(@colony) }
+        format.html { redirect_to @colony }
         format.json { render json: {}, status: 201 }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class ColoniesController < ApplicationController
     authorize @colony
     respond_to do |format|
       if @colony.update_attributes(colony_params)
-        format.html { redirect_to colony_path(@colony) }
+        format.html { redirect_to @colony }
         format.json { render json: @colony, status: 202 }
       else
         format.html { render :edit }
