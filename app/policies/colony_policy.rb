@@ -5,7 +5,7 @@ class ColonyPolicy < ApplicationPolicy
   end
 
   def create?
-    user.present? && user.admin?
+    true
   end
 
   def show?

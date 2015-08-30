@@ -5,7 +5,7 @@ var ColonyForm = React.createClass({
   render: function() {
     return (
       <div className="vol__formContainer">
-        <form onSubmit={this._handleSubmit}>
+        <form onSubmit={ this._handleSubmit }>
           <div className="volForm__label">
             <label htmlFor="name" className="volForm__label">Name: </label>
             <input ref="name" id="name" placeholder="" />
@@ -49,13 +49,20 @@ var ColonyForm = React.createClass({
       </div>
     );
   },
+  
   _createColony: function(data) {
     request
       .post('/colonies')
       .send(data)
       .set('Accept', 'application/json')
       .set('X-CSRF-Token', document.querySelector('meta[name="csrf-token"]').content)
-      .end(this._handleChange)
+      .end(function(err, res) {
+        if (err) {
+          window.alert("Problem Creating Colony");
+          return;
+        } 
+        window.alert("Colony Successfully Created");
+      });
   },
 
   _handleSubmit: function(e) {
@@ -74,6 +81,7 @@ var ColonyForm = React.createClass({
     };
     this._createColony(data);
   }
+
 
 });
 

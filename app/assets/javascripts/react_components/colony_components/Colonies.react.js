@@ -74,8 +74,9 @@ var Colonies = React.createClass({
     if (err) {
       window.alert('No Data Saved');
       return;
+    } else {
+      this._retrieveColonies();
     }
-    this._retrieveColonies();
   }
 
 });
