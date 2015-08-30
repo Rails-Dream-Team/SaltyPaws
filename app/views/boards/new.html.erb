@@ -1,9 +1,2 @@
-<div class="board">
-  <div class="board__header">
-    <h1>Create a New Board</h1>
-    <%= link_to 'Back to the Chatterbox', boards_path %>
-  </div>
-  <div class="board__new">
-    <%= render 'form' %>
-  </div>
-</div>
+<% title = 'Create a New Board' %>
+<%= render 'new_edit', title: title %>
