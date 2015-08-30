@@ -2,7 +2,9 @@
 <% if current_user %>
   <ul class="nav__ulLeft">
     <li><%= link_to 'HOME', root_path %></li>
+    <% if policy(:colony).index? %>
     <li><%= link_to 'COLONIES', colonies_path %></li>
+    <% end %>
     <li><%= link_to 'ORGANIZATIONS', organizations_path%></li>
     <li><%= link_to 'MESSAGE BOARD', boards_path %></li>
   </ul>
