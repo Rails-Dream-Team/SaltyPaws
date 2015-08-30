@@ -2,9 +2,9 @@ require 'test_helper'
 
 class UsersControllerTest < ActionController::TestCase
   def setup
-    @user1 = users(:one)
+    @user1 = users(:admin)
     sign_in @user1
-    @user2 = users(:two)
+    @user2 = users(:volunteer)
     @attributes = ['id', 'first_name', 'last_name', 'display_name', 'email']
   end
 

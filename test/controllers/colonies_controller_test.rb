@@ -3,24 +3,42 @@ require 'test_helper'
 class ColoniesControllerTest < ActionController::TestCase
   def setup
     @colony = colonies(:one)
-    @user = users(:one)
-    sign_in @user
+    @user1 = users(:admin)
+    sign_in @user1
+    @user2 = users(:volunteer)
+    @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
+                    'zip_code', 'enviroment', 'pop', 'vet', 'lat', 'long']
   end
 
-  test "GET index html" do
-    get :index
-    assert_equal [@colony], assigns[:colonies]
-    assert_response :success
-  end
-
-  test "GET index json" do
-    get :index, format: :json
-    response_item = JSON.parse(response.body)[0]
-    ['id', 'name', 'street_address', 'city', 'state'].each do |attr|
-      assert_equal @colony.send(attr), response_item[attr]
+  class ColoniesIndex < ColoniesControllerTest
+    test "GET index html when logged in" do
+      get :index
+      assert_equal [@colony], assigns[:colonies]
+      assert_response :success
     end
-    assert_response :success
+
+    test "GET index json when logged in" do
+      get :index, format: :json
+      response_item = JSON.parse(response.body)[0]
+      ['id', 'name', 'street_address', 'city', 'state'].each do |attr|
+        assert_equal @colony.send(attr), response_item[attr]
+      end
+      assert_response :success
+    end
+
+    test "GET index html redirects to login when not logged in" do
+      sign_out @user1
+      get :index
+      assert_redirected_to new_user_session_path
+    end
+
+    test "GET index json respons with unauthorized when not logged in" do
+      sign_out @user1
+      get :index, format: :json
+      assert_response :unauthorized
+    end
   end
+
 
   test "GET new" do
     get :new

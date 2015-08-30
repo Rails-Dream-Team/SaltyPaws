@@ -4,7 +4,7 @@ class BoardsControllerTest < ActionController::TestCase
   def setup
     @board = boards(:one)
     @lostfound = boards(:three)
-    @user = users(:one)
+    @user = users(:admin)
     sign_in @user
   end
 
@@ -55,7 +55,7 @@ class BoardsControllerTest < ActionController::TestCase
   class BoardsGetWhenLoggedOut < BoardsControllerTest
     def setup
       @board = boards(:one)
-      @user = users(:one)
+      @user = users(:admin)
     end
 
     test "get index redirects" do

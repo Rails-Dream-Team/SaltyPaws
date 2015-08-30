@@ -3,7 +3,7 @@ require 'test_helper'
 class ColonyTest < ActiveSupport::TestCase
   def setup
     @colony = colonies(:one)
-    @user = users(:one)
+    @user = users(:admin)
   end
 
   test 'fixtures are valid' do
@@ -79,7 +79,7 @@ class ColonyTest < ActiveSupport::TestCase
 
   test 'can access multiple owners' do
     assert_respond_to @colony, :owners
-    user2 = users(:two)
+    user2 = users(:volunteer)
     @colony.colony_users.create!(user: user2, owner: true)
     [@user, user2].each do |u|
       assert_includes @colony.owners, u
@@ -88,7 +88,7 @@ class ColonyTest < ActiveSupport::TestCase
 
   test 'can access volunteers' do
     assert_respond_to @colony, :volunteers
-    user3 = users(:three)
+    user3 = users(:basic)
     assert_includes @colony.volunteers, user3
   end
 end

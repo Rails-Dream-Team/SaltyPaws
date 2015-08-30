@@ -16,7 +16,7 @@ class TopicTest < ActiveSupport::TestCase
 
   test 'belongs to user' do
     assert_respond_to @topic, :user
-    assert_equal @topic.user, users(:one)
+    assert_equal @topic.user, users(:admin)
   end
 
   test 'belongs to board' do
