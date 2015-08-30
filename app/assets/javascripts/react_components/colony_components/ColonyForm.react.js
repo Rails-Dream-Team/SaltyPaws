@@ -8,35 +8,39 @@ var ColonyForm = React.createClass({
         <form onSubmit={this._handleSubmit}>
           <div className="volForm__label">
             <label htmlFor="name" className="volForm__label">Name: </label>
-            <input ref="name" id="name" placeholder="Name The Colony"/>
+            <input ref="name" id="name" placeholder="" />
+          </div>
+          <div className="volForm__label">
+            <label htmlFor="photo" className="volForm__label">Photo: </label>
+            <input ref="photo" id="photo" placeholder=" photo url" />
           </div>
           <div className="volForm__label">
             <label htmlFor="street_address" className="volForm__label"> Street Address: </label>
-            <input ref="streetAddress" id="street_address" placeholder="Street Address"/>
+            <input ref="streetAddress" id="street_address" placeholder="" />
           </div>
           <div className="volForm__label">
             <label htmlFor="city" className="volForm__label"> City: </label>
-            <input ref="city" id="city" placeholder="City"/>
+            <input ref="city" id="city" placeholder="" />
           </div>
           <div className="volForm__label">
             <label htmlFor="state" className="volForm__label"> State: </label>
-            <input ref="state" id="state" placeholder="State"/>
+            <input ref="state" id="state" placeholder="" />
           </div>
           <div className="volForm__label">
             <label htmlFor="zip_code" className="volForm__label"> Zip Code: </label>
-            <input ref="zipCode" id="zip_code" placeholder="Zip Code"/>
+            <input ref="zipCode" id="zip_code" placeholder=" " />
           </div>
           <div className="volForm__label">
             <label htmlFor="environment" className="volForm__label"> Environment: </label>
-            <input ref="environment" id="environment" placeholder="Type Of Environment"/>
+            <input ref="environment" id="environment" placeholder=" wooded, industrial, residential, etc."/>
           </div>
           <div className="volForm__label">
             <label htmlFor="pop" className="volForm__label"> Population: </label>
-            <input ref="pop" id="pop" placeholder="Animal Population"/>
+            <input ref="pop" id="pop" placeholder=" aprox. number of colony members"/>
           </div>
           <div className="volForm__label">
             <label htmlFor="vet" className="volForm__label"> Vet: </label>
-            <input ref="vet" id="vet" placeholder="Veterinarian"/>
+            <input ref="vet" id="vet" placeholder=" if applicable"/>
           </div>
           <div className="volForm__submit">
             <input type="submit" value="Submit"/>

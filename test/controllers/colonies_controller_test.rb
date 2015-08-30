@@ -29,6 +29,7 @@ class ColoniesControllerTest < ActionController::TestCase
   end
 
   test 'creates with valid attributes and redirects html' do
+    binding.pry
     assert_difference('Colony.count', 1) do
       post :create, colony: { name: "Test1", street_address: "123 Address", city: "testcity", state: "teststate" }
     end
