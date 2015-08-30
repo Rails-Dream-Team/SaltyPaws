@@ -1,53 +1,58 @@
 // classes used in all board views
 .board {
-  padding: 10px 10px 80px;
+  @include maxWidth;
 }
 .board__header {
-  width: 90%;
-  margin: 0 auto;
-  vertical-align: baseline;
+  position: relative;
+  margin-bottom: 40px;
   > h1 {
-    @include title(1.7rem);
+    @include title(2rem);
     display: inline-block;
-    width: 65%;
+    margin-bottom: 0;
   }
 }
 .board__headerLinks {
   display: inline-block;
-  text-align: right;
-  width: 34%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   > a {
-    margin: 5px;
   }
-}
-.board__dividerLine {
-  @include gradientLine;
 }
 
 // classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__index {
-  margin-left: auto;
-  margin-right: auto;
-  padding: 1%;
-  position: relative;
-  width: 90%;
+  font-size: 0;
+  // display: inline-block;
+  width: 101%;
   @media all and (max-width:  $break-s) {
     bottom: 100px;
   }
 }
-.board__indexTile {
+.board__tileContainer {
+  @include size(33.33333333%, 250px);
   display: inline-block;
-  border-top: 3px solid $green-medium;
-  @include size(31%, 250px);
-  padding: 15px;
-  margin: 1%;
+  &:first-child {
+    margin-left: -15px;
+    margin-right: 15px;
+  }
+  &:last-child {
+    margin-left: 15px;
+    margin-right: -15px;
+  }
+}
+.board__indexTile {
+  @include tile(100%, 250px, 15px);
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: 1rem;
   overflow: hidden;
-  // background: rgba(254, 254, 254, 0.5);
-  // &:hover {
-  //   -webkit-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  //    -moz-box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  //         box-shadow: 0 1px 4px rgba(255, 255, 255, 0.7), 0 0 40px rgba(255, 255, 255, 1) inset;
-  // }
+  @media all and (max-width:  $break-m) {
+    @include tile(49%, 250px, 15px);
+  }
+  @media all and (max-width:  $break-s) {
+    @include tile(100%, 250px, 15px);
+  }
 }
 .board__indexTitle {
   font-size: 1.5rem;
@@ -82,29 +87,50 @@
 }
 
 
-// classes used in the boards show view
+// classes used in the show board view
 .board__topics {
   width: 95%;
   @include centerText(left);
   margin-top: 10px;
 }
-.board__topic {
+.board__topic,
+.board__guidelines {
   height: 50px;
-  padding: 5px 0;
+  line-height: 50px;
+  padding-left: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.board__topic {
+  &:nth-child(2n+1) {
+    background-color: $green-light;
+  }
+}
+.board__guidelines {
+  background-color: $blue-medium;
+  a:hover {
+    color: $white;
+  }
+}
+.board__topicsColHeaders {
+  @include title;
+  padding-left: 15px;
 }
 .board__topicTitle {
-  width: 45%;
+  width: 50%;
   overflow: hidden;
-  text-overflow: ellipsis;
   display: inline-block;
+  text-overflow: ellipsis;
+  @media all and (max-width:  $break-m) {
+    width: 60%;
+  }
 }
 .board__topicCreated,
 .board__topicUpdated {
-  vertical-align: top;
+  display: inline-block;
   font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: inline-block;
 }
 .board__topicCreated a,
 .board__topicUpdated a {
@@ -116,10 +142,16 @@
   }
 }
 .board__topicCreated {
-  width: 20%;
+  width: 15%;
+  @media all and (max-width:  $break-m) {
+    display: none;
+  }
 }
 .board__topicUpdated {
   width: 30%;
+  @media all and (max-width:  $break-m) {
+    width: 35%;
+  }
 }
 
 
@@ -129,7 +161,7 @@
 
 // classes used in the boards form partial (includes 'board', 'board__header', and 'board__topicsList' from above)
 .board__formErrors {
-  > ul {}
+  @include formErrors;
 }
 .board__form {
 

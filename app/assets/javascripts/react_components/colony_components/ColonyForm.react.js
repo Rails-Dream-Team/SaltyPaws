@@ -1,5 +1,5 @@
 var React = require('react');
-var request = require('superagent'); 
+var request = require('superagent');
 
 var ColonyForm = React.createClass({
   render: function() {
@@ -56,7 +56,7 @@ var ColonyForm = React.createClass({
       .set('Accept', 'application/json')
       .set('X-CSRF-Token', document.querySelector('meta[name="csrf-token"]').content)
       .end(this._handleChange)
-  }, 
+  },
 
   _handleSubmit: function(e) {
     e.preventDefault();
@@ -78,14 +78,3 @@ var ColonyForm = React.createClass({
 });
 
 module.exports = ColonyForm;
-
-
-
-
-
-
-
-
-
-
-

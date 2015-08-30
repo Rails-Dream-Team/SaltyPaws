@@ -10,6 +10,22 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :posts
 
+  def admin?
+    role == "admin"
+  end
+
+  def volunteer?
+    role == "volunteer"
+  end
+
+  def basic?
+    role == "basic"
+  end
+
+  scope :admin, -> { where(role: "admin") }
+  scope :volunteer, -> { where(role: "volunteer") }
+  scope :basic, -> { where(role: "basic") }
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, and :omniauthable
   devise :database_authenticatable, :registerable, :recoverable,

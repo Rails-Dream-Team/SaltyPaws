@@ -1,7 +1,7 @@
 .header__container {
   position: relative;
   @include size(100%, 300px);
-  @include backgroundImg('catpeep.jpg');
+  @include backgroundImg('grumpy-cat.jpg');
   .header__title {
     text-transform: uppercase;
     text-align: center;
@@ -17,4 +17,7 @@
       @include title(2rem, $white);
     }
   }
+}
+.header__overlay {
+  @include overlay-dark(0.3);
 }

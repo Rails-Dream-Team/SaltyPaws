@@ -3,6 +3,12 @@
   padding: 10px 10px 80px;
   @include placeholder;
 }
+.report__formContainer {
+  width: 75%;
+  position: relative;
+  padding: 10px 20px;
+  @include placeholder($grey-medium);
+}
 .report__formErrors {
   @include formErrors;
 }
@@ -19,6 +25,9 @@
 }
 .reportForm__radio label {
   margin-right: 20px;
+}
+.reportForm__submit {
+    padding-top: 20px;
 }
 .reportForm__submit input {
   @include button;

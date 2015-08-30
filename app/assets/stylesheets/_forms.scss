@@ -11,9 +11,35 @@
 .join__form {
   @include tile(700px);
 }
+.login__header {
+  position: relative;
+  margin-bottom: 20px;
+}
 .login__title {
   margin: 5px auto;
   @include title(1.5rem);
+  display: inline-block;
+}
+.login__sharedLinks {
+  @include formLinks;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.login__alerts {
+  background-color: $red-dark;
+  color: $white;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 0 -5px;
+}
+.login__notices {
+  background-color: $green-medium;
+  color: $white;
+  padding: 5px;
+  border-radius: 3px;
+  margin: 0 -5px;
 }
 .login__pwField,
 .login__emailField {
@@ -42,9 +68,6 @@
 }
 .login__submit input {
   @include button;
-}
-.login__sharedLinks {
-  @include formLinks;
 }
 #error_explanation {
   @include formErrors;

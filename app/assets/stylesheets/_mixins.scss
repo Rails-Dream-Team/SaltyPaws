@@ -48,10 +48,12 @@
   background-size: cover;
 }
 @mixin overlay-light($opacity) {
-  background-color: rgba(255, 255, 255, $opacity);
+  background: rgba(255, 255, 255, $opacity);
+  height: 100%;
 }
 @mixin overlay-dark($opacity) {
-  background-color: rgba(0, 0, 0, $opacity);
+  background: rgba(0, 0, 0, $opacity);
+  height: 100%;
 }
 
 //**********************
@@ -93,8 +95,7 @@
   @include centerText(left);
   @include size($w, $h);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  background-color: rgba(234, 234, 234, 0.7);
-  border-radius: 10px;
+  background-color: $grey-light;
   padding: $pad;
 }
 
@@ -138,6 +139,13 @@
 @mixin formLinks {
   font-size: 0.8rem;
   padding: 15px auto;
+  display: inline-block;
+  a {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
 }
 @mixin inputPlain($fsize: 1rem, $w: auto) {
   @include font($fsize);

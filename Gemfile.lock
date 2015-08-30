@@ -195,6 +195,8 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     puma (2.13.4)
+    pundit (1.0.1)
+      activesupport (>= 3.0.0)
     rack (1.6.4)
     rack-protection (1.5.3)
       rack
@@ -314,6 +316,7 @@ DEPENDENCIES
   pg
   pry
   puma
+  pundit
   rails (= 4.2.3)
   rails_12factor
   sass-rails (~> 5.0)

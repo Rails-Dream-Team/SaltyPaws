@@ -3,15 +3,15 @@ require 'test_helper'
 class BoardsControllerTest < ActionController::TestCase
   def setup
     @board = boards(:one)
+    @lostfound = boards(:three)
     @user = users(:one)
     sign_in @user
   end
 
-  class BoardsWhenLoggedIn < BoardsControllerTest
-
+  class BoardsGetWhenLoggedIn < BoardsControllerTest
     test "get index renders html" do
       get :index
-      assert_equal [@board], assigns(:boards)
+      assert_equal [@board, @lostfound], assigns(:boards)
       assert_response :success
     end
 
@@ -52,7 +52,7 @@ class BoardsControllerTest < ActionController::TestCase
     end
   end
 
-  class BoardsWhenLoggedOut < BoardsControllerTest
+  class BoardsGetWhenLoggedOut < BoardsControllerTest
     def setup
       @board = boards(:one)
       @user = users(:one)
@@ -69,13 +69,18 @@ class BoardsControllerTest < ActionController::TestCase
     end
 
     test "get edit redirects" do
-      get :edit, id: @board.id
+      get :edit, id: @board
       assert_redirected_to new_user_session_path
     end
 
-    test "get show redirects" do
-      get :show, id: @board.id
+    test "get show with html redirects" do
+      get :show, id: @board
       assert_redirected_to new_user_session_path
+    end
+
+    test "get show with json responds with unauthorized" do
+      get :show, id: @board, format: :json
+      assert_response :unauthorized
     end
   end
 

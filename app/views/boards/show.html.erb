@@ -5,21 +5,51 @@
       <%= link_to 'Back to the Chatterbox', boards_path %> | <%= link_to 'Post a New Topic', new_topic_path %>
     </div>
   </div>
-  <div class="board__dividerLine"></div>
   <div class="board__topics">
-      <% @board.topics.each do |topic| %>
+    <div class="board__topicsColHeaders">
+      <div class="board__topicTitle">Topic</div>
+      <div class="board__topicCreated">Created By</div>
+      <div class="board__topicUpdated">Last Post By</div>
+    </div>
+    <% if @board.id == 3 %>
+      <div class="board__guidelines">
+        <div class="board__topicTitle">
+          <%= link_to 'Lost & Found Guidelines - READ ME FIRST!', topic_path(Topic.find(8)) %>
+        </div>
+        <div class="board__topicCreated">Admin</div>
+        <div class="board__topicUpdated">
+          Admin at <%= Topic.find(8).posts.last.updated_at.strftime('%H:%M %m/%d/%Y') %>
+        </div>
+      </div>
+      <% Topic.where('board_id=3 AND id<>8').order('updated_at DESC').each do |topic| %>
         <div class="board__topic">
           <div class="board__topicTitle">
             <%= link_to topic.title, topic_path(topic) %>
           </div>
           <div class="board__topicCreated">
-            Created by <%= link_to topic.user.display_name, user_path(topic.user) %>
+            <%= link_to topic.user.display_name, user_path(topic.user) %>
           </div>
           <div class="board__topicUpdated">
-            Last post by <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
-            at <%= topic.posts.last.updated_at.strftime('%m/%d/%Y %H:%M') %>
+            <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
+            at <%= topic.posts.last.updated_at.strftime('%H:%M %m/%d/%Y') %>
           </div>
         </div>
       <% end %>
+    <% else %>
+      <% Topic.where('board_id=?', @board.id).order('updated_at DESC').each do |topic| %>
+        <div class="board__topic">
+          <div class="board__topicTitle">
+            <%= link_to topic.title, topic_path(topic) %>
+          </div>
+          <div class="board__topicCreated">
+            <%= link_to topic.user.display_name, user_path(topic.user) %>
+          </div>
+          <div class="board__topicUpdated">
+            <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
+            at <%= topic.posts.last.updated_at.strftime('%H:%M %m/%d/%Y') %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
