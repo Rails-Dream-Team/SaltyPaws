@@ -9,14 +9,16 @@ var ColonyList = React.createClass({
   render: function(){
     return (
       <div>
-        {this._listColony()}
+        <ul>
+          {this._listColony()}
+        </ul>
       </div>
     );
   },
 
   _listColony: function() {
      return this.props.colonies.map(function(colony) {
-      return <Colony data={colony} />
+      return <li><Colony data={colony} /></li>
     });
   }
 });
