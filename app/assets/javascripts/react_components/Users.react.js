@@ -22,8 +22,8 @@ var Users = React.createClass ({
     }
     if (this.state.isEditing) {
       return (
-        <div className="user">
-          <div className="user_wrapper">
+        <div className="user__pageWrapper">
+          <div className="user__profileWrapper">
             <div className="user__name">
               <h3> { this.state.user.first_name } { this.state.user.last_name } </h3>
             </div>
@@ -85,8 +85,8 @@ var Users = React.createClass ({
           var url = null
         }
         return (
-          <div className="user">
-            <div className="user__wrapper">
+          <div className="user__pageWrapper">
+            <div className="user__profileWrapper">
               <div className="user__name">
                 <h3>{ this.state.user.first_name } { this.state.user.last_name }</h3>
               </div>

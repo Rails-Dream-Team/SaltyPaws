@@ -2,10 +2,9 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 45px;
-  width: 100%;
+  @include size(100%, 45px);
   margin: 0 auto;
-  background-color: $grey-light;
+  // background-color: $grey-light;
   color: $grey-medium;
 }
 .footer__ul {
