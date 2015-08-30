@@ -26,6 +26,7 @@ class TopicsController < ApplicationController
 
   def edit
     @topic = get_topic
+    authorize @topic
   end
 
   def update

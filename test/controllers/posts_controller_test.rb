@@ -4,6 +4,7 @@ class PostsControllerTest < ActionController::TestCase
   def setup
     @topic = topics(:one)
     @post = posts(:one)
+    @all_posts = [@post, posts(:two), posts(:three)]
     @user = users(:admin)
     sign_in @user
   end
@@ -11,7 +12,7 @@ class PostsControllerTest < ActionController::TestCase
   class PostsGetLoggedIn < PostsControllerTest
     test "get index renders html" do
       get :index, topic_id: @topic
-      assert_equal [@post], assigns(:posts)
+      assert_equal @all_posts, assigns(:posts)
       assert_response :success
     end
 

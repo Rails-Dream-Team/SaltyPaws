@@ -3,7 +3,7 @@ require 'test_helper'
 class BoardsControllerTest < ActionController::TestCase
   def setup
     @board = boards(:one)
-    @lostfound = boards(:three)
+    @public_board = boards(:three)
     @user = users(:admin)
     sign_in @user
     @attributes = ['id', 'title']
@@ -12,8 +12,8 @@ class BoardsControllerTest < ActionController::TestCase
   class BoardsGetWhenLoggedIn < BoardsControllerTest
     test "get index renders html" do
       get :index
-      assert_equal [@board, @lostfound], assigns(:boards)
-      assert_response :success
+      assert_equal [@board, @public_board], assigns(:boards)
+      assert_template :index
     end
 
     test "get index renders json" do
@@ -28,19 +28,17 @@ class BoardsControllerTest < ActionController::TestCase
     test "get new renders html" do
       get :new
       assert_instance_of Board, assigns(:board)
-      assert_response :success
+      assert_template :new
     end
 
     test "get edit renders html" do
       get :edit, id: @board.id
-      assert_response :success
-      assert_template(:edit)
+      assert_template :edit
     end
 
     test "get show renders html" do
       get :show, id: @board.id
-      assert_response :success
-      assert_template(:show)
+      assert_template :show
     end
 
     test "get show renders json" do
