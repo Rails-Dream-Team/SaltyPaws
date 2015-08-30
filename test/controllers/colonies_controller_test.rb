@@ -5,34 +5,33 @@ class ColoniesControllerTest < ActionController::TestCase
     @colony = colonies(:one)
     @user1 = users(:admin)
     sign_in @user1
-    @user2 = users(:volunteer)
     @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
-                    'zip_code', 'enviroment', 'pop', 'vet']
+                   'zip_code', 'enviroment', 'pop', 'vet']
   end
 
   class ColoniesIndex < ColoniesControllerTest
-    test "GET index html when logged in" do
+    test "html GETs when logged in" do
       get :index
       assert_equal [@colony], assigns[:colonies]
       assert_response :success
     end
 
-    test "GET index json when logged in" do
+    test "json GETs when logged in" do
       get :index, format: :json
       response_item = JSON.parse(response.body)[0]
-      ['id', 'name', 'street_address', 'city', 'state'].each do |attr|
+      @attributes.each do |attr|
         assert_equal @colony.send(attr), response_item[attr]
       end
       assert_response :success
     end
 
-    test "GET index html redirects to login when not logged in" do
+    test "html redirects to login when logged out" do
       sign_out @user1
       get :index
       assert_redirected_to new_user_session_path
     end
 
-    test "GET index json respons with unauthorized when not logged in" do
+    test "json responds unauthorized when logged out" do
       sign_out @user1
       get :index, format: :json
       assert_response :unauthorized
@@ -40,13 +39,13 @@ class ColoniesControllerTest < ActionController::TestCase
   end
 
   class ColoniesNewCreate < ColoniesControllerTest
-    test "GET new html when logged in" do
+    test "html GETs new when logged in" do
       get :new
       assert_instance_of Colony, assigns(:colony)
-      assert_response :success
+      assert_template :new
     end
 
-    test "GET new html redirects to login when logged out" do
+    test "html GET redirects to login when logged out" do
       sign_out @user1
       get :new
       assert_redirected_to new_user_session_path
@@ -87,44 +86,50 @@ class ColoniesControllerTest < ActionController::TestCase
     end
 
     test 'json renders errors with invalid attributes' do
-      post :create, format: :json, colony: { name: "" }
+      assert_no_difference('Colony.count') do
+        post :create, format: :json, colony: { name: "" }
+      end
       assert_response(422)
     end
 
-    test 'html redirects to login when not logged in' do
+    test 'html redirects to login when logged out' do
       sign_out @user1
-      post  :create,
-            colony: {
-              name: "Cats! The Musical",
-              street_address: "Broadway",
-              city: "New York",
-              state: "New York"
-            }
+      assert_no_difference('Colony.count') do
+        post  :create,
+              colony: {
+                name: "Cats! The Musical",
+                street_address: "Broadway",
+                city: "New York",
+                state: "New York"
+              }
+      end
       assert_redirected_to new_user_session_path
     end
 
-    test 'json responds with unauthorized when not logged in' do
+    test 'json responds with unauthorized when logged out' do
       sign_out @user1
-      post  :create,
-            format: :json,
-            colony: {
-              name: "Cats! The Musical",
-              street_address: "Broadway",
-              city: "New York",
-              state: "New York"
-            }
+      assert_no_difference('Colony.count') do
+        post  :create,
+              format: :json,
+              colony: {
+                name: "Cats! The Musical",
+                street_address: "Broadway",
+                city: "New York",
+                state: "New York"
+              }
+      end
       assert_response :unauthorized
     end
   end
 
   class ColoniesShow < ColoniesControllerTest
-    test "GET show html when logged in" do
+    test "html GETs show when logged in" do
       get :show, id: @colony
       assert_equal @colony, assigns(:colony)
       assert_response :success
     end
 
-    test "GET show json when logged in" do
+    test "json GETs show when logged in" do
       get :show, id: @colony, format: :json
       response_item = JSON.parse(response.body)
       @attributes.each do |a|
@@ -136,13 +141,13 @@ class ColoniesControllerTest < ActionController::TestCase
       assert_response :success
     end
 
-    test "GET show html redirects to login when not logged in" do
+    test "html GET redirects to login when logged out" do
       sign_out @user1
       get :show, id: @colony
       assert_redirected_to new_user_session_path
     end
 
-    test "GET show json responds with unauthorized" do
+    test "json GET responds with unauthorized when logged out" do
       sign_out @user1
       get :show, id: @colony, format: :json
       assert_response :unauthorized
@@ -150,13 +155,13 @@ class ColoniesControllerTest < ActionController::TestCase
   end
 
   class ColoniesEditUpdate < ColoniesControllerTest
-    test "GET edit html when logged in" do
+    test "html GETs edit when logged in" do
       get :edit, id: @colony
       assert_equal @colony, assigns(:colony)
-      assert_response :success
+      assert_template :edit
     end
 
-    test "GET edit html redirects to login when logged out" do
+    test "html GET edit redirects to login when logged out" do
       sign_out @user1
       get :edit, id: @colony
       assert_redirected_to new_user_session_path
@@ -200,10 +205,10 @@ class ColoniesControllerTest < ActionController::TestCase
             colony: { name: "" }
       @colony.reload
       assert_equal old_name, @colony.name
-      assert_response(422)
+      assert_response 422
     end
 
-    test 'html redirects to login when not logged in' do
+    test 'html redirects to login when logged out' do
       sign_out @user1
       old_name = @colony.name
       patch :update,
@@ -214,7 +219,7 @@ class ColoniesControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
-    test 'json responds with unauthorized when not logged in' do
+    test 'json responds with unauthorized when logged out' do
       sign_out @user1
       old_name = @colony.name
       patch :update,
@@ -225,7 +230,6 @@ class ColoniesControllerTest < ActionController::TestCase
       assert_equal old_name, @colony.name
       assert_response :unauthorized
     end
-
   end
 
   class ColoniesDelete < ColoniesControllerTest
@@ -250,26 +254,26 @@ class ColoniesControllerTest < ActionController::TestCase
       assert_equal old_unscoped, Colony.unscoped.count
       refute @colony.deleted_at.nil?
     end
-  end
 
-  test 'html redirects when user not logged in' do
-    sign_out @user1
-    assert_no_difference('Colony.count') do
-      delete :destroy, id: @colony
+    test 'html redirects when user logged out' do
+      sign_out @user1
+      assert_no_difference('Colony.count') do
+        delete :destroy, id: @colony
+      end
+      @colony.reload
+      assert_redirected_to new_user_session_path
+      assert @colony.deleted_at.nil?
     end
-    @colony.reload
-    assert_redirected_to new_user_session_path
-    assert @colony.deleted_at.nil?
-  end
 
-  test 'json responds unauthorized when user not logged in' do
-    sign_out @user1
-    assert_no_difference('Colony.count') do
-      delete :destroy, id: @colony, format: :json
+    test 'json responds unauthorized when user logged out' do
+      sign_out @user1
+      assert_no_difference('Colony.count') do
+        delete :destroy, id: @colony, format: :json
+      end
+      @colony.reload
+      assert_response :unauthorized
+      assert @colony.deleted_at.nil?
     end
-    @colony.reload
-    assert_response :unauthorized
-    assert @colony.deleted_at.nil?
   end
 
 end
