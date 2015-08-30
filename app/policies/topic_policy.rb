@@ -13,11 +13,21 @@ class TopicPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    return true if user.present? && user.admin?
+
+    user.present? && user == topic.user
   end
 
   def destroy?
-    true
-    # user.present? && user.admin?
+    return true if user.present? && user.admin?
+
+    user.present? && user == topic.user
   end
+
+  private
+
+  def topic
+    record
+  end
+
 end

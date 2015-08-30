@@ -1,6 +1,7 @@
 .vol__formContainer {
+  width: 75%;
   position: relative;
-  padding: 10px 10px 80px;
+  padding: 10px 20px;
   @include placeholder($grey-medium);
 }
 .vol__formErrors {
@@ -23,6 +24,9 @@
 }
 .volForm__center {
   // this is just a placeholder
+}
+.volForm__submit {
+    padding-top: 20px;
 }
 .volForm__submit input {
   @include button;

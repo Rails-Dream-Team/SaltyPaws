@@ -23,5 +23,9 @@
         <% end %>
       </ul>
     </div>
+    <div>
+      <%= link_to '[edit]', edit_organization_path(@organization) if policy(@organization).edit? %>
+      <%= link_to '[remove]', @organization, method: :delete, data: {confirm: 'Are you sure?'} if policy(@organization).destroy? %>
+    </div>
   </div>
 </div>

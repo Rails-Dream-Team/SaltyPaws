@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20150829200607) do
   end
 
   add_index "topics", ["deleted_at"], name: "index_topics_on_deleted_at", using: :btree
+  add_index "topics", ["replies"], name: "index_topics_on_replies", using: :btree
   add_index "topics", ["title"], name: "index_topics_on_title", using: :btree
 
   create_table "users", force: :cascade do |t|

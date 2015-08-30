@@ -52,7 +52,7 @@
 }
 .new_organization {
   width: 75%;
-  @include centerText;
+  padding-left: 20px; 
   label {
     @include label(1.2rem, 25%);
   }
@@ -60,8 +60,12 @@
     @include inputLine(1.3rem, 65%);
   }
 }
+.orgForm__submit {
+    padding-top: 20px;
+}
 .orgForm__submit input {
-  width: 100px;
+  width: 110px;
+  padding-top: 10px;
   @include button;
 }
 .orgShow__container {

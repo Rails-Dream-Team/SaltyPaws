@@ -13,7 +13,7 @@ class OrganizationPolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user.present? && user.admin?
   end
 
   def destroy?
