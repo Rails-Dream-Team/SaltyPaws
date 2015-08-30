@@ -14,21 +14,21 @@
     <div>Veterinarian: <%= @colony.vet %></div>
     <% unless @colony.owners == [] %>
       <div>Colony Owner(s):
-        <%= @colony.owners.each do |o| %>
-          <%= o.display_name %>
+        <% @colony.owners.each do |o| %>
+          <%= link_to o.display_name, user_path(o[:id]) %>
         <% end %>
       </div>
     <% end %>
     <% unless @colony.volunteers == [] %>
       <div>Colony Volunteer(s):
-        <%= @colony.volunteers.each do |v| %>
-          <%= v.display_name %>
+        <% @colony.volunteers.each do |v| %>
+          <%= link_to v.display_name, user_path(v[:id]) %>
         <% end %>
       </div>
     <% end %>
     <div>
-      <%= link_to '[edit]', edit_colony_path(@colony) %>
-      <%= link_to '[remove]', @colony, method: :delete, data: {confirm: 'Are you sure?'} %>
+      <%= link_to '[edit]', edit_colony_path(@colony) if policy(@colony).edit? %>
+      <%= link_to '[remove]', @colony, method: :delete, data: {confirm: 'Are you sure?'} if policy(@colony).destroy? %>
     </div>
   </div>
 </div>

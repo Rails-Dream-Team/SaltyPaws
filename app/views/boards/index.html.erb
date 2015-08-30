@@ -2,7 +2,7 @@
   <div class="board__header">
     <h1>Kitty Chatterbox</h1>
     <div class="board__headerLinks">
-      <%= link_to 'New Board', new_board_path %> | <%= link_to 'New Topic', new_topic_path %>
+      <%= link_to 'New Board', new_board_path if policy(@boards).new? %>  <%= link_to 'New Topic', new_topic_path %>
     </div>
   </div>
   <div class="board__index">
