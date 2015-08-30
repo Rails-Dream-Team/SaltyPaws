@@ -60,11 +60,14 @@
 .login__pwField em {
   font-size: 0.8rem;
   text-align: center;
-  margin-left: 25%;
+  margin-left: 32%;
 }
 .login__toggle {
-  margin: 10px auto;
+  margin: 10px auto 0;
   font-size: 1rem;
+}
+.login__submit {
+    padding-top: 20px;
 }
 .login__submit input {
   @include button;

@@ -1,38 +1,21 @@
 .footer__container {
-  position: relative;
+  position: absolute;
   bottom: 0;
   left: 0;
-  height: 45px;
-  width: 100%;
+  @include size(100%, 45px);
+  margin: 0 auto;
   color: $grey-medium;
 }
 .footer__ul {
-  @include listInline($d: inline-block);
-  width: 75%;
   text-align: center;
   margin: 0 auto;
   padding-top: 15px;
   vertical-align: top;
   > li {
     display: inline;
+    padding: 0 10px;
     @media all and ( max-width: $break-s ) {
       font-size: 0.8em;
     }
-  }
-}
-.tiy {
-  display: inline-block;
-  width: 15%;
-  img {
-    display: inline-block;
-    max-height: 40px;
-    padding-top: 2px;
-    padding-left: 10px;
-  }
-  p {
-    display: inline-block;
-    padding: 11px 10;
-    font-size: 0.8em;
-    margin: 0;
   }
 }

@@ -1,6 +1,8 @@
 // classes used in all board views
 .board {
   @include maxWidth;
+  padding-bottom: 80px;
+  margin-bottom: 0;
 }
 .board__header {
   position: relative;
@@ -17,6 +19,7 @@
   bottom: 0;
   right: 0;
   > a {
+    padding: 0 10px;
   }
 }
 

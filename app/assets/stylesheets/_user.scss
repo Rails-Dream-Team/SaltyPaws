@@ -1,10 +1,10 @@
-.user {
-  margin: 2%;
-  padding: 3%;
+.user__pageWrapper {
+  padding: 30px 30px 50px 30px;
+}
+.user__profileWrapper{
   background-color: #FFF;
   border-radius: 5px;
-}
-.user__wrapper{
+  padding: 35px;
   input {
     @include inputLine(1.3rem);
   }
@@ -14,14 +14,14 @@
 }
 .user__left {
   display: inline-block;
-  width: 20%;
+  width: 25%;
   vertical-align: top;
   padding: 2%;
 }
 .user__right {
   display: inline-block;
   height: 100%;
-  width: 80%;
+  width: 75%;
   padding: 2%;
 }
 .user__name {
@@ -33,6 +33,7 @@
   }
 }
 .user__picture  {
+  overflow: hidden;
   > img {
     @include size( 100%, auto);
     overflow: hidden;
@@ -90,6 +91,9 @@
 .user_infoLabel {
   font-weight: bold;
   font-size: 1.2em;
+}
+.user_infoSubmit {
+    padding-top: 20px;
 }
 .user_infoSubmit button {
   @include button;
