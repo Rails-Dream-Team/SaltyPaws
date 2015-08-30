@@ -77,6 +77,42 @@ class TopicsControllerTest < ActionController::TestCase
     end
   end # end of TopicsWhenVolunteer
 
+  class TopicsWhenBasic < TopicsControllerTest
+    def setup
+      super
+      sign_in @basic
+    end
+
+    test "get index renders html" do
+      get :index
+      assert_equal @all_topics, assigns(:topics)
+      assert_template :index
+    end
+
+    test "get new renders html" do
+      get :new
+      assert_instance_of Topic, assigns(:topic)
+      assert_template :new
+    end
+
+    test "get edit renders html if created by current user" do
+      get :edit, id: @topic3.id
+      assert_equal @basic, @topic3.user
+      assert_template :edit
+    end
+
+    test "get edit redirects if created by different user" do
+      get :edit, id: @topic1.id
+      refute @basic == @topic1.user
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "get show renders html" do
+      get :show, id: @topic1.id
+      assert_template :show
+    end
+  end # end of TopicsWhenBasic
+
   class TopicsWhenLoggedOut < TopicsControllerTest
     test "get index redirects" do
       get :index
