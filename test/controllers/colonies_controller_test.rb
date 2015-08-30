@@ -228,20 +228,48 @@ class ColoniesControllerTest < ActionController::TestCase
 
   end
 
-  class ColoniesDestroy < ColoniesControllerTest
-    test "destroy colony html" do
+  class ColoniesDelete < ColoniesControllerTest
+    test "html soft deletes and redirects when logged in" do
+      old_unscoped = Colony.unscoped.count
       assert_difference('Colony.count', -1) do
         delete :destroy, id: @colony
       end
+      @colony.reload
       assert_redirected_to colonies_path
+      assert_equal old_unscoped, Colony.unscoped.count
+      refute @colony.deleted_at.nil?
     end
 
-    test "destroy colony with json" do
+    test "json soft deletes and responds successful when logged in" do
+      old_unscoped = Colony.unscoped.count
       assert_difference('Colony.count', -1) do
-        delete :destroy, format: :json, id: @colony
+        delete :destroy, id: @colony, format: :json
       end
+      @colony.reload
       assert_response :success
+      assert_equal old_unscoped, Colony.unscoped.count
+      refute @colony.deleted_at.nil?
     end
+  end
+
+  test 'html redirects when user not logged in' do
+    sign_out @user1
+    assert_no_difference('Colony.count') do
+      delete :destroy, id: @colony
+    end
+    @colony.reload
+    assert_redirected_to new_user_session_path
+    assert @colony.deleted_at.nil?
+  end
+
+  test 'json responds unauthorized when user not logged in' do
+    sign_out @user1
+    assert_no_difference('Colony.count') do
+      delete :destroy, id: @colony, format: :json
+    end
+    @colony.reload
+    assert_response :unauthorized
+    assert @colony.deleted_at.nil?
   end
 
 end
