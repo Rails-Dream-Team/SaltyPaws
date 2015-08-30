@@ -1,6 +1,6 @@
 .user {
-  margin: 2%;
-  padding: 3%;
+  margin: 20px 20px 0 20px;
+  padding: 15px 15px 80px 15px;
   background-color: #FFF;
   border-radius: 5px;
 }
@@ -90,6 +90,9 @@
 .user_infoLabel {
   font-weight: bold;
   font-size: 1.2em;
+}
+.user_infoSubmit {
+    padding-top: 20px;
 }
 .user_infoSubmit button {
   @include button;
