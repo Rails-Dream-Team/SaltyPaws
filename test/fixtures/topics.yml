@@ -3,3 +3,15 @@ one:
   title: hot topics
   user_id: 1
   board_id: 1
+
+two:
+  id: 456
+  title: wanna volunteer with me
+  user_id: 2
+  board_id: 1
+
+three:
+  id: 789
+  title: this is so basic
+  user_id: 3
+  board_id: 1

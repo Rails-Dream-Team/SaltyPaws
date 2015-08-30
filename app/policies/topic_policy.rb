@@ -12,6 +12,12 @@ class TopicPolicy < ApplicationPolicy
     true
   end
 
+  def edit?
+    return true if user.present? && user.admin?
+
+    user.present? && user == topic.user
+  end
+
   def update?
     return true if user.present? && user.admin?
 
@@ -21,7 +27,8 @@ class TopicPolicy < ApplicationPolicy
   def destroy?
     return true if user.present? && user.admin?
 
-    user.present? && user == topic.user
+    # Uncomment if allowing user to delete topics they created
+    # user.present? && user == topic.user
   end
 
   private
