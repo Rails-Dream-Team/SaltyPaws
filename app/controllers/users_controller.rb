@@ -13,14 +13,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
+    @user = get_user
     respond_to do |format|
-      if @user.update_attributes(user_params)
-        format.html { redirect_to user_path(@user) }
-        format.json { render json: @user, status: 202 }
+      if @user == current_user
+        if @user.update_attributes(user_params)
+          format.html { redirect_to user_path(@user) }
+          format.json { render json: @user, status: 202 }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: 422 }
+        end
       else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: 422 }
+        format.html { redirect_to @user }
+        format.json { render json: {}, status: 401 }
       end
     end
   end

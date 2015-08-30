@@ -6,6 +6,7 @@ class BoardsControllerTest < ActionController::TestCase
     @lostfound = boards(:three)
     @user = users(:admin)
     sign_in @user
+    @attributes = ['id', 'title']
   end
 
   class BoardsGetWhenLoggedIn < BoardsControllerTest
@@ -18,7 +19,7 @@ class BoardsControllerTest < ActionController::TestCase
     test "get index renders json" do
       get :index, format: :json
       response_item = JSON.parse(response.body)[0]
-      ['id', 'title'].each do |a|
+      @attributes.each do |a|
         assert_equal @board.send(a), response_item[a]
       end
       assert_response :success
@@ -45,7 +46,7 @@ class BoardsControllerTest < ActionController::TestCase
     test "get show renders json" do
       get :show, id: @board.id, format: :json
       response_item = JSON.parse(response.body)
-      ['id', 'title'].each do |a|
+      @attributes.each do |a|
         assert_equal @board.send(a), response_item[a]
       end
       assert_response :success

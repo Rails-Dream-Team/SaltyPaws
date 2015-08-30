@@ -6,7 +6,7 @@ ActiveAdmin.register Colony do
     :city,
     :state,
     :zip_code,
-    :enviroment,
+    :environment,
     :pop,
     :vet
   ]

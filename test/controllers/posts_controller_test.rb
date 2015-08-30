@@ -8,7 +8,7 @@ class PostsControllerTest < ActionController::TestCase
     sign_in @user
   end
 
-  class PostsWhenLoggedIn < PostsControllerTest
+  class PostsGetLoggedIn < PostsControllerTest
     test "get index renders html" do
       get :index, topic_id: @topic
       assert_equal [@post], assigns(:posts)
@@ -19,22 +19,23 @@ class PostsControllerTest < ActionController::TestCase
       get :new, topic_id: @topic
       assert_instance_of Post, assigns(:post)
       assert_response :success
+      assert_template :new
     end
 
     test "get edit renders html" do
       get :edit, topic_id: @topic, id: @post.id
       assert_response :success
-      assert_template(:edit)
+      assert_template :edit
     end
 
     test "get show renders html" do
       get :show, topic_id: @topic, id: @post.id
       assert_response :success
-      assert_template(:show)
+      assert_template :show
     end
   end
 
-  class PostsWhenLoggedOut < PostsControllerTest
+  class PostsGetLoggedOut < PostsControllerTest
     def setup
       @topic = topics(:one)
       @post = posts(:one)
@@ -81,7 +82,7 @@ class PostsControllerTest < ActionController::TestCase
       assert_template :new
     end
 
-    test 'redirects to login with invalid attribute submission (no user)' do
+    test 'redirects to login when logged out' do
       sign_out @user
       assert_no_difference('Post.count') do
         post :create, topic_id: @topic, post: { content: 'oh hai, look at my cool test post' }
@@ -108,7 +109,7 @@ class PostsControllerTest < ActionController::TestCase
       assert_equal old_content, @post.content
     end
 
-    test 'redirects to login when no user logged in' do
+    test 'redirects to login when logged out' do
       sign_out @user
       old_content = @post.content
       patch :update, topic_id: @topic, id: @post, post: { content: 'some new content' }
@@ -129,7 +130,7 @@ class PostsControllerTest < ActionController::TestCase
       refute @post.deleted_at.nil?
     end
 
-    test 'redirects to login when no user logged in' do
+    test 'redirects to login when logged out' do
       sign_out @user
       old_deleted_at = @post.deleted_at
       assert_no_difference('Post.count') do

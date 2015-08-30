@@ -19,7 +19,7 @@
 #                            street_address: Faker::Address.street_address,
 #                            city: Faker::Address.city,
 #                            state: Faker::Address.state,
-#                            enviroment: Faker::Lorem.word,
+#                            environment: Faker::Lorem.word,
 #                            zip_code: Faker::Address.zip,
 #                            pop: Faker::Number.number(2),
 #                            vet: Faker::Name.name

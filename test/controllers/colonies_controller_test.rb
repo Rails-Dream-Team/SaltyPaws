@@ -6,7 +6,7 @@ class ColoniesControllerTest < ActionController::TestCase
     @user1 = users(:admin)
     sign_in @user1
     @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
-                   'zip_code', 'enviroment', 'pop', 'vet']
+                   'zip_code', 'environment', 'pop', 'vet']
   end
 
   class ColoniesIndex < ColoniesControllerTest
