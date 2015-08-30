@@ -1,0 +1,12 @@
+<div class="board__topic">
+  <div class="board__topicTitle">
+    <%= link_to topic.title, topic_path(topic) %>
+  </div>
+  <div class="board__topicCreated">
+    <%= link_to topic.user.display_name, user_path(topic.user) %>
+  </div>
+  <div class="board__topicUpdated">
+    <%= link_to topic.posts.last.user.display_name, user_path(topic.user) %>
+    at <%= topic.posts.last.updated_at.strftime('%H:%M %m/%d/%Y') %>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="topic__postList">
+  <% topic.posts.each do |post| %>
+    <div class="topic__postUser">
+      <%= link_to post.user.display_name, user_path(post.user) %>
+    </div>
+    <div class="topic__postContent">
+      <%= post.content %>
+    </div>
+    <div class="topic__postTime">
+      <%= post.created_at.strftime('Posted at %m/%d/%Y %H:%M') %>
+    </div>
+  <% end %>
+</div>

@@ -120,7 +120,7 @@ class BoardsControllerTest < ActionController::TestCase
 
     test 'renders edit with invalid attribute submission (no title)' do
       old_title = @board.title
-      patch :update, id: @board, board: { title: nil }
+      patch :update, id: @board, board: { title: '' }
       @board.reload
       assert_template :edit
       assert_equal old_title, @board.title
