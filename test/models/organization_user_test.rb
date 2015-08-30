@@ -11,7 +11,7 @@ class OrganizationUserTest < ActiveSupport::TestCase
 
   test "assert belongs to user" do
     assert_respond_to @organization_user, :user
-    @organization_user.user = users(:one)
+    @organization_user.user = users(:admin)
     assert_instance_of User, @organization_user.user
   end
 
@@ -20,5 +20,5 @@ class OrganizationUserTest < ActiveSupport::TestCase
     @organization_user.organization = organizations(:one)
     assert_instance_of Organization, @organization_user.organization
   end
-  
+
 end

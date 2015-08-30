@@ -3,7 +3,7 @@ require 'test_helper'
 class TopicsControllerTest < ActionController::TestCase
   def setup
     @topic = topics(:one)
-    @user = users(:one)
+    @user = users(:admin)
     sign_in @user
     @board = boards(:one)
   end
@@ -37,7 +37,7 @@ class TopicsControllerTest < ActionController::TestCase
   class TopicsWhenLoggedOut < TopicsControllerTest
     def setup
       @topic = topics(:one)
-      @user = users(:one)
+      @user = users(:admin)
       @board = boards(:one)
     end
 

@@ -3,7 +3,7 @@ require 'test_helper'
 class CatsControllerTest < ActionController::TestCase
   def setup
     @cat = cats(:one)
-    @user = users(:one)
+    @user = users(:admin)
     sign_in @user
   end
 

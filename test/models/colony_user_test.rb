@@ -11,7 +11,7 @@ class ColonyUserTest < ActiveSupport::TestCase
 
   test "assert belongs to user" do
     assert_respond_to @colony_user, :user
-    @colony_user.user = users(:one)
+    @colony_user.user = users(:admin)
     assert_instance_of User, @colony_user.user
   end
 
@@ -20,6 +20,6 @@ class ColonyUserTest < ActiveSupport::TestCase
     @colony_user.colony = colonies(:one)
     assert_instance_of Colony, @colony_user.colony
   end
-  
+
 
 end

@@ -16,7 +16,7 @@ class PostTest < ActiveSupport::TestCase
 
   test 'belongs to user' do
     assert_respond_to @post, :user
-    assert_equal @post.user, users(:one)
+    assert_equal @post.user, users(:admin)
   end
 
   test 'belongs to topic' do

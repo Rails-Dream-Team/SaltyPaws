@@ -4,7 +4,7 @@ class PostsControllerTest < ActionController::TestCase
   def setup
     @topic = topics(:one)
     @post = posts(:one)
-    @user = users(:one)
+    @user = users(:admin)
     sign_in @user
   end
 
@@ -38,7 +38,7 @@ class PostsControllerTest < ActionController::TestCase
     def setup
       @topic = topics(:one)
       @post = posts(:one)
-      @user = users(:one)
+      @user = users(:admin)
     end
 
     test "get index redirects" do

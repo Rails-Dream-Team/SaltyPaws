@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one)
+    @user = users(:admin)
   end
 
   test 'the fixture is valid' do

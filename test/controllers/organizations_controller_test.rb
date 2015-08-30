@@ -3,7 +3,7 @@ require 'test_helper'
 class OrganizationsControllerTest < ActionController::TestCase
   def setup
     @organization = organizations(:one)
-    @user = users(:one)
+    @user = users(:admin)
     sign_in @user
   end
 
