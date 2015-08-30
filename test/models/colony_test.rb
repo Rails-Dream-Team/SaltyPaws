@@ -40,6 +40,28 @@ class ColonyTest < ActiveSupport::TestCase
     refute @colony.valid?
   end
 
+  test 'lat has to be a decimal' do
+    @colony.lat = "string"
+    refute @colony.valid?
+
+    @colony.lat = 39.99998
+    assert @colony.valid?
+
+    @colony.lat = -39.99999
+    assert @colony.valid?
+  end
+
+  test 'lng has to be a decimal' do
+    @colony.lng = "string"
+    refute @colony.valid?
+
+    @colony.lng = 79.99998
+    assert @colony.valid?
+
+    @colony.lng = -79.99999
+    assert @colony.valid?
+  end
+
   test 'has many cats' do
     assert_respond_to @colony, :cats
     assert_kind_of Cat, @colony.cats.new

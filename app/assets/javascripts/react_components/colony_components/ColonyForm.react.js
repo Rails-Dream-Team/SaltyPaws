@@ -63,7 +63,6 @@ var ColonyForm = React.createClass({
     var data = {
       colony: {
         name: this.refs.name.getDOMNode().value.trim(),
-        photo: this.refs.photo.getDOMNode().value.trim(),
         street_address: this.refs.streetAddress.getDOMNode().value,
         city: this.refs.city.getDOMNode().value.trim(),
         state: this.refs.state.getDOMNode().value.trim(),

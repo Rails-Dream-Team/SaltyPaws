@@ -6,7 +6,7 @@ class Colony < ActiveRecord::Base
   has_many :cats
 
   validates :name, :street_address, :city, :state, presence: true
-  validates :pop, numericality: true, allow_nil: true
+  validates :pop, :lat, :lng, numericality: true, allow_nil: true
 
   def owners
     self.colony_users.where(owner: true).map do |o|
