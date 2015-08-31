@@ -15,6 +15,12 @@ var Users = React.createClass ({
   },
 
   render: function(){
+
+    var editButton = null;
+    if (this.state.user.id === 2) {
+      editButton = (<div className="user_infoSubmit"><button onClick={ this._handleEdit }>Edit</button></div>);
+    }
+
     if (this.state.user.avatar) {
       var url = this.state.user.avatar.url
     } else {
@@ -121,7 +127,7 @@ var Users = React.createClass ({
                     <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>{ this.state.user.pets }</div>
                     <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span> { this.state.user.volunteer_work }</div>
                     <div className="user_infoRow"><span className="user_infoLabel">About:  </span></div>{ this.state.user.about_me }
-                    <div className="user_infoSubmit"><button onClick={ this._handleEdit }>Edit</button></div>
+                    {editButton}
                   </div>
                 </div>
               </div>
@@ -131,7 +137,8 @@ var Users = React.createClass ({
         )
       }
   },
-  _handleEdit: function(e){
+
+  _handleEdit: function(e) {
     e.preventDefault();
     this.setState({ isEditing: true });
   },
@@ -149,7 +156,11 @@ var Users = React.createClass ({
   },
 
   _handleChange: function(err, res) {
-    if (err) { console.log(err.response); return; }
+    if (err) {
+      console.log(err.response);
+      this.setState({ isEditing: false });
+      return;
+    }
     this.setState({ isEditing: false });
     this._fetchUser();
   },
