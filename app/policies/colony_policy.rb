@@ -4,6 +4,10 @@ class ColonyPolicy < ApplicationPolicy
     user.present? && user.volunteer? || user.present? && user.admin?
   end
 
+  def new?
+    user.present? && user.admin?
+  end
+  
   def create?
     true
   end

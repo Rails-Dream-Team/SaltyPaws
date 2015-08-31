@@ -276,4 +276,221 @@ class ColoniesControllerTest < ActionController::TestCase
     end
   end
 
+  class ColoniesAsVolunteerUser < ColoniesControllerTest
+    def setup
+      @colony = colonies(:one)
+      @user2 = users(:volunteer)
+      sign_in @user2
+      @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
+                     'zip_code', 'enviroment', 'pop', 'vet']
+    end
+
+    test "html GETs when logged in" do
+      get :index
+      assert_equal [@colony], assigns[:colonies]
+      assert_response :success
+    end
+
+    test "json GETs when logged in" do
+      get :index, format: :json
+      response_item = JSON.parse(response.body)[0]
+      @attributes.each do |attr|
+        assert_equal @colony.send(attr), response_item[attr]
+      end
+      assert_response :success
+    end
+
+    test "html does NOT GETs new when logged in" do
+      get :new
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'html does NOT creates with valid attributes and redirects' do
+      assert_no_difference('Colony.count') do
+        post  :create,
+              colony: {
+                name: "Cats! The Musical",
+                street_address: "Broadway",
+                city: "New York",
+                state: "New York"
+              }
+      end
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'json does NOT creates with valid attributes json' do
+      assert_no_difference('Colony.count') do
+        post  :create,
+              format: :json,
+              colony: {
+                name: "Cats! The Musical",
+                street_address: "Broadway",
+                city: "New York",
+                state: "New York"
+              }
+      end
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html GETs show when logged in" do
+      get :show, id: @colony
+      assert_equal @colony, assigns(:colony)
+      assert_response :success
+    end
+
+    test "json GETs show when logged in" do
+      get :show, id: @colony, format: :json
+      response_item = JSON.parse(response.body)
+      @attributes.each do |a|
+        assert_equal @colony.send(a), response_item[a]
+      end
+      ['lat', 'lng'].each do |a|
+        assert_equal @colony[a].to_f, response_item[a].to_f
+      end
+      assert_response :success
+    end
+
+    test "html does NOT GETs edit when logged in" do
+      get :edit, id: @colony
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html does NOT updates with valid attributes" do
+      old_name = @colony.name
+      new_name = "Some new and different name"
+      patch :update, id: @colony, colony: { name: new_name }
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "json does NOT updates with valid attributes" do
+      old_name = @colony.name
+      new_name = "Some new and different name"
+      patch :update,
+            id: @colony,
+            format: :json,
+            colony: { name: new_name }
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'html does NOT delete' do
+      assert_no_difference('Colony.count') do
+        delete :destroy, id: @colony
+      end
+      @colony.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @colony.deleted_at.nil?
+    end
+
+    test 'json does NOT delete' do
+      assert_no_difference('Colony.count') do
+        delete :destroy, id: @colony, format: :json
+      end
+      @colony.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @colony.deleted_at.nil?
+    end
+  end
+
+  class ColoniesAsBasicUser < ColoniesControllerTest
+    def setup
+      @colony = colonies(:one)
+      @user3 = users(:basic)
+      sign_in @user3
+      @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
+                     'zip_code', 'enviroment', 'pop', 'vet']
+    end
+
+    test "html does NOT GETs when logged in" do
+      get :index
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "json does NOT GETs when logged in" do
+      get :index, format: :json
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html does NOT GETs new when logged in" do
+      get :new
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'html does NOT creates with valid attributes and redirects' do
+      assert_no_difference('Colony.count') do
+        post  :create,
+              colony: {
+                name: "Cats! The Musical",
+                street_address: "Broadway",
+                city: "New York",
+                state: "New York"
+              }
+      end
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'json does NOT creates with valid attributes json' do
+      assert_no_difference('Colony.count') do
+        post  :create,
+              format: :json,
+              colony: {
+                name: "Cats! The Musical",
+                street_address: "Broadway",
+                city: "New York",
+                state: "New York"
+              }
+      end
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html does NOT GETs show when logged in" do
+      get :show, id: @colony
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "json does NOT GETs show when logged in" do
+      get :show, id: @colony, format: :json
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html does NOT GETs edit when logged in" do
+      get :edit, id: @colony
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html does NOT updates with valid attributes" do
+      old_name = @colony.name
+      new_name = "Some new and different name"
+      patch :update, id: @colony, colony: { name: new_name }
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "json does NOT updates with valid attributes" do
+      old_name = @colony.name
+      new_name = "Some new and different name"
+      patch :update,
+            id: @colony,
+            format: :json,
+            colony: { name: new_name }
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'html does NOT delete' do
+      assert_no_difference('Colony.count') do
+        delete :destroy, id: @colony
+      end
+      @colony.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @colony.deleted_at.nil?
+    end
+
+    test 'json does NOT delete' do
+      assert_no_difference('Colony.count') do
+        delete :destroy, id: @colony, format: :json
+      end
+      @colony.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @colony.deleted_at.nil?
+    end
+  end
+
 end

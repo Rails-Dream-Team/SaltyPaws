@@ -4,6 +4,10 @@ class BoardPolicy < ApplicationPolicy
     true
   end
 
+  def new?
+    user.present? && user.admin?
+  end
+  
   def create?
     user.present? && user.admin?
   end
