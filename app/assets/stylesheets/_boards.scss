@@ -35,13 +35,26 @@
 .board__tileContainer {
   @include size(33.33333333%, 250px);
   display: inline-block;
-  &:first-child {
-    margin-left: -15px;
-    margin-right: 15px;
+  @media all and (min-width: $break-m) {
+    &:first-child {
+      margin: 0 15px 0 -15px;
+    }
+    &:last-child {
+      margin: 0 -15px 0 15px;
+    }
   }
-  &:last-child {
-    margin-left: 15px;
-    margin-right: -15px;
+  @media all and (max-width: $break-m) and (min-width: $break-s) {
+    @include size(50%, 250px);
+    &:nth-child(odd) {
+      margin: 0 15px 15px -10px;
+    }
+    &:nth-child(even) {
+      margin-right: -10px;
+    }
+  }
+  @media all and (max-width: $break-s) {
+    @include size(100%, 250px);
+    margin: 0 -10px 15px;
   }
 }
 .board__indexTile {
@@ -50,12 +63,6 @@
   border-bottom-right-radius: 3px;
   font-size: 1rem;
   overflow: hidden;
-  @media all and (max-width:  $break-m) {
-    @include tile(49%, 250px, 15px);
-  }
-  @media all and (max-width:  $break-s) {
-    @include tile(100%, 250px, 15px);
-  }
 }
 .board__indexTitle {
   font-size: 1.5rem;
