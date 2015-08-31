@@ -1,20 +1,32 @@
 class PostsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create, :show]
+
   def index
-    @posts = Post.all
+    @topic = get_topic
+    @posts = @topic.posts
     authorize @posts
   end
 
   def new
     @topic = get_topic
-    @post = Post.new
-    authorize @post
+    if current_user || @topic.board.public
+      @post = @topic.posts.new
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
     @topic = get_topic
-    @post = @topic.posts.new(post_params)
-    authorize @post
-    @post.user_id = current_user.id
+    if current_user
+      @post = @topic.posts.new(post_params)
+      @post.user_id = current_user.id
+    elsif @topic.board.public
+      @post = @topic.posts.new(post_params)
+      @post.user_id = 0
+    else
+      redirect_to new_user_session_path and return
+    end
     if @post.save
       @topic.replies += 1
       @topic.save

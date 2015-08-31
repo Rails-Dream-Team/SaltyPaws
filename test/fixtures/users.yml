@@ -24,3 +24,11 @@ basic:
   first_name: Jim
   last_name: Doe
   display_name: jimmythecat
+
+anonymous:
+  id: 0
+  email: anonymous@anony.mous
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  first_name: anonymous
+  last_name: user
+  display_name: Anonymous

@@ -7,7 +7,6 @@ class BoardsController < ApplicationController
     else
       @boards = Board.where(public: true)
     end
-    authorize @boards
     respond_to do |format|
       format.html { render :index }
       format.json { render json: @boards }

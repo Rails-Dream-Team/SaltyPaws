@@ -4,20 +4,16 @@ class PostPolicy < ApplicationPolicy
     user
   end
 
-  def create?
-    user
-  end
-
   def show?
-    user
+    user || record.topic.board.public
   end
 
   def edit?
-    user.admin? ? true : user == topic.user
+    user.admin? ? true : user == record.user
   end
 
   def update?
-    user.admin? ? true : user == topic.user
+    user.admin? ? true : user == record.user
   end
 
   def destroy?
@@ -25,12 +21,6 @@ class PostPolicy < ApplicationPolicy
 
     # If allowing user to delete topics they created, use this instead
     # user.admin? ? true : user == topic.user
-  end
-
-  private
-
-  def post
-    record
   end
 
 end

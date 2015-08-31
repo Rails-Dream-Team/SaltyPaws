@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :create, :show]
+
   def index
     @topics = Topic.all
     authorize @topics
@@ -6,15 +8,20 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-    authorize @topic
     @topic.posts.build
   end
 
   def create
-    @topic = current_user.topics.new(topic_params)
-    authorize @topic
-    if @topic.save
-      redirect_to topic_path(@topic)
+    if current_user
+      @topic = current_user.topics.new(topic_params)
+      save_if = true
+    else
+      @topic = Topic.new(topic_params)
+      @topic.user_id = 0
+      save_if = @topic.board[:public]
+    end
+    if save_if && @topic.save
+      redirect_to @topic
     else
       render :new
     end
