@@ -131,7 +131,8 @@ var Users = React.createClass ({
         )
       }
   },
-  _handleEdit: function(e){
+
+  _handleEdit: function(e) {
     e.preventDefault();
     this.setState({ isEditing: true });
   },

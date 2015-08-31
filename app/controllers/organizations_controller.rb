@@ -66,6 +66,22 @@ class OrganizationsController < ApplicationController
     end
   end
 
+  def join_org
+    @organization = get_organization
+    @organization.organization_users.create!(user_id: current_user.id)
+    respond_to do |format|
+      format.html { redirect_to organization_path(@organization) }
+    end
+  end
+
+  def leave_org
+    @organization = get_organization
+    @organization.users.delete(current_user.id)
+    respond_to do |format|
+      format.html { redirect_to organization_path(@organization) }
+    end
+  end
+
   private
 
   def organization_params
