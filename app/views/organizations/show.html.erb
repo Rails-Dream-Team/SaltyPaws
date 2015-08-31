@@ -21,13 +21,13 @@
             <%= link_to user.display_name, user_path(user[:id]) %>
           </li>
         <% end %>
-        <% if current_user.organizations.count == 0 %>
+        <% if @organization.users.include?(current_user) %>
           <li>
-            <%= link_to 'Join Organization', join_org_path(@organization), data: { confirm: 'Are you sure?'} %>
+            <%= link_to 'Leave Organization', leave_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
           </li>
         <% else %>
           <li>
-            <%= link_to 'Leave Organization', leave_org_path(@organization), data: { confirm: 'Are you sure?'} %>
+            <%= link_to 'Join Organization', join_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
           </li>
         <% end %>
       </ul>
