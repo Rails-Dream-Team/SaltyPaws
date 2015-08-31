@@ -9,14 +9,7 @@ var Colony = React.createClass({
   _buildColony: function() {
     return (
       <div>
-        <p>{this.props.data.name}</p>
-        <p>{this.props.data.street_address}</p>
-        <p>{this.props.data.city}</p>
-        <p>{this.props.data.state}</p>
-        <p>{this.props.data.zip_code}</p>
-        <p>{this.props.data.environment}</p>
-        <p>{this.props.data.pop}</p>
-        <p>{this.props.data.vet}</p>
+        <a href={"/colonies/" + this.props.data.id}>{ this.props.data.name }</a>
       </div>
     );
   }

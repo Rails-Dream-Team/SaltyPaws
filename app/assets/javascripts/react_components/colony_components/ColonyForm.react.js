@@ -49,7 +49,7 @@ var ColonyForm = React.createClass({
       </div>
     );
   },
-  
+
   createColony: function(data) {
     request
       .post('/colonies')
@@ -60,8 +60,9 @@ var ColonyForm = React.createClass({
         if (err) {
           window.alert("Problem Creating Colony");
           return;
-        } 
+        }
         window.alert("Colony Successfully Created");
+        window.location = "/colonies";
       });
   },
 
@@ -73,7 +74,7 @@ var ColonyForm = React.createClass({
     var geoState = this.refs.state.getDOMNode().value.trim();
     var geoAddress = geoStreet + ", " + geoCity + ", " + geoState;
     var geocoder = new google.maps.Geocoder();
-    
+
     geocoder.geocode({'address': geoAddress}, function(results, status) {
       if (status === google.maps.GeocoderStatus.OK) {
         var newLat = results[0].geometry.location.lat();
