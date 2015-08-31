@@ -2,7 +2,8 @@ require 'test_helper'
 
 class TopicsControllerTest < ActionController::TestCase
   def setup
-    @board = boards(:one)
+    @private_board = boards(:one)
+    @public_board = boards(:two)
     @topic1 = topics(:one)
     @topic2 = topics(:two)
     @topic3 = topics(:three)
@@ -122,14 +123,14 @@ class TopicsControllerTest < ActionController::TestCase
 
     test 'admin creates with valid attributes and redirects' do
       assert_difference('Topic.count', 1) do
-        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @board }
+        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @private_board }
       end
       assert_redirected_to topic_path(assigns(:topic))
     end
 
     test 'admin renders new with invalid attribute submission (no title)' do
       assert_no_difference('Topic.count') do
-        post :create, topic: { title: '', board_id: @board }
+        post :create, topic: { title: '', board_id: @private_board }
       end
       assert_template :new
     end
@@ -144,7 +145,7 @@ class TopicsControllerTest < ActionController::TestCase
     test 'volunteer creates with valid attributes and redirects' do
       sign_in @volunteer
       assert_difference('Topic.count', 1) do
-        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @board }
+        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @private_board }
       end
       assert_redirected_to topic_path(assigns(:topic))
     end
@@ -152,7 +153,7 @@ class TopicsControllerTest < ActionController::TestCase
     test 'basic creates with valid attributes and redirects' do
       sign_in @basic
       assert_difference('Topic.count', 1) do
-        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @board }
+        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @private_board }
       end
       assert_redirected_to topic_path(assigns(:topic))
     end
@@ -276,9 +277,10 @@ class TopicsControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
-    test "get new redirects" do
+    test "get new renders" do
       get :new
-      assert_redirected_to new_user_session_path
+      assert_instance_of Topic, assigns(:topic)
+      assert_template :new
     end
 
     test "get edit redirects" do
@@ -286,16 +288,31 @@ class TopicsControllerTest < ActionController::TestCase
       assert_redirected_to new_user_session_path
     end
 
-    test "get show redirects" do
-      get :show, id: @topic1.id
-      assert_redirected_to new_user_session_path
+    test "get show for public renders" do
+      get :show, id: @topic4.id
+      assert_template :show
+      assert_equal @topic4, assigns(:topic)
     end
 
-    test 'post create redirects' do
-      assert_no_difference('Topic.count') do
-        post :create, topic: { title: 'fake topic, being all fake and whatnot' }
+    test "get show for private redirects" do
+      get :show, id: @topic1.id
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'post creates if board is public' do
+      assert_difference('Topic.count', 1) do
+        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @public_board.id }
       end
-      assert_redirected_to new_user_session_path
+      assert_equal 0, Topic.last.user_id
+      assert_redirected_to topic_path(assigns(:topic))
+    end
+
+    test 'post create fails and renders new if board is not public' do
+      assert_no_difference('Topic.count') do
+        post :create, topic: { title: 'fake topic, being all fake and whatnot', board_id: @private_board.id }
+      end
+      refute Topic.last.title == 'fake topic, being all fake and whatnot'
+      assert_template :new
     end
 
     test 'patch update redirects' do

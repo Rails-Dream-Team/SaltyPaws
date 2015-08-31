@@ -1,9 +1,5 @@
 class BoardPolicy < ApplicationPolicy
 
-  def index?
-    true
-  end
-
   def new?
     user.admin?
   end
@@ -13,7 +9,7 @@ class BoardPolicy < ApplicationPolicy
   end
 
   def show?
-    user || record[:public]
+    user || record.public
   end
 
   def edit?
