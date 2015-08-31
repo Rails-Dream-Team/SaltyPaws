@@ -13,7 +13,11 @@ class BoardPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user || record[:public]
+  end
+
+  def edit?
+    user.admin?
   end
 
   def update?
