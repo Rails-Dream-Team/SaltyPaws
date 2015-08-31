@@ -1,4 +1,10 @@
 class ApplicationController < ActionController::Base
+
+  before_action :chrome_cache_buster
+
+  def chrome_cache_buster
+    response.headers['Vary'] = 'Accept'
+  end
   include Pundit
 
   # after_action :verify_authorized, unless: :devise_controller?
@@ -25,7 +31,7 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || request.referrer || root_path
+    root_path
   end
 
   def after_sign_up_path_for(resource)
