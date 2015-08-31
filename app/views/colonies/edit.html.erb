@@ -1,5 +1,10 @@
-<div class="colony__edit">
-  <%= link_to 'View All Colonies', colonies_path %>
-  <h1>Edit a colony</h1>
-  <%= render 'form' %>
+<div class="colony">
+  <div class="colony__header">
+    <h1>Edit a colony</h1>
+    <%= link_to 'View All Colonies', colonies_path %>
+  </div>
+  <div class="colony__edit">
+    <%= render 'form' %>
+  </div>
+
 </div>
