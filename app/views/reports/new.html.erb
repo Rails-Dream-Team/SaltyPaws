@@ -1,5 +1,5 @@
 <div class="report">
-  <%= form_for @report, url: report_path do |report_colony_form| %>
+  <%= form_for @report, url: reports_path do |report_colony_form| %>
     <% if @report.errors.full_messages.present? %>
     <div class="report__formErrors">
       <h2>Uh oh! Your submission had the following errors:</h2>

@@ -6,22 +6,24 @@ Rails.application.routes.draw do
   root 'home#index'
 
   resources :colonies
-  resources :organizations
-  get "/joinorganization/:id", to: "organizations#join_org", as: :join_org
-  get "/leaveorganization/:id", to: "organizations#leave_org", as: :leave_org
+  resources :organizations do
+    member do
+      get :join
+      get :leave
+    end
+  end
+
   resources :cats
-  resources :users, only: [:edit, :update]
-  get '/users/:id' => 'users#show'
+  resources :users, only: [:edit, :show, :update]
+
   resources :boards
   resources :topics do
     resources :posts
   end
 
-  get 'volunteers', to: 'volunteers#new', as: 'volunteer'
-  post 'volunteers', to: 'volunteers#create'
+  resources :volunteers, only: [:new, :create]
 
-  get 'reports', to: 'reports#new', as: 'report'
-  post 'reports', to: 'reports#create'
+  resources :reports, only: [:new, :create]
 
   mount Sidekiq::Web => '/sidekiq'
 end

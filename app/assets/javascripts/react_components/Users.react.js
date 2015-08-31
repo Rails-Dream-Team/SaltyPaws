@@ -15,6 +15,14 @@ var Users = React.createClass ({
   },
 
   render: function(){
+    var editButton
+    if (this.state.user.edit === true) {
+      editButton = (<div className="user_infoSubmit"><button onClick={ this._handleEdit }>Edit</button></div>);
+    }
+    var organizations
+    if (this.state.user.organizations != undefined) {
+      organizations = this._listOrganizations();
+    }
     if (this.state.user.avatar) {
       var url = this.state.user.avatar.url
     } else {
@@ -102,7 +110,7 @@ var Users = React.createClass ({
                     <h4>Organizations</h4>
                   </div>
                   <div className="user__workContent">
-                    <p>User organizations they belong to</p>
+                    <ul>{organizations}</ul>
                   </div>
                   <div className="user__workHeader">
                     <h4>Colonies</h4>
@@ -121,7 +129,7 @@ var Users = React.createClass ({
                     <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>{ this.state.user.pets }</div>
                     <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span> { this.state.user.volunteer_work }</div>
                     <div className="user_infoRow"><span className="user_infoLabel">About:  </span></div>{ this.state.user.about_me }
-                    <div className="user_infoSubmit"><button onClick={ this._handleEdit }>Edit</button></div>
+                    {editButton}
                   </div>
                 </div>
               </div>
@@ -131,7 +139,11 @@ var Users = React.createClass ({
         )
       }
   },
-
+  _listOrganizations: function() {
+    return this.state.user.organizations.map(function(org){
+      return <li>{org}</li>
+    });
+  },
   _handleEdit: function(e) {
     e.preventDefault();
     this.setState({ isEditing: true });

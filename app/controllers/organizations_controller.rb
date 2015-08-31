@@ -66,7 +66,7 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def join_org
+  def join
     @organization = get_organization
     @organization.organization_users.create!(user_id: current_user.id)
     respond_to do |format|
@@ -74,7 +74,7 @@ class OrganizationsController < ApplicationController
     end
   end
 
-  def leave_org
+  def leave
     @organization = get_organization
     @organization.users.delete(current_user.id)
     respond_to do |format|

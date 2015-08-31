@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
 
   def show
-    @user = get_user
     respond_to do |format|
       format.html
-      format.json { render json: @user }
+      format.json do
+        @user = get_user
+      end
     end
   end
 
