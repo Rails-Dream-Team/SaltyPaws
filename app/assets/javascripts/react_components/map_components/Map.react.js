@@ -11,7 +11,7 @@ var LatLng               = GoogleMapsAPI.LatLng;
 var StickyDiv            = require('react-stickydiv');
 var Colony               = require('../colony_components/Colony.react.js');
 var geocoder             = new google.maps.Geocoder();
-var request              = require('superagent'); 
+var request              = require('superagent');
 
 var GoogleMap = React.createClass({
   getInitialState: function() {

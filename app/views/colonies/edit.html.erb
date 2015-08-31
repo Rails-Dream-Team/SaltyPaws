@@ -1,5 +1,62 @@
-<div class="colony__edit">
-  <%= link_to 'View All Colonies', colonies_path %>
-  <h1>Edit a colony</h1>
-  <%= render 'form' %>
+<div class="colony">
+  <div class="colony__header">
+    <h1>Edit a colony</h1>
+    <%= link_to 'View All Colonies', colonies_path %>
+  </div>
+  <div class="colony__edit">
+    <%= form_for @colony do |f| %>
+      <% if @colony.errors.full_messages.present? %>
+      <div class="colony__formErrors">
+        <h2>Uh oh! Your submission had the following errors:</h2>
+        <ul>
+          <% @colony.errors.full_messages.each do |message| %>
+            <li>
+              <%= message %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+      <div class="colony__formContainer">
+          <div class="colony__formLabel">
+            <%= f.label :name %>
+            <%= f.text_field :name %>
+          </div>
+          <div class="colony__formLabel">
+            <%= f.label :photo %>
+            <%= f.text_field :photo %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :street_address %>
+          <%= f.text_field :street_address %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :city %>
+          <%= f.text_field :city %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :state %>
+          <%= f.text_field :state %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :zip_code %>
+          <%= f.text_field :zip_code %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :environment %>
+          <%= f.text_field :environment %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :pop %>
+          <%= f.text_field :pop %>
+          </div>
+          <div class="colony__formLabel">
+          <%= f.label :vet %>
+          <%= f.text_field :vet %>
+          </div>
+          <div class="colony__formSubmit"><%= f.submit 'Submit' %></div>
+      </div>
+
+    <% end %>
+  </div>
+
 </div>

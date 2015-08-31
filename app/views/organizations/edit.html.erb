@@ -1,9 +1,13 @@
 <div class="org">
-  <h1>Update Your Organization</h1>
-  <p>
-    Outdated info is whack, man. Update your deets!
-  </p>
+  <div class="org__header">
+    <h1>Update Your Organization</h1>
+    <%= link_to 'Back to All Organizations', organizations_path %>
+  </div>
   <div class="org__edit">
+    <p>
+      Outdated info is whack, man. Update your deets!
+    </p>
+
     <%= render 'form' %>
   </div>
 </div>
