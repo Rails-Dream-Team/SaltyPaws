@@ -150,11 +150,7 @@ var Users = React.createClass ({
   },
 
   _handleChange: function(err, res) {
-    if (err) {
-      console.log(err.response);
-      this.setState({ isEditing: false });
-      return;
-    }
+    if (err) { console.log(err.response); return; }
     this.setState({ isEditing: false });
     this._fetchUser();
   },
