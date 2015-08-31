@@ -15,10 +15,10 @@ var Colonies = React.createClass({
   render: function() {
     if (this.state.colonies.length > 0) {
       return (
-        <div>
-          <ColonyList colonies={this.state.colonies} />
-          <GoogleMap colonies={this.state.colonies} />
-        </div>
+        <ul className="colonies__listUL">
+          <li className="colonies__li"><ColonyList colonies={this.state.colonies} /></li>
+          <li className="map_li"><GoogleMap colonies={this.state.colonies} /></li>
+        </ul>
       );
     } else {
       return null;
@@ -66,7 +66,7 @@ var Colonies = React.createClass({
     if (err) {
       window.alert('No Data Retrieved');
       return;
-    } 
+    }
     this.setState({ colonies: res.body });
   },
 
