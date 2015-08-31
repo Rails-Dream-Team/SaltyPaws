@@ -282,7 +282,7 @@ class ColoniesControllerTest < ActionController::TestCase
       @user2 = users(:volunteer)
       sign_in @user2
       @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
-                     'zip_code', 'enviroment', 'pop', 'vet']
+                     'zip_code', 'environment', 'pop', 'vet']
     end
 
     test "html GETs when logged in" do
@@ -397,7 +397,7 @@ class ColoniesControllerTest < ActionController::TestCase
       @user3 = users(:basic)
       sign_in @user3
       @attributes = ['id', 'name', 'photo', 'street_address', 'city', 'state',
-                     'zip_code', 'enviroment', 'pop', 'vet']
+                     'zip_code', 'environment', 'pop', 'vet']
     end
 
     test "html does NOT GETs when logged in" do
