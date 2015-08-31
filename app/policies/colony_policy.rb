@@ -1,23 +1,23 @@
 class ColonyPolicy < ApplicationPolicy
 
   def index?
-    user.volunteer? || user.admin?
+    user
   end
 
   def new?
-    user.admin?
+    user
   end
 
   def create?
-    user.admin?
+    user
   end
 
   def show?
-    user.volunteer? || user.admin?
+    user
   end
 
   def update?
-    user.admin?
+    user
   end
 
   def destroy?
