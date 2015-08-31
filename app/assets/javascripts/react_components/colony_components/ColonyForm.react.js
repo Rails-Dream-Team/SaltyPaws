@@ -5,7 +5,7 @@ var ColonyForm = React.createClass({
   render: function() {
     return (
       <div className="vol__formContainer">
-        <form onSubmit={ this._handleSubmit }>
+        <form onSubmit={ this.handleSubmit }>
           <div className="volForm__label">
             <label htmlFor="name" className="volForm__label">Name: </label>
             <input ref="name" id="name" placeholder="" />
@@ -50,7 +50,7 @@ var ColonyForm = React.createClass({
     );
   },
   
-  _createColony: function(data) {
+  createColony: function(data) {
     request
       .post('/colonies')
       .send(data)
@@ -65,23 +65,39 @@ var ColonyForm = React.createClass({
       });
   },
 
-  _handleSubmit: function(e) {
+  handleSubmit: function(e) {
     e.preventDefault();
-    var data = {
-      colony: {
-        name: this.refs.name.getDOMNode().value.trim(),
-        street_address: this.refs.streetAddress.getDOMNode().value,
-        city: this.refs.city.getDOMNode().value.trim(),
-        state: this.refs.state.getDOMNode().value.trim(),
-        zip_code: this.refs.zipCode.getDOMNode().value.trim(),
-        environment: this.refs.environment.getDOMNode().value.trim(),
-        pop: this.refs.pop.getDOMNode().value.trim(),
-        vet: this.refs.vet.getDOMNode().value.trim()
-      }
-    };
-    this._createColony(data);
-  }
 
+    var geoStreet = this.refs.streetAddress.getDOMNode().value;
+    var geoCity = this.refs.city.getDOMNode().value.trim();
+    var geoState = this.refs.state.getDOMNode().value.trim();
+    var geoAddress = geoStreet + ", " + geoCity + ", " + geoState;
+    var geocoder = new google.maps.Geocoder();
+    
+    geocoder.geocode({'address': geoAddress}, function(results, status) {
+      if (status === google.maps.GeocoderStatus.OK) {
+        var newLat = results[0].geometry.location.lat();
+        var newLng = results[0].geometry.location.lng();
+        var data = {
+          colony: {
+            name: this.refs.name.getDOMNode().value.trim(),
+            street_address: geoStreet,
+            city: geoCity,
+            state: geoState,
+            zip_code: this.refs.zipCode.getDOMNode().value.trim(),
+            environment: this.refs.environment.getDOMNode().value.trim(),
+            pop: this.refs.pop.getDOMNode().value.trim(),
+            vet: this.refs.vet.getDOMNode().value.trim(),
+            lat: newLat,
+            lng: newLng
+          }
+        };
+        this.createColony(data);
+      } else {
+        alert('Geocode was not successful for the following reason: ' + status);
+      }
+    }.bind(this));
+  }
 
 });
 

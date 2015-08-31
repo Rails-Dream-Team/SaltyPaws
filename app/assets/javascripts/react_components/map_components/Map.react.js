@@ -29,32 +29,9 @@ var GoogleMap = React.createClass({
           width={500}
           height={500}
           >
-          <Marker position={this._codeAddress()}></Marker>
         </Map>
       );
-  },
-
-  _codeAddress: function() {
-    var addresses = [];
-    this.props.colonies.forEach(function(col) {
-      addresses.push(col.street_address + ', ' + col.city);
-    });
-    console.log(addresses);
-    for (var i = 0; i < addresses.length; i ++) {
-      var address = addresses[i];
-      geocoder.geocode( { 'address': address}, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          var marker = new google.maps.Marker({
-              setMap: GoogleMap,
-              position: results[0].geometry.location
-          });
-        } else {
-          alert("Geocode was not successful for the following reason: " + status);
-        }
-      });
-    }
   }
-
 });
 
 module.exports = GoogleMap;
