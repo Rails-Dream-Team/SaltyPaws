@@ -1,23 +1,30 @@
 class PostPolicy < ApplicationPolicy
 
   def index?
-    true
+    user
   end
 
   def create?
-    true
+    user
   end
 
   def show?
-    true
+    user
+  end
+
+  def edit?
+    user.admin? ? true : user == topic.user
   end
 
   def update?
-    user.present? && user == post.user
+    user.admin? ? true : user == topic.user
   end
 
   def destroy?
-    user.present? && user.admin?
+    user.admin?
+
+    # If allowing user to delete topics they created, use this instead
+    # user.admin? ? true : user == topic.user
   end
 
   private
