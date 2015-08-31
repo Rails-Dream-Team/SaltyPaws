@@ -1,6 +1,12 @@
 class BoardsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   def index
-    @boards = Board.all
+    if current_user
+      @boards = Board.all
+    else
+      @boards = Board.where(public: true)
+    end
     authorize @boards
     respond_to do |format|
       format.html { render :index }

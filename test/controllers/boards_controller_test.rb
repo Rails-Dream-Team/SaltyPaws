@@ -2,64 +2,268 @@ require 'test_helper'
 
 class BoardsControllerTest < ActionController::TestCase
   def setup
-    @board = boards(:one)
+    @private_board = boards(:one)
     @public_board = boards(:two)
-    @user = users(:admin)
-    sign_in @user
-    @attributes = ['id', 'title']
+    @all_boards = [@private_board, @public_board]
+    @admin = users(:admin)
+    @volunteer = users(:volunteer)
+    @basic = users(:basic)
+    @attributes = Board.column_names
   end
 
-  class BoardsGetWhenLoggedIn < BoardsControllerTest
-    test "get index renders html" do
+  class BoardsWhenAdmin < BoardsControllerTest
+    def setup
+      super
+      sign_in @admin
+    end
+
+    test "html gets index" do
       get :index
-      assert_equal [@board, @public_board], assigns(:boards)
+      assert_equal @all_boards, assigns(:boards)
       assert_template :index
     end
 
-    test "get index renders json" do
+    test "json gets index" do
       get :index, format: :json
-      response_item = JSON.parse(response.body)[0]
+      response_item = JSON.parse(response.body)
       @attributes.each do |a|
-        assert_equal @board.send(a), response_item[a]
+        @all_boards.each_index do |i|
+          assert_equal @all_boards[i].send(a), response_item[i][a]
+        end
       end
       assert_response :success
     end
 
-    test "get new renders html" do
+    test "html gets new" do
       get :new
       assert_instance_of Board, assigns(:board)
       assert_template :new
     end
 
-    test "get edit renders html" do
-      get :edit, id: @board.id
+    test "html gets edit for private" do
+      get :edit, id: @private_board.id
       assert_template :edit
     end
 
-    test "get show renders html" do
-      get :show, id: @board.id
+    test "html gets edit for public" do
+      get :edit, id: @public_board.id
+      assert_template :edit
+    end
+
+    test "html gets show for private" do
+      get :show, id: @private_board.id
       assert_template :show
     end
 
-    test "get show renders json" do
-      get :show, id: @board.id, format: :json
+    test "html gets show for public" do
+      get :show, id: @public_board.id
+      assert_template :show
+    end
+
+    test "json gets show for private" do
+      get :show, id: @private_board.id, format: :json
       response_item = JSON.parse(response.body)
       @attributes.each do |a|
-        assert_equal @board.send(a), response_item[a]
+        assert_equal @private_board.send(a), response_item[a]
       end
       assert_response :success
     end
-  end
+  end # end of BoardsWhenAdmin
 
-  class BoardsGetWhenLoggedOut < BoardsControllerTest
+  class BoardsWhenVolunteer < BoardsControllerTest
     def setup
-      @board = boards(:one)
-      @user = users(:admin)
+      super
+      sign_in @volunteer
     end
 
+    test "html gets index" do
+      get :index
+      assert_equal @all_boards, assigns(:boards)
+      assert_template :index
+    end
+
+    test "html get new redirects" do
+      get :new
+      assert_instance_of Board, assigns(:board)
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html get edit redirects for private" do
+      get :edit, id: @private_board.id
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html get edit redirects for public" do
+      get :edit, id: @public_board.id
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html gets show for private" do
+      get :show, id: @private_board.id
+      assert_template :show
+    end
+
+    test "html gets show for public" do
+      get :show, id: @public_board.id
+      assert_template :show
+    end
+  end # end of BoardsWhenVolunteer
+
+  class BoardsWhenBasic < BoardsControllerTest
+    def setup
+      super
+      sign_in @basic
+    end
+
+    test "html gets index" do
+      get :index
+      assert_equal @all_boards, assigns(:boards)
+      assert_template :index
+    end
+
+    test "html get new redirects" do
+      get :new
+      assert_instance_of Board, assigns(:board)
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html get edit redirects for private" do
+      get :edit, id: @private_board.id
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html get edit redirects for public" do
+      get :edit, id: @public_board.id
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html gets show for private" do
+      get :show, id: @private_board.id
+      assert_template :show
+    end
+
+    test "html gets show for public" do
+      get :show, id: @public_board.id
+      assert_template :show
+    end
+  end # end of BoardsWhenBasic
+
+  class BoardsCreate < BoardsControllerTest
+    test 'admin creates with valid attributes and redirects' do
+      sign_in @admin
+      assert_difference('Board.count', 1) do
+        post :create, board: { title: 'fake board, being all fake and whatnot' }
+      end
+      assert_redirected_to board_path(assigns(:board))
+    end
+
+    test 'admin renders new with invalid attribute submission (no title)' do
+      sign_in @admin
+      assert_no_difference('Board.count') do
+        post :create, board: { title: '' }
+      end
+      assert_template :new
+    end
+
+    test 'volunteer redirects and does not create' do
+      sign_in @volunteer
+      assert_no_difference('Board.count') do
+        post :create, board: { title: 'some valid title' }
+      end
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'basic redirects and does not create' do
+      sign_in @basic
+      assert_no_difference('Board.count') do
+        post :create, board: { title: 'some valid title' }
+      end
+      assert_redirected_to(request.referrer || root_path)
+    end
+  end # end of BoardsCreate
+
+  class BoardsUpdate < BoardsControllerTest
+    test 'admin updates with valid attributes and redirects' do
+      sign_in @admin
+      old_title = @private_board.title
+      new_title = 'this new title is better'
+      patch :update, id: @private_board, board: { title: new_title }
+      @private_board.reload
+      assert_redirected_to board_path(assigns(:board))
+      assert_equal new_title, @private_board.title
+    end
+
+    test 'admin renders edit with invalid attribute submission (no title)' do
+      sign_in @admin
+      old_title = @private_board.title
+      patch :update, id: @private_board, board: { title: '' }
+      @private_board.reload
+      assert_template :edit
+      assert_equal old_title, @private_board.title
+    end
+
+    test 'volunteer redirects and does not update' do
+      sign_in @volunteer
+      old_title = @private_board.title
+      new_title = 'this new title is better'
+      patch :update, id: @private_board, board: { title: new_title }
+      @private_board.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert_equal old_title, @private_board.title
+    end
+
+    test 'basic redirects and does not update' do
+      sign_in @basic
+      old_title = @private_board.title
+      new_title = 'this new title is better'
+      patch :update, id: @private_board, board: { title: new_title }
+      @private_board.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert_equal old_title, @private_board.title
+    end
+  end # end of BoardsUpdate
+
+  class BoardsDelete < BoardsControllerTest
+    test 'admin soft deletes and redirects to boards index' do
+      sign_in @admin
+      old_unscoped = Board.unscoped.count
+      assert_difference('Board.count', -1) do
+        delete :destroy, id: @private_board
+      end
+      @private_board.reload
+      assert_redirected_to boards_path
+      assert_equal old_unscoped, Board.unscoped.count
+      refute @private_board.deleted_at.nil?
+    end
+
+    test 'volunteer redirects and does not delete' do
+      sign_in @volunteer
+      old_deleted_at = @private_board.deleted_at
+      assert_no_difference('Board.count') do
+        delete :destroy, id: @private_board
+      end
+      @private_board.reload
+      assert_equal old_deleted_at, @private_board.deleted_at
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'basic redirects and does not delete' do
+      sign_in @basic
+      old_deleted_at = @private_board.deleted_at
+      assert_no_difference('Board.count') do
+        delete :destroy, id: @private_board
+      end
+      @private_board.reload
+      assert_equal old_deleted_at, @private_board.deleted_at
+      assert_redirected_to(request.referrer || root_path)
+    end
+  end # end of BoardsDelete
+
+  class BoardsWhenLoggedOut < BoardsControllerTest
     test "get index redirects" do
       get :index
-      assert_redirected_to new_user_session_path
+      assert_equal [@public_board], assigns(:boards)
+      assert_template :index
     end
 
     test "get new redirects" do
@@ -68,93 +272,42 @@ class BoardsControllerTest < ActionController::TestCase
     end
 
     test "get edit redirects" do
-      get :edit, id: @board
+      get :edit, id: @public_board
       assert_redirected_to new_user_session_path
     end
 
-    test "get show with html redirects" do
-      get :show, id: @board
-      assert_redirected_to new_user_session_path
+    test "get show of private with html redirects" do
+      get :show, id: @private_board
+      assert_redirected_to(request.referrer || root_path)
     end
 
-    test "get show with json responds with unauthorized" do
-      get :show, id: @board, format: :json
-      assert_response :unauthorized
-    end
-  end
-
-  class BoardsCreate < BoardsControllerTest
-    test 'creates with valid attributes and redirects' do
-      assert_difference('Board.count', 1) do
-        post :create, board: { title: 'fake board, being all fake and whatnot' }
-      end
-      assert_redirected_to board_path(assigns(:board))
+    test "get show of public with html renders" do
+      get :show, id: @public_board
+      assert_template :show
     end
 
-    test 'renders new with invalid attribute submission (no title)' do
-      assert_no_difference('Board.count') do
-        post :create, board: { title: '' }
-      end
-      assert_template :new
-    end
-
-    test 'redirects to login when no user logged in' do
-      sign_out @user
+    test 'post create redirects' do
       assert_no_difference('Board.count') do
         post :create, board: { title: 'fake board, being all fake and whatnot' }
       end
       assert_redirected_to new_user_session_path
     end
-  end
 
-  class BoardsUpdate < BoardsControllerTest
-    test 'updates with valid attributes and redirects' do
-      old_title = @board.title
-      new_title = 'this new title is better'
-      patch :update, id: @board, board: { title: new_title }
-      @board.reload
-      assert_redirected_to board_path(assigns(:board))
-      assert_equal new_title, @board.title
-    end
-
-    test 'renders edit with invalid attribute submission (no title)' do
-      old_title = @board.title
-      patch :update, id: @board, board: { title: '' }
-      @board.reload
-      assert_template :edit
-      assert_equal old_title, @board.title
-    end
-
-    test 'redirects to login when no user logged in' do
-      sign_out @user
-      old_title = @board.title
-      patch :update, id: @board, board: { title: 'this is a new title' }
+    test 'patch update redirects' do
+      old_title = @public_board.title
+      patch :update, id: @public_board, board: { title: 'this is a new title' }
       assert_redirected_to new_user_session_path
-      assert_equal old_title, @board.title
-    end
-  end
-
-  class BoardsDelete < BoardsControllerTest
-    test 'soft deletes and redirects to boards index when logged in' do
-      old_unscoped = Board.unscoped.count
-      assert_difference('Board.count', -1) do
-        delete :destroy, id: @board
-      end
-      @board.reload
-      assert_redirected_to boards_path
-      assert_equal old_unscoped, Board.unscoped.count
-      refute @board.deleted_at.nil?
+      assert_equal old_title, @public_board.title
     end
 
-    test 'redirects to login when no user logged in' do
-      sign_out @user
-      old_deleted_at = @board.deleted_at
+    test 'delete destroy redirects' do
+      old_deleted_at = @public_board.deleted_at
       assert_no_difference('Board.count') do
-        delete :destroy, id: @board
+        delete :destroy, id: @public_board
       end
-      @board.reload
+      @public_board.reload
       assert_redirected_to new_user_session_path
-      assert_equal old_deleted_at, @board.deleted_at
+      assert_equal old_deleted_at, @public_board.deleted_at
     end
-  end
+  end # end of BoardsWhenLoggedOut
 end
