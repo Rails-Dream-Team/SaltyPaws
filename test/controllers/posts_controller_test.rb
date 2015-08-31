@@ -60,6 +60,104 @@ class PostsControllerTest < ActionController::TestCase
     end
   end # end PostsWhenAdmin
 
+  class PostsWhenVolunteer < PostsControllerTest
+    def setup
+      super
+      sign_in @volunteer
+    end
+
+    test "get index renders" do
+      get :index, topic_id: @private_topic
+      assert_equal [@private_post], assigns(:posts)
+      assert_template :index
+    end
+
+    test "get new under private topic renders" do
+      get :new, topic_id: @private_topic
+      refute @private_topic.board.public
+      assert_instance_of Post, assigns(:post)
+      assert_template :new
+    end
+
+    test "get new under public topic renders" do
+      get :new, topic_id: @public_topic
+      assert @public_topic.board.public
+      assert_instance_of Post, assigns(:post)
+      assert_template :new
+    end
+
+    test "get edit of private post renders if created by current user" do
+      get :edit, topic_id: @priv_vol_post.topic, id: @priv_vol_post.id
+      assert_equal @volunteer, @priv_vol_post.user
+      assert_template :edit
+    end
+
+    test "get edit of private post redirects if created by different user" do
+      get :edit, topic_id: @private_topic, id: @private_post.id
+      refute @volunteer == @private_post.user
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "get show of private post renders" do
+      get :show, topic_id: @private_topic, id: @private_post.id
+      assert_template :show
+    end
+
+    test "get show of public post renders" do
+      get :show, topic_id: @public_topic, id: @public_post.id
+      assert_template :show
+    end
+  end # end PostsWhenVolunteer
+
+  class PostsWhenBasic < PostsControllerTest
+    def setup
+      super
+      sign_in @basic
+    end
+
+    test "get index renders" do
+      get :index, topic_id: @private_topic
+      assert_equal [@private_post], assigns(:posts)
+      assert_template :index
+    end
+
+    test "get new under private topic renders" do
+      get :new, topic_id: @private_topic
+      refute @private_topic.board.public
+      assert_instance_of Post, assigns(:post)
+      assert_template :new
+    end
+
+    test "get new under public topic renders" do
+      get :new, topic_id: @public_topic
+      assert @public_topic.board.public
+      assert_instance_of Post, assigns(:post)
+      assert_template :new
+    end
+
+    test "get edit of private post renders if created by current user" do
+      get :edit, topic_id: @priv_bas_post.topic, id: @priv_bas_post.id
+      assert_equal @basic, @priv_bas_post.user
+      assert_template :edit
+    end
+
+    test "get edit of private post redirects if created by different user" do
+      get :edit, topic_id: @private_topic, id: @private_post.id
+      refute @basic == @private_post.user
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "get show of private post renders" do
+      get :show, topic_id: @private_topic, id: @private_post.id
+      assert_template :show
+    end
+
+    test "get show of public post renders" do
+      get :show, topic_id: @public_topic, id: @public_post.id
+      assert_template :show
+    end
+  end # end PostsWhenBasic
+
   class PostsCreate < PostsControllerTest
     def setup
       super
