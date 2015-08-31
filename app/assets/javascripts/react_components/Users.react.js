@@ -15,12 +15,6 @@ var Users = React.createClass ({
   },
 
   render: function(){
-
-    var editButton = null;
-    if (this.state.user.id === 2) {
-      editButton = (<div className="user_infoSubmit"><button onClick={ this._handleEdit }>Edit</button></div>);
-    }
-
     if (this.state.user.avatar) {
       var url = this.state.user.avatar.url
     } else {
@@ -127,7 +121,7 @@ var Users = React.createClass ({
                     <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>{ this.state.user.pets }</div>
                     <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span> { this.state.user.volunteer_work }</div>
                     <div className="user_infoRow"><span className="user_infoLabel">About:  </span></div>{ this.state.user.about_me }
-                    {editButton}
+                    <div className="user_infoSubmit"><button onClick={ this._handleEdit }>Edit</button></div>
                   </div>
                 </div>
               </div>
