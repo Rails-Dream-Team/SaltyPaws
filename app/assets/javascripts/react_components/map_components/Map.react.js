@@ -36,7 +36,7 @@ var GoogleMap = React.createClass({
   renderMarkers: function() {
     return this.props.colonies.map(function(colony) {
       console.log(colony);
-      return <Marker position={ new LatLng(colony.lat, colony.lng) } /> 
+      return <Marker position={ new LatLng(colony.lat, colony.lng) } />
     });
   }
 
