@@ -1,7 +1,7 @@
 class ColoniesController < ApplicationController
   def index
     @colonies = Colony.all
-    # authorize @colonies
+    authorize @colonies
     respond_to do |format|
       format.html
       format.json { render json: @colonies }
@@ -10,12 +10,12 @@ class ColoniesController < ApplicationController
 
   def new
     @colony = Colony.new
-    # authorize @colony
+    authorize @colony
   end
 
   def create
     @colony = Colony.new(colony_params)
-    # authorize @colony
+    authorize @colony
     respond_to do |format|
       if @colony.save
         format.html { redirect_to @colony }
@@ -29,7 +29,7 @@ class ColoniesController < ApplicationController
 
   def show
     @colony = get_colony
-    # authorize @colony
+    authorize @colony
     respond_to do |format|
       format.html
       format.json { render json: @colony }
