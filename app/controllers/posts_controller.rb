@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def new
     @topic = get_topic
     @post = Post.new
+    authorize @post
   end
 
   def create
@@ -30,6 +31,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = get_topic_post
+    authorize @post
   end
 
   def update

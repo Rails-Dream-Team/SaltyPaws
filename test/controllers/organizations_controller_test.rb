@@ -251,4 +251,224 @@ class OrganizationsControllerTest < ActionController::TestCase
       assert @organization.deleted_at.nil?
     end
   end
+
+  class OrganizationsAsVolunteerUser < OrganizationsControllerTest
+    def setup
+      @organization = organizations(:one)
+      @user2 = users(:volunteer)
+      sign_in @user2
+      @attributes = ['id', 'name', 'description', 'street_address',
+                     'city', 'state', 'zip_code']
+    end
+
+    test "html GETs when logged in" do
+      get :index
+      assert_equal [@organization], assigns[:organizations]
+      assert_response :success
+    end
+
+    test "json GETs when logged in" do
+      get :index, format: :json
+      response_item = JSON.parse(response.body)[0]
+      @attributes.each do |attr|
+        assert_equal @organization.send(attr), response_item[attr]
+      end
+      assert_response :success
+    end
+
+    test "html GETs new when logged in" do
+      get :new
+      assert_instance_of Organization, assigns(:organization)
+      assert_template :new
+    end
+
+    test 'html creates with valid attributes and redirects' do
+      assert_difference('Organization.count', 1) do
+        post  :create,
+              organization:  { name: "Test" }
+      end
+      assert_redirected_to organization_path(assigns(:organization))
+    end
+
+    test 'json creates with valid attributes json' do
+      assert_difference('Organization.count', 1) do
+        post  :create,
+              format: :json,
+              organization:  { name: "Testy" }
+      end
+      assert_response 201
+    end
+
+    test "html GETs show when logged in" do
+      get :show, id: @organization
+      assert_equal @organization, assigns(:organization)
+      assert_response :success
+    end
+
+    test "json GETs show when logged in" do
+      get :show, id: @organization, format: :json
+      response_item = JSON.parse(response.body)
+      @attributes.each do |a|
+        assert_equal @organization.send(a), response_item[a]
+      end
+      ['lat', 'lng'].each do |a|
+        assert_equal @organization[a].to_f, response_item[a].to_f
+      end
+      assert_response :success
+    end
+
+    test "html GETs edit when logged in" do
+      get :edit, id: @organization
+      assert_equal @organization, assigns(:organization)
+      assert_template :edit
+    end
+
+    test "html updates with valid attributes" do
+      old_name = @organization.name
+      new_name = "Some new and different name"
+      patch :update, id: @organization, organization: { name: new_name }
+      @organization.reload
+      refute @organization.name == old_name
+      assert_equal new_name, @organization.name
+      assert_redirected_to organization_path(@organization)
+    end
+
+    test "json updates with valid attributes" do
+      old_name = @organization.name
+      new_name = "Some new and different name"
+      patch :update,
+            id: @organization,
+            format: :json,
+            organization: { name: new_name }
+      @organization.reload
+      refute @organization.name == old_name
+      assert_equal new_name, @organization.name
+      assert_response 202
+    end
+
+    test 'html does NOT delete' do
+      assert_no_difference('Organization.count') do
+        delete :destroy, id: @organization
+      end
+      @organization.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @organization.deleted_at.nil?
+    end
+
+    test 'json does NOT delete' do
+      assert_no_difference('Organization.count') do
+        delete :destroy, id: @organization, format: :json
+      end
+      @organization.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @organization.deleted_at.nil?
+    end
+  end
+
+  class OrganizationsAsBasicUser < OrganizationsControllerTest
+    def setup
+      @organization = organizations(:one)
+      @user3 = users(:basic)
+      sign_in @user3
+      @attributes = ['id', 'name', 'description', 'street_address',
+                     'city', 'state', 'zip_code']
+    end
+
+    test "html GETs when logged in" do
+      get :index
+      assert_equal [@organization], assigns[:organizations]
+      assert_response :success
+    end
+
+    test "json GETs when logged in" do
+      get :index, format: :json
+      response_item = JSON.parse(response.body)[0]
+      @attributes.each do |attr|
+        assert_equal @organization.send(attr), response_item[attr]
+      end
+      assert_response :success
+    end
+
+    test "html GETs new when logged in" do
+      get :new
+      assert_instance_of Organization, assigns(:organization)
+      assert_template :new
+    end
+
+    test 'html creates with valid attributes and redirects' do
+      assert_difference('Organization.count', 1) do
+        post  :create,
+              organization:  { name: "Test" }
+      end
+      assert_redirected_to organization_path(assigns(:organization))
+    end
+
+    test 'json creates with valid attributes json' do
+      assert_difference('Organization.count', 1) do
+        post  :create,
+              format: :json,
+              organization:  { name: "Testy" }
+      end
+      assert_response 201
+    end
+
+    test "html GETs show when logged in" do
+      get :show, id: @organization
+      assert_equal @organization, assigns(:organization)
+      assert_response :success
+    end
+
+    test "json GETs show when logged in" do
+      get :show, id: @organization, format: :json
+      response_item = JSON.parse(response.body)
+      @attributes.each do |a|
+        assert_equal @organization.send(a), response_item[a]
+      end
+      ['lat', 'lng'].each do |a|
+        assert_equal @organization[a].to_f, response_item[a].to_f
+      end
+      assert_response :success
+    end
+
+    test "html does NOT GETs edit when logged in" do
+      get :edit, id: @organization
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "html does NOT updates with valid attributes" do
+      old_name = @organization.name
+      new_name = "Some new and different name"
+      patch :update, id: @organization, organization: { name: new_name }
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test "json does NOT updates with valid attributes" do
+      old_name = @organization.name
+      new_name = "Some new and different name"
+      patch :update,
+            id: @organization,
+            format: :json,
+            organization: { name: new_name }
+      assert_redirected_to(request.referrer || root_path)
+    end
+
+    test 'html does NOT delete' do
+      assert_no_difference('Organization.count') do
+        delete :destroy, id: @organization
+      end
+      @organization.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @organization.deleted_at.nil?
+    end
+
+    test 'json does NOT delete' do
+      assert_no_difference('Organization.count') do
+        delete :destroy, id: @organization, format: :json
+      end
+      @organization.reload
+      assert_redirected_to(request.referrer || root_path)
+      assert @organization.deleted_at.nil?
+    end
+  end
+
 end

@@ -10,6 +10,7 @@ class BoardsController < ApplicationController
 
   def new
     @board = Board.new
+    authorize @board
   end
 
   def create
@@ -33,6 +34,7 @@ class BoardsController < ApplicationController
 
   def edit
     @board = get_board
+    authorize @board
   end
 
   def update

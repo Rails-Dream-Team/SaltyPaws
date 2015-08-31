@@ -10,6 +10,7 @@ class ColoniesController < ApplicationController
 
   def new
     @colony = Colony.new
+    authorize @colony
   end
 
   def create
@@ -37,6 +38,7 @@ class ColoniesController < ApplicationController
 
   def edit
     @colony = get_colony
+    authorize @colony
   end
 
   def update

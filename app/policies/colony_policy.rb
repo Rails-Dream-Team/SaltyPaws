@@ -1,31 +1,27 @@
 class ColonyPolicy < ApplicationPolicy
 
   def index?
-    true
+    user.present? && user.volunteer? || user.present? && user.admin?
+  end
+
+  def new?
+    user.present? && user.admin?
   end
 
   def create?
-    true
+    user.present? && user.admin?
   end
 
   def show?
-    true
+    user.present? && user.volunteer? || user.present? && user.admin?
   end
 
   def update?
-    return true if user.present? && user.admin?
-
-    user.present? && user == colony.owners
+    user.present? && user.admin?
   end
 
   def destroy?
     user.present? && user.admin?
-  end
-
-  private
-
-  def colony
-    record
   end
 
 end
