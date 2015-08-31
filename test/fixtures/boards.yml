@@ -1,7 +1,9 @@
 one:
   id: 1
-  title: 'Fake General Board'
-  
-three:
-  id: 3
-  title: 'Fake Lost & Found'
+  title: 'Fake Private Board'
+  public: false
+
+two:
+  id: 2
+  title: 'Fake Public Board'
+  public: true

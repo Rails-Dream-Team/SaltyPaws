@@ -12,3 +12,8 @@ three:
   content: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
   user_id: 3
   topic_id: 789
+
+four:
+  content: oh noes, my post, everyone can see it
+  user_id: 3
+  topic_id: 321

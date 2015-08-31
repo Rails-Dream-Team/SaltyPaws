@@ -5,11 +5,11 @@ class BoardPolicy < ApplicationPolicy
   end
 
   def new?
-    user.present? && user.admin?
+    user.admin?
   end
-  
+
   def create?
-    user.present? && user.admin?
+    user.admin?
   end
 
   def show?
@@ -17,11 +17,11 @@ class BoardPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? && user.admin?
+    user.admin?
   end
 
   def destroy?
-    user.present? && user.admin?
+    user.admin?
   end
 
 end
