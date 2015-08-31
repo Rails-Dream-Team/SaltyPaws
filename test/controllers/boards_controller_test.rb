@@ -3,7 +3,7 @@ require 'test_helper'
 class BoardsControllerTest < ActionController::TestCase
   def setup
     @board = boards(:one)
-    @public_board = boards(:three)
+    @public_board = boards(:two)
     @user = users(:admin)
     sign_in @user
     @attributes = ['id', 'title']

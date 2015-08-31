@@ -4,7 +4,7 @@ class PostsControllerTest < ActionController::TestCase
   def setup
     @topic = topics(:one)
     @post = posts(:one)
-    @all_posts = [@post, posts(:two), posts(:three)]
+    @all_posts = posts(:one, :two, :three, :four)
     @user = users(:admin)
     sign_in @user
   end

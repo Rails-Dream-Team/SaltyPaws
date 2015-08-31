@@ -6,7 +6,8 @@ class TopicsControllerTest < ActionController::TestCase
     @topic1 = topics(:one)
     @topic2 = topics(:two)
     @topic3 = topics(:three)
-    @all_topics = [@topic1, @topic2, @topic3]
+    @topic4 = topics(:four)
+    @all_topics = [@topic1, @topic2, @topic3, @topic4]
     @admin = users(:admin)
     @volunteer = users(:volunteer)
     @basic = users(:basic)
