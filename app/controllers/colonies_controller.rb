@@ -68,7 +68,7 @@ class ColoniesController < ApplicationController
   private
 
   def colony_params
-    params.require(:colony).permit(:name, :photo, :street_address, :city, :state, :zip_code, :environment, :pop, :vet)
+    params.require(:colony).permit(:name, :photo, :street_address, :city, :state, :zip_code, :environment, :pop, :vet, :lat, :lng)
   end
 
   def get_colony
