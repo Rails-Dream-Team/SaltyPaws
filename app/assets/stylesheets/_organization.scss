@@ -50,9 +50,14 @@
 .org__formErrors {
   @include formErrors;
 }
-.new_organization {
+.org__new, .org__edit {
+  padding: 15px;
+  line-height: 1.6em;
+  position: relative;
+}
+.new_organization, .edit_organization {
   width: 75%;
-  padding-left: 20px; 
+  padding-left: 20px;
   label {
     @include label(1.2rem, 25%);
   }
