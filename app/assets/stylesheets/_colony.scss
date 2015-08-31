@@ -1,11 +1,11 @@
 .colony {
   position: relative;
-  padding: 15px 10px 80px;
+  padding: 10px 10px 80px;
   @include placeholder;
 }
 .colony__header {
   > h1 {
-    padding: 5px 0 15px;
+    padding: 5px 0 5px;
     @include title(2rem, $grey-dark);
   }
   > a {
@@ -13,10 +13,35 @@
     display: inline-block;
     border-bottom: 1px solid;
     margin: 3px 10px;
+    font-weight: 400;
   }
 }
 .colonies__list {
-  margin-top: 5%;
+  width: 85%;
+}
+.colonies__listUL {
+  display: block;
+  text-align: left;
+}
+.colonies__listLI {
+  display: block;
+  width: 85%;
+  padding: 5px;
+}
+.colonies__listName {
+  @include font(1.5rem);
+  display: inline-block;
+  font-weight: 200;
+}
+.colonies__listLocation {
+  display: inline-block;
+  font-style: italic;
+  font-weight: 100;
+  opacity: 0.85;
+  padding: 0 5px;
+}
+.colonies__listPopulation {
+  display: inline-block;
 }
 .colony__wrapper {
   display: inline-block;
@@ -32,10 +57,12 @@
   border: 1px $grey-dark solid;
 }
 .colony__new {
-  padding: 15px 10px 50px;
+  padding: 15px;
+  line-height: 1.6em;
+  position: relative;
 }
 .colony__show {
-  padding: 15px 10px 80px;
+  padding: 15px;
   > h1 {
     padding: 5px 0 15px;
     @include title(2rem, $grey-dark);
@@ -45,22 +72,33 @@
   @include maxWidth;
 }
 .colony__edit {
-  padding: 15px 10px 80px;
+  padding: 15px;
   line-height: 1.6em;
   position: relative;
 }
 .colony__formErrors {
   @include formErrors;
 }
-.colonyForm__label input {
+.colony__formContainer {
+  width: 75%;
+  position: relative;
+  padding: 10px 20px;
+  @include placeholder($grey-medium);
+}
+.colony__formLabel input {
   @include inputLine(1.3rem, 65%);
 }
-.colonyForm__label textarea {
+.colony__formLabel textarea {
   @include inputTextArea(1.3rem, 65%);
 }
-.colonyForm__label label {
+.colony__formLabel label {
   @include label(1.2rem, 25%);
 }
-.colonyForm__submit input {
+.colony__formSubmit {
+  padding-top: 20px;
+}
+.colony__formSubmit input {
+  width: 110px;
+  padding-top: 10px;
   @include button;
 }
