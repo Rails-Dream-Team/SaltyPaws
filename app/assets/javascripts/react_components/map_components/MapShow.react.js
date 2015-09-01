@@ -1,11 +1,7 @@
-"use strict";
-
 var React                = require('react');
 var ReactGoogleMaps      = require('react-googlemaps');
-var ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
 var GoogleMapsAPI        = window.google.maps;
 var Map                  = ReactGoogleMaps.Map;
-var OverlayView          = ReactGoogleMaps.OverlayView;
 var Marker               = ReactGoogleMaps.Marker;
 var LatLng               = GoogleMapsAPI.LatLng;
 var StickyDiv            = require('react-stickydiv');
@@ -18,10 +14,10 @@ var MapShow = React.createClass({
   render: function() {
     return (
       <Map
-        initialZoom={12}
+        initialZoom={17}
         initialCenter={ new LatLng(this.props.colony.lat, this.props.colony.lng) }
-        width={500}
-        height={500}
+        width={600}
+        height={600}
         >
         { this.renderMarkers() }
       </Map>
@@ -29,7 +25,9 @@ var MapShow = React.createClass({
   },
 
   renderMarkers: function() {
-    return <Marker position={ new LatLng(this.props.colony.lat, this.props.colony.lng) } />
+    return <Marker 
+              position={ new LatLng(this.props.colony.lat, this.props.colony.lng) } 
+              icon="/assets/cat30.png" />
   }
 
 });

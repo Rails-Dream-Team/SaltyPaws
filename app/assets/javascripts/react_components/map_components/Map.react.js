@@ -1,17 +1,13 @@
-"use strict";
-
-var React                = require('react');
+var React                = require('react/addons');
 var ReactGoogleMaps      = require('react-googlemaps');
-var ExecutionEnvironment = require('react/lib/ExecutionEnvironment')
 var GoogleMapsAPI        = window.google.maps;
 var Map                  = ReactGoogleMaps.Map;
-var OverlayView          = ReactGoogleMaps.OverlayView;
 var Marker               = ReactGoogleMaps.Marker;
 var LatLng               = GoogleMapsAPI.LatLng;
 var StickyDiv            = require('react-stickydiv');
-var Colony               = require('../colony_components/Colony.react.js');
 var geocoder             = new google.maps.Geocoder();
 var request              = require('superagent');
+var infoWindow           = new google.maps.InfoWindow();
 
 var GoogleMap = React.createClass({
   getInitialState: function() {
@@ -25,8 +21,8 @@ var GoogleMap = React.createClass({
         <Map
           initialZoom={12}
           initialCenter={this.state.center}
-          width={480}
-          height={480}
+          width={600}
+          height={600}
           >
           { this.renderMarkers() }
         </Map>
@@ -35,10 +31,25 @@ var GoogleMap = React.createClass({
 
   renderMarkers: function() {
     return this.props.colonies.map(function(colony) {
-      console.log(colony);
-      return <Marker position={ new LatLng(colony.lat, colony.lng) } />
+      return <Marker 
+                position={ new LatLng(colony.lat, colony.lng) } 
+                icon="/assets/cat30.png" />
+    });
+  },
+
+  renderInfoWindow: function(e) {
+    e.preventDefault();
+
+    google.maps.event.addListener(Marker, 'click', function() {
+
+      infoWindow.open(Map, Marker);
+      infoWindow.setContent({
+        content: "<h4>" + colony.name + "</h4>"
+      });
+
     });
   }
+
 
 });
 
