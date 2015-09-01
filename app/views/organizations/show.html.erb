@@ -12,41 +12,49 @@
         <div class="org__infoHeader">
         <h4>All you need to know about <%= @organization.name %></h4>
         </div>
-        <div class="org__infoRow">
-          <span class="org__infoLabel">Location: </span>
+        <div class="org__infoContent">
+          <div class="org__infoRow">
+            <span class="org__infoLabel">Location: </span>
             <span class="org__infoDetail"><%= @organization.location %></span>
-          <span class="org__infoLabel">Member Organization Since: </span>
+          </div>
+          <div class="org__infoRow">
+            <span class="org__infoLabel">Member Organization Since: </span>
             <span class="org__infoDetail"><%= @organization.created_at.strftime('%m/%d/%Y') %></span>
-          <span class="org__infoLabel">Mission: </span>
+          </div>
+          <div class="org__infoRow">
+            <span class="org__infoLabel">Mission: </span>
             <span class="org__infoDetail"><%= @organization.description %></span>
+          </div>
+          <div class="org__infoSubmit">
+            <%= link_to 'Edit', edit_organization_path(@organization) if policy(@organization).edit? %>
+            <%= link_to 'Remove', @organization, method: :delete, data: {confirm: 'Are you sure?'} if policy(@organization).destroy? %>
+          </div>
         </div>
       </div>
     </div>
     <div class="org__sub">
       <div class="org__workHeader">
-        <h4 class="org__subheader">Members, Volunteers, and General Fans of <%= @organization.name %></h4>
+        <h4 class="org__subheader">Members of <%= @organization.name %></h4>
       </div>
-      <div class="org__workContent"
-      <ul class="org__listUL">
+      <div class="org__workContent">
+        <ul class="org__workUL">
         <% @organization.users.each do |user| %>
-          <li class="org__listLI">
+          <li class="org__workLI">
             <%= link_to user.display_name, user_path(user[:id]) %>
           </li>
         <% end %>
         <% if @organization.users.include?(current_user) %>
-          <li>
-            <%= link_to 'Leave Organization', leave_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
+          <li class="org__joinLeave">
+            <%= link_to '[Leave Organization]', leave_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
           </li>
         <% else %>
-          <li>
-            <%= link_to 'Join Organization', join_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
+          <li class="org__joinLeave">
+            <%= link_to '[Join Organization]', join_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
           </li>
         <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
-    <div>
-      <%= link_to '[edit]', edit_organization_path(@organization) if policy(@organization).edit? %>
-      <%= link_to '[remove]', @organization, method: :delete, data: {confirm: 'Are you sure?'} if policy(@organization).destroy? %>
-    </div>
+
   </div>
 </div>

@@ -90,23 +90,37 @@
 }
 .org__sub {
   display: inline-block;
-  width: 25%;
+  width: 30%;
   vertical-align: top;
   padding: 2%;
 }
 .org__main {
   display: inline-block;
   height: 100%;
-  width: 75%;
+  width: 69%;
+  vertical-align: top;
   padding: 2%;
 }
 .org__name {
   font-size: 2em;
   padding: 0 18px;
+  display: inline-block;
   > h3 {
     margin: 0;
     display: inline-block;
   }
+}
+.org__navLinks {
+  display: inline-block;
+  text-align: right;
+  > a {
+    @include title(1rem, $grey-dark);
+    display: inline-block;
+    border-bottom: 1px solid;
+    margin: 3px 10px;
+    font-weight: 400;
+  }
+
 }
 .org__picture  {
   overflow: hidden;
@@ -117,14 +131,14 @@
 }
 .org__pictureFile {
 }
-.org__work {
-}
-.org__membersince {
+.org__joinLeave {
+  display: block;
   text-align: center;
-  padding: 0 2%;
+  margin-right: 0;
+  padding: 5px;
 }
 .org__workHeader {
-  margin-top: 5%;
+  margin-top: 0;
   padding: 2%;
   background: $blue-medium;
   color: white;
@@ -138,6 +152,15 @@
   border-right: 1px solid #dce0e0;
   border-left: 1px solid #dce0e0;
   background-color: white;
+}
+.org__workUL {
+  padding: 0;
+  margin: 0;
+}
+.org__workLI {
+  margin: 0;
+  display: block;
+  padding: 5px;
 }
 .org__info {
   @include font(1.2rem);
@@ -160,17 +183,16 @@
   border-left: 1px solid #dce0e0;
   background-color: white;
 }
-.org_infoRow{
+.org__infoRow{
   margin-bottom: 10px;
 }
-.org_infoLabel {
+.org__infoLabel {
   font-weight: bold;
   font-size: 1.2em;
 }
-.org_infoSubmit {
+.org__infoSubmit {
     padding-top: 20px;
 }
-.org_infoSubmit button {
+.org__infoSubmit a {
   @include button;
-  width: 100px;
 }
