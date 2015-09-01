@@ -10,7 +10,7 @@
   > h1 {
     @include title(1.8rem);
     display: block;
-    padding: 15px 0;
+    padding-top: 15px;
   }
 }
 .board__headerLinks {
@@ -118,7 +118,7 @@
   height: auto;
 }
 .board__guidelinesContent {
-  @include tile(100%, 250px, 15px);
+  @include tile(100%, 250px, 15px, $bkgclr: $grey-light);
   display: none;
   background-color: $grey-light;
   color: $grey-dark;
@@ -137,24 +137,7 @@
   text-align: justify;
   vertical-align: top;
   width: 50%;
-  > ul {
-    display: table;
-    list-style: none;
-    padding-left: 0;
-    > li {
-      line-height: 1.5rem;
-      display: table-row;
-    }
-    > li:before {
-      content: '';
-      padding-right: 15px;
-      display: table-cell;
-      background-image: url('cat_paw.png');
-      background-position: left 5px;
-      background-repeat: no-repeat;
-      background-size: 10px;
-    }
-  }
+  @include listPaws;
   &:first-child {
     padding-right: 15px;
   }
@@ -218,13 +201,14 @@
 }
 
 
-// classes used in the boards new/edit views (includes 'board' and 'board__header' from above)
+// classes used in the boards new/edit views
 .board__new {
+  @include tile(100%);
 }
 
-// classes used in the boards form partial (includes 'board', 'board__header', and 'board__topicsList' from above)
+// classes used in the boards form partial
 .board__formErrors {
-  @include formErrors;
+  @include formErrorsPaws;
 }
 .board__form {
 

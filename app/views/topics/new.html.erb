@@ -1,7 +1,9 @@
-<div class="topic">
-  <div class="topic__header">
+<div class="board">
+  <div class="board__header">
     <h1>Post a New Topic</h1>
-    <%= link_to 'Back to the Chatterbox', boards_path %>
+    <div class="board__headerLinks">
+      <%= link_to 'Back to the Chatterbox', boards_path %>
+    </div>
   </div>
   <div class="topic__new">
     <%= render 'form' %>
