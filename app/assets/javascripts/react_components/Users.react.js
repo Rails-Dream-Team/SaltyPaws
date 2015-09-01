@@ -41,11 +41,18 @@ var Users = React.createClass ({
         )
       }
   },
+
   _listOrganizations: function() {
-    return this.state.user.organizations.map(function(org){
-      return <li><a href={"/organizations/" + org.id}>{org.name}</a></li>
-    });
+    console.log(this.state.user.organizations)
+    if (this.state.user.organizations.length === 0 ) {
+      return <li><a href="/organizations">Join organizations right meow</a></li>
+    } else {
+      return this.state.user.organizations.map(function(org){
+        return <li><a href={"/organizations/" + org.id}>{org.name}</a></li>
+      });
+    }
   },
+
   _handleEdit: function(e) {
     e.preventDefault();
     this.setState({ isEditing: true });
@@ -87,4 +94,5 @@ var Users = React.createClass ({
   }
 
 });
+
 module.exports = Users;
