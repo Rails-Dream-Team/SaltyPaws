@@ -17,15 +17,15 @@
   }
 }
 .colonies__li {
-  width: 50%;
+  width: 600px;
   display: inline-block;
   vertical-align: top;
-  margin: 0;
+  margin: 0 50px;
 }
-.map_li {
-  width: 50%;
+.map__li {
+  width: 600px;
   display: inline-block;
-  margin: 0;
+  margin: 0 50px;
 }
 .colony__span {
 }
@@ -108,4 +108,16 @@
   width: 110px;
   padding-top: 10px;
   @include button;
+}
+.colony {
+  display: inline-block;
+  list-style: none;
+  vertical-align: top;
+  width: 45%;
+  margin: auto;
+  h2 {
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
 }

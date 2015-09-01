@@ -1,6 +1,7 @@
-var React = require('react');
-var request = require('superagent');
-var MapShow = require('../map_components/MapShow.react.js');
+var React     = require('react');
+var request   = require('superagent');
+var MapShow   = require('../map_components/MapShow.react.js');
+var StickyDiv = require('react-stickydiv');
 
 
 var ColonyShow = React.createClass({
@@ -21,18 +22,20 @@ var ColonyShow = React.createClass({
     } else {
       return null;
     }
-      return (
-        <div>
-          <p>{this.state.colony.street_address}</p>
-          <p>{this.state.colony.city}</p>
-          <p>{this.state.colony.state}</p>
-          <p>{this.state.colony.zip_code}</p>
-          <p>{this.state.colony.environment}</p>
-          <p>{this.state.colony.pop}</p>
-          <p>{this.state.colony.vet}</p>
-          {map}
-        </div>
-      );
+    return (
+      <ul>
+        <li className="colony">
+          <p><h3>Street: </h3>{this.state.colony.street_address}</p>
+          <p><h3>City: </h3>{this.state.colony.city}</p>
+          <p><h3>State: </h3>{this.state.colony.state}</p>
+          <p><h3>Zip Code: </h3>{this.state.colony.zip_code}</p>
+          <p><h3>Environment: </h3>{this.state.colony.environment}</p>
+          <p><h3>Population: </h3>{this.state.colony.pop}</p>
+          <p><h3>Vet: </h3>{this.state.colony.vet}</p>
+        </li>
+        <li className="colony">{map}</li>
+      </ul>
+    );
   },
 
   _fetchColony: function(){
