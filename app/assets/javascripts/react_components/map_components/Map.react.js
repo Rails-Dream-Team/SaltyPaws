@@ -25,8 +25,8 @@ var GoogleMap = React.createClass({
         <Map
           initialZoom={12}
           initialCenter={this.state.center}
-          width={500}
-          height={500}
+          width={480}
+          height={480}
           >
           { this.renderMarkers() }
         </Map>
