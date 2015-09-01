@@ -75,6 +75,7 @@
 }
 .board__indexTopic {
   min-height: 50px;
+  position: relative;
 }
 .board__indexTopicTitle {
   max-height: 3rem;
@@ -95,7 +96,6 @@
   }
 }
 
-
 // classes used in the show board view
 .board__topics,
 .board__guidelines {
@@ -103,8 +103,40 @@
   @include centerText(left);
   margin-top: 10px;
 }
-.board__guidelines {
+.board__topics {
 
+}
+.guidelines_trigger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  clip: rect(0, 0, 0, 0);
+}
+.board__guidelines {
+  position: relative;
+}
+.guidelines_trigger:checked ~ .board__guidelinesContent {
+  max-height: 700px;
+}
+.guidelines_trigger + label, .board__guidelinesContent {
+  -webkit-transition: max-height 0.8s;
+     -moz-transition: max-height 0.8s;
+          transition: max-height 0.8s;
+}
+.guidelines__trigger1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  @include size(100%, 50px);
+  z-index: 1;
+  cursor: pointer;
+}
+.guidelines__trigger2 {
+  @include paragraph;
+  @include size(auto, 20px);
+  cursor: pointer;
+  font-style: italic;
+  margin: 0 0 5px 15px;
 }
 .board__guidelinesTitle {
   background-color: $blue-medium;
@@ -112,20 +144,19 @@
   height: 50px;
   line-height: 50px;
   padding-left: 15px;
-}
-.board__guidelines:hover .board__guidelinesContent {
-  display: block;
-  height: auto;
+  position: relative;
 }
 .board__guidelinesContent {
-  @include tile(100%, 250px, 15px, $bkgclr: $grey-light);
-  display: none;
+  max-height: 0;
+  display: block;
+  @include tile(100%, 450px, 0px, $bkgclr: $grey-light);
+  overflow: hidden;
   background-color: $grey-light;
   color: $grey-dark;
   font-size: 0;
   > p {
     @include paragraph;
-    padding: 5px 0;
+    padding: 15px 0 0 15px;
     margin: 0;
   }
 }
@@ -156,6 +187,17 @@
   &:nth-child(2n+1) {
     background-color: $green-light;
   }
+}
+.board__topicPrimaryLink {
+  position: absolute;
+  @include size(100%);
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+.board__topicAlternateLink {
+  position: relative;
+  z-index: 10;
 }
 .board__topicsColHeaders {
   @include title;
@@ -202,7 +244,6 @@
     width: 35%;
   }
 }
-
 
 // classes used in the boards new/edit views
 .board__new {
