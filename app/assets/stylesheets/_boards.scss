@@ -129,7 +129,6 @@
     margin: 0;
   }
 }
-
 .board__guidelinesList {
   display: inline-block;
   font-size: 1rem;
@@ -161,6 +160,10 @@
 .board__topicsColHeaders {
   @include title;
   padding-left: 15px;
+  height: 30px;
+  background-color: $grey-medium;
+  margin-top: 10px;
+  line-height: 30px;
 }
 .board__topicTitle {
   width: 50%;
