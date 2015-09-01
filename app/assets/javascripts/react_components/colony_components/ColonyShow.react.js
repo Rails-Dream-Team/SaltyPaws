@@ -1,6 +1,7 @@
-var React = require('react');
-var request = require('superagent');
-var MapShow = require('../map_components/MapShow.react.js');
+var React     = require('react');
+var request   = require('superagent');
+var MapShow   = require('../map_components/MapShow.react.js');
+var StickyDiv = require('react-stickydiv');
 
 
 var ColonyShow = React.createClass({
