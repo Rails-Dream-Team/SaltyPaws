@@ -73,6 +73,104 @@
   padding-top: 10px;
   @include button;
 }
-.orgShow__container {
-  @include maxWidth;
+// Show Page CSS
+.org__pageWrapper {
+  padding: 30px 30px 50px 30px;
+}
+.org__profileWrapper{
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 35px;
+  input {
+    @include inputLine(1.3rem);
+  }
+  textarea {
+    @include inputTextArea(1.3rem);
+  }
+}
+.org__sub {
+  display: inline-block;
+  width: 25%;
+  vertical-align: top;
+  padding: 2%;
+}
+.org__main {
+  display: inline-block;
+  height: 100%;
+  width: 75%;
+  padding: 2%;
+}
+.org__name {
+  font-size: 2em;
+  padding: 0 18px;
+  > h3 {
+    margin: 0;
+    display: inline-block;
+  }
+}
+.org__picture  {
+  overflow: hidden;
+  > img {
+    @include size( 100%, auto);
+    overflow: hidden;
+  }
+}
+.org__pictureFile {
+}
+.org__work {
+}
+.org__membersince {
+  text-align: center;
+  padding: 0 2%;
+}
+.org__workHeader {
+  margin-top: 5%;
+  padding: 2%;
+  background: $blue-medium;
+  color: white;
+  > h4 {
+    margin: 0;
+  }
+}
+.org__workContent {
+  padding: 4%;
+  border-bottom: 1px solid #CFCFCF;
+  border-right: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
+  background-color: white;
+}
+.org__info {
+  @include font(1.2rem);
+  width: 100%;
+}
+.org__infoHeader {
+  text-align: left;
+  padding: 1%;
+  color: white;
+  background: $blue-medium;
+  > h4 {
+    font-size: .8em;
+    margin: 0;
+  }
+}
+.org__infoContent {
+  padding: 3%;
+  border-bottom: 1px solid #CFCFCF;
+  border-right: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
+  background-color: white;
+}
+.org_infoRow{
+  margin-bottom: 10px;
+}
+.org_infoLabel {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.org_infoSubmit {
+    padding-top: 20px;
+}
+.org_infoSubmit button {
+  @include button;
+  width: 100px;
 }
