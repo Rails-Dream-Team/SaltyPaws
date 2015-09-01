@@ -23,7 +23,6 @@ var ColonyShow = React.createClass({
     }
       return (
         <div>
-          <p>{this.state.colony.name}</p>
           <p>{this.state.colony.street_address}</p>
           <p>{this.state.colony.city}</p>
           <p>{this.state.colony.state}</p>

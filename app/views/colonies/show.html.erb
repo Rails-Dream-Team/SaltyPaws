@@ -1,3 +1,11 @@
-<div data-js="colonyShow" class="colony">
-  
+<div class="col">
+  <div class="colony__header">
+    <h1><%= @colony.name %></h1>
+    <%= link_to 'View All Colonies', colonies_path %>
+    <%= link_to 'Edit This Colony', edit_colony_path(@colony) if policy(@colony).edit? %>
+    <%= link_to 'Delete This Colony', @colony, method: :delete, data: {confirm: 'Are you sure?'} if policy(@colony).destroy? %>
+  </div>
+
+  <div data-js="colonyShow" class="colony"></div>
+
 </div>

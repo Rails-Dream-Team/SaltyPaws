@@ -11,10 +11,6 @@ var ColonyForm = React.createClass({
             <input ref="name" id="name" placeholder="" />
           </div>
           <div className="volForm__label">
-            <label htmlFor="photo" className="volForm__label">Photo: </label>
-            <input ref="photo" id="photo" placeholder=" photo url" />
-          </div>
-          <div className="volForm__label">
             <label htmlFor="street_address" className="volForm__label"> Street Address: </label>
             <input ref="streetAddress" id="street_address" placeholder="" />
           </div>
