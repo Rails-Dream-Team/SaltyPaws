@@ -1,8 +1,11 @@
 var React = require('react');
 var request = require('superagent');
 var Timestamp = require('react-time');
+var Show = require('./user_components/Show.react.js')
+var Form = require('./user_components/Form.react.js')
 
 var Users = React.createClass ({
+
   getInitialState: function(){
     return {
       isEditing: false,
@@ -30,118 +33,17 @@ var Users = React.createClass ({
     }
     if (this.state.isEditing) {
       return (
-        <div className="user__pageWrapper">
-          <div className="user__profileWrapper">
-            <div className="user__name">
-              <h3> { this.state.user.first_name } { this.state.user.last_name } </h3>
-            </div>
-            <form onSubmit={ this._handleSave }>
-              <div className="user__left">
-                <div className="user__picture">
-                  <img src={ url } />
-                  <input type="file" id="avatar" name="user[avatar]" />
-                </div>
-                <div className="user__membersince">
-                  <h4>Member since: <Timestamp value={ this.state.user.created_at } format="MM/DD/YYYY" /></h4>
-                </div>
-                <div className="user__work">
-                  <div className="user__workHeader">
-                    <h4>Organizations</h4>
-                  </div>
-                  <div className="user__workContent">
-                    <p>User organizations they belong to</p>
-                  </div>
-                  <div className="user__workHeader">
-                    <h4>Colonies</h4>
-                  </div>
-                  <div className="user__workContent">
-                    <p>User colonies they belong to</p>
-                  </div>
-                </div>
-              </div>
-              <div className="user__right">
-                <div className="user__info">
-                  <div className="user__infoHeader"><h4>About me</h4></div>
-                  <div className="user__infoContent">
-                    <div className="user_infoRow"><span className="user_infoLabel">Location: </span>
-                      <input type="text" placeholder="city" name="user[city]" id="city" defaultValue={ this.state.user.city } />
-                      <input type="text" placeholder="state" name="user[state]" id="state" defaultValue={ this.state.user.state } />
-                    </div>
-                    <div className="user_infoRow"><span className="user_infoLabel">Age: </span>
-                      <input type="text" placeholder="age" name="user[age]" id="age" defaultValue={ this.state.user.age } />
-                    </div>
-                    <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>
-                      <input type="text" placeholder="pets" name="user[pets]" id="pets" defaultValue={ this.state.user.pets } />
-                    </div>
-                    <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span>
-                      <input type="text" placeholder="volunteer work" name="user[volunteer_work]" id="volunteer_work" defaultValue={ this.state.user.volunteer_work } />
-                    </div>
-                    <div className="user_infoRow"><span className="user_infoLabel">About me: </span></div>
-                    <textarea type="text" cols="60" rows="5" placeholder="Type here" name="user[about_me]" id="about_me" defaultValue={ this.state.user.about_me} />
-                    <div className="user_infoSubmit"><button>Save</button></div>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+        <Form user={ this.state.user } organizations={ organizations } handleSave={ this._handleSave } />
       )
       } else {
-        if (this.state.user.avatar) {
-          var url = this.state.user.avatar.url
-        } else {
-          var url = null
-        }
         return (
-          <div className="user__pageWrapper">
-            <div className="user__profileWrapper">
-              <div className="user__name">
-                <h3>{ this.state.user.first_name } { this.state.user.last_name }</h3>
-              </div>
-              <div className="user__left">
-                <div className="user__picture">
-                  <img src={ url } />
-                </div>
-                <div className="user__membersince">
-                  <h4>Member since: <Timestamp value={ this.state.user.created_at } format="MM/DD/YYYY" /></h4>
-                </div>
-                <div className="user__work">
-                  <div className="user__workHeader">
-                    <h4>Organizations</h4>
-                  </div>
-                  <div className="user__workContent">
-                    <ul>{organizations}</ul>
-                  </div>
-                  <div className="user__workHeader">
-                    <h4>Colonies</h4>
-                  </div>
-                  <div className="user__workContent">
-                    <p>User colonies they belong to</p>
-                  </div>
-                </div>
-              </div>
-              <div className="user__right">
-                <div className="user__info">
-                  <div className="user__infoHeader"><h4>About me</h4></div>
-                  <div className="user__infoContent">
-                    <div className="user_infoRow"><span className="user_infoLabel">Location:  </span>{ this.state.user.city } { this.state.user.state } </div>
-                    <div className="user_infoRow"><span className="user_infoLabel">Age:  </span> { this.state.user.age }</div>
-                    <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>{ this.state.user.pets }</div>
-                    <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span> { this.state.user.volunteer_work }</div>
-                    <div className="user_infoRow"><span className="user_infoLabel">About:  </span></div>{ this.state.user.about_me }
-                    {editButton}
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
+          <Show user={ this.state.user } editButton={ editButton } organizations={ organizations } />
         )
       }
   },
   _listOrganizations: function() {
     return this.state.user.organizations.map(function(org){
-      return <li>{org}</li>
+      return <li><a href={"/organizations/" + org.id}>{org.name}</a></li>
     });
   },
   _handleEdit: function(e) {
