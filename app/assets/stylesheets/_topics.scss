@@ -49,3 +49,51 @@
 .topic__postContent {
   min-height: 75px;
 }
+.topic__new {
+  @include tile(100%);
+}
+.topic__form {
+  display: table;
+  width: 100%;
+  label,
+  input,
+  textarea {
+    display: table-cell;
+    // margin-top: 15px;
+  }
+}
+.topic__formTitle,
+.topic__formBoard,
+.post__formContent {
+  display: table-row;
+  font-size: 1rem;
+  width: 100%;
+  > label {
+    width: 115px;
+    vertical-align: top;
+    margin-bottom: 40px;
+    padding-bottom: 30px;
+  }
+  > input {
+    @include inputPlain($w: 100%);
+    @include inputInnerShadow;
+    border: 1px solid $grey-medium;
+    border-radius: 3px;
+    outline: none;
+  }
+  > textarea {
+    border-radius: 3px;
+    min-height: 75px;
+    @include inputTextArea($w: 100%);
+    @include inputInnerShadow;
+  }
+  @media all and (min-width:  $break-m) {
+    width: 50%;
+  }
+}
+.topic__formSubmit {
+  margin-top: 20px;
+  input {
+    @include button;
+  }
+}

@@ -35,6 +35,26 @@
     width: $w;
   }
 }
+@mixin listPaws() {
+  > ul {
+    display: table;
+    list-style: none;
+    padding-left: 0;
+    > li {
+      line-height: 1.5rem;
+      display: table-row;
+    }
+    > li:before {
+      content: '';
+      padding-right: 15px;
+      display: table-cell;
+      background-image: url('cat_paw.png');
+      background-position: left 5px;
+      background-repeat: no-repeat;
+      background-size: 10px;
+    }
+  }
+}
 
 //**********************
 // Backgrounds
@@ -91,11 +111,11 @@
   margin: 10px auto;
   padding: 0 30px;
 }
-@mixin tile($w, $h: auto, $pad: 30px, $topMarg: 0) {
+@mixin tile($w, $h: auto, $pad: 30px, $topMarg: 0, $bkgclr: $white) {
   @include centerText(left, $topMarg);
   @include size($w, $h);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  background-color: $grey-light;
+  background-color: $bkgclr;
   padding: $pad;
 }
 
@@ -133,8 +153,20 @@
     padding: 0;
     > li {
       display: block;
+      padding-left: 10px;
     }
   }
+}
+@mixin formErrorsPaws {
+  margin: 0;
+  padding-bottom: 10px;
+  > h2 {
+    @include paragraph;
+    color: $red-dark;
+    margin: 0;
+    padding: 5px 0;
+  }
+  @include listPaws;
 }
 @mixin formLinks {
   font-size: 0.8rem;
@@ -165,9 +197,16 @@
 }
 @mixin inputTextArea($fsize: 1rem, $w: auto) {
   @include inputPlain($fsize, $w);
-  outline: 1px solid $grey-medium;
-  overflow: scroll;
-  margin-top: 10px;
+  border: 1px solid $grey-medium;
+  outline: none;
+  overflow: auto;
+  resize: none;
+}
+@mixin inputInnerShadow() {
+  &:active,
+  &:focus {
+    box-shadow: inset 0 0 2px 1px $grey-medium;
+  }
 }
 @mixin label($fsize: 1rem, $w: auto) {
   @include title($fsize);

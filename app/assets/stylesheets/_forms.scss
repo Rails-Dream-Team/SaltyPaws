@@ -46,7 +46,7 @@
   @include size(95%, 45px);
   padding: 20px 0;
   > input:-webkit-autofill {
-      -webkit-box-shadow: 0 0 0px 1000px inherit inset;
+    -webkit-box-shadow: 0 0 0px 1000px inherit inset;
   }
 }
 .login__pwField input,
@@ -67,7 +67,7 @@
   font-size: 1rem;
 }
 .login__submit {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 .login__submit input {
   @include button;
