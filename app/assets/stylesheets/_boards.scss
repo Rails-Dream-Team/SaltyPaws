@@ -23,10 +23,9 @@
   }
 }
 
-// classes used in the boards index view (includes 'board', 'board__header', and 'board__topicsList' from above)
+// classes used in the boards index view
 .board__index {
   font-size: 0;
-  // display: inline-block;
   width: 101%;
   @media all and (max-width:  $break-s) {
     bottom: 100px;
@@ -98,13 +97,73 @@
 
 
 // classes used in the show board view
-.board__topics {
+.board__topics,
+.board__guidelines {
   width: 95%;
   @include centerText(left);
   margin-top: 10px;
 }
-.board__topic,
 .board__guidelines {
+
+}
+.board__guidelinesTitle {
+  background-color: $blue-medium;
+  color: $white;
+  height: 50px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+.board__guidelines:hover .board__guidelinesContent {
+  display: block;
+  height: auto;
+}
+.board__guidelinesContent {
+  @include tile(100%, 250px, 15px);
+  display: none;
+  background-color: $grey-light;
+  color: $grey-dark;
+  font-size: 0;
+  > p {
+    @include paragraph;
+    padding: 5px 0;
+    margin: 0;
+  }
+}
+
+.board__guidelinesList {
+  display: inline-block;
+  font-size: 1rem;
+  padding: 0 30px;
+  text-align: justify;
+  vertical-align: top;
+  width: 50%;
+  > ul {
+    display: table;
+    list-style: none;
+    padding-left: 0;
+    > li {
+      line-height: 1.5rem;
+      display: table-row;
+    }
+    > li:before {
+      content: '';
+      padding-right: 15px;
+      display: table-cell;
+      background-image: url('cat_paw.png');
+      background-position: left 5px;
+      background-repeat: no-repeat;
+      background-size: 10px;
+    }
+  }
+  &:first-child {
+    padding-right: 15px;
+  }
+  &:last-child {
+    padding-left: 15px;
+  }
+}
+.board__topic {
+  position: relative;
   height: 50px;
   line-height: 50px;
   padding-left: 15px;
@@ -114,12 +173,6 @@
 .board__topic {
   &:nth-child(2n+1) {
     background-color: $green-light;
-  }
-}
-.board__guidelines {
-  background-color: $blue-medium;
-  a:hover {
-    color: $white;
   }
 }
 .board__topicsColHeaders {

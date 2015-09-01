@@ -1,0 +1,25 @@
+.topic {
+  @include maxWidth;
+  padding-bottom: 80px;
+  margin-bottom: 0;
+}
+.topic__postList {
+
+}
+.topic__postHeader {
+
+}
+.topic__postAvatar {
+  @include size(75px, auto);
+  overflow: hidden;
+  display: inline-block;
+}
+.topic__postUser {
+  display: inline-block;
+}
+.topic__postTime {
+
+}
+.topic__postContent {
+
+}
