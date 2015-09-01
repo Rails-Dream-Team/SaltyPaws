@@ -1,25 +1,51 @@
-.topic {
-  @include maxWidth;
-  padding-bottom: 80px;
-  margin-bottom: 0;
+.topic__header,
+.topic__footer {
+  position: relative;
+}
+.topic__header h1 {
+  @include font(2rem);
+  font-weight: 700;
+  display: inline-block;
+  margin-bottom: 40px;
+}
+.topic_footer {
+  content: '';
+  height: 100px;
+}
+.topic__headerPostLink {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 .topic__postList {
 
 }
+.topic__post {
+  @include tile(auto, $pad: 10px, $topMarg: 20px);
+}
 .topic__postHeader {
-
+  @include size(100%, 50px);
 }
 .topic__postAvatar {
-  @include size(75px, auto);
+  @include size(40px);
+  float: left;
+  margin-right: 10px;
   overflow: hidden;
-  display: inline-block;
+}
+.topic__postAvatar img {
+  width: 100%;
+  height: auto;
+  overflow: hidden;
 }
 .topic__postUser {
   display: inline-block;
+  vertical-align: top;
 }
 .topic__postTime {
-
+  display: inline-block;
+  vertical-align: top;
 }
 .topic__postContent {
-
+  min-height: 75px;
 }
