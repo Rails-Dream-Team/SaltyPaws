@@ -4,17 +4,17 @@ var Colony = require('./Colony.react.js');
 var ColonyList = React.createClass({
   render: function(){
     return (
-      <div className="colonies__list">
+      <ul className="colonies__listUL">
 
           {this._listColony()}
-        
-      </div>
+
+      </ul>
     );
   },
 
   _listColony: function() {
      return this.props.colonies.map(function(colony) {
-      return <ul className="colonies__listUL"><Colony data={colony} /></ul>
+      return <li className="colonies__listLI"><Colony data={colony} /></li>
     });
   }
 });

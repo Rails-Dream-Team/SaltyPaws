@@ -8,7 +8,7 @@ var Colony = React.createClass({
 
   _buildColony: function() {
     return (
-      <li className="colonies__listLI">
+      <span className="colony__span">
         <div className="colonies__listName">
           <a href={"/colonies/" + this.props.data.id}>{ this.props.data.name }</a>
         </div>
@@ -18,7 +18,7 @@ var Colony = React.createClass({
         <div className="colonies__listPopulation">
         Population: {this.props.data.pop}
         </div>
-      </li>
+      </span>
     );
   }
 
