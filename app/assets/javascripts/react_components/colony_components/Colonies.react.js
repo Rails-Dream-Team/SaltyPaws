@@ -17,7 +17,7 @@ var Colonies = React.createClass({
       return (
         <ul className="colonies__listUL">
           <li className="colonies__li"><ColonyList colonies={this.state.colonies} /></li>
-          <li className="map_li"><GoogleMap colonies={this.state.colonies} /></li>
+          <li className="map__li"><GoogleMap colonies={this.state.colonies} /></li>
         </ul>
       );
     } else {

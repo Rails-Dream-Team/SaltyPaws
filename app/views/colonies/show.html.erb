@@ -6,6 +6,6 @@
     <%= link_to 'Delete This Colony', @colony, method: :delete, data: {confirm: 'Are you sure?'} if policy(@colony).destroy? %>
   </div>
 
-  <div data-js="colonyShow" class="colony"></div>
+  <div data-js="colonyShow"></div>
 
 </div>

@@ -18,14 +18,16 @@ var GoogleMap = React.createClass({
 
   render: function() {
     return (
-        <Map
-          initialZoom={12}
-          initialCenter={this.state.center}
-          width={600}
-          height={600}
-          >
-          { this.renderMarkers() }
-        </Map>
+      <StickyDiv>
+          <Map
+            initialZoom={12}
+            initialCenter={this.state.center}
+            width={600}
+            height={600}
+            >
+            { this.renderMarkers() }
+          </Map>
+        </StickyDiv>
       );
   },
 
