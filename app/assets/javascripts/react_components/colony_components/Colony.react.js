@@ -8,9 +8,17 @@ var Colony = React.createClass({
 
   _buildColony: function() {
     return (
-      <div>
-        <a href={"/colonies/" + this.props.data.id}>{ this.props.data.name }</a>
-      </div>
+      <li className="colonies__listLI">
+        <div className="colonies__listName">
+          <a href={"/colonies/" + this.props.data.id}>{ this.props.data.name }</a>
+        </div>
+        <div className="colonies__listLocation">
+        {this.props.data.city}, {this.props.data.state}
+        </div>
+        <div className="colonies__listPopulation">
+        Population: {this.props.data.pop}
+        </div>
+      </li>
     );
   }
 

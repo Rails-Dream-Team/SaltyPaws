@@ -1,5 +1,5 @@
-.colony {
-  position: relative;
+.col {
+  // position: relative;
   padding: 10px 10px 80px;
   @include placeholder;
 }
@@ -16,12 +16,22 @@
     font-weight: 400;
   }
 }
-.colonies__list {
-  width: 85%;
+.colonies__li {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+}
+.map_li {
+  width: 50%;
+  display: inline-block;
+  margin: 0;
 }
 .colonies__listUL {
   display: block;
   text-align: left;
+  padding-left: 10px;
+  padding-top: 10px;
 }
 .colonies__listLI {
   display: block;
