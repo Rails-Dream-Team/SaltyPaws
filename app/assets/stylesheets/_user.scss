@@ -62,6 +62,11 @@
   border-right: 1px solid #dce0e0;
   border-left: 1px solid #dce0e0;
   background-color: white;
+  > ul {
+    padding: 0;
+    list-style: none;
+    text-decoration: underline;
+  }
 }
 .user__info {
   @include font(1.2rem);

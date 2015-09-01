@@ -57,8 +57,7 @@ var ColonyForm = React.createClass({
           window.alert("Problem Creating Colony");
           return;
         }
-        window.alert("Colony Successfully Created");
-        window.location = "/colonies";
+        window.location = "/colonies/";
       });
   },
 
