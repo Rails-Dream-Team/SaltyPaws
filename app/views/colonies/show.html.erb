@@ -1,20 +1,3 @@
-<div class="colony">
-  <div class="colony__header">
-    <%= link_to 'View All Colonies', colonies_path %>
-  <h1><%= @colony.name %></h1>
-  </div>
-  <div class="colony__showContainer">
-    <div><%= @colony.photo %></div>
-    <div>Street: <%= @colony.street_address %></div>
-    <div>City: <%= @colony.city %></div>
-    <div>State: <%= @colony.state %></div>
-    <div>Zip: <%= @colony.zip_code %></div>
-    <div>Environment: <%= @colony.environment %></div>
-    <div>Population: <%= @colony.pop %></div>
-    <div>Veterinarian: <%= @colony.vet %></div>
-    <div>
-      <%= link_to '[edit]', edit_colony_path(@colony) %>
-      <%= link_to '[remove]', @colony, method: :delete, data: {confirm: 'Are you sure?'} %>
-    </div>
-  </div>
+<div data-js="colonyShow" class="colony">
+  
 </div>

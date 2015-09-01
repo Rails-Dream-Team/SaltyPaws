@@ -13,33 +13,25 @@ var Colony               = require('../colony_components/Colony.react.js');
 var geocoder             = new google.maps.Geocoder();
 var request              = require('superagent');
 
-var GoogleMap = React.createClass({
-  getInitialState: function() {
-    return {
-      center: new LatLng(32.7828923, -79.9390598)
-    }
-  },
+var MapShow = React.createClass({
 
   render: function() {
     return (
-        <Map
-          initialZoom={12}
-          initialCenter={this.state.center}
-          width={500}
-          height={500}
-          >
-          { this.renderMarkers() }
-        </Map>
-      );
+      <Map
+        initialZoom={12}
+        initialCenter={ new LatLng(this.props.colony.lat, this.props.colony.lng) }
+        width={500}
+        height={500}
+        >
+        { this.renderMarkers() }
+      </Map>
+    );
   },
 
   renderMarkers: function() {
-    return this.props.colonies.map(function(colony) {
-      console.log(colony);
-      return <Marker position={ new LatLng(colony.lat, colony.lng) } />
-    });
+    return <Marker position={ new LatLng(this.props.colony.lat, this.props.colony.lng) } />
   }
 
 });
 
-module.exports = GoogleMap;
+module.exports = MapShow;
