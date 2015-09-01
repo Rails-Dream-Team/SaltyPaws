@@ -1,7 +1,7 @@
 class BoardPolicy < ApplicationPolicy
 
   def new?
-    user.admin?
+    user ? user.admin? : false
   end
 
   def create?
