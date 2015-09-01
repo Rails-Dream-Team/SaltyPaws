@@ -116,7 +116,7 @@
   position: relative;
 }
 .guidelines_trigger:checked ~ .board__guidelinesContent {
-  max-height: 700px;
+  max-height: 1000px;
 }
 .guidelines_trigger + label, .board__guidelinesContent {
   -webkit-transition: max-height 0.8s;
@@ -148,8 +148,7 @@
 }
 .board__guidelinesContent {
   max-height: 0;
-  display: block;
-  @include tile(100%, 450px, 0px, $bkgclr: $grey-light);
+  @include tile($w: 100%, $pad: 0px, $bkgclr: $grey-light);
   overflow: hidden;
   background-color: $grey-light;
   color: $grey-dark;
@@ -168,11 +167,18 @@
   vertical-align: top;
   width: 50%;
   @include listPaws;
+  > h3 {
+    margin-left: -15px;
+  }
   &:first-child {
     padding-right: 15px;
   }
   &:last-child {
     padding-left: 15px;
+  }
+  @media all and (max-width: $break-s) {
+    width: 100%;
+    padding: 0 30px;
   }
 }
 .board__topic {
