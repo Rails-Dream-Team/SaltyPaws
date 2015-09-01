@@ -1,40 +1,60 @@
-<div class="org">
-  <div class="org__header">
-    <h1><%= @organization.name %></h1>
+<div class="org__pageWrapper">
+  <div class="org__profileWrapper">
+    <div class="org__name">
+    <h3><%= @organization.name %></h3>
+    </div>
+    <div class="org__navLinks">
     <%= link_to 'View All Organizations', organizations_path %>
     <%= link_to 'Add Your Organization', new_organization_path %>
-  </div>
-  <div class="orgShow__container">
-    <div class="org__details">
-      <h3 class="org__subheader">All you need to know about <%= @organization.name %></h3>
-      <ul class="org__listUL">
-        <li class="org__listLI"><%= @organization.location %></li>
-        <li class="org__listLI"><%= @organization.created_at.strftime('Member Organization since %m/%d/%Y') %></li>
-        <li class="org__listLI"><%= @organization.description %></li>
-      </ul>
     </div>
-    <div class="org__members">
-      <h3 class="org__subheader">Members, Volunteers, and General Fans of <%= @organization.name %></h3>
-      <ul class="org__listUL">
+    <div class="org__main">
+      <div class="org__info">
+        <div class="org__infoHeader">
+        <h4>All you need to know about <%= @organization.name %></h4>
+        </div>
+        <div class="org__infoContent">
+          <div class="org__infoRow">
+            <span class="org__infoLabel">Location: </span>
+            <span class="org__infoDetail"><%= @organization.location %></span>
+          </div>
+          <div class="org__infoRow">
+            <span class="org__infoLabel">Member Organization Since: </span>
+            <span class="org__infoDetail"><%= @organization.created_at.strftime('%m/%d/%Y') %></span>
+          </div>
+          <div class="org__infoRow">
+            <span class="org__infoLabel">Mission: </span>
+            <span class="org__infoDetail"><%= @organization.description %></span>
+          </div>
+          <div class="org__infoSubmit">
+            <%= link_to 'Edit', edit_organization_path(@organization) if policy(@organization).edit? %>
+            <%= link_to 'Remove', @organization, method: :delete, data: {confirm: 'Are you sure?'} if policy(@organization).destroy? %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="org__sub">
+      <div class="org__workHeader">
+        <h4 class="org__subheader">Members of <%= @organization.name %></h4>
+      </div>
+      <div class="org__workContent">
+        <ul class="org__workUL">
         <% @organization.users.each do |user| %>
-          <li class="org__listLI">
+          <li class="org__workLI">
             <%= link_to user.display_name, user_path(user[:id]) %>
           </li>
         <% end %>
         <% if @organization.users.include?(current_user) %>
-          <li>
-            <%= link_to 'Leave Organization', leave_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
+          <li class="org__joinLeave">
+            <%= link_to '[Leave Organization]', leave_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
           </li>
         <% else %>
-          <li>
-            <%= link_to 'Join Organization', join_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
+          <li class="org__joinLeave">
+            <%= link_to '[Join Organization]', join_organization_path(@organization), data: { confirm: 'Are you sure?'} %>
           </li>
         <% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
-    <div>
-      <%= link_to '[edit]', edit_organization_path(@organization) if policy(@organization).edit? %>
-      <%= link_to '[remove]', @organization, method: :delete, data: {confirm: 'Are you sure?'} if policy(@organization).destroy? %>
-    </div>
+
   </div>
 </div>
