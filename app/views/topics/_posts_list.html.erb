@@ -1,7 +1,12 @@
 <div class="topic__postList">
   <% topic.posts.each do |post| %>
-    <div class="topic__postUser">
-      <%= link_to post.user.display_name, user_path(post.user) %>
+    <div class="topic__postHeader">
+      <div class="topic__postAvatar">
+        <%= image_tag post.user.avatar, class: 'topic__postAvatar' %>
+      </div>
+      <div class="topic__postUser">
+        <%= link_to post.user.display_name, user_path(post.user) %>
+      </div>
     </div>
     <div class="topic__postContent">
       <%= post.content %>
