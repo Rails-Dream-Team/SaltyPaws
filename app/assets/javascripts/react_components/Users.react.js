@@ -88,6 +88,7 @@ var Users = React.createClass ({
   _handleFetch: function(err, res){
     if (err) {
       console.log(err.response);
+      window.location.href = "/404"
       return;
     }
     this.setState({ user: res.body })
