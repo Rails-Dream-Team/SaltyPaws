@@ -1,16 +1,16 @@
 // classes used in all board views
 .board {
   @include maxWidth;
-  padding-bottom: 80px;
+  padding-bottom: 50px;
   margin-bottom: 0;
 }
 .board__header {
   position: relative;
   margin-bottom: 40px;
   > h1 {
-    @include title(2rem);
-    display: inline-block;
-    margin-bottom: 0;
+    @include title(1.8rem);
+    display: block;
+    padding: 15px 0;
   }
 }
 .board__headerLinks {
