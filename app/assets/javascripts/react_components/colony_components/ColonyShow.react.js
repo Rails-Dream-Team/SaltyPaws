@@ -1,12 +1,12 @@
 var React = require('react');
 var request = require('superagent');
-var GoogleMap = require('../map_components/Map.react.js');
+var MapShow = require('../map_components/MapShow.react.js');
 
 
 var ColonyShow = React.createClass({
   getInitialState: function(){
     return {
-      colony: []
+      colony: null
     };
   },
 
@@ -15,8 +15,12 @@ var ColonyShow = React.createClass({
   },
 
   render: function(){
-    console.log(this.state.colony)
-    if (this.state.colony.length > 0) {
+    var map
+    if (this.state.colony) {
+      map = <MapShow colony={this.state.colony} />
+    } else {
+      return null;
+    }
       return (
         <div>
           <p>{this.state.colony.name}</p>
@@ -27,12 +31,9 @@ var ColonyShow = React.createClass({
           <p>{this.state.colony.environment}</p>
           <p>{this.state.colony.pop}</p>
           <p>{this.state.colony.vet}</p>
-            <GoogleMap colony={this.state.colony} />
+          {map}
         </div>
       );
-    } else {
-      return null;
-    }
   },
 
   _fetchColony: function(){
