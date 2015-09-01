@@ -13,6 +13,7 @@ json.pets                 @user.pets
 json.volunteer_work       @user.volunteer_work
 json.avatar               @user.avatar
 json.organizations @user.organizations do |org|
+  json.id   org.id
   json.name org.name
 end
 json.edit @user.id == current_user.id
