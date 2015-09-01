@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>We're sorry, but something went wrong (500)</title>
+  <title>500</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
   body {
-    background-color: #EFEFEF;
-    color: #2E2F30;
+    background-color: #F4F4F4;
+    color: #4D4D4D;
     text-align: center;
     font-family: arial, sans-serif;
     margin: 0;
@@ -14,8 +14,8 @@
 
   div.dialog {
     width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
+    max-width: 48em;
+    margin: 3.5em auto 0;
   }
 
   div.dialog > div {
@@ -23,7 +23,6 @@
     border-right-color: #999;
     border-left-color: #999;
     border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
     border-top-left-radius: 9px;
     border-top-right-radius: 9px;
     background-color: white;
@@ -32,7 +31,6 @@
   }
 
   h1 {
-    font-size: 100%;
     color: #730E15;
     line-height: 1.5em;
   }
@@ -48,17 +46,65 @@
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     border-top-color: #DADADA;
-    color: #666;
+    color: #4D4D4D;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }
+  .dialog__image img {
+    margin-top: 20px;
+    width: 100%;
+    height: 100%;
   }
   </style>
 </head>
 
 <body>
-  <!-- This file lives in public/500.html -->
+
+  <!-- This file lives in public/404.html -->
   <div class="dialog">
+    <h1>500!</h1>
+    <h1>Somethings Broke! We are on it right meow!</h1>
     <div>
-      <h1>We're sorry, but something went wrong.</h1>
+      <div class="dialog__image">
+        <script type="text/javascript">
+          // Thank you http://www.mediacollege.com/internet/javascript/image/random.html
+          var imlocation = "/assets/";
+          var currentdate = 0;
+          var image_number = 0;
+          function ImageArray (n) {
+            this.length = n;
+            for (var i =1; i <= n; i++) { this[i] = ' ' }
+          }
+          image = new ImageArray(10)
+          image[0] = "404.gif"
+          //http://2.bp.blogspot.com/-CKLpjQLthrs/U-JxjbTvqII/AAAAAAABCYs/70l7XmTTsvw/s1600/funny-cat-gifs-114-03.gif
+          image[1] = "404-2.gif"
+          //http://funday24.com/wp-content/uploads/2014/12/Funny-cat-gifs-210.gif
+          image[2] = "404-3.gif"
+          //http://img.pandawhale.com/46354-falling-cat-gif-bDtV.gif
+          image[3] = "404-4.gif"
+          //http://iliketowastemytime.com/sites/default/files/funny_cats_lol_cats_wat.gif
+          image[4] = "404-5.gif"
+          //http://38.media.tumblr.com/f622e802527531476e7446b27692673e/tumblr_nqtp5bZWiw1ut676ao1_500.gif
+          image[5] = "404-6.gif"
+          //http://www.gifbin.com/bin/042011/1304071474_brushing-the-cat.gif
+          image[6] = "404-7.gif"
+          //http://giphy.com/gifs/cat-fail-xlOM8QxJUqLAY
+          image[7] = "404-8.gif"
+          //https://media2.giphy.com/media/WnvB0FCkMciaI/200.gif
+          image[8] = "404-9.gif"
+          //http://img.pandawhale.com/post-22107-Sleeve-Cat-Burrito-playing-gif-LqIX.gif
+          image[9] = "404-10.gif"
+          //http://giphy.com/gifs/cat-funny-cats-sqHJE3UwLIeE8
+          var rand = 60/image.length
+          function randomimage() {
+       	    currentdate = new Date()
+       	    image_number = currentdate.getSeconds()
+       	    image_number = Math.floor(image_number/rand)
+       	    return(image[image_number])
+          }
+          document.write("<img src='" + imlocation + randomimage()+ "'>");
+        </script>
+      </div>
     </div>
     <p>If you are the application owner check the logs for more information.</p>
   </div>
