@@ -11,9 +11,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     @media all and (max-width: $break-xs) {
-      position: absolute;
-      top: 85%;
-      left: 75%;
+      top: 65%;
+      left: 50%;
     }
     h1 {
       @include title(5rem, $white, 700);
@@ -29,6 +28,9 @@
       @include title(2rem, $white);
       @media all and (max-width:  716px) {
         line-height: 25px;
+      }
+      @media all and (max-width: $break-m) {
+        display: none;
       }
       @media all and (max-width: $break-xs) {
         display: none;

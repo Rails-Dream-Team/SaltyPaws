@@ -18,6 +18,10 @@
   @media all and (max-width: $break-s) {
     padding: 0 10px;
   }
+  @media all and (max-width: $break-xs) {
+    top: 30%;
+    transform: translateY(-30%);
+  }
   > li {
     display: inline-block;
     height: 100%;
@@ -53,6 +57,10 @@
   @media all and (max-width: $break-s) {
     padding-right: 10px;
   }
+  @media all and (max-width: $break-xs) {
+    top: 30%;
+    transform: translateY(-30%);
+  }
   > li {
     height: 100%;
     display: inline-block;
@@ -83,6 +91,10 @@
   transform: translateY(-50%);
   margin: 2px 0;
   padding-left: 10px;
+  @media all and (max-width: $break-xs) {
+    top: 30%;
+    transform: translateY(-30%);
+  }
   > li {
     display: inline-block;
     height: 100%;
@@ -100,7 +112,7 @@
       font-size: 0.8rem;
     }
     @media all and (max-width: $break-xs) {
-      font-size: 0.65rem;
+      font-size: 0.5rem;
     }
     &:hover {
       color: $blue-medium;
@@ -166,7 +178,7 @@
     font-size: 1rem;
   }
   @media all and (max-width: $break-xs) {
-    font-size: 0.6rem;
+    font-size: 0.4rem;
     padding: 5px;
     margin-right: 5px;
   }
