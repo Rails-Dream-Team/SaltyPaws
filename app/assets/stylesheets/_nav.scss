@@ -25,6 +25,12 @@
     text-decoration: none;
     color: inherit;
     font-size: 1.2rem;
+    @media all and (max-width: $break-m) {
+      font-size: 1rem;
+    }
+    @media all and (max-width: $break-s) {
+      font-size: 0.8rem;
+    }
     &:hover {
       color: $blue-medium;
     }
@@ -51,6 +57,12 @@
     text-decoration: none;
     color: inherit;
     font-size: 1.2rem;
+    @media all and (max-width: $break-m) {
+      font-size: 1rem;
+    }
+    @media all and (max-width: $break-s) {
+      font-size: 0.8rem;
+    }
     &:hover {
       color: $blue-medium;
     }
@@ -82,7 +94,7 @@
       font-size: 0.8rem;
     }
     @media all and (max-width: $break-xs) {
-      font-size: 0.6rem;
+      font-size: 0.65rem;
     }
     &:hover {
       color: $blue-medium;
@@ -150,5 +162,6 @@
   @media all and (max-width: $break-xs) {
     font-size: 0.6rem;
     padding: 5px;
+    margin-right: 5px;
   }
 }
