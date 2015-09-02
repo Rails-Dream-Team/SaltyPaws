@@ -2,21 +2,31 @@
 .topic__footer {
   position: relative;
 }
+.topic__header {
+  margin-bottom: 20px;
+}
 .topic__header h1 {
   @include font(2rem);
   font-weight: 700;
   display: inline-block;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 .topic_footer {
   content: '';
   height: 100px;
+}
+.topic__headerLinks {
+  display: inline-block;
+  position: absolute;
+  bottom: 15px;
+  right: 0;
 }
 .topic__headerPostLink {
   display: inline-block;
   position: absolute;
   bottom: 0;
   left: 0;
+  text-overflow: ellipsis;
 }
 .topic__postList {
 
@@ -64,7 +74,7 @@
 }
 .topic__formTitle,
 .topic__formBoard,
-.post__formContent {
+.topic__formContent {
   display: table-row;
   font-size: 1rem;
   width: 100%;
@@ -95,5 +105,13 @@
   margin-top: 20px;
   input {
     @include button;
+  }
+}
+.post__formContent {
+  > textarea {
+    border-radius: 3px;
+    min-height: 75px;
+    @include inputTextArea($w: 100%);
+    @include inputInnerShadow;
   }
 }

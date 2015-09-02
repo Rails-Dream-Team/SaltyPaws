@@ -24,7 +24,7 @@
         <%= options_for_select(boards_array) %>
       <% end %>
     </div>
-    <div class="post__formContent">
+    <div class="topic__formContent">
       <%= f.fields_for :posts do |p| %>
         <%= p.label :content, "Post Content" %>
         <%= p.text_area :content %>
