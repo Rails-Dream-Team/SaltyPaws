@@ -1,11 +1,11 @@
 <div class="board">
   <div class="topic__header">
     <h1><%= @topic.title %></h1>
-    <div class="topic__headerPostLink">
-      <%= link_to 'Reply to this topic', new_topic_post_path(@topic) %>
-    </div>
-    <div class="board__headerLinks">
+    <div class="topic__headerLinksNav">
       Go To: <%= link_to @topic.board.title, board_path(@topic.board) %> | <%= link_to 'The Chatterbox', boards_path %>
+    </div>
+    <div class="topic__headerLinksReply">
+      <%= link_to 'Reply to this topic', new_topic_post_path(@topic) %>
     </div>
   </div>
   <%= render 'posts_list', topic: @topic %>

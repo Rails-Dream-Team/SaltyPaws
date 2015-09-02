@@ -1,35 +1,42 @@
-.topic__header,
-.topic__footer {
-  position: relative;
-}
 .topic__header {
+  position: relative;
   margin-bottom: 20px;
 }
 .topic__header h1 {
   @include font(2rem);
-  font-weight: 700;
   display: inline-block;
+  line-height: 2rem;
   margin-bottom: 20px;
-}
-.topic_footer {
-  content: '';
-  height: 100px;
-}
-.topic__headerLinks {
-  display: inline-block;
-  position: absolute;
-  bottom: 15px;
-  right: 0;
-  > a:last-child {
-    padding-right: 0;
+  @media all and (min-width: $break-s) {
+    margin-bottom: 40px;
   }
 }
-.topic__headerPostLink {
-  display: inline-block;
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.topic__footer {
+  position: relative;
+}
+.topic__headerLinksReply,
+.topic__headerLinksNav {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  overflow-x: hidden;
   text-overflow: ellipsis;
+  @media all and (min-width: $break-s) {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+  }
+}
+.topic__headerLinksReply {
+  padding-top: 15px;
+  @media all and (min-width: $break-s) {
+    left: 0;
+  }
+}
+.topic__headerLinksNav {
+  @media all and (min-width: $break-s) {
+    right: 0;
+  }
 }
 .topic__postList {
 
@@ -72,7 +79,6 @@
   input,
   textarea {
     display: table-cell;
-    // margin-top: 15px;
   }
 }
 .topic__formTitle,
