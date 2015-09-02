@@ -11,6 +11,9 @@
   margin: 0 auto;
   padding-top: 15px;
   vertical-align: top;
+  @media all and ( max-width: $break-s ) {
+    padding-left: 0;
+  }
   > li {
     display: inline;
     padding: 0 10px;
