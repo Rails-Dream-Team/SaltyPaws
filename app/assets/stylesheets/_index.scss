@@ -10,6 +10,9 @@
   padding-top: 30px;
   h1 {
     text-align: center;
+    @media all and (max-width: $break-s) {
+      line-height: 2rem;
+    }
   }
   p {
     margin: 10px 0;
@@ -17,6 +20,9 @@
   }
   ul {
     @include listInline(50%);
+    @media all and (max-width: $break-s) {
+      @include listInline(100%);
+    }
   }
 }
 .index__button {
@@ -34,6 +40,10 @@
   padding: 0 10px;
   img {
     @include size(auto, 250px);
+    @media all and (max-width: $break-s) {
+      @include size(250px, auto);
+
+    }
   }
 }
 .side__blurb2 {
@@ -42,5 +52,8 @@
   padding: 0 10px;
   img {
     @include size(auto, 250px);
+    @media all and (max-width: $break-s) {
+      @include size(250px, auto);
+    }
   }
 }
