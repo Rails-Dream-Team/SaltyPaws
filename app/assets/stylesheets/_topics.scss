@@ -20,6 +20,9 @@
   position: absolute;
   bottom: 15px;
   right: 0;
+  > a:last-child {
+    padding-right: 0;
+  }
 }
 .topic__headerPostLink {
   display: inline-block;
