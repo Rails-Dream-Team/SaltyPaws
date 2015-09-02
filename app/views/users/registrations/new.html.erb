@@ -9,27 +9,27 @@
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div class="login__emailField">
+    <div class="join__emailField">
       <%= f.label :first_name %>
       <%= f.text_field :first_name, autofocus: true %>
     </div>
 
-    <div class="login__emailField">
+    <div class="join__emailField">
       <%= f.label :last_name %>
       <%= f.text_field :last_name %>
     </div>
 
-    <div class="login__emailField">
+    <div class="join__emailField">
       <%= f.label :display_name %>
       <%= f.text_field :display_name, placeholder: 'choose a display name' %>
     </div>
 
-    <div class="login__emailField">
+    <div class="join__emailField">
       <%= f.label :email %>
       <%= f.email_field :email, placeholder: 'you@domain.com' %>
     </div>
 
-    <div class="login__pwField">
+    <div class="join__pwField">
       <%= f.label :password %>
       <%= f.password_field :password, autocomplete: "off", placeholder: 'choose a password' %>
       <% if @minimum_password_length %>
@@ -37,7 +37,7 @@
       <% end %>
     </div>
 
-    <div class="login__pwField">
+    <div class="join__pwField">
       <%= f.label :password_confirmation do %>Confirm Password<%end%>
       <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 're-enter your password' %>
     </div>
