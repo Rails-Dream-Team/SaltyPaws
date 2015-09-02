@@ -16,8 +16,7 @@ var MapShow = React.createClass({
       <Map
         initialZoom={17}
         initialCenter={ new LatLng(this.props.colony.lat, this.props.colony.lng) }
-        width={600}
-        height={600}
+        height={400}
         >
         { this.renderMarkers() }
       </Map>
@@ -25,8 +24,8 @@ var MapShow = React.createClass({
   },
 
   renderMarkers: function() {
-    return <Marker 
-              position={ new LatLng(this.props.colony.lat, this.props.colony.lng) } 
+    return <Marker
+              position={ new LatLng(this.props.colony.lat, this.props.colony.lng) }
               icon="/assets/cat30.png" />
   }
 
