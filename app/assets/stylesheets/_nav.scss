@@ -24,6 +24,26 @@
     }
   }
 }
+.nav__signoutRight {
+  display: inline-block;
+  width: 50%;
+  position: relative;
+  text-align: right;
+  height: 100%;
+  padding: 1%;
+  > li {
+    display: inline;
+    margin: 0 1%;
+  }
+  > li a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.2rem;
+    &:hover {
+      color: $blue-medium;
+    }
+  }
+}
 .nav__ulLeft {
   display: inline-block;
   width: 80%;
