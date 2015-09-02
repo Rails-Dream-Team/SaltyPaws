@@ -1,8 +1,12 @@
 .col {
-  padding: 10px 10px 80px;
   @include placeholder;
+  @include maxWidth(1000);
+  padding-bottom: 50px;
+  margin-bottom: 0;
 }
 .colony__header {
+  font-size: 1rem;
+  position: relative;
   > h1 {
     padding: 5px 0 5px;
     @include title(2rem, $grey-dark);
@@ -11,20 +15,20 @@
     @include title(1rem, $grey-dark);
     display: inline-block;
     border-bottom: 1px solid;
-    margin: 3px 10px;
+    margin: 3px 0;
     font-weight: 400;
   }
 }
 .colonies__li {
-  width: 600px;
+  font-size: 1rem;
+  width: 40%;
   display: inline-block;
+  margin-right: 5%;
   vertical-align: top;
-  margin: 0 50px;
 }
 .map__li {
-  width: 600px;
+  width: 50%;
   display: inline-block;
-  margin: 0 50px;
 }
 .colony__span {
 }
@@ -35,24 +39,23 @@
 }
 .colonies__listLI {
   display: block;
-  width: 90%;
-  padding: 5px;
-  line-height: 2rem;
+  width: 100%;
+  padding: 5px 0;
+  line-height: 3rem;
 }
 .colonies__listName {
   @include font(1.5rem);
-  display: inline-block;
+  line-height: 1.5rem;
+  display: block;
   font-weight: 200;
 }
 .colonies__listLocation {
   display: inline-block;
   font-style: italic;
-  font-weight: 100;
-  opacity: 0.85;
-  padding: 0 5px;
 }
 .colonies__listPopulation {
   display: inline-block;
+  padding: 0 15px;
 }
 .colony__wrapper {
   display: inline-block;
