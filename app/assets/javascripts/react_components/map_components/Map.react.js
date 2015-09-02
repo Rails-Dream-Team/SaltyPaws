@@ -22,8 +22,8 @@ var GoogleMap = React.createClass({
           <Map
             initialZoom={12}
             initialCenter={this.state.center}
-            width={600}
-            height={600}
+            width={400}
+            height={400}
             >
             { this.renderMarkers() }
           </Map>
@@ -33,8 +33,8 @@ var GoogleMap = React.createClass({
 
   renderMarkers: function() {
     return this.props.colonies.map(function(colony) {
-      return <Marker 
-                position={ new LatLng(colony.lat, colony.lng) } 
+      return <Marker
+                position={ new LatLng(colony.lat, colony.lng) }
                 icon="/assets/cat30.png" />
     });
   },

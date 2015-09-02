@@ -8,9 +8,6 @@
   width: 80%;
   margin: auto;
   padding-top: 30px;
-  .index__button {
-    @include button;
-  }
   h1 {
     text-align: center;
   }
@@ -21,6 +18,12 @@
   ul {
     @include listInline(50%);
   }
+}
+.index__button {
+  padding-top: 20px;
+}
+.index__button a {
+  @include button;
 }
 .index__divider {
   @include gradientLine;

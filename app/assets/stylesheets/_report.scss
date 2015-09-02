@@ -18,6 +18,7 @@
 }
 .reportForm__label textarea {
   @include inputTextArea(1.3rem, 65%);
+  border-color: black;
 }
 .reportForm__number label,
 .reportForm__label label {
