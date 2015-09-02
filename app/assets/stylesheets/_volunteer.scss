@@ -12,6 +12,7 @@
 }
 .volForm__label textarea {
   @include inputTextArea(1.3rem, 65%);
+  border-color: black;
 }
 .volForm__label label {
   @include label(1.2rem, 25%);

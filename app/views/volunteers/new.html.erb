@@ -1,5 +1,5 @@
 <div class="vol__formContainer">
-  <%= form_for @volunteer, url: volunteer_path do |new_vol_form| %>
+  <%= form_for @volunteer, url: volunteers_path do |new_vol_form| %>
     <% if @volunteer.errors.full_messages.present? %>
     <div class="report__formErrors">
       <h2>Uh oh! Your submission had the following errors:</h2>
