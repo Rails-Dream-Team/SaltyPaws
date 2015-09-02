@@ -98,6 +98,10 @@
   width: 30%;
   vertical-align: top;
   padding: 2%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .org__main {
   display: inline-block;
@@ -105,27 +109,38 @@
   width: 69%;
   vertical-align: top;
   padding: 2%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .org__name {
   font-size: 2em;
-  padding: 0 18px;
+  padding: 0 18px 10px;
   display: inline-block;
   > h3 {
     margin: 0;
     display: inline-block;
+    // @media all and (max-width: $break-s) {
+    //   text-align: center;
+    // }
   }
 }
 .org__navLinks {
   display: inline-block;
   text-align: right;
+  padding-bottom: 20px;
   > a {
     @include title(1rem, $grey-dark);
     display: inline-block;
     border-bottom: 1px solid;
     margin: 3px 10px;
     font-weight: 400;
+    @media all and (max-width: $break-s) {
+      text-align: left;
+      display: block;
+    }
   }
-
 }
 .org__picture  {
   overflow: hidden;
@@ -182,7 +197,7 @@
   }
 }
 .org__infoContent {
-  padding: 3%;
+  padding: 20px;
   border-bottom: 1px solid #CFCFCF;
   border-right: 1px solid #dce0e0;
   border-left: 1px solid #dce0e0;
