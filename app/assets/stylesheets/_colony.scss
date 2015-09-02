@@ -19,16 +19,33 @@
     font-weight: 400;
   }
 }
+.colonies__wrapperUL {
+  display: block;
+  text-align: left;
+  padding: 10px 0;
+  @media all and (max-width: $break-s) {
+    margin: 0 auto;
+  }
+}
 .colonies__li {
   font-size: 1rem;
   width: 40%;
   display: inline-block;
   margin-right: 5%;
   vertical-align: top;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .map__li {
   width: 50%;
   display: inline-block;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 .colony__span {
 }
@@ -116,7 +133,11 @@
   list-style: none;
   vertical-align: top;
   width: 45%;
-  margin: auto;
+  // margin: auto;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 90%;
+  }
   h2 {
     width: auto;
     margin: 0;
