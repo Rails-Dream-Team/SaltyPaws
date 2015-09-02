@@ -24,12 +24,14 @@
 .org__listUL {
   display: block;
   text-align: left;
+  padding: 10px 0;
 }
 // li on org index for each org
 .org__listLI {
   display: block;
   width: 85%;
   padding: 5px;
+  line-height: 2rem;
 }
 // divs on org index for each detail within single org li
 .org__listName {
