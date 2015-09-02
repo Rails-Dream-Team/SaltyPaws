@@ -1,91 +1,93 @@
-<div class="vol__formContainer">
-  <%= form_for @volunteer, url: volunteers_path do |new_vol_form| %>
-    <% if @volunteer.errors.full_messages.present? %>
-    <div class="report__formErrors">
-      <h2>Uh oh! Your submission had the following errors:</h2>
-      <ul>
-        <% @volunteer.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
-    <h2>Volunteer Questionnaire</h2>
-    <span>Thank you for your interest in volunteering with us.  Please complete the form below and someone will contact you ASAP.</span>
+<div class="vol">
+  <div class="vol__formContainer">
+    <%= form_for @volunteer, url: volunteers_path do |new_vol_form| %>
+      <% if @volunteer.errors.full_messages.present? %>
+      <div class="report__formErrors">
+        <h2>Uh oh! Your submission had the following errors:</h2>
+        <ul>
+          <% @volunteer.errors.full_messages.each do |message| %>
+            <li>
+              <%= message %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+      <h2>Volunteer Questionnaire</h2>
+      <span>Thank you for your interest in volunteering with us.  Please complete the form below and someone will contact you ASAP.</span>
 
-    <div class="volForm__label">
-      <%= new_vol_form.label :first_name, "First Name: " %>
-      <%= new_vol_form.text_field :first_name, placeholder: "" %>
-    </div>
-    <div class="volForm__label">
-      <%= new_vol_form.label :last_name, "Last Name: "  %>
-      <%= new_vol_form.text_field :last_name, placeholder: "" %>
-    </div>
-    <div class="volForm__label">
-      <%= new_vol_form.label :email, "Email: " %>
-      <%= new_vol_form.email_field :email, placeholder: " email@example.com" %>
-    </div>
-    <div class="volForm__label">
-      <%= new_vol_form.label :phone, "Phone Number: " %>
-      <%= new_vol_form.telephone_field :phone, placeholder: " 000-000-0000" %>
-    </div>
-    <div class="volForm__label">
-      <%= new_vol_form.label :age,  "Age: " %>
-      <%= new_vol_form.number_field :age, placeholder: " 00" %>
-    </div>
-    <div class="volForm__label">
-      <%= new_vol_form.label :skills, "Feel Free to Share Any Relevant Skills/Experience: " %>
-      <%= new_vol_form.text_area :skills, placeholder: "" %>
-    </div>
-    <div class="volForm__center">
-      <h3>Please select all areas you are interested in:</h3>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :adoption_events, value: "Adoption Events" %>
-        <%= new_vol_form.label :adoption_events %>
+      <div class="volForm__label">
+        <%= new_vol_form.label :first_name, "First Name: " %>
+        <%= new_vol_form.text_field :first_name, placeholder: "" %>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :transportation, value: "Transportation" %>
-        <%= new_vol_form.label :transportation %>
+      <div class="volForm__label">
+        <%= new_vol_form.label :last_name, "Last Name: "  %>
+        <%= new_vol_form.text_field :last_name, placeholder: "" %>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :assist_with_trapping, value: "Assist with Trapping" %>
-        <%= new_vol_form.label :assist_with_trapping %>
+      <div class="volForm__label">
+        <%= new_vol_form.label :email, "Email: " %>
+        <%= new_vol_form.email_field :email, placeholder: " email@example.com" %>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :colony_caregiver, value: "Colony Caregiver" %>
-        <%= new_vol_form.label :colony_caregiver %>
+      <div class="volForm__label">
+        <%= new_vol_form.label :phone, "Phone Number: " %>
+        <%= new_vol_form.telephone_field :phone, placeholder: " 000-000-0000" %>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :substitute_colony_caregiver, value: "Substitute Colony Caregiver" %>
-        <%= new_vol_form.label :substitute_colony_caregiver %>
+      <div class="volForm__label">
+        <%= new_vol_form.label :age,  "Age: " %>
+        <%= new_vol_form.number_field :age, placeholder: " 00" %>
       </div>
-      <!-- <h3>Feel free to share any relevant experience and/or skills:</h3> -->
-      <h3>When are you able to volunteer?</h3>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :weekends, value: "Weekends" %>
-        <%= new_vol_form.label :weekends %>
+      <div class="volForm__label">
+        <%= new_vol_form.label :skills, "Feel Free to Share Any Relevant Skills/Experience: " %>
+        <%= new_vol_form.text_area :skills, placeholder: "" %>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :weekdays, value: "Weekdays" %>
-        <%= new_vol_form.label :weekdays %>
+      <div class="volForm__center">
+        <h3>Please select all areas you are interested in:</h3>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :adoption_events, value: "Adoption Events" %>
+          <%= new_vol_form.label :adoption_events %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :transportation, value: "Transportation" %>
+          <%= new_vol_form.label :transportation %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :assist_with_trapping, value: "Assist with Trapping" %>
+          <%= new_vol_form.label :assist_with_trapping %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :colony_caregiver, value: "Colony Caregiver" %>
+          <%= new_vol_form.label :colony_caregiver %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :substitute_colony_caregiver, value: "Substitute Colony Caregiver" %>
+          <%= new_vol_form.label :substitute_colony_caregiver %>
+        </div>
+        <!-- <h3>Feel free to share any relevant experience and/or skills:</h3> -->
+        <h3>When are you able to volunteer?</h3>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :weekends, value: "Weekends" %>
+          <%= new_vol_form.label :weekends %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :weekdays, value: "Weekdays" %>
+          <%= new_vol_form.label :weekdays %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :evenings, value: "Evenings" %>
+          <%= new_vol_form.label :evenings %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :daytime, value: "Daytime" %>
+          <%= new_vol_form.label :daytime %>
+        </div>
+        <div class="volForm__checkbox">
+          <%= new_vol_form.check_box :flexible, value: "Flexible" %>
+          <%= new_vol_form.label :flexible %>
+        </div>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :evenings, value: "Evenings" %>
-        <%= new_vol_form.label :evenings %>
+      <div class="volForm__submit">
+        <%= new_vol_form.submit "Send" %>
       </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :daytime, value: "Daytime" %>
-        <%= new_vol_form.label :daytime %>
-      </div>
-      <div class="volForm__checkbox">
-        <%= new_vol_form.check_box :flexible, value: "Flexible" %>
-        <%= new_vol_form.label :flexible %>
-      </div>
-    </div>
-    <div class="volForm__submit">
-      <%= new_vol_form.submit "Send" %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
