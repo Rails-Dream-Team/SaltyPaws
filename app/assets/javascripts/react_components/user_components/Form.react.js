@@ -36,8 +36,10 @@ var Form = React.createClass ({
               <div className="user__info">
                 <div className="user__infoHeader"><h4>About me</h4></div>
                 <div className="user__infoContent">
-                  <div className="user_infoRow"><span className="user_infoLabel">Location: </span>
+                  <div className="user_infoRow"><span className="user_infoLabel">City: </span>
                     <input type="text" placeholder="city" name="user[city]" id="city" defaultValue={ this.props.user.city } />
+                  </div>
+                  <div className="user_infoRow"><span className="user_infoLabel">State: </span>
                     <input type="text" placeholder="state" name="user[state]" id="state" defaultValue={ this.props.user.state } />
                   </div>
                   <div className="user_infoRow"><span className="user_infoLabel">Age: </span>
@@ -49,7 +51,7 @@ var Form = React.createClass ({
                   <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span>
                     <input type="text" placeholder="volunteer work" name="user[volunteer_work]" id="volunteer_work" defaultValue={ this.props.user.volunteer_work } />
                   </div>
-                  <div className="user_infoRow"><span className="user_infoLabel">About me: </span></div>
+                  <div className="user_infoRow"><span className="user_infoLabel">About: </span></div>
                   <textarea type="text" cols="60" rows="5" placeholder="Type here" name="user[about_me]" id="about_me" defaultValue={ this.props.user.about_me} />
                   <div className="user_infoSubmit"><button>Save</button></div>
                 </div>

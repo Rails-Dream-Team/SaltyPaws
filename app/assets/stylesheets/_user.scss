@@ -6,10 +6,18 @@
   border-radius: 5px;
   padding: 35px;
   input {
-    @include inputLine(1.3rem);
+    outline: none;
+    border: none;
+    font-family: $primary-font;
+    font-size: 1em;
+    background: rgba($blue-medium, 0.15);
+    width: 100%;
   }
   textarea {
     @include inputTextArea(1.3rem);
+  }
+  #avatar {
+    background-color: inherit;
   }
 }
 .user__left {
@@ -17,12 +25,20 @@
   width: 25%;
   vertical-align: top;
   padding: 2%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .user__right {
   display: inline-block;
   height: 100%;
   width: 75%;
   padding: 2%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .user__name {
   font-size: 2em;
@@ -31,12 +47,21 @@
     margin: 0;
     display: inline-block;
   }
+  @media all and (max-width: $break-s) {
+    text-align: center;
+  }
 }
 .user__picture  {
   overflow: hidden;
   > img {
     @include size( 100%, auto);
     overflow: hidden;
+    @media all and (max-width: $break-s) {
+      @include size(50%, auto);
+      overflow: hidden;
+      display: block;
+      margin: 0 auto;
+    }
   }
 }
 .user__pictureFile {
@@ -97,7 +122,7 @@
   font-size: 1.2em;
 }
 #about_me {
-  width: 80%;
+  width: 100%;
   height: 100px;
   border: solid 1px black;
 }
