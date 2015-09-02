@@ -29,6 +29,9 @@
 .map__li {
   width: 50%;
   display: inline-block;
+  @media all and (max-width: $break-s) {
+    display: block;
+  }
 }
 .colony__span {
 }
