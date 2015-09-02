@@ -11,6 +11,12 @@
     @include title(1.8rem);
     display: block;
     padding-top: 15px;
+    @media all and (min-width: $break-s) {
+      margin-left: -15px;
+    }
+  }
+  @media all and (max-width: $break-s) {
+    margin-bottom: 20px;
   }
 }
 .board__headerLinks {
@@ -20,13 +26,23 @@
   right: 0;
   > a {
     padding: 0 10px;
+    &:last-child {
+      padding-right: 0;
+    }
+  }
+  @media all and (max-width: $break-s) {
+    display: block;
+    position: relative;
+    > a { padding: 0; }
+  }
+  @media all and (min-width: $break-m) {
+    margin-right: -15px;
   }
 }
 
 // classes used in the boards index view
 .board__index {
   font-size: 0;
-  width: 101%;
   @media all and (max-width:  $break-s) {
     bottom: 100px;
   }
@@ -53,7 +69,7 @@
   }
   @media all and (max-width: $break-s) {
     @include size(100%, 250px);
-    margin: 0 -10px 15px;
+    margin: 0 -10px 15px 0;
   }
 }
 .board__indexTile {
@@ -99,12 +115,8 @@
 // classes used in the show board view
 .board__topics,
 .board__guidelines {
-  width: 95%;
-  @include centerText(left);
+  // width: 100%;
   margin-top: 10px;
-}
-.board__topics {
-
 }
 .guidelines_trigger {
   position: absolute;
