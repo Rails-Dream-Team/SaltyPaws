@@ -68,12 +68,18 @@
     </div>
     <div class="reportForm__radio">
       <h3>Are you the current caretaker? If not, are you interested in caring for this colony?</h3>
+      <div>
       <%= report_colony_form.radio_button :current_caretaker, "Current caretaker" %>
       <%= report_colony_form.label :current_caretaker_yes, "Yes, I'm the current caretaker. " %>
+      </div>
+      <div>
       <%= report_colony_form.radio_button :current_caretaker, "No, but I'm interested" %>
       <%= report_colony_form.label :current_caretaker_interested, "No, but I'm interested. " %>
+      </div>
+      <div>
       <%= report_colony_form.radio_button :current_caretaker, "Not interested" %>
       <%= report_colony_form.label :current_caretaker_no, "I am not interested in providing care at this time. " %>
+     </div>
     </div>
     <div class="reportForm__submit">
       <%= report_colony_form.submit "Send" %>

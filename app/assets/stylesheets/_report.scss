@@ -1,13 +1,19 @@
 .report {
-  position: relative;
-  padding: 10px 10px 80px;
   @include placeholder;
+  @include maxWidth(1000);
+  padding-bottom: 50px;
+  margin-bottom: 0;
 }
 .report__formContainer {
   width: 75%;
   position: relative;
   padding: 10px 20px;
   @include placeholder($grey-medium);
+  @media all and (max-width: $break-s) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 .report__formErrors {
   @include formErrors;
@@ -15,17 +21,32 @@
 .reportForm__label input,
 .reportForm__number input {
   @include inputLine(1.3rem, 65%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .reportForm__label textarea {
   @include inputTextArea(1.3rem, 65%);
   border-color: black;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .reportForm__number label,
 .reportForm__label label {
   @include label(1.2rem, 25%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .reportForm__radio label {
   margin-right: 20px;
+  @media all and (max-width: $break-s) {
+    width: 80%;
+  }
 }
 .reportForm__submit {
     padding-top: 20px;

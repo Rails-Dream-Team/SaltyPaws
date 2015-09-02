@@ -10,6 +10,9 @@
   > h1 {
     padding: 5px 0 5px;
     @include title(2rem, $grey-dark);
+    @media all and (max-width: $break-s) {
+      line-height: 2rem;
+    }
   }
   > a {
     @include title(1rem, $grey-dark);
@@ -91,6 +94,9 @@
   padding: 15px;
   line-height: 1.6em;
   position: relative;
+  @media all and (max-width: $break-s) {
+    padding: 0;
+  }
 }
 .colony__show {
   padding: 15px;
@@ -110,15 +116,32 @@
   position: relative;
   padding: 10px 20px;
   @include placeholder($grey-medium);
+  @media all and (max-width: $break-s) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 .colony__formLabel input {
   @include inputLine(1.3rem, 65%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .colony__formLabel textarea {
   @include inputTextArea(1.3rem, 65%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .colony__formLabel label {
   @include label(1.2rem, 25%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .colony__formSubmit {
   padding-top: 20px;

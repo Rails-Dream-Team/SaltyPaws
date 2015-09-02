@@ -1,27 +1,53 @@
+.vol {
+  @include placeholder;
+  @include maxWidth(1000);
+  padding-bottom: 50px;
+  margin-bottom: 0;
+}
 .vol__formContainer {
   width: 75%;
   position: relative;
   padding: 10px 20px;
   @include placeholder($grey-medium);
+  @media all and (max-width: $break-s) {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
 }
 .vol__formErrors {
   @include formErrors;
 }
 .volForm__label input {
   @include inputLine(1.3rem, 65%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .volForm__label textarea {
   @include inputTextArea(1.3rem, 65%);
   border-color: black;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .volForm__label label {
   @include label(1.2rem, 25%);
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
 }
 .volForm__checkbox input {
   @include checkbox(1.3rem);
 }
 .volForm__checkbox label {
   @include label(1.2rem);
+  @media all and (max-width: $break-s) {
+    font-size: 1rem;
+  }
 }
 .volForm__center {
   // this is just a placeholder
