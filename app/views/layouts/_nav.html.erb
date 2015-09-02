@@ -24,6 +24,9 @@
 <% else %>
   <ul class="nav__signout">
     <li><%= link_to 'HOME', root_path %></li>
+    <li><%= link_to 'LOST & FOUND', '/boards/3' %></li>
+  </ul>
+  <ul class="nav__signoutRight">
     <li><%= link_to 'SIGN IN', new_user_session_path %></li>
     <li><%= link_to 'SIGN UP', new_user_registration_path %></li>
   </ul>
