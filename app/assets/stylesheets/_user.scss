@@ -116,10 +116,16 @@
 }
 .user_infoRow{
   margin-bottom: 10px;
+  @media all and (max-width: $break-xs) {
+    font-size: 1rem;
+  }
 }
 .user_infoLabel {
   font-weight: bold;
   font-size: 1.2em;
+  @media all and (max-width: $break-xs) {
+    font-size: 1rem;
+  }
 }
 #about_me {
   width: 100%;

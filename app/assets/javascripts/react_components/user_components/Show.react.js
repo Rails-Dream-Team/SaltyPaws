@@ -38,7 +38,7 @@ var Show = React.createClass ({
                 <div className="user_infoRow"><span className="user_infoLabel">Age:  </span> { this.props.user.age }</div>
                 <div className="user_infoRow"><span className="user_infoLabel">Pets:  </span>{ this.props.user.pets }</div>
                 <div className="user_infoRow"><span className="user_infoLabel">Volunteer Work:  </span> { this.props.user.volunteer_work }</div>
-                <div className="user_infoRow"><span className="user_infoLabel">About:  </span></div>{ this.props.user.about_me }
+                <div className="user_infoRow"><span className="user_infoLabel">About:  </span>{ this.props.user.about_me }</div>
                 {this.props.editButton}
               </div>
             </div>
