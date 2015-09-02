@@ -100,11 +100,17 @@
 // Show Page CSS
 .org__pageWrapper {
   padding: 30px 30px 50px 30px;
+  @media all and (max-width: $break-s) {
+    padding: 10px 10px 30px 10px;
+  }
 }
 .org__profileWrapper{
   background-color: #FFF;
   border-radius: 5px;
   padding: 35px;
+  @media all and (max-width: $break-s) {
+    padding: 10px;
+  }
   input {
     @include inputLine(1.3rem);
   }
@@ -120,6 +126,7 @@
   @media all and (max-width: $break-s) {
     display: block;
     width: 100%;
+    padding: 10px 0;
   }
 }
 .org__main {
@@ -131,12 +138,16 @@
   @media all and (max-width: $break-s) {
     display: block;
     width: 100%;
+    padding: 0;
   }
 }
 .org__name {
   font-size: 2em;
   padding: 10px 18px;
   display: inline-block;
+  @media all and (max-width: $break-s) {
+    padding: 0;
+  }
   > h3 {
     margin: 0;
     display: inline-block;
@@ -149,6 +160,9 @@
   display: inline-block;
   text-align: right;
   padding-bottom: 20px;
+  @media all and (max-width: $break-s) {
+    padding-top: 10px;
+  }
   > a {
     @include title(1rem, $grey-dark);
     display: inline-block;
@@ -158,6 +172,7 @@
     @media all and (max-width: $break-s) {
       text-align: left;
       display: block;
+      margin: 3px 0;
     }
   }
 }
