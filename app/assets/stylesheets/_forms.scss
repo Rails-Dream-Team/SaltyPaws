@@ -2,14 +2,22 @@
 // login & signup forms
 
 .login__container {
-  padding: 15px 0 80px 0;
+  padding: 50px 0 70px 0;
   @include placeholder($grey-medium);
+  position: relative;
+  height: 100%;
 }
 .login__form {
   @include tile(400px);
+  @media all and (max-width: $break-s) {
+    @include tile(300px);
+  }
 }
 .join__form {
   @include tile(700px);
+  @media all and (max-width: $break-s) {
+    @include tile(300px);
+  }
 }
 .login__header {
   position: relative;
@@ -19,6 +27,9 @@
   margin: 5px auto;
   @include title(1.5rem);
   display: inline-block;
+  @media all and (max-width: $break-s) {
+    font-size: 1rem;
+  }
 }
 .login__sharedLinks {
   @include formLinks;
@@ -26,6 +37,11 @@
   position: absolute;
   right: 0;
   bottom: 0;
+  @media all and (max-width: $break-s) {
+    font-size: .7rem;
+    bottom: inherit;
+    top: 5px;
+  }
 }
 .login__alerts {
   background-color: $red-dark;
@@ -52,10 +68,42 @@
 .login__pwField input,
 .login__emailField input {
   @include inputLine(1.3rem, 65%);
+  @media all and (max-width: $break-s) {
+    font-size: 1rem;
+    margin: 5px 0;
+    @include inputLine(1rem, 100%);
+  }
 }
 .login__pwField label,
 .login__emailField label {
-  @include label(1.2rem, 30%)
+  @include label(1.2rem, 30%);
+  @media all and (max-width: $break-s) {
+    font-size: 1rem;
+    @include label(1.2rem, 30%);
+  }
+}
+.join__pwField input,
+.join__emailField input {
+  @include inputLine(1.3rem, 65%);
+  @media all and (max-width: $break-s) {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    @include inputLine(1rem, 100%);
+  }
+}
+.join__pwField label,
+.join__emailField label {
+  @include label(1.2rem, 30%);
+  @media all and (max-width: $break-s) {
+    margin-top: 25px;
+    font-size: 1rem;
+    @include label(1.2rem, 100%);
+  }
+}
+.login__spacer {
+  @media all and (max-width: $break-s) {
+      height: 20px;
+  }
 }
 .login__pwField em {
   font-size: 0.8rem;
@@ -65,9 +113,15 @@
 .login__toggle {
   margin: 10px auto 0;
   font-size: 1rem;
+  @media all and (max-width: $break-s) {
+    margin: 40px auto 0;
+  }
 }
 .login__submit {
   padding-top: 20px;
+  @media all and (max-width: $break-s) {
+    text-align: center;
+  }
 }
 .login__submit input {
   @include button;
