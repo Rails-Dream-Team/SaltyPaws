@@ -15,17 +15,19 @@ ActiveAdmin.register_page "Dashboard" do
               end
             end
           end
-          h4 link_to("View All Colonies", colonies_path)
+          h4 link_to("View All Colonies", admin_colonies_path)
         end
       end
 
       column do
-        panel "Newest Users" do
+        panel "Users" do
+          h3 "Newest Users"
           ul do
             User.last(5).map do |user|
               li link_to(user.display_name + user.created_at.strftime('  (joined %m/%d/%Y)'), user_path(user))
             end
           end
+          h4 link_to("View All Users", admin_users_path)
         end
       end
     end
