@@ -2,8 +2,10 @@
 // login & signup forms
 
 .login__container {
-  padding: 50px 0 30px 0;
+  padding: 50px 0 70px 0;
   @include placeholder($grey-medium);
+  position: relative;
+  height: 100%;
 }
 .login__form {
   @include tile(400px);
