@@ -64,6 +64,7 @@
   top: 50%;
   transform: translateY(-50%);
   margin: 2px 0;
+  padding-left: 10px;
   > li {
     display: inline-block;
     height: 100%;
@@ -74,11 +75,14 @@
     color: inherit;
     font-size: 1.2rem;
     line-height: 1.7em;
-    @media all and (max-width: $break-s) {
+    @media all and (max-width: $break-m) {
       font-size: 1rem;
     }
-    @media all and (max-width: $break-xs) {
+    @media all and (max-width: $break-s) {
       font-size: 0.8rem;
+    }
+    @media all and (max-width: $break-xs) {
+      font-size: 0.6rem;
     }
     &:hover {
       color: $blue-medium;
@@ -93,6 +97,7 @@
   width: 20%;
   vertical-align: top;
   margin: 0;
+  padding: 0;
   > li {
     display: inline;
   }
@@ -113,6 +118,10 @@
     position: relative;
     right: 20px;
     top: 5px;
+    @media all and (max-width: $break-xs) {
+      height: 35px;
+      width: 35px;
+    }
   }
 }
 .nav__profileHover li ul {
@@ -139,6 +148,7 @@
     font-size: 1rem;
   }
   @media all and (max-width: $break-xs) {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+    padding: 5px;
   }
 }
