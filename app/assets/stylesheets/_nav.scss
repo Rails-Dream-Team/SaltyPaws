@@ -4,18 +4,24 @@
   background-color: $grey-light;
   font-size: 0;
 }
+.nav__nonUser {
+  height: 100%;
+}
 .nav__signout {
   display: inline-block;
   width: 50%;
   position: relative;
   text-align: left;
-  height: 100%;
-  padding: 1%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 2px 0;
   > li {
-    display: inline;
-    margin: 0 1%;
+    display: inline-block;
+    height: 100%;
+    margin: 0 2%;
   }
   > li a {
+    display: inline-block;
     text-decoration: none;
     color: inherit;
     font-size: 1.2rem;
@@ -26,14 +32,20 @@
 }
 .nav__signoutRight {
   display: inline-block;
+  vertical-align: top;
   width: 50%;
   position: relative;
   text-align: right;
-  height: 100%;
-  padding: 1%;
+  padding-left: 0;
+  padding-right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 2px 0;
   > li {
-    display: inline;
-    margin: 0 1%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2%;
   }
   > li a {
     text-decoration: none;
@@ -49,11 +61,13 @@
   width: 80%;
   position: relative;
   text-align: left;
-  height: 100%;
-  padding: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 2px 0;
   > li {
-    display: inline;
-    margin: 0 10px;
+    display: inline-block;
+    height: 100%;
+    margin: 0 1%;
   }
   > li a {
     text-decoration: none;
