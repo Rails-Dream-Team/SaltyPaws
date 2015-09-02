@@ -15,7 +15,7 @@ var Colonies = React.createClass({
   render: function() {
     if (this.state.colonies.length > 0) {
       return (
-        <ul className="colonies__listUL">
+        <ul className="colonies__wrapperUL">
           <li className="colonies__li"><ColonyList colonies={this.state.colonies} /></li>
           <li className="map__li"><GoogleMap colonies={this.state.colonies} /></li>
         </ul>
