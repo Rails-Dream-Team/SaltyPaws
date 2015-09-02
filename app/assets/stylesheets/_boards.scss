@@ -12,10 +12,11 @@
   }
 }
 .board__header h1 {
-  @include font(2.3rem);
+  @include font(2rem);
   padding-top: 15px;
   @media all and (min-width: $break-s) {
     margin-left: -15px;
+    font-size: 2.3rem;
   }
 }
 .board__headerLinks {
@@ -26,6 +27,7 @@
   @media all and (max-width: $break-s) {
     display: block;
     position: relative;
+    > a {white-space: nowrap;}
   }
   @media all and (min-width: $break-m) {
     margin-right: -15px;
@@ -107,7 +109,6 @@
 // classes used in the show board view
 .board__topics,
 .board__guidelines {
-  // width: 100%;
   margin-top: 10px;
 }
 .guidelines_trigger {
@@ -120,7 +121,7 @@
   position: relative;
 }
 .guidelines_trigger:checked ~ .board__guidelinesContent {
-  max-height: 1000px;
+  max-height: 1500px;
 }
 .guidelines_trigger + label, .board__guidelinesContent {
   -webkit-transition: max-height 0.8s;
