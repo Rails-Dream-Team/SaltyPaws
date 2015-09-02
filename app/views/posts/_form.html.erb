@@ -1,10 +1,7 @@
-
 <!-- FORM TO CREATE NEW POST -->
-
-
 <%= form_for([@topic, @post]) do |f| %>
   <% if @post.errors.full_messages.present? %>
-    <div class="post__formErrors">
+    <div class="board__formErrors">
       <h2>Uh oh! Your submission had the following errors:</h2>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
@@ -15,12 +12,12 @@
       </ul>
     </div>
   <% end %>
-  <div class="post__form">
+  <div class="topic__form">
     <div class="post__formContent">
-      <%= f.label :content %>
+      <%= f.label :content, "Post Content" %>
       <%= f.text_area :content %>
     </div>
-    <div class="post__formSubmit">
+    <div class="topic__formSubmit">
       <%= f.submit 'Submit' %>
     </div>
   </div>
