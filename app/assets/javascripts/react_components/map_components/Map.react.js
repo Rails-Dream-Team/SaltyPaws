@@ -12,7 +12,7 @@ var infoWindow           = new google.maps.InfoWindow();
 var GoogleMap = React.createClass({
   getInitialState: function() {
     return {
-      center: new LatLng(32.7828923, -79.9390598)
+      center: new LatLng(32.885062, -80.036911)
     }
   },
 
@@ -20,7 +20,7 @@ var GoogleMap = React.createClass({
     return (
       <StickyDiv>
           <Map
-            initialZoom={12}
+            initialZoom={10}
             initialCenter={this.state.center}
             height={400}
             >
