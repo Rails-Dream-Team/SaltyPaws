@@ -1,12 +1,12 @@
 <div class="board">
   <div class="topic__header">
-    <h1>Reply to <%= link_to @topic.title, topic_path(@topic) %></h1>
-    <div class="board__headerLinks">
+    <h1>Reply to: <%= link_to @topic.title, topic_path(@topic) %></h1>
+    <div class="topic__headerLinksNav">
       Go To: <%= link_to 'The Chatterbox', boards_path %>
        | <%= link_to @topic.board.title, topic_path(@topic) %>
      </div>
-     <div class="topic__headerPostLink">
-       Return to <%= link_to @topic.title, topic_path(@topic) %>
+     <div class="topic__headerLinksReply">
+       Return to: <%= link_to @topic.title, topic_path(@topic) %>
      </div>
   </div>
   <div class="topic__new">

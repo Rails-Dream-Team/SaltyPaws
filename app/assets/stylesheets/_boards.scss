@@ -5,18 +5,17 @@
   margin-bottom: 0;
 }
 .board__header {
-  position: relative;
   margin-bottom: 40px;
-  > h1 {
-    @include title(1.8rem);
-    display: block;
-    padding-top: 15px;
-    @media all and (min-width: $break-s) {
-      margin-left: -15px;
-    }
-  }
+  position: relative;
   @media all and (max-width: $break-s) {
     margin-bottom: 20px;
+  }
+}
+.board__header h1 {
+  @include font(2.3rem);
+  padding-top: 15px;
+  @media all and (min-width: $break-s) {
+    margin-left: -15px;
   }
 }
 .board__headerLinks {
@@ -24,16 +23,9 @@
   position: absolute;
   bottom: 0;
   right: 0;
-  > a {
-    padding: 0 10px;
-    &:last-child {
-      padding-right: 0;
-    }
-  }
   @media all and (max-width: $break-s) {
     display: block;
     position: relative;
-    > a { padding: 0; }
   }
   @media all and (min-width: $break-m) {
     margin-right: -15px;
@@ -157,6 +149,9 @@
   line-height: 50px;
   padding-left: 15px;
   position: relative;
+  white-space: nowrap;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
 }
 .board__guidelinesContent {
   max-height: 0;
