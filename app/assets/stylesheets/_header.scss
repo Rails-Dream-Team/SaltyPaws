@@ -8,13 +8,18 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: -50%;
     transform: translate(-50%, -50%);
     h1 {
       @include title(5rem, $white, 700);
+      @media all and (max-width:  916px) {
+        line-height: 55px;
+      }
     }
     h3 {
       @include title(2rem, $white);
+      @media all and (max-width:  716px) {
+        line-height: 25px;
+      }
     }
   }
 }
