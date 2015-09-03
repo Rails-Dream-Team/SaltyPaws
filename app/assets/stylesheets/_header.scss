@@ -11,7 +11,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     @media all and (max-width: $break-xs) {
-      top: 65%;
+      transform: none;
+      top: inherit;
+      left: inherit;
+      bottom: 0;
       left: 50%;
     }
     h1 {
@@ -28,9 +31,6 @@
       @include title(2rem, $white);
       @media all and (max-width:  716px) {
         line-height: 25px;
-      }
-      @media all and (max-width: $break-m) {
-        display: none;
       }
       @media all and (max-width: $break-xs) {
         display: none;
