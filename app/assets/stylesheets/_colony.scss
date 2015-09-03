@@ -167,3 +167,108 @@
     padding: 0;
   }
 }
+.colony__pageWrapper {
+  padding: 30px 30px 50px 30px;
+  @media all and (max-width: $break-s) {
+    padding: 10px 10px 30px 10px;
+  }
+}
+.colony__profileWrapper{
+  background-color: #FFF;
+  border-radius: 5px;
+  padding: 35px;
+  @media all and (max-width: $break-s) {
+    padding: 10px;
+  }
+}
+.colony__main {
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  vertical-align: top;
+  padding: 2%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+    padding: 0;
+  }
+}
+.colony__nameHeader {
+  font-size: 2em;
+  padding: 10px 18px;
+  display: inline-block;
+  @media all and (max-width: $break-s) {
+    padding: 0;
+  }
+  > h3 {
+    margin: 0;
+    display: inline-block;
+    @media all and (max-width: $break-s) {
+      line-height: 2rem;
+    }
+  }
+}
+.colony__navLinks {
+  display: inline-block;
+  text-align: right;
+  padding-bottom: 20px;
+  @media all and (max-width: $break-s) {
+    padding-top: 10px;
+  }
+  > a {
+    @include title(1rem, $grey-dark);
+    display: inline-block;
+    border-bottom: 1px solid;
+    margin: 3px 10px;
+    font-weight: 400;
+    @media all and (max-width: $break-s) {
+      text-align: left;
+      display: block;
+      margin: 3px 0;
+    }
+  }
+}
+.colony__info {
+  @include font(1.2rem);
+  display: inline-block;
+  width: 50%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+  }
+}
+.colony__infoHeader {
+  text-align: left;
+  padding: 1%;
+  color: white;
+  background: $blue-medium;
+  > h4 {
+    font-size: .8em;
+    margin: 0;
+  }
+}
+.colony__infoContent {
+  padding: 20px;
+  border-bottom: 1px solid #CFCFCF;
+  border-right: 1px solid #dce0e0;
+  border-left: 1px solid #dce0e0;
+  background-color: white;
+}
+.colony__infoRow{
+  margin-bottom: 10px;
+}
+.colony__infoLabel {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.colony__map {
+  display: inline-block;
+  vertical-align: top;
+  width: 40%;
+  margin: 0 5%;
+  @media all and (max-width: $break-s) {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
