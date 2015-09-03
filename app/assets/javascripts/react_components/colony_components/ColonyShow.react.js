@@ -23,18 +23,29 @@ var ColonyShow = React.createClass({
       return null;
     }
     return (
-      <ul>
-        <li className="colony">
-          <p><h3>Street: </h3>{this.state.colony.street_address}</p>
-          <p><h3>City: </h3>{this.state.colony.city}</p>
-          <p><h3>State: </h3>{this.state.colony.state}</p>
-          <p><h3>Zip Code: </h3>{this.state.colony.zip_code}</p>
-          <p><h3>Environment: </h3>{this.state.colony.environment}</p>
-          <p><h3>Population: </h3>{this.state.colony.pop}</p>
-          <p><h3>Vet: </h3>{this.state.colony.vet}</p>
-        </li>
-        <li className="colony">{map}</li>
-      </ul>
+      <div className="colony__main">
+        <div className="colony__info">
+          <div className="colony__infoHeader"><h4>More About { this.state.colony.name }</h4></div>
+          <div className="colony__infoContent">
+            <div className="colony__infoRow">
+            <span className="colony__infoLabel">Street Address: </span>{this.state.colony.street_address}
+            </div>
+            <div className="colony__infoRow">
+            <span className="colony__infoLabel">City/State/Zip:  </span>{ this.state.colony.city } { this.state.colony.state } { this.state.zip_code}
+            </div>
+            <div className="colony__infoRow">
+            <span className="colony__infoLabel">Environment: </span>{ this.state.colony.environment }
+            </div>
+            <div className="colony__infoRow">
+            <span className="colony__infoLabel">Population: </span>{ this.state.colony.pop}
+            </div>
+            <div className="colony__infoRow">
+            <span className="colony__infoLabel">Veterinarian: </span>{ this.state.colony.vet}
+            </div>
+          </div>
+        </div>
+        <div className="colony__map">{map}</div>
+      </div>
     );
   },
 
