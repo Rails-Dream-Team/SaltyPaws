@@ -31,7 +31,7 @@ var ColonyShow = React.createClass({
             <span className="colony__infoLabel">Street Address: </span>{this.state.colony.street_address}
             </div>
             <div className="colony__infoRow">
-            <span className="colony__infoLabel">City/State/Zip:  </span>{ this.state.colony.city } { this.state.colony.state } { this.state.zip_code}
+            <span className="colony__infoLabel">City/State: </span>{ this.state.colony.city } { this.state.colony.state } 
             </div>
             <div className="colony__infoRow">
             <span className="colony__infoLabel">Environment: </span>{ this.state.colony.environment }
